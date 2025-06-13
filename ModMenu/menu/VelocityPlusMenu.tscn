@@ -1,0 +1,393 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://VelocityPlus/ModMenu/menu/VelocityPlus_SettingsLayer.gd" type="Script" id=1]
+[ext_resource path="res://VelocityPlus/ModMenu/menu/options_button.gd" type="Script" id=2]
+[ext_resource path="res://VelocityPlus/ModMenu/menu/toggle_button.gd" type="Script" id=3]
+[ext_resource path="res://hud/TabHintContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menu/MenuTheme.tres" type="Theme" id=7]
+[ext_resource path="res://menu/PanelWithHugeShadow.tres" type="StyleBox" id=8]
+[ext_resource path="res://menu/TabsWithGamepadControl.gd" type="Script" id=10]
+[ext_resource path="res://menu/sfx/PlaySoundsOnTheseButtons.tscn" type="PackedScene" id=11]
+
+[node name="VelocityPlusMenu" type="Popup"]
+margin_left = -400.0
+margin_right = 160.0
+margin_bottom = 750.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 800, 750 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource( 7 )
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="NoMargins" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaySoundsOnTheseButtons" parent="NoMargins" instance=ExtResource( 11 )]
+
+[node name="CenterContainer" type="CenterContainer" parent="NoMargins"]
+margin_right = 1070.0
+margin_bottom = 750.0
+rect_min_size = Vector2( 800, 720 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabHintContainer" parent="NoMargins/CenterContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 17.0
+margin_right = 1070.0
+margin_bottom = 733.0
+rect_min_size = Vector2( 1070, 716 )
+size_flags_horizontal = 4
+
+[node name="MarginContainer" parent="NoMargins/CenterContainer/TabHintContainer" index="0"]
+margin_right = 1070.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 32 )
+custom_constants/margin_right = -80
+custom_constants/margin_left = -80
+
+[node name="HBoxContainer" parent="NoMargins/CenterContainer/TabHintContainer/MarginContainer" index="0"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = -80.0
+margin_right = 1150.0
+margin_bottom = 43.0
+size_flags_vertical = 3
+
+[node name="Right" parent="NoMargins/CenterContainer/TabHintContainer/MarginContainer/HBoxContainer" index="0"]
+margin_bottom = 39.0
+
+[node name="Label" parent="NoMargins/CenterContainer/TabHintContainer/MarginContainer/HBoxContainer" index="1"]
+margin_top = 0.0
+margin_right = 1150.0
+margin_bottom = 39.0
+
+[node name="Left" parent="NoMargins/CenterContainer/TabHintContainer/MarginContainer/HBoxContainer" index="2"]
+margin_left = 1150.0
+margin_right = 1230.0
+margin_bottom = 39.0
+
+[node name="TabsWithGamepadControl" type="TabContainer" parent="NoMargins/CenterContainer/TabHintContainer"]
+show_behind_parent = true
+margin_right = 1070.0
+margin_bottom = 716.0
+rect_min_size = Vector2( 0, 716 )
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 8 )
+use_hidden_tabs_for_min_size = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VELOCITY_PLUS_TOGGLES" type="Tabs" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 50.0
+margin_right = -1.0
+margin_bottom = -1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 16
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/MarginContainer"]
+margin_top = 16.0
+margin_right = 1068.0
+margin_bottom = 617.0
+custom_constants/separation = 6
+
+[node name="mineral_market_show_total_value" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/MarginContainer/VBoxContainer"]
+margin_right = 1068.0
+margin_bottom = 41.0
+hint_tooltip = "VP_MINERAL_MARKET_DESC"
+size_flags_horizontal = 3
+text = "VP_MINERAL_MARKET"
+script = ExtResource( 3 )
+
+[node name="add_empty_cradle_equipment" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/MarginContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1068.0
+margin_bottom = 88.0
+hint_tooltip = "VP_ADD_CRADLES_DESC"
+size_flags_horizontal = 3
+text = "VP_ADD_CRADLES"
+script = ExtResource( 3 )
+setting = "add_empty_cradle_equipment"
+
+[node name="simulator_shader" type="OptionButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 1068.0
+margin_bottom = 135.0
+hint_tooltip = "VP_SIMULATION_SHADER_DESC"
+text = "VP_SIMULATION_SHADER"
+script = ExtResource( 2 )
+number_of_options = 1
+option_names = [ "VP_MVFS_NONE", "VP_MVFS_SHADER", "VP_MVFS_SHADER_AND_BACKGROUND", "VP_MVFS_LUMA_EDGE" ]
+
+[node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/Control"]
+margin_left = 7.0
+margin_top = -55.0
+margin_right = 341.0
+margin_bottom = -11.0
+focus_neighbour_right = NodePath("../Cancel")
+text = "SETTINGS_SAVE"
+
+[node name="Cancel" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -367.0
+margin_top = -55.0
+margin_right = -11.0
+margin_bottom = -11.0
+focus_neighbour_left = NodePath("../Save")
+text = "SETTINGS_CANCEL"
+
+[node name="VELOCITY_PLUS_PORTRAITS" type="Tabs" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 50.0
+margin_right = -1.0
+margin_bottom = -1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 16
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer"]
+margin_top = 16.0
+margin_right = 1068.0
+margin_bottom = 617.0
+custom_constants/separation = 6
+
+[node name="hide_on_enceladus" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
+margin_right = 1068.0
+margin_bottom = 41.0
+hint_tooltip = "VP_HIDE_CREW_EPRIME_DESC"
+size_flags_horizontal = 3
+text = "VP_HIDE_CREW_EPRIME"
+script = ExtResource( 3 )
+setting = "hide_on_enceladus"
+section = "crew_portraits"
+
+[node name="hide_in_OMS" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1068.0
+margin_bottom = 88.0
+hint_tooltip = "VP_HIDE_CREW_OMS_DESC"
+size_flags_horizontal = 3
+text = "VP_HIDE_CREW_OMS"
+align = 1
+script = ExtResource( 3 )
+setting = "hide_in_OMS"
+section = "crew_portraits"
+
+[node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/Control"]
+margin_left = 7.0
+margin_top = -55.0
+margin_right = 341.0
+margin_bottom = -11.0
+focus_neighbour_right = NodePath("../Cancel")
+text = "SETTINGS_SAVE"
+
+[node name="Cancel" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -367.0
+margin_top = -55.0
+margin_right = -11.0
+margin_bottom = -11.0
+focus_neighbour_left = NodePath("../Save")
+text = "SETTINGS_CANCEL"
+
+[node name="VELOCITY_PLUS_SHIPS" type="Tabs" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 50.0
+margin_right = -1.0
+margin_bottom = -1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 16
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/MarginContainer"]
+margin_top = 16.0
+margin_right = 1068.0
+margin_bottom = 617.0
+custom_constants/separation = 6
+
+[node name="fix_voyager_MPU_in_OCP" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/MarginContainer/VBoxContainer"]
+margin_right = 1068.0
+margin_bottom = 41.0
+hint_tooltip = "VP_OCP_VOYAGER_DESC"
+size_flags_horizontal = 3
+text = "VP_OCP_VOYAGER"
+script = ExtResource( 3 )
+setting = "fix_voyager_MPU_in_OCP"
+section = "ships"
+
+[node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/Control"]
+margin_left = 7.0
+margin_top = -55.0
+margin_right = 341.0
+margin_bottom = -11.0
+focus_neighbour_right = NodePath("../Cancel")
+text = "SETTINGS_SAVE"
+
+[node name="Cancel" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -367.0
+margin_top = -55.0
+margin_right = -11.0
+margin_bottom = -11.0
+focus_neighbour_left = NodePath("../Save")
+text = "SETTINGS_CANCEL"
+
+[node name="VELOCITY_PLUS_IN_RING" type="Tabs" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 50.0
+margin_right = -1.0
+margin_bottom = -1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 16
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer"]
+margin_top = 16.0
+margin_right = 1068.0
+margin_bottom = 617.0
+custom_constants/separation = 6
+
+[node name="remove_max_speed_limit" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer/VBoxContainer"]
+margin_right = 1068.0
+margin_bottom = 41.0
+hint_tooltip = "VP_REMOVE_SPEED_LIMIT_DESC"
+size_flags_horizontal = 3
+text = "VP_REMOVE_SPEED_LIMIT"
+script = ExtResource( 3 )
+setting = "remove_max_speed_limit"
+section = "in_ring"
+
+[node name="allow_exit_of_ring_to_the_left" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1068.0
+margin_bottom = 88.0
+hint_tooltip = "VP_EXIT_LEFT_DESC"
+size_flags_horizontal = 3
+text = "VP_EXIT_LEFT"
+script = ExtResource( 3 )
+setting = "allow_exit_of_ring_to_the_left"
+section = "in_ring"
+
+[node name="allow_exit_of_ring_to_the_right" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 1068.0
+margin_bottom = 135.0
+hint_tooltip = "VP_EXIT_RIGHT_DESC"
+size_flags_horizontal = 3
+text = "VP_EXIT_RIGHT"
+script = ExtResource( 3 )
+setting = "allow_exit_of_ring_to_the_right"
+section = "in_ring"
+
+[node name="broadcast_variations" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer/VBoxContainer"]
+margin_top = 141.0
+margin_right = 1068.0
+margin_bottom = 182.0
+hint_tooltip = "VP_VARIATED_BROADCASTS_DESC"
+size_flags_horizontal = 3
+text = "VP_VARIATED_BROADCASTS"
+script = ExtResource( 3 )
+setting = "broadcast_variations"
+section = "in_ring"
+
+[node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/Control"]
+margin_left = 7.0
+margin_top = -55.0
+margin_right = 341.0
+margin_bottom = -11.0
+focus_neighbour_right = NodePath("../Cancel")
+text = "SETTINGS_SAVE"
+
+[node name="Cancel" type="Button" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -367.0
+margin_top = -55.0
+margin_right = -11.0
+margin_bottom = -11.0
+focus_neighbour_left = NodePath("../Save")
+text = "SETTINGS_CANCEL"
+
+[connection signal="about_to_show" from="." to="." method="_on_ExampleMod_about_to_show"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/Control/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_TOGGLES/Control/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/Control/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/Control/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/Control/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/Control/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/Control/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/Control/Cancel" to="." method="_on_Cancel_pressed"]
+
+[editable path="NoMargins/CenterContainer/TabHintContainer"]

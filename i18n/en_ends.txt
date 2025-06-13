@@ -1,0 +1,81 @@
+locale|en
+
+DIALOG_SALVAGE_START_NEW_1|Howdy, space haulers! It’s time for your daily dose of wreck-watch, straight from the salvage guild! Hope your claws are sharp and your thrusters hot, 'cause we got some fresh hulls drifting in the black!
+
+DIALOG_SALVAGE_START_NEW_2|Alright, scrappers and haulers, it’s time for your daily S&R update! We got wrecks drifting, hulls ripe for reclaiming, and encelados just waiting to be hauled in. Let’s see what’s out there today!
+
+DIALOG_SALVAGE_START_NEW_3|Alright, Scrapwrights, listen up! The void’s never empty, and today’s batch of wrecks is looking real profitable. Whether you’re running solo or with a crew, there’s plenty of salvage to go around - if you get there first. And if you don’t, well… no enceladollars for you!
+
+DIALOG_SALVAGE_START_NEW_4|Good morning, SRO operatives! Or evening. Or whatever your shipboard clock says. Time’s a mess, but wrecks are eternal! Let’s go through today’s derelict sightings before some freelancer jumps your claim and walks away with your enceladollars.
+
+DIALOG_SALVAGE_START_NEW_5|Another day, another hull waiting for a second chance. Or a second scrapping. Either way, we got the listings, you’ve got the tools, and there’s encelados to be made. Let’s get to work!
+
+DIALOG_SALVAGE_BYE_NEW_1|That’s your wreck report for today. If you’re an active SRO member, great - you’ve got the edge. If not? You shouldn’t even be hearing this. Leaking guild data carries repercussions, up to permanent banishment. Keep it clean, keep it quiet, and keep scrapping.
+
+DIALOG_SALVAGE_BYE_NEW_2|That’s all from SRO for now! These reports are strictly for paying members - and we do track leaks. You want to keep your subscription? Keep the listings confidential. Fly safe!
+
+DIALOG_SALVAGE_BYE_NEW_3|That's all for today’s salvage listings. Reminder: This is guild-exclusive information. Unauthorized distribution leads to sanctions, fines, and possible blacklisting. If you want to stay in the business, keep it to yourself. Fly safe, and huge profits!
+
+DIALOG_SALVAGE_BYE_NEW_4|Alright, salvagers, that’s the rundown. Just a friendly reminder: This is private data. Anyone caught leaking wreck sightings outside the guild will lose all future access - permanently. Don’t risk your livelihood for a cheap payout.
+
+DIALOG_SALVAGE_BYE_NEW_5|That’s the end of today’s report. If you’re seeing this, you’re in good standing with SRO. If you share this outside the guild? You won’t be for long. Keep it tight, keep it moving, and we’ll see you the next broadcast.
+
+DIALOG_SALVAGE_START_BEGINNER_1|Howdy, space haulers! It’s time for your daily dose of wreck-watch, straight from the salvage guild! Hope your claws are sharp and your thrusters hot, 'cause we got some fresh hulls drifting in the black!
+
+DIALOG_SALVAGE_START_BEGINNER_2|Alright, scrappers and haulers, it’s time for your daily S&R update! We got wrecks drifting, hulls ripe for reclaiming, and encelados just waiting to be hauled in. Let’s see what’s out there today!
+
+DIALOG_SALVAGE_START_BEGINNER_3|Alright, Scrapwrights, listen up! The void’s never empty, and today’s batch of wrecks is looking real profitable. Whether you’re running solo or with a crew, there’s plenty of salvage to go around - if you get there first. And if you don’t, well… no enceladollars for you!
+
+DIALOG_SALVAGE_START_BEGINNER_4|Good morning, SRO operatives! Or evening. Or whatever your shipboard clock says. Time’s a mess, but wrecks are eternal! Let’s go through today’s derelict sightings before some freelancer jumps your claim and walks away with your enceladollars.
+
+DIALOG_SALVAGE_START_BEGINNER_5|Another day, another hull waiting for a second chance. Or a second scrapping. Either way, we got the listings, you’ve got the tools, and there’s encelados to be made. Let’s get to work!
+
+DIALOG_SALVAGE_BYE_BEGINNER_1|That’s your wreck report for today. If you’re an active SRO member, great - you’ve got the edge. If not? You shouldn’t even be hearing this. Leaking guild data carries repercussions, up to permanent banishment. Keep it clean, keep it quiet, and keep scrapping.
+
+DIALOG_SALVAGE_BYE_BEGINNER_2|That’s all from SRO for now! These reports are strictly for paying members - and we do track leaks. You want to keep your subscription? Keep the listings confidential. Fly safe!
+
+DIALOG_SALVAGE_BYE_BEGINNER_3|That's all for today’s salvage listings. Reminder: This is guild-exclusive information. Unauthorized distribution leads to sanctions, fines, and possible blacklisting. If you want to stay in the business, keep it to yourself. Fly safe, and huge profits!
+
+DIALOG_SALVAGE_BYE_BEGINNER_4|Alright, salvagers, that’s the rundown. Just a friendly reminder: This is private data. Anyone caught leaking wreck sightings outside the guild will lose all future access - permanently. Don’t risk your livelihood for a cheap payout.
+
+DIALOG_SALVAGE_BYE_BEGINNER_5|That’s the end of today’s report. If you’re seeing this, you’re in good standing with SRO. If you share this outside the guild? You won’t be for long. Keep it tight, keep it moving, and we’ll see you the next broadcast.
+
+DIALOG_SALVAGE_START_EXPERIENCED_1|Howdy, space haulers! It’s time for your daily dose of wreck-watch, straight from the salvage guild! Hope your claws are sharp and your thrusters hot, 'cause we got some fresh hulls drifting in the black!
+
+DIALOG_SALVAGE_START_EXPERIENCED_2|Alright, scrappers and haulers, it’s time for your daily S&R update! We got wrecks drifting, hulls ripe for reclaiming, and encelados just waiting to be hauled in. Let’s see what’s out there today!
+
+DIALOG_SALVAGE_START_EXPERIENCED_3|Alright, Scrapwrights, listen up! The void’s never empty, and today’s batch of wrecks is looking real profitable. Whether you’re running solo or with a crew, there’s plenty of salvage to go around - if you get there first. And if you don’t, well… no enceladollars for you!
+
+DIALOG_SALVAGE_START_EXPERIENCED_4|Good morning, SRO operatives! Or evening. Or whatever your shipboard clock says. Time’s a mess, but wrecks are eternal! Let’s go through today’s derelict sightings before some freelancer jumps your claim and walks away with your enceladollars.
+
+DIALOG_SALVAGE_START_EXPERIENCED_5|Another day, another hull waiting for a second chance. Or a second scrapping. Either way, we got the listings, you’ve got the tools, and there’s encelados to be made. Let’s get to work!
+
+DIALOG_SALVAGE_BYE_EXPERIENCED_1|That’s your wreck report for today. If you’re an active SRO member, great - you’ve got the edge. If not? You shouldn’t even be hearing this. Leaking guild data carries repercussions, up to permanent banishment. Keep it clean, keep it quiet, and keep scrapping.
+
+DIALOG_SALVAGE_BYE_EXPERIENCED_2|That’s all from SRO for now! These reports are strictly for paying members - and we do track leaks. You want to keep your subscription? Keep the listings confidential. Fly safe!
+
+DIALOG_SALVAGE_BYE_EXPERIENCED_3|That's all for today’s salvage listings. Reminder: This is guild-exclusive information. Unauthorized distribution leads to sanctions, fines, and possible blacklisting. If you want to stay in the business, keep it to yourself. Fly safe, and huge profits!
+
+DIALOG_SALVAGE_BYE_EXPERIENCED_4|Alright, salvagers, that’s the rundown. Just a friendly reminder: This is private data. Anyone caught leaking wreck sightings outside the guild will lose all future access - permanently. Don’t risk your livelihood for a cheap payout.
+
+DIALOG_SALVAGE_BYE_EXPERIENCED_5|That’s the end of today’s report. If you’re seeing this, you’re in good standing with SRO. If you share this outside the guild? You won’t be for long. Keep it tight, keep it moving, and we’ll see you the next broadcast.
+
+DIALOG_SALVAGE_START_MASTER_1|Howdy, space haulers! It’s time for your daily dose of wreck-watch, straight from the salvage guild! Hope your claws are sharp and your thrusters hot, 'cause we got some fresh hulls drifting in the black!
+
+DIALOG_SALVAGE_START_MASTER_2|Alright, scrappers and haulers, it’s time for your daily S&R update! We got wrecks drifting, hulls ripe for reclaiming, and encelados just waiting to be hauled in. Let’s see what’s out there today!
+
+DIALOG_SALVAGE_START_MASTER_3|Alright, Scrapwrights, listen up! The void’s never empty, and today’s batch of wrecks is looking real profitable. Whether you’re running solo or with a crew, there’s plenty of salvage to go around - if you get there first. And if you don’t, well… no enceladollars for you!
+
+DIALOG_SALVAGE_START_MASTER_4|Good morning, SRO operatives! Or evening. Or whatever your shipboard clock says. Time’s a mess, but wrecks are eternal! Let’s go through today’s derelict sightings before some freelancer jumps your claim and walks away with your enceladollars.
+
+DIALOG_SALVAGE_START_MASTER_5|Another day, another hull waiting for a second chance. Or a second scrapping. Either way, we got the listings, you’ve got the tools, and there’s encelados to be made. Let’s get to work!
+
+DIALOG_SALVAGE_BYE_MASTER_1|That’s your wreck report for today. If you’re an active SRO member, great - you’ve got the edge. If not? You shouldn’t even be hearing this. Leaking guild data carries repercussions, up to permanent banishment. Keep it clean, keep it quiet, and keep scrapping.
+
+DIALOG_SALVAGE_BYE_MASTER_2|That’s all from SRO for now! These reports are strictly for paying members - and we do track leaks. You want to keep your subscription? Keep the listings confidential. Fly safe!
+
+DIALOG_SALVAGE_BYE_MASTER_3|That's all for today’s salvage listings. Reminder: This is guild-exclusive information. Unauthorized distribution leads to sanctions, fines, and possible blacklisting. If you want to stay in the business, keep it to yourself. Fly safe, and huge profits!
+
+DIALOG_SALVAGE_BYE_MASTER_4|Alright, salvagers, that’s the rundown. Just a friendly reminder: This is private data. Anyone caught leaking wreck sightings outside the guild will lose all future access - permanently. Don’t risk your livelihood for a cheap payout.
+
+DIALOG_SALVAGE_BYE_MASTER_5|That’s the end of today’s report. If you’re seeing this, you’re in good standing with SRO. If you share this outside the guild? You won’t be for long. Keep it tight, keep it moving, and we’ll see you the next broadcast.

@@ -9,3 +9,60 @@ SYSTEM_CRADLE_SPECS|Power usage (nominal): 20 MW\nCradle mass: 500 kg\nManufactu
 SYSTEM_CRADLE_DESC|A cheap, standalone cradle from the cargo container line of equipment produced by Titan Heavy Industries. Many captains may fail to see the use in entering the rings without anything attached to the cradle, however salvage crews may see benefit to having a readily accessible cradle to retrieve any lifepods or drones.
 
 SYSTEM_CRADLE_MANUAL|Empty cradle arm can catch drones and lifepods.
+
+
+VELOCITY_PLUS_ENCELADUS|Enceladus
+
+VELOCITY_PLUS_PORTRAITS|Portraits
+
+VELOCITY_PLUS_SHIPS|Ships
+
+VELOCITY_PLUS_IN_RING|In-Ring
+
+VP_MINERAL_MARKET|Show mineral market worth
+
+VP_MINERAL_MARKET_DESC|Adds an extra textbox displaying the value of your stake in the mineral market at that current moment
+
+VP_ADD_CRADLES|Add empty cradle equipment
+
+VP_ADD_CRADLES_DESC|Adds cradles without anything attached in the appropriate hardpoint menus
+
+VP_SIMULATION_SHADER|MVFS Shader Style
+
+VP_SIMULATION_SHADER_DESC|Modify the shader and/or background of the Minding Virtual Flight Service
+
+VP_MVFS_NONE|NONE
+
+VP_MVFS_SHADER|Remove HEX
+
+VP_MVFS_SHADER_AND_BACKGROUND|Remove HEX and BG
+
+VP_MVFS_LUMA_EDGE|Equipment preview shader
+
+VP_HIDE_CREW_EPRIME|Hide portraits on Enceladus Prime
+
+VP_HIDE_CREW_EPRIME_DESC|Removes the crew portraits from the Enceladus Prime menu. \n\nYou will need to check the crew tab to see who you have onboard
+
+VP_HIDE_CREW_OMS|Hide portraits in OMS
+
+VP_HIDE_CREW_OMS_DESC|Removes the crew portraits in OMS menus. \n\nYou may need to keep a mental track of crew to know where they are
+
+VP_OCP_VOYAGER|Fix Voyager RSLS MPU in the OCP-209
+
+VP_OCP_VOYAGER_DESC|Flips the Voyager 180 degrees to be more reliable at fitting ore chunks into it's mouth
+
+VP_REMOVE_SPEED_LIMIT|Remove 200 m/s velocity limit
+
+VP_REMOVE_SPEED_LIMIT_DESC|Unlocks the velocity limit to allow you to travel at any velocity.\n\nYou will need to resort to other methods to leave the rings
+
+VP_EXIT_LEFT|Allow travel past the ring's outer edge
+
+VP_EXIT_LEFT_DESC|Traveling past the left edge (into negative depth) will now no longer return you to Enceladus.\n\nYou will need to resort to other methods to leave the rings
+
+VP_EXIT_RIGHT|Allow travel into the Encke Gap
+
+VP_EXIT_RIGHT_DESC|Travelling into the Encke Gap (past 3005 km) will now no longer return you to Enceladus.\n\nYou will need to resort to other methods to leave the rings
+
+VP_VARIATED_BROADCASTS|Variate broadcasted location timers
+
+VP_VARIATED_BROADCASTS_DESC|Provides a range of time for which any broadcast-like astrogation target will be provided on to give the impression that the data is being provided as it was from the source's computer.\n\nBroadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.

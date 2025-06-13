@@ -21,15 +21,54 @@ func _init(modLoader = ModLoader):
 	loadSettings()
 	loadDLC()
 	var HevLib = check.__hevlib_check()
+	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
+	match modConfig["enceladus"]["simulator_shader"]:
+		0:
+			pass
+		1:
+			replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
+		2:
+			replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
+		3:
+			replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
 	
+	if modConfig["crew_portraits"]["hide_on_enceladus"]:
+		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
+	if modConfig["crew_portraits"]["hide_in_OMS"]:
+		replaceScene("hud/OMS.tscn")
+	
+	
+	if modConfig["ships"]["fix_voyager_MPU_in_OCP"]:
+		replaceScene("ships/ocp-209.tscn")
+	
+	if modConfig["in_ring"]["broadcast_variations"]:
+		installScriptExtension("comms/ConversationPlayer.gd")
+	
+	# Don't Change
+	installScriptExtension("Hud.gd")
 	replaceScene("weapons/WeaponSlot.tscn")
+	installScriptExtension("ships/ship-ctrl.gd")
+	installScriptExtension("hud/Escape Veloity.gd")
+	installScriptExtension("hud/Leaving Rings.gd")
 	
-	replaceScene("enceladus/MineralMarket.tscn")
+	if modConfig["enceladus"]["mineral_market_show_total_value"]:
+		replaceScene("enceladus/MineralMarket.tscn")
+	
 	if HevLib:
-		addEquipmentItem(cradle_left)
-		addEquipmentItem(cradle_right)
+		if modConfig["enceladus"]["add_empty_cradle_equipment"]:
+			addEquipmentItem(cradle_left)
+			addEquipmentItem(cradle_right)
 		var WebTranslate = preload("res://HevLib/pointers/WebTranslate.gd")
 		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",["i18n/en.txt"])
+		var fallback = [
+			modPath + "i18n/en_ends.txt",
+			modPath + "i18n/en_base.txt",
+			modPath + "i18n/en_60.txt",
+			modPath + "i18n/en_45.txt",
+			modPath + "i18n/en_30.txt",
+			modPath + "i18n/en_1.txt"
+		]
+		HevLib.__webtranslate("https://github.com/rwqfsfasxc100/Ring-Activity",fallback)
 	else:
 		updateTL("i18n/en.txt", "|")
 

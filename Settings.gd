@@ -4,6 +4,23 @@ var VelocityPlus = {
 	"enceladus":{
 		"mineral_market_show_total_value":true,
 		"add_empty_cradle_equipment":true,
+		"simulator_shader":1,
+	}, 
+	"crew_portraits":{
+		"hide_on_enceladus":false,
+		"hide_in_OMS":false,
+	},
+	"ships":{
+		"fix_voyager_MPU_in_OCP":true,
+	},
+	"in_ring":{
+		"remove_max_speed_limit":true,
+		"allow_exit_of_ring_to_the_left":true,
+		"allow_exit_of_ring_to_the_right":true,
+		"broadcast_variations":true
+	},
+	"input":{
+		"toggle_hud":[ "F6" ],
 	}, 
 }
 
@@ -27,12 +44,12 @@ func save_VelocityPlus_ToFile():
 func load_VelocityPlus_FromFile():
 	var error = VelocityPlus_CfgFile.load(VelocityPlus_ConfigPath)
 	if error != OK:
-		Debug.l("Example Mod: Error loading settings %s" % error)
+		Debug.l("Velocity Plus: Error loading settings %s" % error)
 		return 
 	for section in VelocityPlus:
 		for key in VelocityPlus[section]:
 			VelocityPlus[section][key] = VelocityPlus_CfgFile.get_value(section, key, VelocityPlus[section][key])
-#	loadKeymapsFromConfig()
+	loadKeymapsFromConfig()
 
 func loadKeymapsFromConfig():
 	for action_name in VelocityPlus.input:

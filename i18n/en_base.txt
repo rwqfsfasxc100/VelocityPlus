@@ -1,0 +1,3 @@
+locale|en
+
+RINGACTIVITY_MOD_DESCRIPTION|Adds some time randomness to a large portion of ring anomaly sources, giving a potential sense of urgency for several locations
