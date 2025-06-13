@@ -1,0 +1,11 @@
+locale|en
+
+DKB_MARKET_VALUE|Total Estimated Market Value: 
+
+SYSTEM_CRADLE|THI Standalone Cradle
+
+SYSTEM_CRADLE_SPECS|Power usage (nominal): 20 MW\nCradle mass: 500 kg\nManufacturer: Titan Heavy Industries
+
+SYSTEM_CRADLE_DESC|A cheap, standalone cradle from the cargo container line of equipment produced by Titan Heavy Industries. Many captains may fail to see the use in entering the rings without anything attached to the cradle, however salvage crews may see benefit to having a readily accessible cradle to retrieve any lifepods or drones.
+
+SYSTEM_CRADLE_MANUAL|Empty cradle arm can catch drones and lifepods.

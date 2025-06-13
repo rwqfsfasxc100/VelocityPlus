@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://enceladus/MineralMarket.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menu/sfx/hover.wav" type="AudioStream" id=2]
+[ext_resource path="res://DeKanban/enceladus/MarketVal.gd" type="Script" id=3]
+
+[node name="MineralMarket" instance=ExtResource( 1 )]
+
+[node name="HeaderWithMoney" parent="Details" index="0"]
+margin_bottom = 82.0
+
+[node name="MarketLabel" parent="Details/HeaderWithMoney" index="0"]
+margin_right = 786.0
+
+[node name="VBoxContainer" parent="Details/HeaderWithMoney" index="1"]
+margin_left = 790.0
+margin_bottom = 82.0
+
+[node name="Money" parent="Details/HeaderWithMoney/VBoxContainer" index="0"]
+margin_right = 458.0
+
+[node name="MarketValue" type="HBoxContainer" parent="Details/HeaderWithMoney/VBoxContainer" index="2"]
+margin_top = 43.0
+margin_right = 458.0
+margin_bottom = 82.0
+
+[node name="MarketLabel" type="Label" parent="Details/HeaderWithMoney/VBoxContainer/MarketValue" index="0"]
+margin_right = 377.0
+margin_bottom = 39.0
+text = "DKB_MARKET_VALUE"
+
+[node name="MarketVal" type="Label" parent="Details/HeaderWithMoney/VBoxContainer/MarketValue" index="1"]
+margin_left = 381.0
+margin_right = 458.0
+margin_bottom = 39.0
+text = "0 E$"
+script = ExtResource( 3 )
+
+[node name="Pinger" type="AudioStreamPlayer" parent="Details/HeaderWithMoney/VBoxContainer/MarketValue/MarketVal" index="0"]
+stream = ExtResource( 2 )
+volume_db = -5.0
+pitch_scale = 0.8
+bus = "UI"
+
+[node name="MarginContainer" parent="Details" index="1"]
+margin_top = 86.0
+
+[node name="ScrollContainer" parent="Details/MarginContainer" index="0"]
+margin_bottom = 630.0
+
+[editable path="Details/HeaderWithMoney"]
