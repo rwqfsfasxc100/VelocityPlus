@@ -8,6 +8,7 @@ version_minor=0
 version_bugfix=0
 version_metadata=""
 description="VELOCITYPLUS_DESCRIPTION"
+discord_thread="https://discord.com/channels/426287934870781952/1383342280878067762"
 groups=["qol","features"]
 github="https://github.com/rwqfsfasxc100/VelocityPlus"
 link_github_releases=true
