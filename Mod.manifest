@@ -1,0 +1,19 @@
+[package]
+
+id="hev.VelocityPlus"
+name="Velocity Plus"
+version="1.0.0"
+version_major=1
+version_minor=0
+version_bugfix=0
+version_metadata=""
+description="VELOCITYPLUS_DESCRIPTION"
+groups=["qol","features"]
+github="https://github.com/rwqfsfasxc100/VelocityPlus"
+link_github_releases=true
+author="__hev"
+credits=["Za'krin - Mod Main design, original implementation of updateTL"]
+
+[manifest_definitions]
+
+manifest_version=2

@@ -4,7 +4,7 @@ extends Node
 # Mods are loaded from lowest to highest priority, default is 0
 const MOD_PRIORITY = 0
 # Name of the mod, used for writing to the logs
-const MOD_NAME = "Velocity+"
+const MOD_NAME = "Velocity Plus"
 const MOD_VERSION = "1.0.0"
 const MOD_VERSION_MAJOR = 1
 const MOD_VERSION_MINOR = 0
@@ -31,9 +31,9 @@ func _init(modLoader = ModLoader):
 		3:
 			replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
 	
-	if modConfig["crew_portraits"]["hide_on_enceladus"]:
+	if modConfig["crew"]["hide_on_enceladus"]:
 		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
-	if modConfig["crew_portraits"]["hide_in_OMS"]:
+	if modConfig["crew"]["hide_in_OMS"]:
 		replaceScene("hud/OMS.tscn")
 	
 	
@@ -42,10 +42,16 @@ func _init(modLoader = ModLoader):
 	
 	if modConfig["in_ring"]["broadcast_variations"]:
 		installScriptExtension("comms/ConversationPlayer.gd")
+	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
+	
+	if modConfig["ships"]["disable_gimballed_weapons"]:
+		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
+	if modConfig["ships"]["disable_turrets_turning"]:
+		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
 	
 	# Don't Change
 	installScriptExtension("Hud.gd")
-	replaceScene("weapons/WeaponSlot.tscn")
+	replaceScene("weapons/weaponslots/Cradles/WeaponSlot.tscn",weaponslot_path)
 	installScriptExtension("ships/ship-ctrl.gd")
 	installScriptExtension("hud/Escape Veloity.gd")
 	installScriptExtension("hud/Leaving Rings.gd")

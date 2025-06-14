@@ -6,12 +6,14 @@ var VelocityPlus = {
 		"add_empty_cradle_equipment":true,
 		"simulator_shader":1,
 	}, 
-	"crew_portraits":{
+	"crew":{
 		"hide_on_enceladus":false,
 		"hide_in_OMS":false,
 	},
 	"ships":{
 		"fix_voyager_MPU_in_OCP":true,
+		"disable_gimballed_weapons":false,
+		"disable_turrets_turning":false,
 	},
 	"in_ring":{
 		"remove_max_speed_limit":true,

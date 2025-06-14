@@ -11,6 +11,9 @@ SYSTEM_CRADLE_DESC|A cheap, standalone cradle from the cargo container line of e
 SYSTEM_CRADLE_MANUAL|Empty cradle arm can catch drones and lifepods.
 
 
+VELOCITYPLUS_DESCRIPTION|A quality of life feature mod that combines several current mods into a single, configurable package.
+
+
 VELOCITY_PLUS_ENCELADUS|Enceladus
 
 VELOCITY_PLUS_PORTRAITS|Portraits
@@ -66,3 +69,11 @@ VP_EXIT_RIGHT_DESC|Travelling into the Encke Gap (past 3005 km) will now no long
 VP_VARIATED_BROADCASTS|Variate broadcasted location timers
 
 VP_VARIATED_BROADCASTS_DESC|Provides a range of time for which any broadcast-like astrogation target will be provided on to give the impression that the data is being provided as it was from the source's computer.\n\nBroadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
+
+VP_REMOVE_GIMBALS|Fix gimballed weapons in place
+
+VP_REMOVE_GIMBALS_DESC|Fixes vanilla gimballed weapons (CL-200AP and AEMD-14) in place.
+
+VP_FIX_TURRETS|Fix turrets in place
+
+VP_FIX_TURRETS_DESC|Fixes vanilla turrets (PDMWG, NDPT-4205, and Point Defence Laser Turret) to their default angles. They will still fire at anything in range, just now only within their affixed firing arc.
