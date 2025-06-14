@@ -1,5 +1,5 @@
 # VelocityPlus
-A collection of small QOL changes.
+A collection of small QOL changes and additions.
 
 ## Features
 * All non-keybind toggles supported by Mod Menu
