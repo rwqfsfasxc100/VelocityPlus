@@ -1,6 +1,10 @@
 # VelocityPlus
 A collection of small QOL changes and additions.
 
+> [!WARNING]
+> HevLib may be required for some features to function.
+> A download can be found from it's [releases page](https://github.com/rwqfsfasxc100/HevLib/releases/latest)
+
 ## Features
 * All non-keybind toggles supported by Mod Menu
 
