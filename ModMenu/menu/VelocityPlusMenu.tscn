@@ -269,24 +269,14 @@ script = ExtResource( 3 )
 setting = "fix_voyager_MPU_in_OCP"
 section = "ships"
 
-[node name="disable_gimballed_weapons" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/MarginContainer/VBoxContainer"]
+[node name="disable_gimballed_and_turreted_weapons" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/MarginContainer/VBoxContainer"]
 margin_right = 1068.0
 margin_bottom = 41.0
 hint_tooltip = "VP_REMOVE_GIMBALS_DESC"
 size_flags_horizontal = 3
 text = "VP_REMOVE_GIMBALS"
 script = ExtResource( 3 )
-setting = "disable_gimballed_weapons"
-section = "ships"
-
-[node name="disable_turrets_turning" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/MarginContainer/VBoxContainer"]
-margin_right = 1068.0
-margin_bottom = 41.0
-hint_tooltip = "VP_FIX_TURRETS_DESC"
-size_flags_horizontal = 3
-text = "VP_FIX_TURRETS"
-script = ExtResource( 3 )
-setting = "disable_turrets_turning"
+setting = "disable_gimballed_and_turreted_weapons"
 section = "ships"
 
 [node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS"]

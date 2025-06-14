@@ -12,8 +12,7 @@ var VelocityPlus = {
 	},
 	"ships":{
 		"fix_voyager_MPU_in_OCP":true,
-		"disable_gimballed_weapons":false,
-		"disable_turrets_turning":false,
+		"disable_gimballed_and_turreted_weapons":false,
 	},
 	"in_ring":{
 		"remove_max_speed_limit":true,

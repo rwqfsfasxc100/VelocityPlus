@@ -44,10 +44,10 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("comms/ConversationPlayer.gd")
 	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
 	
-	if modConfig["ships"]["disable_gimballed_weapons"]:
-		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
-	if modConfig["ships"]["disable_turrets_turning"]:
-		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
+#	if modConfig["ships"]["disable_gimballed_weapons"]:
+#		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
+#	if modConfig["ships"]["disable_turrets_turning"]:
+#		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
 	
 	# Don't Change
 	installScriptExtension("Hud.gd")
@@ -55,9 +55,10 @@ func _init(modLoader = ModLoader):
 	installScriptExtension("ships/ship-ctrl.gd")
 	installScriptExtension("hud/Escape Veloity.gd")
 	installScriptExtension("hud/Leaving Rings.gd")
+	installScriptExtension("weapons/PDT.gd")
 	
 	if modConfig["enceladus"]["mineral_market_show_total_value"]:
-		replaceScene("enceladus/MineralMarket.tscn")
+		replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 	
 
 var cradle_left = {
@@ -87,7 +88,7 @@ func _ready():
 	l("Readying")
 	var HevLib = check.__hevlib_check()
 	if HevLib:
-		if modConfig["enceladus"]["add_empty_cradle_equipment"]:
+		if modConfig["enceladus"]["add_empty_cradle_equipment"]: # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
 			addEquipmentItem(cradle_left)
 			addEquipmentItem(cradle_right)
 		var WebTranslate = preload("res://HevLib/pointers/WebTranslate.gd")
