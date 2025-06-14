@@ -16,6 +16,7 @@ A collection of small QOL changes and additions.
   * Allows the portraits at Enceladus and in OMS to be toggled independently of each other
   * Disabled by default 
 * Adds empty cradle equipment for 50k E$
+  * **Requires HevLib to be installed to function**
   * Parity fix for [issue #5133](https://git.kodera.pl/games/delta-v/-/issues/5133)
 * Flips the Voyager 180 degrees in OCP holds (Defaults to enabled)
   * Ported from the OCP Voyager Fix mod
@@ -26,6 +27,7 @@ A collection of small QOL changes and additions.
 * Removes the automatic return to Enceladus by entering the Encke Gap (3005km) (Defaults to enabled)
   * Ported from the Remove Ring Restrictions mod
 * Variates the time of broadcast-like astrogation targets (Defaults to enabled)
+  * **Requires HevLib to be installed to function**
   * Ported from the RingActivity mod
   * Broadcast-like astro targets include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
 * Allows the fixing of gimballed and turreted equipment in place (Defaults to disabled)
