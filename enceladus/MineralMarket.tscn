@@ -2,7 +2,7 @@
 
 [ext_resource path="res://enceladus/MineralMarket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menu/sfx/hover.wav" type="AudioStream" id=2]
-[ext_resource path="res://DeKanban/enceladus/MarketVal.gd" type="Script" id=3]
+[ext_resource path="res://VelocityPlus/enceladus/MarketVal.gd" type="Script" id=3]
 
 [node name="MineralMarket" instance=ExtResource( 1 )]
 

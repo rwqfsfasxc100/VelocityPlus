@@ -20,7 +20,6 @@ func _init(modLoader = ModLoader):
 	l("Initializing DLC")
 	loadSettings()
 	loadDLC()
-	var HevLib = check.__hevlib_check()
 	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
 	match modConfig["enceladus"]["simulator_shader"]:
 		0:
@@ -54,23 +53,6 @@ func _init(modLoader = ModLoader):
 	if modConfig["enceladus"]["mineral_market_show_total_value"]:
 		replaceScene("enceladus/MineralMarket.tscn")
 	
-	if HevLib:
-		if modConfig["enceladus"]["add_empty_cradle_equipment"]:
-			addEquipmentItem(cradle_left)
-			addEquipmentItem(cradle_right)
-		var WebTranslate = preload("res://HevLib/pointers/WebTranslate.gd")
-		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",["i18n/en.txt"])
-		var fallback = [
-			modPath + "i18n/en_ends.txt",
-			modPath + "i18n/en_base.txt",
-			modPath + "i18n/en_60.txt",
-			modPath + "i18n/en_45.txt",
-			modPath + "i18n/en_30.txt",
-			modPath + "i18n/en_1.txt"
-		]
-		HevLib.__webtranslate("https://github.com/rwqfsfasxc100/Ring-Activity",fallback)
-	else:
-		updateTL("i18n/en.txt", "|")
 
 var cradle_left = {
 	"system":"SYSTEM_CRADLE-L",
@@ -97,6 +79,24 @@ var cradle_right = {
 
 func _ready():
 	l("Readying")
+	var HevLib = check.__hevlib_check()
+	if HevLib:
+		if modConfig["enceladus"]["add_empty_cradle_equipment"]:
+			addEquipmentItem(cradle_left)
+			addEquipmentItem(cradle_right)
+		var WebTranslate = preload("res://HevLib/pointers/WebTranslate.gd")
+		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",["i18n/en.txt"])
+		var fallback = [
+			modPath + "i18n/en_ends.txt",
+			modPath + "i18n/en_base.txt",
+			modPath + "i18n/en_60.txt",
+			modPath + "i18n/en_45.txt",
+			modPath + "i18n/en_30.txt",
+			modPath + "i18n/en_1.txt"
+		]
+		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/Ring-Activity",fallback)
+	else:
+		updateTL("i18n/en.txt", "|")
 	l("Ready")
 	
 func loadSettings():
