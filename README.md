@@ -31,3 +31,6 @@ A collection of small QOL changes and additions.
   * Ported from the RingActivity mod
   * Broadcast-like astro targets include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
 * Allows the fixing of gimballed and turreted equipment in place (Defaults to disabled)
+* Hud can be quickly hidden from view with a keybind
+  * Ported from the HUD Hider mod
+  * Defaults to F6
