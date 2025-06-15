@@ -73,3 +73,7 @@ VP_VARIATED_BROADCASTS_DESC|Provides a range of time for which any broadcast-lik
 VP_REMOVE_GIMBALS|Fix gimballed and turreted weapons in place
 
 VP_REMOVE_GIMBALS_DESC|Fixes gimballed weapons (e.g. CL-200AP and AEMD-14) and turrets (e.g. PDMWG, NDPT-4205) in place.
+
+VP_HIDE_UNDAMAGED_EQUIPMENT|Hide undamaged equipment from repairs
+
+VP_HIDE_UNDAMAGED_EQUIPMENT_DESC|Removes any equipment at 100% durability in the repairs menu, and makes repairs more streamlined

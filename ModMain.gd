@@ -5,10 +5,9 @@ extends Node
 const MOD_PRIORITY = 0
 # Name of the mod, used for writing to the logs
 const MOD_NAME = "Velocity Plus"
-const MOD_VERSION = "1.0.0"
 const MOD_VERSION_MAJOR = 1
 const MOD_VERSION_MINOR = 0
-const MOD_VERSION_BUGFIX = 0
+const MOD_VERSION_BUGFIX = 1
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
@@ -44,6 +43,8 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("comms/ConversationPlayer.gd")
 	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
 	
+	if modConfig["enceladus"]["hide_unrepairable_equipment"]:
+		installScriptExtension("enceladus/SystemShipRepairUI.gd")
 #	if modConfig["ships"]["disable_gimballed_weapons"]:
 #		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
 #	if modConfig["ships"]["disable_turrets_turning"]:
@@ -66,7 +67,7 @@ var cradle_left = {
 	"name_override":"SYSTEM_CRADLE",
 	"manual":"SYSTEM_CRADLE_MANUAL",
 	"specs":"SYSTEM_CRADLE_SPECS",
-	"price":50000,
+	"price":2500,
 	"alignment":"ALIGNMENT_LEFT",
 	"test_protocol":"detach",
 	"equipment_type":"EQUIPMENT_CARGO_CONTAINER",
@@ -77,7 +78,7 @@ var cradle_right = {
 	"name_override":"SYSTEM_CRADLE",
 	"manual":"SYSTEM_CRADLE_MANUAL",
 	"specs":"SYSTEM_CRADLE_SPECS",
-	"price":50000,
+	"price":2500,
 	"alignment":"ALIGNMENT_RIGHT",
 	"test_protocol":"detach",
 	"equipment_type":"EQUIPMENT_CARGO_CONTAINER", 
@@ -185,7 +186,9 @@ func loadDLC():
 	DLCLoader.queue_free()
 	l("Finished loading DLC")
 
-func l(msg:String, title:String = MOD_NAME, version:String = MOD_VERSION):
+func l(msg:String, title:String = MOD_NAME, version:String = str(MOD_VERSION_MAJOR) + "." + str(MOD_VERSION_MINOR) + "." + str(MOD_VERSION_BUGFIX)):
+	if not MOD_VERSION_METADATA == "":
+		version = version + "-" + MOD_VERSION_METADATA
 	Debug.l("[%s V%s]: %s" % [title, version, msg])
 
 # Helper function that formats and appends the data provided to the variant

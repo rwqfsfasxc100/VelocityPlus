@@ -5,6 +5,7 @@ var VelocityPlus = {
 		"mineral_market_show_total_value":true,
 		"add_empty_cradle_equipment":true,
 		"simulator_shader":1,
+		"hide_unrepairable_equipment":true,
 	}, 
 	"crew":{
 		"hide_on_enceladus":false,
