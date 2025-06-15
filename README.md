@@ -38,3 +38,6 @@ A collection of small QOL changes and additions.
 * Hud can be quickly hidden from view with a keybind
   * Ported from the HUD Hider mod
   * Defaults to F6
+* Repair menu now only displays equipment not at 100%.
+  * Enabled by default
+  * Parity fix for [issue #5241](https://git.kodera.pl/games/delta-v/-/issues/5241)
