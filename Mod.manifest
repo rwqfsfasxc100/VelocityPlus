@@ -2,10 +2,10 @@
 
 id="hev.VelocityPlus"
 name="Velocity Plus"
-version="1.0.1"
+version="1.0.2"
 version_major=1
 version_minor=0
-version_bugfix=1
+version_bugfix=2
 version_metadata=""
 description="VELOCITYPLUS_DESCRIPTION"
 discord_thread="https://discord.com/channels/426287934870781952/1383342280878067762"
