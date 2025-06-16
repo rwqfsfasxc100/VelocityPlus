@@ -89,3 +89,7 @@ DKB_REPAIR_EQUIPMENT|Repair this equipment
 DKB_CANNOT_REPLACE|This equipment item cannot be replaced
 
 DKB_REPLACE_EQUIPMENT|Replace equipment
+
+VP_BETTER_TOOLTIPS|Add tooltips to Enceladus menus
+
+VP_BETTER_TOOLTIPS_DESC|Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help explain why they're disabled.

@@ -152,6 +152,16 @@ text = "VP_HIDE_UNDAMAGED_EQUIPMENT"
 script = ExtResource( 3 )
 setting = "hide_unrepairable_equipment"
 
+[node name="extra_tooltips" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_ENCELADUS/MarginContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1068.0
+margin_bottom = 88.0
+hint_tooltip = "VP_BETTER_TOOLTIPS_DESC"
+size_flags_horizontal = 3
+text = "VP_BETTER_TOOLTIPS"
+script = ExtResource( 3 )
+setting = "extra_tooltips"
+
 [node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_ENCELADUS"]
 anchor_top = 1.0
 anchor_right = 1.0
