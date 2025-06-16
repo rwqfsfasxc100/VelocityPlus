@@ -13,7 +13,7 @@ const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
 var _savedObjects := []
 var ADD_EQUIPMENT_ITEMS = []
-var check = preload("res://VelocityPlus/hevlib_check.gd")
+var check = preload("res://VelocityPlus/hevlib_check_with_version.gd")
 var modConfig = {}
 func _init(modLoader = ModLoader):
 	l("Initializing DLC")
@@ -93,22 +93,22 @@ var cradle_right = {
 
 func _ready():
 	l("Readying")
-	var HevLib = check.__hevlib_check()
+	var HevLib = check.__hevlib_check_with_version([1,6,7])
 	if HevLib:
 		if modConfig["enceladus"]["add_empty_cradle_equipment"]: # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
 			addEquipmentItem(cradle_left)
 			addEquipmentItem(cradle_right)
 		var WebTranslate = preload("res://HevLib/pointers/WebTranslate.gd")
-		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",["i18n/en.txt"])
 		var fallback = [
 			modPath + "i18n/en_ends.txt",
 			modPath + "i18n/en_base.txt",
 			modPath + "i18n/en_60.txt",
 			modPath + "i18n/en_45.txt",
 			modPath + "i18n/en_30.txt",
-			modPath + "i18n/en_1.txt"
+			modPath + "i18n/en_1.txt",
+			modPath + "i18n/en.txt",
 		]
-		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/Ring-Activity",fallback)
+		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
 	else:
 		updateTL("i18n/en.txt", "|")
 	l("Ready")
