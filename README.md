@@ -41,3 +41,6 @@ A collection of small QOL changes and additions.
 * Repair menu now only displays equipment not at 100%.
   * Enabled by default
   * Parity fix for [issue #5241](https://git.kodera.pl/games/delta-v/-/issues/5241)
+* Added tooltips to repair and dealership menus to help explain disabled buttons
+  * Enabled by default
+  * Parity fix for [issue #5284](https://git.kodera.pl/games/delta-v/-/issues/5284)
