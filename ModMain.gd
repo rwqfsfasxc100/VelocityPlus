@@ -45,6 +45,12 @@ func _init(modLoader = ModLoader):
 	
 	if modConfig["enceladus"]["hide_unrepairable_equipment"]:
 		installScriptExtension("enceladus/SystemShipRepairUI.gd")
+	
+	if modConfig["enceladus"]["extra_tooltips"]:
+		replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
+		installScriptExtension("tooltips/DoTradeIn.gd")
+	
+	
 #	if modConfig["ships"]["disable_gimballed_weapons"]:
 #		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
 #	if modConfig["ships"]["disable_turrets_turning"]:

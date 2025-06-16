@@ -6,6 +6,7 @@ var VelocityPlus = {
 		"add_empty_cradle_equipment":true,
 		"simulator_shader":1,
 		"hide_unrepairable_equipment":true,
+		"extra_tooltips":true,
 	}, 
 	"crew":{
 		"hide_on_enceladus":false,

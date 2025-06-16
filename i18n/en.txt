@@ -77,3 +77,15 @@ VP_REMOVE_GIMBALS_DESC|Fixes gimballed weapons (e.g. CL-200AP and AEMD-14) and t
 VP_HIDE_UNDAMAGED_EQUIPMENT|Hide undamaged equipment from repairs
 
 VP_HIDE_UNDAMAGED_EQUIPMENT_DESC|Removes any equipment at 100% durability in the repairs menu, and makes repairs more streamlined
+
+DKB_DEALER_TRADE_IN_OK|Sells your selected ship to provide it's monetary value towards the ship purchase.
+
+DKB_DEALER_TRADE_IN_MAINT|This ship cannot be traded in due to it currently being under maintenance.
+
+DKB_CANNOT_REPAIR|This equipment is unable to be repaired.\nYour mechanic is not able to repair this anymore,\nor the replacement may be cheaper
+
+DKB_REPAIR_EQUIPMENT|Repair this equipment
+
+DKB_CANNOT_REPLACE|This equipment item cannot be replaced
+
+DKB_REPLACE_EQUIPMENT|Replace equipment
