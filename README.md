@@ -1,3 +1,7 @@
+I am currently away ; please use [this link](https://forms.gle/vUoarawnYjy3hXJi9) to report bugs. Feature requests may still use the issues tab
+
+~ Hev
+
 # VelocityPlus
 A collection of small QOL changes and additions.
 
