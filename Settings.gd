@@ -7,23 +7,31 @@ var VelocityPlus = {
 		"simulator_shader":1,
 		"hide_unrepairable_equipment":true,
 		"extra_tooltips":true,
+		"enable_achievements":true,
+		"enable_achievements_on_cheated_saves":false,
 	}, 
 	"crew":{
 		"hide_on_enceladus":false,
 		"hide_in_OMS":false,
+		"geologist_mineral_marker_display_limit_multiplier":1.0,
+		"astrogator_tactical_marker_display_limit_multiplier":1.0,
 	},
 	"ships":{
 		"fix_voyager_MPU_in_OCP":true,
 		"disable_gimballed_and_turreted_weapons":false,
+		"arm_focuses_to_targeted_object":true,
 	},
 	"in_ring":{
 		"remove_max_speed_limit":true,
 		"allow_exit_of_ring_to_the_left":true,
 		"allow_exit_of_ring_to_the_right":true,
-		"broadcast_variations":true
+		"broadcast_variations":true,
+		"display_negative_depth":true,
+		"show_dive_time_in_OMS":true,
 	},
 	"input":{
-		"toggle_hud":[ "F6" ],
+		"velocityplus_toggle_hud": [ "F6" ],
+		"velocityplus_toggle_mpu": [ "M" ],
 	}, 
 }
 

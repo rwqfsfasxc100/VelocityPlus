@@ -13,8 +13,8 @@ const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
 var _savedObjects := []
 var ADD_EQUIPMENT_ITEMS = []
-var check = preload("res://VelocityPlus/hevlib_check_with_version.gd")
 var modConfig = {}
+var check
 func _init(modLoader = ModLoader):
 	l("Initializing DLC")
 	loadSettings()
@@ -51,10 +51,32 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("tooltips/DoTradeIn.gd")
 	
 	
+	if modConfig["in_ring"]["display_negative_depth"]:
+		installScriptExtension("ships/ship-ctrl-neg-depth.gd")
+	
+	if modConfig["in_ring"]["show_dive_time_in_OMS"]:
+		installScriptExtension("hud/OMS.gd")
+	
+	if modConfig["ships"]["arm_focuses_to_targeted_object"]:
+		installScriptExtension("ships/DockingArm.gd")
+	
+	installScriptExtension("ships/MPU.gd")
+	
+	if Settings.VelocityPlus["enceladus"]["enable_achievements"]:
+		installScriptExtension("AchievementAbstract.gd")
+
+
+
+
 #	if modConfig["ships"]["disable_gimballed_weapons"]:
 #		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
 #	if modConfig["ships"]["disable_turrets_turning"]:
 #		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
+	
+	var self_path = self.get_script().get_path()
+	var self_directory = self_path.split(self_path.split("/")[self_path.split("/").size() - 1])[0]
+	check = load(self_directory + "mod_checker_script.tscn").instance()
+	add_child(check)
 	
 	# Don't Change
 	installScriptExtension("Hud.gd")
@@ -93,7 +115,9 @@ var cradle_right = {
 
 func _ready():
 	l("Readying")
-	var HevLib = check.__hevlib_check_with_version([1,6,7])
+	
+	
+	var HevLib = check.mod_exists
 	if HevLib:
 		if modConfig["enceladus"]["add_empty_cradle_equipment"]: # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
 			addEquipmentItem(cradle_left)

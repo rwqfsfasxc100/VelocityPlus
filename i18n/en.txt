@@ -93,3 +93,15 @@ DKB_REPLACE_EQUIPMENT|Replace equipment
 VP_BETTER_TOOLTIPS|Add tooltips to Enceladus menus
 
 VP_BETTER_TOOLTIPS_DESC|Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help explain why they're disabled.
+
+VP_ENABLE_ACHIEVEMENTS|
+
+VP_ENABLE_ACHIEVEMENTS_DESC|
+
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS|
+
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC|
+
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI|
+
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC|

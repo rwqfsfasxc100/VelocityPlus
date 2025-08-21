@@ -1,20 +1,30 @@
-[package]
+[mod_information]
 
 id="hev.VelocityPlus"
 name="Velocity Plus"
-version="1.0.2"
-version_major=1
-version_minor=0
-version_bugfix=2
-version_metadata=""
 description="VELOCITYPLUS_DESCRIPTION"
-discord_thread="https://discord.com/channels/426287934870781952/1383342280878067762"
-groups=["qol","features"]
-github="https://github.com/rwqfsfasxc100/VelocityPlus"
-link_github_releases=true
 author="__hev"
 credits=["Za'krin - Mod Main design, original implementation of updateTL"]
 
+[version]
+
+version_major=1
+version_minor=1
+version_bugfix=0
+
+[tags]
+
+allow_achievements=true
+overhaul=true
+quality_of_life=true
+language=["en"]
+
+[links]
+
+github={"link":"https://github.com/rwqfsfasxc100/VelocityPlus","has_releases":true}
+discord="https://discord.com/channels/426287934870781952/1383342280878067762"
+bug_reports="https://forms.gle/RmC4Zgonp6frFgnK7"
+
 [manifest_definitions]
 
-manifest_version=2
+manifest_version=2.1
