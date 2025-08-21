@@ -1,7 +1,3 @@
-I am currently away ; please use [this link](https://forms.gle/vUoarawnYjy3hXJi9) to report bugs. Feature requests may still use the issues tab
-
-~ Hev
-
 # VelocityPlus
 A collection of small QOL changes and additions.
 
@@ -48,3 +44,23 @@ A collection of small QOL changes and additions.
 * Added tooltips to repair and dealership menus to help explain disabled buttons
   * Enabled by default
   * Parity fix for [issue #5284](https://git.kodera.pl/games/delta-v/-/issues/5284)
+* Depth meter now displays distance from the rings as negative depth
+  * Enabled by default
+* Added game date & time and dive time in OMS
+  * Enabled by default
+  * Ported from the legacy DiveClock mod
+* Manipulator arms will prioritise an object selected with the autopilot, if any exists
+  * Enabled by default
+  * Parity fix for legacy ARMFocus mod, as it is currently broken
+* The geologist mineral markers and astrogator tactical markers can now have their limits increased or decreased by a multiplier
+  * Both defaults to a 1.0 multiplier (200 mineral markers and 50 tactical markers)
+  * Ported from the legacy rmIdLim mod
+* Allowed achievements and stats to be earned while playing with mods
+  * Enabled by default
+  * Ported from the AchieveDeez mod
+* Allowed achievements and stats to be earned while playing on cheated saves
+  * Disabled by default
+  * Ported from the AcheetaDeez mod
+* MPUs can now be toggled on and off with a keybind
+  * Defaults to 'M'
+  * Ported from the M is for MPU and ZKY mods
