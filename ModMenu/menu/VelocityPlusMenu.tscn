@@ -1,17 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://VelocityPlus/ModMenu/menu/VelocityPlus_SettingsLayer.gd" type="Script" id=1]
 [ext_resource path="res://VelocityPlus/ModMenu/menu/options_button.gd" type="Script" id=2]
 [ext_resource path="res://VelocityPlus/ModMenu/menu/toggle_button.gd" type="Script" id=3]
 [ext_resource path="res://hud/TabHintContainer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://VelocityPlus/ModMenu/menu/spin_box.gd" type="Script" id=5]
 [ext_resource path="res://menu/MenuTheme.tres" type="Theme" id=7]
 [ext_resource path="res://menu/PanelWithHugeShadow.tres" type="StyleBox" id=8]
 [ext_resource path="res://menu/TabsWithGamepadControl.gd" type="Script" id=10]
 [ext_resource path="res://menu/sfx/PlaySoundsOnTheseButtons.tscn" type="PackedScene" id=11]
 
 [node name="VelocityPlusMenu" type="Popup"]
-visible = true
 margin_left = -400.0
 margin_right = 160.0
 margin_bottom = 750.0
@@ -89,7 +87,6 @@ __meta__ = {
 }
 
 [node name="VELOCITY_PLUS_ENCELADUS" type="Tabs" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
@@ -211,6 +208,7 @@ focus_neighbour_left = NodePath("../Save")
 text = "SETTINGS_CANCEL"
 
 [node name="VELOCITY_PLUS_PORTRAITS" type="Tabs" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
@@ -240,7 +238,7 @@ size_flags_horizontal = 3
 text = "VP_HIDE_CREW_EPRIME"
 script = ExtResource( 3 )
 setting = "hide_on_enceladus"
-section = "crew_portraits"
+section = "crew"
 
 [node name="hide_in_OMS" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
 margin_top = 47.0
@@ -251,49 +249,29 @@ size_flags_horizontal = 3
 text = "VP_HIDE_CREW_OMS"
 script = ExtResource( 3 )
 setting = "hide_in_OMS"
-section = "crew_portraits"
+section = "crew"
 
-[node name="geologist_limit_multi" type="SpinBox" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
+[node name="geologist_limit_multi" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
 margin_top = 94.0
 margin_right = 1068.0
-margin_bottom = 143.0
+margin_bottom = 135.0
 hint_tooltip = "VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC"
-min_value = 0.5
-step = 0.5
-value = 1.0
-allow_greater = true
-allow_lesser = true
-align = 2
-script = ExtResource( 5 )
-setting = "geologist_mineral_marker_display_limit_multiplier"
-section = "crew"
-
-[node name="geologist_limit_label" type="Label" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer/geologist_limit_multi"]
-margin_right = 918.0
-margin_bottom = 39.0
+size_flags_horizontal = 3
 text = "VP_GEOLOGIST_MINERAL_LIMIT_MULTI"
-valign = 1
-
-[node name="astrogator_limit_multi" type="SpinBox" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
-margin_top = 149.0
-margin_right = 1068.0
-margin_bottom = 198.0
-hint_tooltip = "VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC"
-min_value = 0.5
-step = 0.5
-value = 1.0
-allow_greater = true
-allow_lesser = true
-align = 2
-script = ExtResource( 5 )
-setting = "astrogator_tactical_marker_display_limit_multiplier"
+script = ExtResource( 3 )
+setting = "mineral_marker_limit_multiplier"
 section = "crew"
 
-[node name="astrogator_limit_label" type="Label" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer/astrogator_limit_multi"]
-margin_right = 918.0
-margin_bottom = 39.0
+[node name="astrogator_limit_multi" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS/MarginContainer/VBoxContainer"]
+margin_top = 141.0
+margin_right = 1068.0
+margin_bottom = 182.0
+hint_tooltip = "VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC"
+size_flags_horizontal = 3
 text = "VP_ASTROGATOR_TACTICAL_LIMIT_MULTI"
-valign = 1
+script = ExtResource( 3 )
+setting = "tactical_marker_limit_multiplier"
+section = "crew"
 
 [node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_PORTRAITS"]
 anchor_top = 1.0
@@ -362,6 +340,17 @@ size_flags_horizontal = 3
 text = "VP_REMOVE_GIMBALS"
 script = ExtResource( 3 )
 setting = "disable_gimballed_and_turreted_weapons"
+section = "ships"
+
+[node name="arm_focuses_to_targeted_object" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS/MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 1068.0
+margin_bottom = 135.0
+hint_tooltip = "VP_ARM_TARGET_TO_AP_DESC"
+size_flags_horizontal = 3
+text = "VP_ARM_TARGET_TO_AP"
+script = ExtResource( 3 )
+setting = "arm_focuses_to_targeted_object"
 section = "ships"
 
 [node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_SHIPS"]
@@ -453,6 +442,28 @@ size_flags_horizontal = 3
 text = "VP_VARIATED_BROADCASTS"
 script = ExtResource( 3 )
 setting = "broadcast_variations"
+section = "in_ring"
+
+[node name="display_negative_depth" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer/VBoxContainer"]
+margin_top = 188.0
+margin_right = 1068.0
+margin_bottom = 229.0
+hint_tooltip = "VP_DISPLAY_NEGATIVE_DEPTH_DESC"
+size_flags_horizontal = 3
+text = "VP_DISPLAY_NEGATIVE_DEPTH"
+script = ExtResource( 3 )
+setting = "display_negative_depth"
+section = "in_ring"
+
+[node name="show_dive_time_in_OMS" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING/MarginContainer/VBoxContainer"]
+margin_top = 235.0
+margin_right = 1068.0
+margin_bottom = 276.0
+hint_tooltip = "VP_SHOW_DIVE_TIME_DESC"
+size_flags_horizontal = 3
+text = "VP_SHOW_DIVE_TIME"
+script = ExtResource( 3 )
+setting = "show_dive_time_in_OMS"
 section = "in_ring"
 
 [node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_IN_RING"]

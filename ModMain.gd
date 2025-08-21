@@ -6,8 +6,8 @@ const MOD_PRIORITY = 0
 # Name of the mod, used for writing to the logs
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
-const MOD_VERSION_MINOR = 0
-const MOD_VERSION_BUGFIX = 2
+const MOD_VERSION_MINOR = 1
+const MOD_VERSION_BUGFIX = 0
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
@@ -62,7 +62,7 @@ func _init(modLoader = ModLoader):
 	
 	installScriptExtension("ships/MPU.gd")
 	
-	if Settings.VelocityPlus["enceladus"]["enable_achievements"]:
+	if modConfig["enceladus"]["enable_achievements"]:
 		installScriptExtension("AchievementAbstract.gd")
 
 

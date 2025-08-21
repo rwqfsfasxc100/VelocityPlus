@@ -13,8 +13,8 @@ var VelocityPlus = {
 	"crew":{
 		"hide_on_enceladus":false,
 		"hide_in_OMS":false,
-		"geologist_mineral_marker_display_limit_multiplier":1.0,
-		"astrogator_tactical_marker_display_limit_multiplier":1.0,
+		"mineral_marker_limit_multiplier":true,
+		"tactical_marker_limit_multiplier":true,
 	},
 	"ships":{
 		"fix_voyager_MPU_in_OCP":true,

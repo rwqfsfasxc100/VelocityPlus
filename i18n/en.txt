@@ -1,6 +1,6 @@
 locale|en
 
-DKB_MARKET_VALUE|Total Estimated Market Value: 
+DKB_MARKET_VALUE|Total Market Value: 
 
 SYSTEM_CRADLE|THI Standalone Cradle
 
@@ -94,14 +94,30 @@ VP_BETTER_TOOLTIPS|Add tooltips to Enceladus menus
 
 VP_BETTER_TOOLTIPS_DESC|Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help explain why they're disabled.
 
-VP_ENABLE_ACHIEVEMENTS|
+VP_ENABLE_ACHIEVEMENTS|Enable Achievements
 
-VP_ENABLE_ACHIEVEMENTS_DESC|
+VP_ENABLE_ACHIEVEMENTS_DESC|Enables achievements while mods are enabled
 
-VP_ENABLE_ACHIEVEMENTS_ON_CHEATS|
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS|Achievements on Cheated Saves
 
-VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC|
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC|Allow achievements to be earned on cheated saves.\n\nRequires Enable Achievements to work.
 
-VP_GEOLOGIST_MINERAL_LIMIT_MULTI|
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI|Geologist Mineral Marker Limit Multiplier
 
-VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC|
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC|Multiplies the number of geologist ore markers displayed around ore chunks by 5; from 200 to 1000
+
+VP_ASTROGATOR_TACTICAL_LIMIT_MULTI|Astrogator Tactical Marker Limit Multiplier
+
+VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC|Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; from 50 to 250
+
+VP_ARM_TARGET_TO_AP|Manipulator Arms Lock on AP Target
+
+VP_ARM_TARGET_TO_AP_DESC|Makes all manipulator arms attempt to prioritize the object selected by the autopilot over all others.
+
+VP_DISPLAY_NEGATIVE_DEPTH|Display Negative Depth
+
+VP_DISPLAY_NEGATIVE_DEPTH_DESC|Distance from the rings is displayed as negative depth.
+
+VP_SHOW_DIVE_TIME|Display Dive Time
+
+VP_SHOW_DIVE_TIME_DESC|Adds a clock withinin the mechanic tab in OMS, containing the current date and time, as well as a timer for the active time in a dive.
