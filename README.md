@@ -52,8 +52,8 @@ A collection of small QOL changes and additions.
 * Manipulator arms will prioritise an object selected with the autopilot, if any exists
   * Enabled by default
   * Parity fix for legacy ARMFocus mod, as it is currently broken
-* The geologist mineral markers and astrogator tactical markers can now have their limits increased or decreased by a multiplier
-  * Both defaults to a 1.0 multiplier (200 mineral markers and 50 tactical markers)
+* The geologist mineral marker and astrogator tactical marker limits have now been multiplied by 5x (now 1000 and 250, respectively)  
+  * Both default to enabled
   * Ported from the legacy rmIdLim mod
 * Allowed achievements and stats to be earned while playing with mods
   * Enabled by default
