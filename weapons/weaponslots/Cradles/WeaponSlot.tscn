@@ -4,8 +4,8 @@
 
 [node name="WeaponSlot" instance=ExtResource( 1 )]
 
-[node name="SYSTEM_CRADLE-R" parent="." index="36" instance_placeholder="res://DeKanban/weapons/EmptyCradle.tscn"]
+[node name="SYSTEM_CRADLE-R" parent="." index="36" instance_placeholder="res://VelocityPlus/weapons/EmptyCradle.tscn"]
 position = Vector2( 0, 196 )
 
-[node name="SYSTEM_CRADLE-L" parent="." index="37" instance_placeholder="res://DeKanban/weapons/EmptyCradle-L.tscn"]
+[node name="SYSTEM_CRADLE-L" parent="." index="37" instance_placeholder="res://VelocityPlus/weapons/EmptyCradle-L.tscn"]
 position = Vector2( 0, 196 )
