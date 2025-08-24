@@ -1,6 +1,6 @@
 extends "res://comms/ConversationPlayer.gd"
 
-var HevLib = preload("res://HevLib/Functions.gd").new()
+var HevLib = load("res://HevLib/Functions.gd").new()
 
 func _ready():
 	var name = self.name

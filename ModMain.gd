@@ -19,6 +19,12 @@ func _init(modLoader = ModLoader):
 	l("Initializing DLC")
 	loadSettings()
 	loadDLC()
+	
+	var mp = self.get_script().get_path()
+	var md = mp.split(mp.split("/")[mp.split("/").size() - 1])[0]
+	var mc = load(md + "mod_checker_script.tscn").instance()
+	add_child(mc)
+	
 	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
 	match modConfig["enceladus"]["simulator_shader"]:
 		0:
@@ -39,8 +45,9 @@ func _init(modLoader = ModLoader):
 	if modConfig["ships"]["fix_voyager_MPU_in_OCP"]:
 		replaceScene("ships/ocp-209.tscn")
 	
-	if modConfig["in_ring"]["broadcast_variations"]:
-		installScriptExtension("comms/ConversationPlayer.gd")
+	if Directory.new().file_exists("res://HevLib/ModMain.gd"):
+		if modConfig["in_ring"]["broadcast_variations"]:
+			installScriptExtension("comms/ConversationPlayer.gd")
 	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
 	
 	if modConfig["enceladus"]["hide_unrepairable_equipment"]:
@@ -73,14 +80,9 @@ func _init(modLoader = ModLoader):
 #	if modConfig["ships"]["disable_turrets_turning"]:
 #		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
 	
-	var self_path = self.get_script().get_path()
-	var self_directory = self_path.split(self_path.split("/")[self_path.split("/").size() - 1])[0]
-	check = load(self_directory + "mod_checker_script.tscn").instance()
-	add_child(check)
-	
 	# Don't Change
 	installScriptExtension("Hud.gd")
-	replaceScene("weapons/weaponslots/Cradles/WeaponSlot.tscn",weaponslot_path)
+#	replaceScene("weapons/weaponslots/Cradles/WeaponSlot.tscn",weaponslot_path)
 	installScriptExtension("ships/ship-ctrl.gd")
 	installScriptExtension("hud/Escape Veloity.gd")
 	installScriptExtension("hud/Leaving Rings.gd")
@@ -117,12 +119,12 @@ func _ready():
 	l("Readying")
 	
 	
-	var HevLib = check.mod_exists
-	if HevLib:
+	
+	if Directory.new().file_exists("res://HevLib/ModMain.gd"):
 		if modConfig["enceladus"]["add_empty_cradle_equipment"]: # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
 			addEquipmentItem(cradle_left)
 			addEquipmentItem(cradle_right)
-		var WebTranslate = preload("res://HevLib/pointers/WebTranslate.gd")
+		var WebTranslate = load("res://HevLib/pointers/WebTranslate.gd")
 		var fallback = [
 			modPath + "i18n/en_ends.txt",
 			modPath + "i18n/en_base.txt",
@@ -223,6 +225,6 @@ func l(msg:String, title:String = MOD_NAME, version:String = str(MOD_VERSION_MAJ
 
 # Helper function that formats and appends the data provided to the variant
 func addEquipmentItem(item_data: Dictionary):
-	var Equipment = preload("res://HevLib/pointers/Equipment.gd")
+	var Equipment = load("res://HevLib/pointers/Equipment.gd")
 #	var equipment = Equipment.__make_equipment(item_data)
 	ADD_EQUIPMENT_ITEMS.append(item_data)
