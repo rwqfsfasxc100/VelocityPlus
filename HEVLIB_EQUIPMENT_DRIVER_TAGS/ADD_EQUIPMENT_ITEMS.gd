@@ -11,6 +11,19 @@ const cradle_left = {
 	"test_protocol":"detach",
 	"equipment_type":"EQUIPMENT_CARGO_CONTAINER",
 	"slot_type":"HARDPOINT",
+	"weapon_slot":{
+		"path":"res://VelocityPlus/weapons/EmptyCradle-L.tscn",
+		"data":[
+			{
+				"property":"position",
+				"value":"Vector2( 0, 196 )"
+			},
+			{
+				"property":"flip",
+				"value":"true"
+			}
+		]
+	}
 }
 const cradle_right = {
 	"system":"SYSTEM_CRADLE-R",
@@ -21,5 +34,14 @@ const cradle_right = {
 	"alignment":"ALIGNMENT_RIGHT",
 	"test_protocol":"detach",
 	"equipment_type":"EQUIPMENT_CARGO_CONTAINER", 
-	"slot_type":"HARDPOINT"
+	"slot_type":"HARDPOINT",
+	"weapon_slot":{
+		"path":"res://VelocityPlus/weapons/EmptyCradle.tscn",
+		"data":[
+			{
+				"property":"position",
+				"value":"Vector2( 0, 196 )"
+			}
+		]
+	}
 }
