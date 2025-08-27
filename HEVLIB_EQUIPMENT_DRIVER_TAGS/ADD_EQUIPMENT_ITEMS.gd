@@ -10,7 +10,7 @@ const cradle_left = {
 	"alignment":"ALIGNMENT_LEFT",
 	"test_protocol":"detach",
 	"equipment_type":"EQUIPMENT_CARGO_CONTAINER",
-	"slot_type":"HARDPOINT"
+	"slot_type":"HARDPOINT",
 }
 const cradle_right = {
 	"system":"SYSTEM_CRADLE-R",
