@@ -9,6 +9,7 @@ var VelocityPlus = {
 		"extra_tooltips":true,
 		"enable_achievements":true,
 		"enable_achievements_on_cheated_saves":false,
+		"show_equipment_reliability":true,
 	}, 
 	"crew":{
 		"hide_on_enceladus":false,
