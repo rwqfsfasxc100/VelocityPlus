@@ -121,3 +121,7 @@ VP_DISPLAY_NEGATIVE_DEPTH_DESC|Distance from the rings is displayed as negative 
 VP_SHOW_DIVE_TIME|Display Dive Time
 
 VP_SHOW_DIVE_TIME_DESC|Adds a clock withinin the mechanic tab in OMS, containing the current date and time, as well as a timer for the active time in a dive.
+
+VP_SHOW_EQUIPMENT_RELIABILITY|Show Equipment Reliability
+
+VP_SHOW_EQUIPMENT_RELIABILITY_DESC|Shows reliability data of equipment under the stats in the preview box for equipment.

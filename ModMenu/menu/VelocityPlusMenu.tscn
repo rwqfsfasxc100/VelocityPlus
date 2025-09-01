@@ -10,6 +10,7 @@
 [ext_resource path="res://menu/sfx/PlaySoundsOnTheseButtons.tscn" type="PackedScene" id=11]
 
 [node name="VelocityPlusMenu" type="Popup"]
+visible = true
 margin_left = -400.0
 margin_right = 160.0
 margin_bottom = 750.0
@@ -181,6 +182,16 @@ size_flags_horizontal = 3
 text = "VP_ENABLE_ACHIEVEMENTS_ON_CHEATS"
 script = ExtResource( 3 )
 setting = "enable_achievements_on_cheated_saves"
+
+[node name="show_reliability" type="CheckButton" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_ENCELADUS/MarginContainer/VBoxContainer"]
+margin_top = 329.0
+margin_right = 1068.0
+margin_bottom = 370.0
+hint_tooltip = "VP_SHOW_EQUIPMENT_RELIABILITY_DESC"
+size_flags_horizontal = 3
+text = "VP_SHOW_EQUIPMENT_RELIABILITY"
+script = ExtResource( 3 )
+setting = "show_equipment_reliability"
 
 [node name="Control" type="Control" parent="NoMargins/CenterContainer/TabHintContainer/TabsWithGamepadControl/VELOCITY_PLUS_ENCELADUS"]
 anchor_top = 1.0
