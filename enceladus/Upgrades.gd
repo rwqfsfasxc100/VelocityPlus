@@ -31,7 +31,13 @@ func _process(delta):
 	
 	for p in n.get_property_list():
 		if p.name == "weaponPath":
-			var path = str(n.get(p.name)).split(n.systemName)[1].lstrip("/")
+			var pname = n.get(p.name)
+			var path = pname
+			var objname = n.name
+			var sysname = n.systemName
+			var split = str(path).split(sysname)
+			if split.size() >= 2:
+				path = split[1].lstrip("/")
 			n = n.get_node(path)
 	
 	for p in n.get_property_list():
