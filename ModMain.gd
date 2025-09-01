@@ -25,6 +25,8 @@ func _init(modLoader = ModLoader):
 	var mc = load(md + "mod_checker_script.tscn").instance()
 	add_child(mc)
 	
+	installScriptExtension("enceladus/Upgrades.gd")
+	
 	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
 	match modConfig["enceladus"]["simulator_shader"]:
 		0:
