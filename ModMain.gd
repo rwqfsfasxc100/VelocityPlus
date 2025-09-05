@@ -64,13 +64,13 @@ func _init(modLoader = ModLoader):
 	if modConfig["in_ring"]["display_negative_depth"]:
 		installScriptExtension("ships/ship-ctrl-neg-depth.gd")
 	
-	if modConfig["in_ring"]["show_dive_time_in_OMS"]:
-		installScriptExtension("hud/OMS.gd")
+	
+	installScriptExtension("hud/OMS.gd")
 	
 	if modConfig["ships"]["arm_focuses_to_targeted_object"]:
 		installScriptExtension("ships/DockingArm.gd")
 	
-	installScriptExtension("ships/MPU.gd")
+#	installScriptExtension("ships/MPU.gd")
 	
 	if modConfig["enceladus"]["enable_achievements"]:
 		installScriptExtension("AchievementAbstract.gd")
@@ -84,7 +84,7 @@ func _init(modLoader = ModLoader):
 #		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
 	
 	# Don't Change
-	installScriptExtension("Hud.gd")
+#	installScriptExtension("Hud.gd")
 #	replaceScene("weapons/weaponslots/Cradles/WeaponSlot.tscn",weaponslot_path)
 	installScriptExtension("ships/ship-ctrl.gd")
 	installScriptExtension("hud/Escape Veloity.gd")
