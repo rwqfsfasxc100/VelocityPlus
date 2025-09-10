@@ -18,7 +18,7 @@ func _ready():
 		_diveClock = Label.new()
 		_diveClock.modulate = Color("#00ff00")
 		container.add_child(_diveClock)
-		_diveClockGame = get_tree().root.get_node("Game")
+		_diveClockGame = get_tree().root.get_node_or_null("Game")
 	ship = get_parent().get_parent()
 	for child in ship.get_children():
 		var scriptobj = child.get_script()
