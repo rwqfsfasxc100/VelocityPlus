@@ -39,7 +39,7 @@ var VelocityPlus = {
 var VelocityPlus_ConfigPath = "user://cfg/VelocityPlus.cfg"
 var VelocityPlus_CfgFile = ConfigFile.new()
 
-var default = {}
+var VelocityPlus_default = {}
 
 func _ready():
 	var dir = Directory.new()
@@ -56,8 +56,8 @@ func save_VelocityPlus_ToFile():
 
 
 func load_VelocityPlus_FromFile():
-	if default.keys().size() == 0:
-		default = VelocityPlus.duplicate(true)
+	if VelocityPlus_default.keys().size() == 0:
+		VelocityPlus_default = VelocityPlus.duplicate(true)
 	var error = VelocityPlus_CfgFile.load(VelocityPlus_ConfigPath)
 	if error != OK:
 		Debug.l("Velocity Plus: Error loading settings %s" % error)
@@ -68,7 +68,7 @@ func load_VelocityPlus_FromFile():
 	loadKeymapsFromConfig()
 
 func loadKeymapsFromConfig():
-	for action_name in default.input:
+	for action_name in VelocityPlus_default.input:
 		var addAction = true
 		for m in InputMap.get_actions():
 			if m == action_name:
