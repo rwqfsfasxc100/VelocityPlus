@@ -1,0 +1,30 @@
+[gd_scene format=2]
+
+[node name="MTBH" type="MarginContainer"]
+margin_right = 1214.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 1206.0
+margin_bottom = 363.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1198.0
+margin_bottom = 310.0
+size_flags_vertical = 3
+
+[node name="Buffer" type="Label" parent="VBoxContainer"]
+margin_top = 314.0
+margin_right = 1198.0
+margin_bottom = 355.0
+rect_min_size = Vector2( 1198, 41 )

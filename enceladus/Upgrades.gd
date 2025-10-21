@@ -10,18 +10,27 @@ func previewShipSystem(slot,system,control=""):
 	if slot == null or system is int or system is float:
 		return
 	_showReliability_system = system
+var mtbh_label
+const manual_container_path = NodePath("VB/WindowMargin/TabHintContainer/Window/UPGRADE_MANUAL")
+const MTBH_container = preload("res://VelocityPlus/enceladus/MTBH_container.tscn")
+func _ready():
+	var cont = get_node(manual_container_path)
+	cont.add_child(MTBH_container.instance())
+	mtbh_label = get_node(str(manual_container_path) + "VBoxContainer/Label")
 
 # Wait until the ship in the simulation is fully instantiated.
 func _process(delta):
 	if _showReliability_system == null:
 		return
 	var system = _showReliability_system
-
-	var n = get_tree().root \
-		.find_node("UPGRADE_SIMULATION", true, false) \
-		.find_node("VP", true, false) \
-		.find_node("Viewport", true, false) \
-		.find_node("*_" + system, true, false)
+#	Removal of inefficient method of getting the system node
+#	var n = get_tree().root \
+#		.find_node("UPGRADE_SIMULATION", true, false) \
+#		.find_node("VP", true, false) \
+#		.find_node("Viewport", true, false) \
+#		.find_node("*_" + system, true, false)
+	
+	var n = get_node("VB/WindowMargin/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + system, true, false)
 	if n == null or n is InstancePlaceholder:
 		return
 	_showReliability_system = null  # OK, it's instantiated.
