@@ -135,6 +135,12 @@ func _ready():
 #		]
 #		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
 #	else:
+	updateTL("i18n/en_ends.txt", "|")
+	updateTL("i18n/en_base.txt", "|")
+	updateTL("i18n/en_60.txt", "|")
+	updateTL("i18n/en_45.txt", "|")
+	updateTL("i18n/en_30.txt", "|")
+	updateTL("i18n/en_1.txt", "|")
 	updateTL("i18n/en.txt", "|")
 	l("Ready")
 
