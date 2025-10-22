@@ -1,12 +1,22 @@
 extends "res://achievement/AchivementAbstract.gd"
 
+var enable_achievements = false
+var cheetah = false
+
+const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var config = {}
+func _ready():
+	cheetah = CurrentGame.cheetah
+	config = ConfigDriver.__get_config("VelocityPlus")
+
+func _physics_process(delta):
+	enable_achievements = config.get("VP_ENCELADUS",{}).get("enable_achievements",true)
+	if config.get("VP_ENCELADUS",{}).get("enable_achievements_on_cheated_saves",false):
+		cheetah = false
 
 func validateStatAchievements():
 	CurrentGame.checkGameState()
-	var cheetah = CurrentGame.cheetah
-	if Settings.VelocityPlus["enceladus"]["enable_achievements_on_cheated_saves"]:
-		cheetah = false
-	if not cheetah:
+	if enable_achievements and not cheetah:
 		for k in achivements:
 			if k.begins_with("stat:"):
 				var stat = k.trim_prefix("stat:")
@@ -16,10 +26,7 @@ func validateStatAchievements():
 
 func setStat(stat:String, to)->void :
 	CurrentGame.checkGameState()
-	var cheetah = CurrentGame.cheetah
-	if Settings.VelocityPlus["enceladus"]["enable_achievements_on_cheated_saves"]:
-		cheetah = false
-	if not cheetah:
+	if enable_achievements and not cheetah:
 		var skey = "stat:%s" % stat
 		var pv = achivements.get(skey, 0)
 		if to > pv:
@@ -34,10 +41,7 @@ func achive(what)->void :
 		Debug.l("Illegal achivement %s" % what)
 		return 
 	CurrentGame.checkGameState()
-	var cheetah = CurrentGame.cheetah
-	if Settings.VelocityPlus["enceladus"]["enable_achievements_on_cheated_saves"]:
-		cheetah = false
-	if not cheetah:
+	if enable_achievements and not cheetah:
 		if not what in achivements:
 			Debug.l("New abstract achivement %s" % what)
 			achivements[what] = true

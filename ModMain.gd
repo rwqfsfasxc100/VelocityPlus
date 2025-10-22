@@ -7,17 +7,16 @@ const MOD_PRIORITY = 0
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
 const MOD_VERSION_MINOR = 1
-const MOD_VERSION_BUGFIX = 8
+const MOD_VERSION_BUGFIX = 9
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
 var _savedObjects := []
 var ADD_EQUIPMENT_ITEMS = []
-var modConfig = {}
 var check
+var config = {}
 func _init(modLoader = ModLoader):
 	l("Initializing DLC")
-	loadSettings()
 	loadDLC()
 	
 	var mp = self.get_script().get_path()
@@ -25,11 +24,14 @@ func _init(modLoader = ModLoader):
 	var mc = load(md + "mod_checker_script.tscn").instance()
 	add_child(mc)
 	
-	if modConfig["enceladus"]["show_equipment_reliability"]:
-		installScriptExtension("enceladus/Upgrades.gd")
+	var ConfigDriver = load("res://HevLib/pointers/ConfigDriver.gd")
+	config = ConfigDriver.__get_config("VelocityPlus")
+	
+	
+	installScriptExtension("enceladus/Upgrades.gd")
 	
 	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
-	match modConfig["enceladus"]["simulator_shader"]:
+	match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
 		0:
 			pass
 		1:
@@ -39,48 +41,42 @@ func _init(modLoader = ModLoader):
 		3:
 			replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
 	
-	if modConfig["crew"]["hide_on_enceladus"]:
+	if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
 		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
-	if modConfig["crew"]["hide_in_OMS"]:
+	if config.get("VP_CREW",{}).get("hide_in_OMS",false):
 		replaceScene("hud/OMS.tscn")
 	
 	
-	if modConfig["ships"]["fix_voyager_MPU_in_OCP"]:
+	if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
 		replaceScene("ships/ocp-209.tscn")
 	
-	if Directory.new().file_exists("res://HevLib/ModMain.gd"):
-		if modConfig["in_ring"]["broadcast_variations"]:
-			installScriptExtension("comms/ConversationPlayer.gd")
-	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
+	installScriptExtension("comms/ConversationPlayer.gd")
+#	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
 	
-	if modConfig["enceladus"]["hide_unrepairable_equipment"]:
-		installScriptExtension("enceladus/SystemShipRepairUI.gd")
-	
-	if modConfig["enceladus"]["extra_tooltips"]:
-		replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
-		installScriptExtension("tooltips/DoTradeIn.gd")
+	installScriptExtension("enceladus/SystemShipRepairUI.gd")
 	
 	
-	if modConfig["in_ring"]["display_negative_depth"]:
-		installScriptExtension("ships/ship-ctrl-neg-depth.gd")
+	replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
+	installScriptExtension("tooltips/DoTradeIn.gd")
+	
+	
+#	installScriptExtension("ships/ship-ctrl-neg-depth.gd")
 	
 	
 	installScriptExtension("hud/OMS.gd")
 	
-	if modConfig["ships"]["arm_focuses_to_targeted_object"]:
-		installScriptExtension("ships/DockingArm.gd")
+	installScriptExtension("ships/DockingArm.gd")
 	
 #	installScriptExtension("ships/MPU.gd")
 	
-	if modConfig["enceladus"]["enable_achievements"]:
-		installScriptExtension("AchievementAbstract.gd")
+	installScriptExtension("AchievementAbstract.gd")
 
 
 
 
-#	if modConfig["ships"]["disable_gimballed_weapons"]:
+#	if config.get("VP_SHIPS",{})["disable_gimballed_weapons"]:
 #		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
-#	if modConfig["ships"]["disable_turrets_turning"]:
+#	if config.get("VP_SHIPS",{})["disable_turrets_turning"]:
 #		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
 	
 	# Don't Change
@@ -91,8 +87,8 @@ func _init(modLoader = ModLoader):
 	installScriptExtension("hud/Leaving Rings.gd")
 	installScriptExtension("weapons/PDT.gd")
 	
-	if modConfig["enceladus"]["mineral_market_show_total_value"]:
-		replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
+	
+	replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 	
 
 var cradle_left = {
@@ -124,34 +120,24 @@ func _ready():
 	
 	
 	if Directory.new().file_exists("res://HevLib/ModMain.gd"):
-		if modConfig["enceladus"]["add_empty_cradle_equipment"]: # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
+		if config.get("VP_ENCELADUS",{}).get("add_empty_cradle_equipment",true): # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
 			addEquipmentItem(cradle_left)
 			addEquipmentItem(cradle_right)
-		var WebTranslate = load("res://HevLib/pointers/WebTranslate.gd")
-		var fallback = [
-			modPath + "i18n/en_ends.txt",
-			modPath + "i18n/en_base.txt",
-			modPath + "i18n/en_60.txt",
-			modPath + "i18n/en_45.txt",
-			modPath + "i18n/en_30.txt",
-			modPath + "i18n/en_1.txt",
-			modPath + "i18n/en.txt",
-		]
-		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
-	else:
-		updateTL("i18n/en.txt", "|")
+#		var WebTranslate = load("res://HevLib/pointers/WebTranslate.gd")
+#		var fallback = [
+#			modPath + "i18n/en_ends.txt",
+#			modPath + "i18n/en_base.txt",
+#			modPath + "i18n/en_60.txt",
+#			modPath + "i18n/en_45.txt",
+#			modPath + "i18n/en_30.txt",
+#			modPath + "i18n/en_1.txt",
+#			modPath + "i18n/en.txt",
+#		]
+#		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
+#	else:
+	updateTL("i18n/en.txt", "|")
 	l("Ready")
-	
-func loadSettings():
-	installScriptExtension("Settings.gd")
-	l(MOD_NAME + ": Loading mod settings")
-	var settings = load("res://Settings.gd").new()
-	settings.load_VelocityPlus_FromFile()
-	settings.save_VelocityPlus_ToFile()
-	modConfig = settings.VelocityPlus
-	l(MOD_NAME + ": Current settings: %s" % modConfig)
-	settings.queue_free()
-	l(MOD_NAME + ": Finished loading settings")
+
 
 func updateTL(path:String, delim:String = ",", useRelativePath:bool = true, fullLogging:bool = true):
 	if useRelativePath:

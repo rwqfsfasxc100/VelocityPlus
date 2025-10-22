@@ -4,10 +4,12 @@ var noSpeedLimit = false
 var goLeft = false
 var goRight = false
 
+const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var config = {}
 func _init():
-	loadRemoveRingRestrictionsFromFile()
+	config = ConfigDriver.__get_config("VelocityPlus")
 	visible = true
-	if noSpeedLimit == true:
+	if config.get("VP_RING",{}).get("remove_max_speed_limit",true):
 		warnVelocity = 1.79769e308
 	
 	
@@ -16,12 +18,13 @@ func _process(delta):
 	if not is_visible_in_tree():
 		return 
 	if Tool.claim(ship):
+		config = ConfigDriver.__get_config("VelocityPlus")
 		var v = CurrentGame.globalCoords(ship.global_position).x
 		var leftMost = false
 		var rightMost = false
-		if v > 3.005e+07 and goRight == false:
+		if v > 3.005e+07 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_right",true) == false:
 			rightMost = true
-		if v < 10000 and goLeft == false:
+		if v < 10000 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_left",true) == false:
 			leftMost = true
 		
 		if leftMost or rightMost:
@@ -30,29 +33,3 @@ func _process(delta):
 			text = ""
 		
 		Tool.release(ship)
-
-var RemoveRingRestrictionsPath = "user://cfg/VelocityPlus.cfg"
-
-func loadRemoveRingRestrictionsFromFile():
-	var file = File.new()
-	file.open(RemoveRingRestrictionsPath, File.READ)
-	var txt = file.get_as_text()
-	file.close()
-	var split = txt.split("\n")
-	for line in split:
-		var p = str(line)
-		if p.begins_with("remove_max_speed_limit="):
-			if p.ends_with("true"):
-				noSpeedLimit = true
-			else:
-				noSpeedLimit = false
-		if p.begins_with("allow_exit_of_ring_to_the_left="):
-			if p.ends_with("true"):
-				goLeft = true
-			else:
-				goLeft = false
-		if p.begins_with("allow_exit_of_ring_to_the_right="):
-			if p.ends_with("true"):
-				goRight = true
-			else:
-				goRight = false

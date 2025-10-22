@@ -14,13 +14,15 @@ SYSTEM_CRADLE_MANUAL|Empty cradle arm can catch drones and lifepods.
 VELOCITYPLUS_DESCRIPTION|A quality of life feature mod that combines several current mods into a single, configurable package.
 
 
-VELOCITY_PLUS_ENCELADUS|Enceladus
+VP_ENCELADUS|Enceladus
 
-VELOCITY_PLUS_PORTRAITS|Portraits
+VP_CREW|Crew
 
-VELOCITY_PLUS_SHIPS|Ships
+VP_SHIPS|Ships
 
-VELOCITY_PLUS_IN_RING|In-Ring
+VP_RING|In-Ring
+
+VP_INPUTS|Inputs
 
 VP_MINERAL_MARKET|Show mineral market worth
 
@@ -125,3 +127,11 @@ VP_SHOW_DIVE_TIME_DESC|Adds a clock withinin the mechanic tab in OMS, containing
 VP_SHOW_EQUIPMENT_RELIABILITY|Show Equipment Reliability
 
 VP_SHOW_EQUIPMENT_RELIABILITY_DESC|Shows reliability data of equipment under the stats in the preview box for equipment.
+
+VP_TOGGLE_HUD|Toggle HUD
+
+VP_TOGGLE_HUD_DESC|Toggles the visibility of all HUD elements, including autopilot overlays
+
+VP_TOGGLE_MPU|Toggle MPU
+
+VP_TOGGLE_MPU_DESC|Toggles the power to the MPU. Shortcut to pressing it's power button in OMS

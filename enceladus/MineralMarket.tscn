@@ -48,4 +48,8 @@ margin_top = 86.0
 [node name="ScrollContainer" parent="Details/MarginContainer" index="0"]
 margin_bottom = 630.0
 
+[node name="MarginContainer" parent="Details/MarginContainer/ScrollContainer" index="0"]
+margin_top = 0.0
+margin_bottom = 0.0
+
 [editable path="Details/HeaderWithMoney"]

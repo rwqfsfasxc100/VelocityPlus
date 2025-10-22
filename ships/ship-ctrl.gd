@@ -37,6 +37,20 @@ extends "res://ships/ship-ctrl.gd"
 #func _input(event):
 #	breakpoint
 
+const ConfigDriverVP = preload("res://HevLib/pointers/ConfigDriver.gd")
+
+func sensorGet(sensor):
+	
+	if ConfigDriverVP.__get_value("VelocityPlus","VP_RING","display_negative_depth"):
+		match sensor:
+			"diveDepth":
+				var depth = CurrentGame.globalCoords(global_position).x / 10000 - 1.0
+				return depth
+			_:
+				return .sensorGet(sensor)
+	else:
+		return .sensorGet(sensor)
+
 func isInEscapeCondition():
 	if test:
 		return false
@@ -50,11 +64,11 @@ func isInEscapeCondition():
 		return false
 	
 	
-	if CurrentGame.globalCoords(global_position).x < 0 and Settings.VelocityPlus["in_ring"]["allow_exit_of_ring_to_the_left"] == false:
+	if CurrentGame.globalCoords(global_position).x < 0 and ConfigDriverVP.__get_value("VelocityPlus","VP_RING","allow_exit_of_ring_to_the_left") == false:
 		return true
-	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and Settings.VelocityPlus["in_ring"]["allow_exit_of_ring_to_the_right"] == false:
+	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and ConfigDriverVP.__get_value("VelocityPlus","VP_RING","allow_exit_of_ring_to_the_right") == false:
 		return true
-	if linear_velocity.length() > 2000 and Settings.VelocityPlus["in_ring"]["remove_max_speed_limit"] == false:
+	if linear_velocity.length() > 2000 and ConfigDriverVP.__get_value("VelocityPlus","VP_RING","remove_max_speed_limit") == false:
 		return true
 	
 	

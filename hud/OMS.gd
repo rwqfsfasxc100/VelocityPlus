@@ -9,16 +9,15 @@ var MPUs = []
 
 var add_dive_time = false
 
+var ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+
 func _ready():
-	if Settings.VelocityPlus["in_ring"]["show_dive_time_in_OMS"]:
-		add_dive_time = true
-	if add_dive_time:
-		Debug.l("DIVE-CLOCK: Readying hud/OMS")
-		var container = find_node("CREW_OCCUPATION_MECHANIC", true)
-		_diveClock = Label.new()
-		_diveClock.modulate = Color("#00ff00")
-		container.add_child(_diveClock)
-		_diveClockGame = get_tree().root.get_node_or_null("Game")
+	Debug.l("DIVE-CLOCK: Readying hud/OMS")
+	var container = find_node("CREW_OCCUPATION_MECHANIC", true)
+	_diveClock = Label.new()
+	_diveClock.modulate = Color("#00ff00")
+	container.add_child(_diveClock)
+	_diveClockGame = get_tree().root.get_node_or_null("Game")
 	ship = get_parent().get_parent()
 	for child in ship.get_children():
 		var scriptobj = child.get_script()
@@ -44,7 +43,7 @@ func _input(event):
 						node.enabled = !node.enabled
 
 func _physics_process(delta):
-	if add_dive_time:
+	if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS"):
 		var now = CurrentGame.getInGameTimestamp()
 		var text = CurrentGame.timeToString(now)
 		if _diveClockGame != null:
@@ -55,3 +54,6 @@ func _physics_process(delta):
 				timeInDive % 60,
 			]
 		_diveClock.text = text
+		_diveClock.visible = true
+	else:
+		_diveClock.visible = false

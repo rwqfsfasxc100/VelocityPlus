@@ -10,132 +10,134 @@ func previewShipSystem(slot,system,control=""):
 	if slot == null or system is int or system is float:
 		return
 	_showReliability_system = system
-var mtbh_label
+var mtbf_label
 const manual_container_path = NodePath("VB/WindowMargin/TabHintContainer/Window/UPGRADE_MANUAL")
-const MTBH_container = preload("res://VelocityPlus/enceladus/MTBH_container.tscn")
+const MTBF_container = preload("res://VelocityPlus/enceladus/MTBF_container.tscn")
 func _ready():
 	var cont = get_node(manual_container_path)
-	cont.add_child(MTBH_container.instance())
-	mtbh_label = get_node(str(manual_container_path) + "VBoxContainer/Label")
-
+	var mtbf = MTBF_container.instance()
+	cont.add_child(mtbf)
+	mtbf_label = mtbf.get_node("VBoxContainer/Label")
+const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
 # Wait until the ship in the simulation is fully instantiated.
 func _process(delta):
-	if _showReliability_system == null:
-		return
-	var system = _showReliability_system
-#	Removal of inefficient method of getting the system node
-#	var n = get_tree().root \
-#		.find_node("UPGRADE_SIMULATION", true, false) \
-#		.find_node("VP", true, false) \
-#		.find_node("Viewport", true, false) \
-#		.find_node("*_" + system, true, false)
-	
-	var n = get_node("VB/WindowMargin/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + system, true, false)
-	if n == null or n is InstancePlaceholder:
-		return
-	_showReliability_system = null  # OK, it's instantiated.
-	
-	var enabled = true
-	var txt = ""
-	
-	for p in n.get_property_list():
-		if p.name == "weaponPath":
-			var pname = n.get(p.name)
-			var path = pname
-			var objname = n.name
-			var sysname = n.systemName
-			var split = str(path).split(sysname)
-			if split.size() >= 2:
-				path = split[1].lstrip("/")
-			n = n.get_node(path)
-	
-	for p in n.get_property_list():
-		if p.name in disable_when_false:
-			var check = n.get(p.name)
-			if check == false:
-				enabled = false
-		if p.name in disable_when_true:
-			var check = n.get(p.name)
-			if check == true:
-				enabled = false
+	if ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability"):
+		if _showReliability_system == null:
+			return
+		var system = _showReliability_system
+	#	Removal of inefficient method of getting the system node
+	#	var n = get_tree().root \
+	#		.find_node("UPGRADE_SIMULATION", true, false) \
+	#		.find_node("VP", true, false) \
+	#		.find_node("Viewport", true, false) \
+	#		.find_node("*_" + system, true, false)
 		
-		if p.name.begins_with("damage") and p.name.ends_with("Capacity"):
-			var name = p.name.substr(6, p.name.length() - 8)
-			var units = ""
-			var factor = 1
-			match p.name:
-				# I made these up. They're probably wrong.
-				"damageWearCapacity":
-					name = "MTBF at 100% stress"
-					units = "h"
-					factor = 1 / 3600.0
-				"damageBentCapacity":
-					name = "Bend resilience"
-					units = "kN"
-					factor = 1 / 1000.0
-				"damageChokeCapacity":
-					name = "Choke resilience"
-					units = "kN"
-					factor = 1 / 1000.0
-				
-				# Mass driver and Mike specifics
-				"damageFocusCapacity":
-					name = "Thermal resilience"
-					units = "MJ"
-					factor = 1 / 1000.0
-				
-				# Laser specifics
-				"damagePumpDamageCapacity":
-					name = "Short-circuit resilience"
-					units = "MJ"
-					factor = 1 / 1000000.0
-				
-				
+		var n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + system, true, false)
+		if n == null or n is InstancePlaceholder:
+			return
+		_showReliability_system = null  # OK, it's instantiated.
+		
+		var enabled = true
+		var txt = ""
+		
+		for p in n.get_property_list():
+			if p.name == "weaponPath":
+				var pname = n.get(p.name)
+				var path = pname
+				var objname = n.name
+				var sysname = n.systemName
+				var split = str(path).split(sysname)
+				if split.size() >= 2:
+					path = split[1].lstrip("/")
+				n = n.get_node(path)
+		
+		for p in n.get_property_list():
+			if p.name in disable_when_false:
+				var check = n.get(p.name)
+				if check == false:
+					enabled = false
+			if p.name in disable_when_true:
+				var check = n.get(p.name)
+				if check == true:
+					enabled = false
+			
+			if p.name.begins_with("damage") and p.name.ends_with("Capacity"):
+				var name = p.name.substr(6, p.name.length() - 8)
+				var units = ""
+				var factor = 1
+				match p.name:
+					# I made these up. They're probably wrong.
+					"damageWearCapacity":
+						name = "MTBF at 100% stress"
+						units = "h"
+						factor = 1 / 3600.0
+					"damageBentCapacity":
+						name = "Bend resilience"
+						units = "kN"
+						factor = 1 / 1000.0
+					"damageChokeCapacity":
+						name = "Choke resilience"
+						units = "kN"
+						factor = 1 / 1000.0
+					
+					# Mass driver and Mike specifics
+					"damageFocusCapacity":
+						name = "Thermal resilience"
+						units = "MJ"
+						factor = 1 / 1000.0
+					
+					# Laser specifics
+					"damagePumpDamageCapacity":
+						name = "Short-circuit resilience"
+						units = "MJ"
+						factor = 1 / 1000000.0
+					
+					
 
-				# These aren't visible in the game right now, because
-				# you can't buy / customize computers.
-				"damageSensorsCapacity":
-					name = "Impact resilience"
-					units = "kN"
-					factor = 1 / 1000.0
-				"damageShortCircuitCapacity":
-					name = "Short-circuit resilience"
-					units = "MJ"
-					factor = 1 / 1000000.0
-				"damageOverheatCapacity":
-					name = "Thermal resilience"
-					units = "MJ"
-					factor = 1 / 1000000.0
+					# These aren't visible in the game right now, because
+					# you can't buy / customize computers.
+					"damageSensorsCapacity":
+						name = "Impact resilience"
+						units = "kN"
+						factor = 1 / 1000.0
+					"damageShortCircuitCapacity":
+						name = "Short-circuit resilience"
+						units = "MJ"
+						factor = 1 / 1000000.0
+					"damageOverheatCapacity":
+						name = "Thermal resilience"
+						units = "MJ"
+						factor = 1 / 1000000.0
 
-				# Neither are these (reactor != reactor core).
-				"damageRodsCapacity":
-					name = "Shock resilience"
-					units = "m/s"
-				"damageLeakCapacity":
-					name = "Impact resilience"
-					units = "kN"
-					factor = 1 / 1000.0
-				"damageTurbineCapacity":
-					name = "Thermal resilience"
-					units = "MJ"
-					factor = 1 / 1000000.0
-				
-				# Also fusion reactor damage
-				"damageCoilsCapacity":
-					name = "Acceleration dampening"
-					units = "m/s"
-				"damageCoolantCapacity":
-					name = "Impact resilience"
-					units = "kN"
-					factor = 1 / 1000.0
-				"damageLaserCapacity":
-					name = "Thermal resilience"
-					units = "MJ"
-					factor = 1 / 1000000.0
-				
-			txt = txt + "\n%s: %s %s" % [name, _showReliability_formatFloat(n.get(p.name) * factor), units]
-	if enabled:
-		specsLabel.text = TranslationServer.translate(specsLabel.text) + txt
+					# Neither are these (reactor != reactor core).
+					"damageRodsCapacity":
+						name = "Shock resilience"
+						units = "m/s"
+					"damageLeakCapacity":
+						name = "Impact resilience"
+						units = "kN"
+						factor = 1 / 1000.0
+					"damageTurbineCapacity":
+						name = "Thermal resilience"
+						units = "MJ"
+						factor = 1 / 1000000.0
+					
+					# Also fusion reactor damage
+					"damageCoilsCapacity":
+						name = "Acceleration dampening"
+						units = "m/s"
+					"damageCoolantCapacity":
+						name = "Impact resilience"
+						units = "kN"
+						factor = 1 / 1000.0
+					"damageLaserCapacity":
+						name = "Thermal resilience"
+						units = "MJ"
+						factor = 1 / 1000000.0
+					
+				txt = txt + "\n%s: %s %s" % [name, _showReliability_formatFloat(n.get(p.name) * factor), units]
+		if enabled:
+			mtbf_label.text = txt
 func _showReliability_formatFloat(f):
 	# Format without unneeded decimals
 	var s = "%f" % f

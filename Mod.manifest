@@ -10,21 +10,181 @@ credits=["Za'krin - Mod Main design, original implementation of updateTL"]
 
 version_major=1
 version_minor=1
-version_bugfix=8
+version_bugfix=9
 
 [tags]
 
-allow_achievements=true
-overhaul=true
-quality_of_life=true
-language=["en"]
+TAG_ALLOW_ACHIEVEMENTS={"type":"bool","value":false}
+TAG_OVERHAUL={"type":"bool","value":true}
+TAG_QOL={"type":"bool","value":true}
+
+[configs]
+
+VP_ENCELADUS={
+	"mineral_market_show_total_value":{
+		"name":"VP_MINERAL_MARKET",
+		"description":"VP_MINERAL_MARKET_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"add_empty_cradle_equipment":{
+		"name":"VP_ADD_CRADLES",
+		"description":"VP_ADD_CRADLES_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"simulator_shader":{
+		"name":"VP_SIMULATION_SHADER",
+		"description":"VP_SIMULATION_SHADER_DESC",
+		"type":"option_button",
+		"store_method":"int",
+		"options":["VP_MVFS_NONE","VP_MVFS_SHADER","VP_MVFS_SHADER_AND_BACKGROUND","VP_MVFS_LUMA_EDGE"],
+		"default":1
+	},
+	"hide_unrepairable_equipment":{
+		"name":"VP_HIDE_UNDAMAGED_EQUIPMENT",
+		"description":"VP_HIDE_UNDAMAGED_EQUIPMENT_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"extra_tooltips":{
+		"name":"VP_BETTER_TOOLTIPS",
+		"description":"VP_BETTER_TOOLTIPS_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"enable_achievements":{
+		"name":"VP_ENABLE_ACHIEVEMENTS",
+		"description":"VP_ENABLE_ACHIEVEMENTS_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"enable_achievements_on_cheated_saves":{
+		"name":"VP_ENABLE_ACHIEVEMENTS_ON_CHEATS",
+		"description":"VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC",
+		"type":"bool",
+		"requires_bools":["VelocityPlus/VP_ENCELADUS/enable_achievements"],
+		"default":false
+	},
+	"show_equipment_reliability":{
+		"name":"VP_SHOW_EQUIPMENT_RELIABILITY",
+		"description":"VP_SHOW_EQUIPMENT_RELIABILITY_DESC",
+		"type":"bool",
+		"default":true
+	},
+}
+VP_CREW={
+	"hide_on_enceladus":{
+		"name":"VP_HIDE_CREW_EPRIME",
+		"description":"VP_HIDE_CREW_EPRIME_DESC",
+		"type":"bool",
+		"default":false
+	},
+	"hide_in_OMS":{
+		"name":"VP_HIDE_CREW_OMS",
+		"description":"VP_HIDE_CREW_OMS_DESC",
+		"type":"bool",
+		"default":false
+	},
+	"mineral_marker_limit_multiplier":{
+		"name":"VP_GEOLOGIST_MINERAL_LIMIT_MULTI",
+		"description":"VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"tactical_marker_limit_multiplier":{
+		"name":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI",
+		"description":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC",
+		"type":"bool",
+		"default":true
+	},
+}
+VP_SHIPS={
+	"fix_voyager_MPU_in_OCP":{
+		"name":"VP_OCP_VOYAGER",
+		"description":"VP_OCP_VOYAGER_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"disable_gimballed_and_turreted_weapons":{
+		"name":"VP_REMOVE_GIMBALS",
+		"description":"VP_REMOVE_GIMBALS_DESC",
+		"type":"bool",
+		"default":false
+	},
+	"arm_focuses_to_targeted_object":{
+		"name":"VP_ARM_TARGET_TO_AP",
+		"description":"VP_ARM_TARGET_TO_AP_DESC",
+		"type":"bool",
+		"default":true
+	},
+}
+VP_RING={
+	"remove_max_speed_limit":{
+		"name":"VP_REMOVE_SPEED_LIMIT",
+		"description":"VP_REMOVE_SPEED_LIMIT_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"allow_exit_of_ring_to_the_left":{
+		"name":"VP_EXIT_LEFT",
+		"description":"VP_EXIT_LEFT_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"allow_exit_of_ring_to_the_right":{
+		"name":"VP_EXIT_RIGHT",
+		"description":"VP_EXIT_RIGHT_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"broadcast_variations":{
+		"name":"VP_VARIATED_BROADCASTS",
+		"description":"VP_VARIATED_BROADCASTS_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"display_negative_depth":{
+		"name":"VP_DISPLAY_NEGATIVE_DEPTH",
+		"description":"VP_DISPLAY_NEGATIVE_DEPTH_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"show_dive_time_in_OMS":{
+		"name":"VP_SHOW_DIVE_TIME",
+		"description":"VP_SHOW_DIVE_TIME_DESC",
+		"type":"bool",
+		"default":true
+	},
+}
+VP_INPUTS={
+	"velocityplus_toggle_hud":{
+		"name":"VP_TOGGLE_HUD",
+		"description":"VP_TOGGLE_HUD_DESC",
+		"type":"Input",
+		"default":[ "F6" ]
+	},
+	"velocityplus_toggle_mpu":{
+		"name":"VP_TOGGLE_MPU",
+		"description":"VP_TOGGLE_MPU_DESC",
+		"type":"Input",
+		"default":[ "M" ]
+	},
+}
+
+[languages]
+
+en="100%"
 
 [links]
 
-github={"link":"https://github.com/rwqfsfasxc100/VelocityPlus","has_releases":true}
-discord="https://discord.com/channels/426287934870781952/1383342280878067762"
-bug_reports="https://forms.gle/RmC4Zgonp6frFgnK7"
+HEVLIB_GITHUB={"URL":"https://github.com/rwqfsfasxc100/VelocityPlus"}
+HEVLIB_DISCORD={"URL":"https://discord.com/channels/426287934870781952/1383342280878067762"}
+HEVLIB_NEXUS={"URL":"https://www.nexusmods.com/dvringsofsaturn/mods/19"}
+HEVLIB_DONATIONS={"URL":"https://ko-fi.com/00hev"}
+HEVLIB_BUGREPORTS={"URL":"https://forms.gle/vUoarawnYjy3hXJi9"}
 
 [manifest_definitions]
 
-manifest_version=2.1
+manifest_version=2.2
+manifest_url="https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/main/Mod.manifest"
