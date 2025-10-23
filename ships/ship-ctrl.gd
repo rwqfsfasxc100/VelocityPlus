@@ -39,6 +39,18 @@ extends "res://ships/ship-ctrl.gd"
 
 const ConfigDriverVP = preload("res://HevLib/pointers/ConfigDriver.gd")
 
+func handleTrajectoryProgress(delta):
+	var config = ConfigDriverVP.__get_config("VelocityPlus")
+	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
+		var education = CurrentGame.getCrewStats().CREW_STATS_PILOT_ADRENALINE
+		var experience = CurrentGame.getCrewStats().CREW_STATS_PILOT_ANTICIPATION
+		var minimum = float(config.get("VP_CREW",{}).get("minimum_astrogation_time",3))
+		var maximum = float(config.get("VP_CREW",{}).get("maximum_astrogation_time",10))
+		var bias = float(config.get("VP_CREW",{}).get("pilot_skill_bias",0.3))
+		var modifier = lerp(minimum,maximum,lerp(education,experience,bias))
+		trajectoryTime = clamp(modifier,minimum,maximum)
+	.handleTrajectoryProgress(delta)
+
 func sensorGet(sensor):
 	
 	if ConfigDriverVP.__get_value("VelocityPlus","VP_RING","display_negative_depth"):

@@ -32,7 +32,7 @@ VP_ADD_CRADLES|Add empty cradle equipment
 
 VP_ADD_CRADLES_DESC|Adds cradles without anything attached in the appropriate hardpoint menus
 
-VP_SIMULATION_SHADER|MVFS Shader Style
+VP_SIMULATION_SHADER|MVFS shader style
 
 VP_SIMULATION_SHADER_DESC|Modify the shader and/or background of the Minding Virtual Flight Service
 
@@ -96,35 +96,35 @@ VP_BETTER_TOOLTIPS|Add tooltips to Enceladus menus
 
 VP_BETTER_TOOLTIPS_DESC|Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help explain why they're disabled.
 
-VP_ENABLE_ACHIEVEMENTS|Enable Achievements
+VP_ENABLE_ACHIEVEMENTS|Enable achievements
 
 VP_ENABLE_ACHIEVEMENTS_DESC|Enables achievements while mods are enabled
 
-VP_ENABLE_ACHIEVEMENTS_ON_CHEATS|Achievements on Cheated Saves
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS|Achievements on cheated saves
 
 VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC|Allow achievements to be earned on cheated saves.\n\nRequires Enable Achievements to work.
 
-VP_GEOLOGIST_MINERAL_LIMIT_MULTI|Geologist Mineral Marker Limit Multiplier
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI|Geologist mineral marker limit multiplier
 
 VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC|Multiplies the number of geologist ore markers displayed around ore chunks by 5; from 200 to 1000
 
-VP_ASTROGATOR_TACTICAL_LIMIT_MULTI|Astrogator Tactical Marker Limit Multiplier
+VP_ASTROGATOR_TACTICAL_LIMIT_MULTI|Astrogator tactical marker limit multiplier
 
 VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC|Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; from 50 to 250
 
-VP_ARM_TARGET_TO_AP|Manipulator Arms Lock on AP Target
+VP_ARM_TARGET_TO_AP|Manipulator arms lock on AP target
 
 VP_ARM_TARGET_TO_AP_DESC|Makes all manipulator arms attempt to prioritize the object selected by the autopilot over all others.
 
-VP_DISPLAY_NEGATIVE_DEPTH|Display Negative Depth
+VP_DISPLAY_NEGATIVE_DEPTH|Display negative depth
 
 VP_DISPLAY_NEGATIVE_DEPTH_DESC|Distance from the rings is displayed as negative depth.
 
-VP_SHOW_DIVE_TIME|Display Dive Time
+VP_SHOW_DIVE_TIME|Display dive time
 
 VP_SHOW_DIVE_TIME_DESC|Adds a clock withinin the mechanic tab in OMS, containing the current date and time, as well as a timer for the active time in a dive.
 
-VP_SHOW_EQUIPMENT_RELIABILITY|Show Equipment Reliability
+VP_SHOW_EQUIPMENT_RELIABILITY|Show equipment reliability
 
 VP_SHOW_EQUIPMENT_RELIABILITY_DESC|Shows reliability data of equipment under the stats in the preview box for equipment.
 
@@ -135,3 +135,19 @@ VP_TOGGLE_HUD_DESC|Toggles the visibility of all HUD elements, including autopil
 VP_TOGGLE_MPU|Toggle MPU
 
 VP_TOGGLE_MPU_DESC|Toggles the power to the MPU. Shortcut to pressing it's power button in OMS
+
+VP_PILOTS_REDUCE_ASTRO_CALC|Pilots reduce astrogation calculation time
+
+VP_PILOTS_REDUCE_ASTRO_CALC_DESC|Modifies the time it takes to calculate an astrogation maneuver based on the pilot's skill and/or experience.
+
+VP_MIN_ASTROGATION_TIME|Minimum astrogation calculation time
+
+VP_MIN_ASTROGATION_TIME_DESC|The maximum time that a pilot will take to perform an astrogation maneuver.
+
+VP_MAX_ASTROGATION_TIME|Maximum astrogation calculation time
+
+VP_MAX_ASTROGATION_TIME_DESC|The base time it takes for an astrogation maneuver to be performed by the computer w/o a pilot.
+
+VP_PILOT_SKILL_BIAS|Pilot skill bias
+
+VP_PILOT_SKILL_BIAS_DESC|The bias used to determine the astrogation calculation time reduction. \nValues closer to 0.0 will favour education level. \nValues closer to 1.0 will favour experience level. \n0.5 uses average of experience and education equally. 
