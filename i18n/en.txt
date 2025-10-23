@@ -142,7 +142,7 @@ VP_PILOTS_REDUCE_ASTRO_CALC_DESC|Modifies the time it takes to calculate an astr
 
 VP_MIN_ASTROGATION_TIME|Minimum astrogation calculation time
 
-VP_MIN_ASTROGATION_TIME_DESC|The maximum time that a pilot will take to perform an astrogation maneuver.
+VP_MIN_ASTROGATION_TIME_DESC|The minimum possible time that a pilot can take to perform an astrogation maneuver.
 
 VP_MAX_ASTROGATION_TIME|Maximum astrogation calculation time
 

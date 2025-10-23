@@ -42,12 +42,24 @@ const ConfigDriverVP = preload("res://HevLib/pointers/ConfigDriver.gd")
 func handleTrajectoryProgress(delta):
 	var config = ConfigDriverVP.__get_config("VelocityPlus")
 	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
-		var education = CurrentGame.getCrewStats().CREW_STATS_PILOT_ADRENALINE
-		var experience = CurrentGame.getCrewStats().CREW_STATS_PILOT_ANTICIPATION
+		var education = 0
+		var experience = 0
+		var crewData = CurrentGame.getCurrentlyActiveCrewNames()
+		for crew in crewData:
+			var dta = CurrentGame.state.crew[crew]
+			if dta.occupation == "CREW_OCCUPATION_PILOT":
+				if dta.experience >= experience:
+					experience = dta.experience
+				if dta.talent >= education:
+					education = dta.talent
+		
 		var minimum = float(config.get("VP_CREW",{}).get("minimum_astrogation_time",3))
 		var maximum = float(config.get("VP_CREW",{}).get("maximum_astrogation_time",10))
 		var bias = float(config.get("VP_CREW",{}).get("pilot_skill_bias",0.3))
-		var modifier = lerp(minimum,maximum,lerp(education,experience,bias))
+		var exmod = lerp(education,experience,bias)
+		var diff = (exmod * maximum)
+		var shrink = (maximum - diff)/maximum
+		var modifier = lerp(minimum,maximum,shrink)
 		trajectoryTime = clamp(modifier,minimum,maximum)
 	.handleTrajectoryProgress(delta)
 

@@ -105,8 +105,8 @@ VP_CREW={
 		"default":true
 	},
 	"minimum_astrogation_time":{
-		"name":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI",
-		"description":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC",
+		"name":"VP_MIN_ASTROGATION_TIME",
+		"description":"VP_MIN_ASTROGATION_TIME_DESC",
 		"type":"int",
         "val_type":"int",
         "style":"slider",
@@ -117,8 +117,8 @@ VP_CREW={
 		"requires_bools":["VelocityPlus/VP_CREW/pilots_reduce_astro_calculations"],
 	},
 	"maximum_astrogation_time":{
-		"name":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI",
-		"description":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC",
+		"name":"VP_MAX_ASTROGATION_TIME",
+		"description":"VP_MAX_ASTROGATION_TIME_DESC",
 		"type":"int",
         "val_type":"int",
         "style":"slider",
@@ -131,13 +131,12 @@ VP_CREW={
 	"pilot_skill_bias":{
 		"name":"VP_PILOT_SKILL_BIAS",
 		"description":"VP_PILOT_SKILL_BIAS_DESC",
-		"type":"int",
-        "val_type":"int",
+		"type":"float",
         "style":"slider",
         "min":0.0,
         "max":1.0,
         "step":0.05,
-		"default":0.5,
+		"default":0.3,
 		"requires_bools":["VelocityPlus/VP_CREW/pilots_reduce_astro_calculations"],
 	},
 }
