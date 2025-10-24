@@ -3,6 +3,7 @@
 [node name="MTBH" type="MarginContainer"]
 margin_right = 990.0
 margin_bottom = 75.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 8
@@ -15,6 +16,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 982.0
 margin_bottom = 67.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -27,6 +29,6 @@ valign = 2
 
 [node name="Buffer" type="Label" parent="VBoxContainer"]
 margin_top = 18.0
-margin_right = 972.0
+margin_right = 974.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 972, 41 )
