@@ -107,8 +107,7 @@ VP_CREW={
 	"minimum_astrogation_time":{
 		"name":"VP_MIN_ASTROGATION_TIME",
 		"description":"VP_MIN_ASTROGATION_TIME_DESC",
-		"type":"int",
-        "val_type":"int",
+		"type":"float",
         "style":"slider",
         "min":1,
         "max":15,
@@ -119,8 +118,7 @@ VP_CREW={
 	"maximum_astrogation_time":{
 		"name":"VP_MAX_ASTROGATION_TIME",
 		"description":"VP_MAX_ASTROGATION_TIME_DESC",
-		"type":"int",
-        "val_type":"int",
+		"type":"float",
         "style":"slider",
         "min":5,
         "max":30,
