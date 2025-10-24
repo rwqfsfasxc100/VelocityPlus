@@ -3,8 +3,9 @@
 id="hev.VelocityPlus"
 name="Velocity Plus"
 description="VELOCITYPLUS_DESCRIPTION"
+brief="VELOCITYPLUS_BRIEF"
 author="__hev"
-credits=["Za'krin - Mod Main design, original implementation of updateTL"]
+credits=["Za'krin - Mod Main design, original implementation of updateTL","harrygiel - original implementation of the MaximumSpeed mod which this mod fixes and uses for the remove speed limit module","CyberShadow - original implementation for the DiveClock, ShowReliability, and ARMFocus modules","Alfik0 - original implementation of the identification limit increase modules"]
 
 [version]
 
