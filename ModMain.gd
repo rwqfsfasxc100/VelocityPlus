@@ -19,6 +19,9 @@ func _init(modLoader = ModLoader):
 	l("Initializing DLC")
 	loadDLC()
 	
+#	installScriptExtension("SaveSlotButton.gd")
+#	replaceSceneForce("TitleScreen.tscn")
+	
 	var mp = self.get_script().get_path()
 	var md = mp.split(mp.split("/")[mp.split("/").size() - 1])[0]
 	var mc = load(md + "mod_checker_script.tscn").instance()
@@ -202,6 +205,19 @@ func replaceScene(newPath:String, oldPath:String = ""):
 	newPath = str(modPath + newPath)
 
 	var scene := load(newPath)
+	scene.take_over_path(oldPath)
+	_savedObjects.append(scene)
+	l("Finished updating: %s" % oldPath)
+
+func replaceSceneForce(newPath:String, oldPath:String = ""):
+	l("Updating scene: %s" % newPath)
+
+	if oldPath.empty():
+		oldPath = str("res://" + newPath)
+
+	newPath = str(modPath + newPath)
+
+	var scene := ResourceLoader.load(newPath,"",true)
 	scene.take_over_path(oldPath)
 	_savedObjects.append(scene)
 	l("Finished updating: %s" % oldPath)

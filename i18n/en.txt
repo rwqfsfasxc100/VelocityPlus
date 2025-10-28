@@ -153,3 +153,11 @@ VP_MAX_ASTROGATION_TIME_DESC|The base time it takes for an astrogation maneuver 
 VP_PILOT_SKILL_BIAS|Pilot skill bias
 
 VP_PILOT_SKILL_BIAS_DESC|The bias used to determine the astrogation calculation time reduction. \nValues closer to 0.0 will favour education level. \nValues closer to 1.0 will favour experience level. \n0.5 uses average of experience and education equally. 
+
+VP_SAVE_INFO_BUTTON|Save Stats
+
+VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %s\nOwned ships: %s\nSeed: %s\nPlaytime stats:\n%s\n
+
+VP_MINUTES_INDICATOR|%s minutes
+
+VP_HOURS_INDICATOR|%s hours

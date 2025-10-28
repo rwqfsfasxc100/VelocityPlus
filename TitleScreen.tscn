@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://TitleScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://VelocityPlus/SaveSlotButton.gd" type="Script" id=2]
+
+[node name="TitleScreen" instance=ExtResource( 1 )]
+
+[node name="ExtensionPopup" parent="MenuLayer/TitleMenu/NoMargins" index="2"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="SlotA" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="1"]
+script = ExtResource( 2 )
+
+[node name="SlotB" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="3"]
+script = ExtResource( 2 )
+
+[node name="SlotC" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="5"]
+script = ExtResource( 2 )
+
+[node name="SlotD" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="7"]
+script = ExtResource( 2 )
+
+[node name="SlotE" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="9"]
+script = ExtResource( 2 )
+
+[node name="SlotF" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="11"]
+script = ExtResource( 2 )
+
+[node name="SlotG" parent="MenuLayer/TitleMenu/MarginContainer/VBoxContainer/HBoxContainer/Saves" index="13"]
+script = ExtResource( 2 )
+
+[editable path="AsteroidField"]
