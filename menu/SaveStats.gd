@@ -19,7 +19,37 @@ func refocus():
 		lastFocus.grab_focus()
 	else:
 		Debug.l("I have no focus to fall back to!")
-
+var items_node_path = "VB/MarginContainer/ScrollContainer/MarginContainer/Items"
+var equipment_names = []
+var ship_names = []
+func _ready():
+	var equipment = load("res://enceladus/Upgrades.tscn").instance()
+	
+	var cv = equipment.get_node(items_node_path).get_children()
+	for slot in cv:
+		var children = slot.get_node("VBoxContainer").get_children()
+		if children.size() <= 1:
+			continue
+		for i in children:
+			var ename = ""
+			if "system" in i:
+				if "nameOverride" in i and i.nameOverride != "":
+					ename = i.nameOverride
+				else:
+					ename = i.system
+			if ename != "" and not ename in equipment_names:
+				equipment_names.append(ename)
+	Tool.remove(equipment)
+	
+	
+	for ship in Shipyard.ships:
+		var s = Shipyard.ships[ship].instance()
+		var sname = s.shipName
+		if not sname in ship_names:
+			ship_names.append(sname)
+		Tool.remove(s)
+	
+	
 
 func _about_to_show():
 	
@@ -53,17 +83,34 @@ func handle_save():
 	var playtime_array = []
 	for item in playtime:
 		var i = playtime[item]
-		var item_name = TranslationServer.translate(item)
 		var pt = get_minutes(i)
-		playtime_dict.merge({item_name:pt})
-		playtime_array.append(item_name)
+		playtime_dict.merge({item:pt})
+		playtime_array.append(item)
 	playtime_array.sort()
+	var ships = []
+	var equipment = []
+	var misc = []
 	for p in playtime_array:
 		var d = playtime_dict[p]
-		
-		playtime_display = playtime_display + "    " + p + ": " + d + "\n"
-		
-	var display = text_template % [str(date),date_concat % [elapsed_date_split[0],elapsed_date_split[1],elapsed_date_split[2]] + " " + time_concat % [elapsed_time_split[0],elapsed_time_split[1],elapsed_time_split[2]],str(CurrentGame.formatThousands(int(money))),str(CurrentGame.formatThousands(int(insurance))),str(crew),str(owned_ships),str(sseed),playtime_display]
+		if p in equipment_names:
+			equipment.append("    " + TranslationServer.translate(p) + ": " + d + "\n")
+		elif p in ship_names:
+			ships.append("    " + TranslationServer.translate(p) + ": " + d + "\n")
+		else:
+			misc.append("    " + TranslationServer.translate(p) + ": " + d + "\n")
+	var ships_display = ""
+	var equipment_display = ""
+	var misc_display = ""
+	for i in ships:
+		ships_display = ships_display + i
+	
+	for i in equipment:
+		equipment_display = equipment_display + i
+	
+	for i in misc:
+		misc_display = misc_display + i
+	
+	var display = text_template % [str(date),date_concat % [elapsed_date_split[0],elapsed_date_split[1],elapsed_date_split[2]] + " " + time_concat % [elapsed_time_split[0],elapsed_time_split[1],elapsed_time_split[2]],str(CurrentGame.formatThousands(int(money))),str(CurrentGame.formatThousands(int(insurance))),str(crew),str(owned_ships),str(sseed),ships_display,equipment_display,misc_display]
 	
 	
 	$PanelContainer/VBoxContainer/ScrollContainer/Label.text = display
@@ -74,7 +121,7 @@ func get_minutes(time):
 	var hour_temp = Time.get_unix_time_from_datetime_dict({"hour":1})
 	var timeconcat = round(time/60.0)
 	var minutes = int(timeconcat) % 60
-	var hours = int(timeconcat) / 60
+	var hours = floor(timeconcat / 60)
 	
 	
 	
