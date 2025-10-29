@@ -97,3 +97,20 @@ func isInEscapeCondition():
 	
 	
 	return false
+
+func aiControl(delta):
+	.aiControl(delta)
+	if dialogTree == "CargoScoopBye":
+		match aiAction:
+			AI.exit:
+				var cf = ConfigDriverVP.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+				if cf != "VP_RETURN_TO_ENCELADUS":
+					match cf:
+						"VP_RETURN_TO_CRADLE":
+							aiAction = AI.dock
+						"VP_HOLD_POSITION":
+							aiAction = AI.stop
+						"VP_BIRDFEED":
+							aiAction = AI.birdFeed
+	
+	

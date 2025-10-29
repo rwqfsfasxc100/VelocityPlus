@@ -161,3 +161,15 @@ VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: 
 VP_MINUTES_INDICATOR|%s minutes
 
 VP_HOURS_INDICATOR|%s hours
+
+VP_SCOOP_RETURN_PROTOCOL|NT Companion end of run protocol
+
+VP_SCOOP_RETURN_PROTOCOL_DESC|The AI behaviour that NT Companions will use when they're at the end of their run.
+
+VP_RETURN_TO_ENCELADUS|Return to Enceladus Prime
+
+VP_RETURN_TO_CRADLE|Return to the cradle
+
+VP_HOLD_POSITION|Stop and hold in place
+
+VP_BIRDFEED|Birdfeed collected ore

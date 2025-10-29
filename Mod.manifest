@@ -158,6 +158,14 @@ VP_SHIPS={
 		"type":"bool",
 		"default":true
 	},
+	"scoop_automatic_return_protocol_override":{
+		"name":"VP_SCOOP_RETURN_PROTOCOL",
+		"description":"VP_SIMULATION_SHADER_DESC",
+		"type":"option_button",
+		"store_method":"string",
+		"options":["VP_RETURN_TO_ENCELADUS","VP_RETURN_TO_CRADLE","VP_HOLD_POSITION","VP_BIRDFEED"],
+		"default":"VP_RETURN_TO_ENCELADUS"
+	},
 }
 VP_RING={
 	"remove_max_speed_limit":{
