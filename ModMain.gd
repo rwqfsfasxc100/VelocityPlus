@@ -19,9 +19,6 @@ func _init(modLoader = ModLoader):
 	l("Initializing DLC")
 	loadDLC()
 	
-#	installScriptExtension("SaveSlotButton.gd")
-#	replaceSceneForce("TitleScreen.tscn")
-	
 	var mp = self.get_script().get_path()
 	var md = mp.split(mp.split("/")[mp.split("/").size() - 1])[0]
 	var mc = load(md + "mod_checker_script.tscn").instance()
