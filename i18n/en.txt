@@ -156,7 +156,7 @@ VP_PILOT_SKILL_BIAS_DESC|The bias used to determine the astrogation calculation 
 
 VP_SAVE_INFO_BUTTON|Save Stats
 
-VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %s\nOwned ships: %s\nSeed: %s\nPlaytime stats:\n%s\n
+VP_SAVE_INFO_TEMPLATE|VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %s\nOwned ships: %s\nSeed: %s\nShip Playtime:\n%s\nEquipment Playtime:\n%s\nMiscelaneous Playtime:\n%s\n
 
 VP_MINUTES_INDICATOR|%s minutes
 
