@@ -156,7 +156,7 @@ VP_PILOT_SKILL_BIAS_DESC|The bias used to determine the astrogation calculation 
 
 VP_SAVE_INFO_BUTTON|Save Stats
 
-VP_SAVE_INFO_TEMPLATE|VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %s\nOwned ships: %s\nSeed: %s\nShip Playtime:\n%s\nEquipment Playtime:\n%s\nMiscelaneous Playtime:\n%s\n
+VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %s\nOwned ships: %s\nSeed: %s\nShip Playtime:\n%s\nEquipment Playtime:\n%s\nMiscelaneous Playtime:\n%s\n
 
 VP_MINUTES_INDICATOR|%s minutes
 
@@ -164,7 +164,7 @@ VP_HOURS_INDICATOR|%s hours
 
 VP_SCOOP_RETURN_PROTOCOL|NT Companion end of run protocol
 
-VP_SCOOP_RETURN_PROTOCOL_DESC|The AI behaviour that NT Companions will use when they're at the end of their run.
+VP_SCOOP_RETURN_PROTOCOL_DESC|The AI behaviour that NT Companions will use when they're at the end of their run
 
 VP_RETURN_TO_ENCELADUS|Return to Enceladus Prime
 
