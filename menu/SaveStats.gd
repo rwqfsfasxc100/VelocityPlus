@@ -72,6 +72,20 @@ func handle_save():
 	var elapsed_split = time.split(" ")
 	var elapsed_date_split = elapsed_split[0].split("-")
 	var elapsed_time_split = elapsed_split[1].split(":")
+	for f in range(elapsed_date_split.size()):
+		var val = int(elapsed_date_split[f])
+		if val:
+			elapsed_date_split[f] = str(val)
+		else:
+			elapsed_date_split[f] = str(0)
+		pass
+	for f in range(elapsed_time_split.size()):
+		var val = int(elapsed_time_split[f])
+		if val:
+			elapsed_time_split[f] = str(val)
+		else:
+			elapsed_time_split[f] = str(0)
+		pass
 	var crew = data.get("crew",{}).size()
 	var owned_ships = data.get("garage",{}).size() + 1
 	var money = data.get("money",0.0)

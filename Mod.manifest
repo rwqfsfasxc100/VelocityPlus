@@ -160,11 +160,17 @@ VP_SHIPS={
 	},
 	"scoop_automatic_return_protocol_override":{
 		"name":"VP_SCOOP_RETURN_PROTOCOL",
-		"description":"VP_SIMULATION_SHADER_DESC",
+		"description":"VP_SCOOP_RETURN_PROTOCOL_DESC",
 		"type":"option_button",
 		"store_method":"string",
-		"options":["VP_RETURN_TO_ENCELADUS","VP_RETURN_TO_CRADLE","VP_HOLD_POSITION","VP_BIRDFEED"],
+		"options":["VP_RETURN_TO_ENCELADUS","VP_RETURN_TO_CRADLE","VP_HOLD_POSITION"],
 		"default":"VP_RETURN_TO_ENCELADUS"
+	},
+	"add_scoop_halt_on_return":{
+		"name":"VP_SCOOP_RETURN_DIALOGUE_EXTRAS",
+		"description":"VP_SCOOP_RETURN_DIALOGUE_EXTRAS_DESC",
+		"type":"bool",
+		"default":true
 	},
 }
 VP_RING={

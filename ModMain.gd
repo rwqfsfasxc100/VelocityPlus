@@ -30,6 +30,9 @@ func _init(modLoader = ModLoader):
 	
 	installScriptExtension("enceladus/Upgrades.gd")
 	
+	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
+		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
+	
 	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
 	match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
 		0:
