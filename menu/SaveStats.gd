@@ -6,6 +6,7 @@ onready var text_template = TranslationServer.translate("VP_SAVE_INFO_TEMPLATE")
 
 func show_menu(slot,button):
 	current_save_slot = slot
+	get_data()
 	handle_save()
 	popup_centered()
 
@@ -22,7 +23,16 @@ func refocus():
 var items_node_path = "VB/MarginContainer/ScrollContainer/MarginContainer/Items"
 var equipment_names = []
 var ship_names = []
-func _ready():
+
+func _about_to_show():
+	
+	lastFocus = get_focus_owner()
+
+
+func _confirmed():
+	cancel()
+
+func get_data():
 	var equipment = load("res://enceladus/Upgrades.tscn").instance()
 	
 	var cv = equipment.get_node(items_node_path).get_children()
@@ -48,18 +58,10 @@ func _ready():
 		if not sname in ship_names:
 			ship_names.append(sname)
 		Tool.remove(s)
-	
-	
-
-func _about_to_show():
-	
-	lastFocus = get_focus_owner()
-
-
-func _confirmed():
-	cancel()
 
 func handle_save():
+	
+	
 	var offset_time = Time.get_unix_time_from_datetime_dict({"year":0})
 	var data = getSave(current_save_slot)
 	var datetime = data.get("time",0)
