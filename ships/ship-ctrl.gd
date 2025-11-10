@@ -39,7 +39,11 @@ extends "res://ships/ship-ctrl.gd"
 
 const ConfigDriverVP = preload("res://HevLib/pointers/ConfigDriver.gd")
 
-func handleTrajectoryProgress(delta):
+func _ready():
+	modify()
+	CurrentGame.connect("xpChanged",self,"modify")
+
+func modify():
 	var config = ConfigDriverVP.__get_config("VelocityPlus")
 	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
 		var education = 0
@@ -61,19 +65,43 @@ func handleTrajectoryProgress(delta):
 		var shrink = (maximum - diff)/maximum
 		var modifier = lerp(minimum,maximum,shrink)
 		trajectoryTime = clamp(modifier,minimum,maximum)
-	.handleTrajectoryProgress(delta)
+	if config.get("VP_RING",{}).get("display_negative_depth",true):
+		show_neg_depth = true
 
+#func handleTrajectoryProgress(delta):
+#	var config = ConfigDriverVP.__get_config("VelocityPlus")
+#	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
+#		var education = 0
+#		var experience = 0
+#		var crewData = CurrentGame.getCurrentlyActiveCrewNames()
+#		for crew in crewData:
+#			var dta = CurrentGame.state.crew[crew]
+#			if dta.occupation == "CREW_OCCUPATION_PILOT":
+#				if dta.experience >= experience:
+#					experience = dta.experience
+#				if dta.talent >= education:
+#					education = dta.talent
+#
+#		var minimum = float(config.get("VP_CREW",{}).get("minimum_astrogation_time",3))
+#		var maximum = float(config.get("VP_CREW",{}).get("maximum_astrogation_time",10))
+#		var bias = float(config.get("VP_CREW",{}).get("pilot_skill_bias",0.3))
+#		var exmod = lerp(education,experience,bias)
+#		var diff = (exmod * maximum)
+#		var shrink = (maximum - diff)/maximum
+#		var modifier = lerp(minimum,maximum,shrink)
+#		trajectoryTime = clamp(modifier,minimum,maximum)
+#	.handleTrajectoryProgress(delta)
+var show_neg_depth = false
 func sensorGet(sensor):
-	
-	if ConfigDriverVP.__get_value("VelocityPlus","VP_RING","display_negative_depth"):
-		match sensor:
-			"diveDepth":
+	match sensor:
+		"diveDepth":
+			if show_neg_depth:
 				var depth = CurrentGame.globalCoords(global_position).x / 10000 - 1.0
 				return depth
-			_:
+			else:
 				return .sensorGet(sensor)
-	else:
-		return .sensorGet(sensor)
+		_:
+			return .sensorGet(sensor)
 
 func isInEscapeCondition():
 	if test:

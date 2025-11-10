@@ -2,7 +2,7 @@ extends Node
 
 # Set mod priority if you want it to load before/after other mods
 # Mods are loaded from lowest to highest priority, default is 0
-const MOD_PRIORITY = 0
+const MOD_PRIORITY = -1
 # Name of the mod, used for writing to the logs
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
