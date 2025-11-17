@@ -25,7 +25,7 @@ func _process(delta):
 		get_parent().visible = false
 
 func removeFormatting(value):
-	var vals = value.split(",")
+	var vals = value.split(TranslationServer.translate("SEPARATOR_THOUSAND"))
 	var rets = ""
 	for val in vals:
 		rets = rets + val
