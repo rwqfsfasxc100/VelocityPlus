@@ -99,6 +99,12 @@ VP_CREW={
 		"type":"bool",
 		"default":true
 	},
+	"pilots_disable_adrenaline":{
+		"name":"VP_PILOTS_DISABLE_ADRENALINE",
+		"description":"VP_PILOTS_DISABLE_ADRENALINE_DESC",
+		"type":"bool",
+		"default":false
+	},
 	"pilots_reduce_astro_calculations":{
 		"name":"VP_PILOTS_REDUCE_ASTRO_CALC",
 		"description":"VP_PILOTS_REDUCE_ASTRO_CALC_DESC",

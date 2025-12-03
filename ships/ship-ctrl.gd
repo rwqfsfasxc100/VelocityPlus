@@ -39,12 +39,15 @@ extends "res://ships/ship-ctrl.gd"
 
 const ConfigDriverVP = preload("res://HevLib/pointers/ConfigDriver.gd")
 
+var prevent_adrenaline = false
+
 func _ready():
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
 
 func modify():
 	var config = ConfigDriverVP.__get_config("VelocityPlus")
+	prevent_adrenaline = config.get("VP_CREW",{}).get("pilots_disable_adrenaline",false)
 	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
 		var education = 0
 		var experience = 0
@@ -844,3 +847,8 @@ func aiControlCompanion(delta):
 	if autopilotDesiredVelocity.length() > aiMaxVelocity:
 		autopilotDesiredVelocity = autopilotDesiredVelocity.normalized() * aiMaxVelocity
 	
+
+func handlePilotAdrenaline(delta):
+	if prevent_adrenaline:
+		return
+	.handlePilotAdrenaline(delta)
