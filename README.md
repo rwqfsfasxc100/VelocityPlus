@@ -5,62 +5,27 @@ A collection of small QOL changes and additions.
 > HevLib may be required for some features to function.
 > A download can be found from it's [releases page](https://github.com/rwqfsfasxc100/HevLib/releases/latest)
 
-## Features
-* All non-keybind toggles supported by Mod Menu
+## Features:
+ * Show mineral market worth - displays the total value of your ore in the mineral market.
+ * Add empty cradle equipment - Adds empty cradles to side hardpoints.
+ * MVFS shader style - Allows the removal or swapping out of the shader used in the Minding Virtual Flight Service.
+ * Hide portraits - Allows the crew portraits to be hidden wherever they may be visible outside of the crew menu.
+ * Fix Voyager RSLS MPU in the OCP-209 - Flips the Voyager MPU in the OCP-209 to make it easier to fill.
+ * Remove 200 m/s velocity limit - Removes the velocity limits set by the emergency autopilot.
+ * Allow travel outside of the ring area - Lets you exit the normal play area (< 0km and > 3,006km depths).
+ * Variate broadcasted location timers - Variates the times provided by other crews and personnel to make them feel more natural to being taken from their astrogation computer. Broadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
+ * Fix gimballed and turreted weapons in place - Prevents any equipment that can rotate from targeting, locking them to their 0 degree angle.
+ * Hide undamaged equipment from repairs - Repair menu will only display equipment below 100%.
+ * Add tooltips to Enceladus menus - Adds more tooltips to explain why you can or cannot do something.
+ * Enable achievements - allows achievements and leadearboards to be earned with mods enabled.
+ * Increase crew marker limits - Increases the number of tracked ores and transponders your crew can manage at once.
+ * Manipulator arms lock on AP target - Having an object selected with the autopilot will have the AR-1500M target that above anything else.
+ * Display negative depth - The HUD now displays distance from the rings as negative depth rather than blanking out.
+ * Display dive time - Shows both realtime and total dive time in the mechanic tab.
+ * Show equipment reliability - Displays equipment reliability information in the User Manual tab.
+ * Toggle HUD & MPU - Adds keybinds to toggle the HUD's display or toggle the MPU's power.
+ * Pilots reduce astrogation calculation time - Having a pilot onboard will help reduce the time it takes to calculate an astrogation jump. 
+ * Save stats - Display the stats of a save, including current money & insurance, and playtime.
+ * Companion return behaviour - allow you to choose the default behaviour of companions when they run low on propellant, as well as extend the number of hail options once that happens.
+ * Disable pilot's automatic adrenaline - prevent the pilot from activating adrenaline on a dive.
 
-* Adds a label containing the total value of ore stored in the mineral market (Defaults to enabled)
-  * Parity fix for [issue #5033](https://git.kodera.pl/games/delta-v/-/issues/5033)
-* Adds the ability to adjust the shader style of the Minding Virtual Flight Service
-  * Ported from and expanded from the No Simulation Hex mod
-  * Remove HEX - disables the HEX shader overlay (Default)
-  * Remove HEX and BG - disables the HEX shader and replaces the background with a solid black base
-  * Equipment preview shader - swaps out the shader to make the MVFS appear like the equipment previews
-* Allows the removal of crew portraits
-  * Ported from the No Crew Portraits mod
-  * Allows the portraits at Enceladus and in OMS to be toggled independently of each other
-  * Disabled by default 
-* Adds empty cradle equipment for 50k E$
-  * **Requires HevLib to be installed to function**
-  * Parity fix for [issue #5133](https://git.kodera.pl/games/delta-v/-/issues/5133)
-* Flips the Voyager 180 degrees in OCP holds (Defaults to enabled)
-  * Ported from the OCP Voyager Fix mod
-* Removes the 200 m/s velocity limit (Defaults to enabled)
-  * Ported from the Remove Ring Restrictions mod
-* Removes the automatic return to Enceladus by exiting the ring (negative depth) (Defaults to enabled)
-  * Ported from the Remove Ring Restrictions mod
-* Removes the automatic return to Enceladus by entering the Encke Gap (3005km) (Defaults to enabled)
-  * Ported from the Remove Ring Restrictions mod
-* Variates the time of broadcast-like astrogation targets (Defaults to enabled)
-  * **Requires HevLib to be installed to function**
-  * Ported from the RingActivity mod
-  * Broadcast-like astro targets include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
-* Allows the fixing of gimballed and turreted equipment in place (Defaults to disabled)
-* Hud can be quickly hidden from view with a keybind
-  * Ported from the HUD Hider mod
-  * Defaults to F6
-* Repair menu now only displays equipment not at 100%.
-  * Enabled by default
-  * Parity fix for [issue #5241](https://git.kodera.pl/games/delta-v/-/issues/5241)
-* Added tooltips to repair and dealership menus to help explain disabled buttons
-  * Enabled by default
-  * Parity fix for [issue #5284](https://git.kodera.pl/games/delta-v/-/issues/5284)
-* Depth meter now displays distance from the rings as negative depth
-  * Enabled by default
-* Added game date & time and dive time in OMS
-  * Enabled by default
-  * Ported from the legacy DiveClock mod
-* Manipulator arms will prioritise an object selected with the autopilot, if any exists
-  * Enabled by default
-  * Parity fix for legacy ARMFocus mod, as it is currently broken
-* The geologist mineral marker and astrogator tactical marker limits have now been multiplied by 5x (now 1000 and 250, respectively)  
-  * Both default to enabled
-  * Ported from the legacy rmIdLim mod
-* Allowed achievements and stats to be earned while playing with mods
-  * Enabled by default
-  * Ported from the AchieveDeez mod
-* Allowed achievements and stats to be earned while playing on cheated saves
-  * Disabled by default
-  * Ported from the AcheetaDeez mod
-* MPUs can now be toggled on and off with a keybind
-  * Defaults to 'M'
-  * Ported from the M is for MPU and ZKY mods
