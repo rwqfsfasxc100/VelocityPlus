@@ -49,3 +49,9 @@ func achive(what)->void :
 			emit_signal("achivedOffline", what)
 			if not CurrentGame.isDemo():
 				emit_signal("achived", what)
+
+func updateLeaderboard(board: String, value: int):
+	CurrentGame.checkGameState()
+	if enable_achievements and not cheetah:
+		if not callIfCan("updateLeaderboard", [board, value]):
+			Debug.l("No leadarboards for %s: %f" % [board, value])
