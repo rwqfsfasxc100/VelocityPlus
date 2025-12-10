@@ -27,7 +27,6 @@ func _init(modLoader = ModLoader):
 	var ConfigDriver = load("res://HevLib/pointers/ConfigDriver.gd")
 	config = ConfigDriver.__get_config("VelocityPlus")
 	
-	
 	installScriptExtension("enceladus/Upgrades.gd")
 	
 	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
@@ -145,6 +144,9 @@ func _ready():
 	updateTL("i18n/en_30.txt", "|")
 	updateTL("i18n/en_1.txt", "|")
 	updateTL("i18n/en.txt", "|")
+	
+	installScriptExtension("enceladus/Repairs.gd")
+	replaceScene("enceladus/Repairs.tscn")
 	l("Ready")
 
 

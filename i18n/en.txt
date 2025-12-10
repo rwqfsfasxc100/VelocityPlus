@@ -181,3 +181,39 @@ VP_SCOOP_RETURN_DIALOGUE_EXTRAS_DESC|Adds the ability to request the NT Companio
 VP_PILOTS_DISABLE_ADRENALINE|Disable pilot's automatic adrenaline
 
 VP_PILOTS_DISABLE_ADRENALINE_DESC|Prevents the pilot from automatically engaging the adrenaline booster when you get close to objects.
+
+VP_AUTOREPAIRS|Auto Repairs
+
+VP_AUTOMATIC_REPAIRS_TOGGLE|Enable auto repairs
+
+VP_AUTOMATIC_REPAIRS_TOGGLE_DESC|Automatically repair the active ship based on the matching criteria.
+
+VP_AUTOREPAIR_PRIORITY|Auto repair priority mode
+
+VP_AUTOREPAIR_PRIORITY_DESC|The priority of how equipment should be repaired. \n\n * Cost effective - Repairs and replaces equipment to maximise profits based on matching criteria. \nMay not result in a pilotable ship. \n\n * Only repair - repair equipment based on matching criteria. Will never replace equipment. \n\n * Only replace - replace equipment based on matching criteria. Will only repair equipment. \n\n * Repair-replace - Repairs up to specific criteria, then replaces equipment.
+
+VP_AUTOREPAIR_PRIORITY_ONLYREPAIR|Only repair
+
+VP_AUTOREPAIR_PRIORITY_ONLYREPLACE|Only replace
+
+VP_AUTOREPAIR_PRIORITY_REPAIRREPLACE|Repair-replace
+
+VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE|Cost effective
+
+VP_AUTOREPAIR_MINIMUM_MONEY|Minimum money
+
+VP_AUTOREPAIR_MINIMUM_MONEY_DESC|The absolute minimum available cash available to perform auto repairs. \nSetting a minimum insurance value will override this handle.
+
+VP_AUTOREPAIR_MINIMUM_INSURANCE|Minimum insurance
+
+VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC|The minimum available insurance needed to perform auto repairs. \nHaving this set to zero will allow for money from your bank account to repair.
+
+VP_AUTOREPAIR_MAXIMUM_REPAIR|Maximum repair cost
+
+VP_AUTOREPAIR_MAXIMUM_REPAIR_DESC|The most that auto repair can spend in a single repair action.
+
+VP_AUTOREPAIR_MAXIMUM_REPLACE|Maximum replace cost
+
+VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC|The most that auto repair can spend to replace equipment.
+
+VP_AUTOREPAIRS_MENU_BUTTON|Auto Repairs

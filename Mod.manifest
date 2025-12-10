@@ -231,6 +231,62 @@ VP_INPUTS={
 		"default":[ "M" ]
 	},
 }
+VP_AUTOREPAIRS={
+	"automatic_repairs":{
+		"name":"VP_AUTOMATIC_REPAIRS_TOGGLE",
+		"description":"VP_AUTOMATIC_REPAIRS_TOGGLE_DESC",
+		"type":"bool",
+		"default":false
+	},
+	"method_priority":{
+		"name":"VP_AUTOREPAIR_PRIORITY",
+		"description":"VP_AUTOREPAIR_PRIORITY_DESC",
+		"type":"option_button",
+		"store_method":"string",
+		"options":["VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE","VP_AUTOREPAIR_PRIORITY_REPAIRREPLACE"],
+		"default":"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE"
+	},
+	"minimum_money":{
+		"name":"VP_AUTOREPAIR_MINIMUM_MONEY",
+		"description":"VP_AUTOREPAIR_MINIMUM_MONEY_DESC",
+		"type":"int",
+        "style":"slider",
+        "min":50000,
+        "max":5000000,
+        "step":50000,
+		"default":100000,
+	},
+	"minimum_insurance":{
+		"name":"VP_AUTOREPAIR_MINIMUM_INSURANCE",
+		"description":"VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC",
+		"type":"int",
+        "style":"slider",
+        "min":0,
+        "max":500000,
+        "step":25000,
+		"default":0,
+	},
+	"maximum_repair":{
+		"name":"VP_AUTOREPAIR_MAXIMUM_REPAIR",
+		"description":"VP_AUTOREPAIR_MAXIMUM_REPAIR_DESC",
+		"type":"int",
+        "style":"slider",
+        "min":500,
+        "max":500000,
+        "step":500,
+		"default":250000,
+	},
+	"maximum_replace":{
+		"name":"VP_AUTOREPAIR_MAXIMUM_REPLACE",
+		"description":"VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC",
+		"type":"int",
+        "style":"slider",
+        "min":0,
+        "max":5000000,
+        "step":20000,
+		"default":2500000,
+	},
+}
 
 [languages]
 
