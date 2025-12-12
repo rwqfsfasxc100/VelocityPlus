@@ -243,7 +243,7 @@ VP_AUTOREPAIRS={
 		"description":"VP_AUTOREPAIR_PRIORITY_DESC",
 		"type":"option_button",
 		"store_method":"string",
-		"options":["VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE","VP_AUTOREPAIR_PRIORITY_REPAIRREPLACE"],
+		"options":["VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE","VP_AUTOREPAIR_PRIORITY_MAXPROFIT"],
 		"default":"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE"
 	},
 	"minimum_money":{
@@ -285,6 +285,16 @@ VP_AUTOREPAIRS={
         "max":5000000,
         "step":20000,
 		"default":2500000,
+	},
+	"target_percent":{
+		"name":"VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE",
+		"description":"VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC",
+		"type":"int",
+        "style":"slider",
+        "min":50,
+        "max":100,
+        "step":1,
+		"default":70,
 	},
 }
 

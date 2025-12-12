@@ -190,15 +190,15 @@ VP_AUTOMATIC_REPAIRS_TOGGLE_DESC|Automatically repair the active ship based on t
 
 VP_AUTOREPAIR_PRIORITY|Auto repair priority mode
 
-VP_AUTOREPAIR_PRIORITY_DESC|The priority of how equipment should be repaired. \n\n * Cost effective - Repairs and replaces equipment to maximise profits based on matching criteria. \nMay not result in a pilotable ship. \n\n * Only repair - repair equipment based on matching criteria. Will never replace equipment. \n\n * Only replace - replace equipment based on matching criteria. Will only repair equipment. \n\n * Repair-replace - Repairs up to specific criteria, then replaces equipment.
+VP_AUTOREPAIR_PRIORITY_DESC|The priority of how equipment should be repaired. \n\n * Cost effective - Repairs and replaces equipment to most efficiently spend money based on matching criteria. \nMay not result in a pilotable ship. \n\n * Only repair - repair equipment based on matching criteria. Will never replace equipment. \n\n * Only replace - replace equipment based on matching criteria. Will only repair equipment. \n\n * Maximise profit - Repairs and replaces to maximize the money able to be earned from a ship, based on specific criteria. \nMay not result in a pilotable ship.
 
 VP_AUTOREPAIR_PRIORITY_ONLYREPAIR|Only repair
 
 VP_AUTOREPAIR_PRIORITY_ONLYREPLACE|Only replace
 
-VP_AUTOREPAIR_PRIORITY_REPAIRREPLACE|Repair-replace
-
 VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE|Cost effective
+
+VP_AUTOREPAIR_PRIORITY_MAXPROFIT|Maximise profit
 
 VP_AUTOREPAIR_MINIMUM_MONEY|Minimum money
 
@@ -217,3 +217,7 @@ VP_AUTOREPAIR_MAXIMUM_REPLACE|Maximum replace cost
 VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC|The most that auto repair can spend to replace equipment.
 
 VP_AUTOREPAIRS_MENU_BUTTON|Auto Repairs
+
+VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE|Target repair percentage
+
+VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC|The repair percentage that auto repair will aim to achieve based on matching criteria. May go over this amount if the last repair performed crosses the threshold. \nCost effective priority mode will replace equipment if it is more cost effective than achieving this target.
