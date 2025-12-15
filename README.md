@@ -5,6 +5,8 @@ A collection of small QOL changes and additions.
 > HevLib may be required for some features to function.
 > A download can be found from it's [releases page](https://github.com/rwqfsfasxc100/HevLib/releases/latest)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M01L6LMF)
+
 ## Features:
  * Show mineral market worth - displays the total value of your ore in the mineral market.
  * Add empty cradle equipment - Adds empty cradles to side hardpoints.
