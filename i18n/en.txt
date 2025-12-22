@@ -202,7 +202,7 @@ VP_AUTOREPAIR_PRIORITY_MAXPROFIT|Maximise profit
 
 VP_AUTOREPAIR_MINIMUM_MONEY|Minimum money
 
-VP_AUTOREPAIR_MINIMUM_MONEY_DESC|The absolute minimum available cash available to perform auto repairs. \nSetting a minimum insurance value will override this handle.
+VP_AUTOREPAIR_MINIMUM_MONEY_DESC|The absolute minimum available cash available to perform auto repairs. \nInsurance is included within the calculation. \nSetting a minimum insurance value will prevent cash from being used in any auto repair operation.
 
 VP_AUTOREPAIR_MINIMUM_INSURANCE|Minimum insurance
 

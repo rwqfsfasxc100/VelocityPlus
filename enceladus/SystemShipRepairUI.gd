@@ -8,3 +8,4 @@ func updateStatuses():
 		visible = false
 	else:
 		visible = true
+	
