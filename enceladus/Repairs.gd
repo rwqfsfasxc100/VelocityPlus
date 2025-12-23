@@ -76,8 +76,9 @@ func createRepairMenuFor(ship):
 					wait(10)
 
 func wait(frames):
-	for i in range(frames):
+	while frames > 0:
 		yield(get_tree(),"idle_frame")
+		frames -= 1
 
 func replaceIfCan(b,ship):
 	if b.isReplaceable(b.system):
