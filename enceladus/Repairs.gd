@@ -73,7 +73,7 @@ func createRepairMenuFor(ship):
 							retry = handle_operation(b,target,currentCash,mustTarget,ship)
 					else:
 						retry = false
-					wait(10)
+					yield(wait(10),"completed")
 
 func wait(frames):
 	while frames > 0:
