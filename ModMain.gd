@@ -32,17 +32,6 @@ func _init(modLoader = ModLoader):
 	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
 		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
 	
-	var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
-	match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
-		0:
-			pass
-		1:
-			replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
-		2:
-			replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
-		3:
-			replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
-	
 	if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
 		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
 	if config.get("VP_CREW",{}).get("hide_in_OMS",false):
@@ -72,7 +61,6 @@ func _init(modLoader = ModLoader):
 #	installScriptExtension("ships/MPU.gd")
 	
 	installScriptExtension("AchievementAbstract.gd")
-
 
 
 
@@ -118,8 +106,35 @@ var cradle_right = {
 
 func _ready():
 	l("Readying")
+	var version = CurrentGame.version.split(".")
+	var modern = false
+	if int(version[0]) >= 1:
+		if int(version[1]) >= 86:
+			modern = true
 	
-	
+	if modern:
+		
+		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
+		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
+			0:
+				pass
+			1:
+				replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
+			2:
+				replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
+			3:
+				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
+	else:
+		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
+		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
+			0:
+				pass
+			1:
+				replaceScene("enceladus/Simulator/background/SimulationLayer-old.tscn",simulator_path)
+			2:
+				replaceScene("enceladus/Simulator/nobackground/SimulationLayer-old.tscn",simulator_path)
+			3:
+				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer-old.tscn",simulator_path)
 	
 	if Directory.new().file_exists("res://HevLib/ModMain.gd"):
 		if config.get("VP_ENCELADUS",{}).get("add_empty_cradle_equipment",true): # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
