@@ -67,7 +67,7 @@ func createRepairMenuFor(ship):
 					available_cash = currentInsurance - min_insurance
 				else:
 					available_cash = (currentCash + currentInsurance) - min_cash
-				handle_operation(b,target,available_cash,mustTarget,ship,shouldOnlyMode)
+				handle_operation(b,target,available_cash,mustTarget,ship,shouldOnlyMode,target)
 #					clear_next(b)
 #				yield(wait(1),"completed")
 #		for b in validSystems:
@@ -128,8 +128,8 @@ func handleFocuses(ship):
 		get_node("Autorepairs/PanelContainer/Buttons/Autorepairs").grab_focus()
 	return focused
 
-func handle_operation(b,target,available_cash,mustTarget,ship,forceMode):
-	var action_list = appraise_for_cost_efficiency(b,mustTarget,forceMode)
+func handle_operation(b,target,available_cash,mustTarget,ship,forceMode,targetVal):
+	var action_list = appraise_for_cost_efficiency(b,mustTarget,forceMode,targetVal)
 	var max_repair = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_repair")
 	var max_replace = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_replace")
 	
@@ -186,7 +186,7 @@ func isValidForAuto(box) -> bool:
 
 
 
-func appraise_for_cost_efficiency(box,mustTarget,forcemode):
+func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 	var sys = box.system
 	var current = getSystemPrice(simulate_repair(sys,0),true)
 	var replace_value = box.system.ref.repairReplacementPrice
@@ -195,7 +195,7 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode):
 	if box.shouldBeFixed(sys):
 		var cycles = box.appriseRequiredRepairSteps()
 		if forcemode == 0:
-			action_list = cost_effective_action_list(box,cycles)
+			action_list = cost_effective_action_list(box,cycles,targetVal)
 		
 		
 		if mustTarget:
@@ -227,7 +227,7 @@ func repairs_needed_to_target(box):
 	
 	return repairs
 
-func cost_effective_action_list(box,cycles):
+func cost_effective_action_list(box,cycles,targetVal):
 	
 	var opts = {}
 	
@@ -241,6 +241,8 @@ func cost_effective_action_list(box,cycles):
 	for specific_cycle in range(cycles):
 		var previous_cost = (specific_cycle * fix_price) + fix_price
 		var c = specific_cycle + 1
+		if system.status >= targetVal:
+			break
 		var repair = getSystemPrice(simulate_repair(system,c),true)
 		
 		var repair_gain = repair - previous_cost
