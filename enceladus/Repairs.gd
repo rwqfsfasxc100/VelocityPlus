@@ -237,20 +237,21 @@ func cost_effective_action_list(box,cycles,targetVal):
 	var current = getSystemPrice(simulate_repair(system,0),true)
 	var replace_value = ref.repairReplacementPrice
 	var replaceCost = (replace_value - current)
-	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost}})
+	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost,"status":system.status}})
 	for specific_cycle in range(cycles):
 		var previous_cost = (specific_cycle * fix_price) + fix_price
 		var c = specific_cycle + 1
-		if system.status >= targetVal:
+		if simulate_repair(system,specific_cycle).status >= targetVal:
 			break
-		var repair = getSystemPrice(simulate_repair(system,c),true)
+		var rv = simulate_repair(system,c)
+		var repair = getSystemPrice(rv,true)
 		
 		var repair_gain = repair - previous_cost
 		
 		var replace_cost = replace_value - repair_gain
 		var replace_gain = repair_gain - (replace_cost + previous_cost)
 		
-		opts.merge({c:{"repair":repair_gain,"replace":replace_gain,"replace_cost":replace_cost}})
+		opts.merge({c:{"repair":repair_gain,"replace":replace_gain,"replace_cost":replace_cost,"status":rv.status}})
 		
 	
 	var best_value = 0
