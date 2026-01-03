@@ -45,20 +45,27 @@ func _visibility_changed():
 			"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
 				mode_button.selected = 3
 		yield(get_tree(),"idle_frame")
-		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_money"],minmoney,"PanelContainer/VBoxContainer/VBoxContainer/MinMoney/Val")
-		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_insurance"],mininsurance,"PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/Val")
-		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_repair"],maxrepair,"PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/Val")
-		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_replace"],maxreplace,"PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/Val")
-		set_slider_val(config["VP_AUTOREPAIRS"]["target_percent"],target,"PanelContainer/VBoxContainer/VBoxContainer/Target/Val")
+		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_money"],minmoney,"PanelContainer/VBoxContainer/VBoxContainer/MinMoney/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_insurance"],mininsurance,"PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_repair"],maxrepair,"PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_replace"],maxreplace,"PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["target_percent"],target,"PanelContainer/VBoxContainer/VBoxContainer/Target/Val",true)
 
+var code_changed = []
 
-func set_slider_val(val,s,v):
+func set_slider_val(val,s,v,code = false):
+	if code:
+		code_changed.append(s)
 	s.value = val
 	get_node(v).text = str(val)
+	yield(get_tree(),"idle_frame")
+	if code:
+		code_changed.erase(s)
 
 func save_slider_val(val,s,opt,v):
-	ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS",opt,val)
-	get_node(v).text = str(val)
+	if not s in code_changed:
+		ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS",opt,val)
+		get_node(v).text = str(val)
 
 var lastFocus = null
 func refocus():
