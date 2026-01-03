@@ -27,6 +27,7 @@ func _ready():
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_ONLYREPAIR",1)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_ONLYREPLACE",2)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_MAXPROFIT",3)
+	
 
 func _visibility_changed():
 	if is_visible_in_tree():
@@ -43,7 +44,7 @@ func _visibility_changed():
 				mode_button.selected = 2
 			"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
 				mode_button.selected = 3
-		
+		yield(get_tree(),"idle_frame")
 		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_money"],minmoney,"PanelContainer/VBoxContainer/VBoxContainer/MinMoney/Val")
 		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_insurance"],mininsurance,"PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/Val")
 		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_repair"],maxrepair,"PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/Val")
@@ -56,8 +57,8 @@ func set_slider_val(val,s,v):
 	get_node(v).text = str(val)
 
 func save_slider_val(val,s,opt,v):
-	get_node(v).text = str(val)
 	ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS",opt,val)
+	get_node(v).text = str(val)
 
 var lastFocus = null
 func refocus():
