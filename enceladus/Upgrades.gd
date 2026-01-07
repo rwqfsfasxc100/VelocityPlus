@@ -138,6 +138,9 @@ func _process(delta):
 				txt = txt + "\n%s: %s %s" % [name, _showReliability_formatFloat(n.get(p.name) * factor), units]
 		if enabled:
 			mtbf_label.text = txt
+			mtbf_label.visible = true
+		else:
+			mtbf_label.visible = false
 func _showReliability_formatFloat(f):
 	# Format without unneeded decimals
 	var s = "%f" % f

@@ -18,6 +18,7 @@ margin_top = 0.0
 margin_bottom = 2.0
 
 [node name="Autorepairs" type="Control" parent="." index="3"]
+visible = false
 margin_left = 16.0
 margin_top = 2.0
 margin_right = 1079.0
