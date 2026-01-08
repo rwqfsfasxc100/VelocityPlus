@@ -124,7 +124,7 @@ VP_DISPLAY_NEGATIVE_DEPTH_DESC|Distance from the rings is displayed as negative 
 
 VP_SHOW_DIVE_TIME|Display dive time
 
-VP_SHOW_DIVE_TIME_DESC|Adds a clock withinin the mechanic tab in OMS, containing the current date and time, as well as a timer for the active time in a dive.
+VP_SHOW_DIVE_TIME_DESC|Adds a timer for the active pilot time in a dive next to the current date and time in OMS.
 
 VP_SHOW_EQUIPMENT_RELIABILITY|Show equipment reliability
 
@@ -223,3 +223,11 @@ VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE|Target repair percentage
 VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC|The repair percentage that auto repair will aim to achieve based on matching criteria. May go over this amount if the last repair performed crosses the threshold. \nCost effective priority mode will replace equipment if it is more cost effective than achieving this target. \nIgnored by only replace and max profit modes.
 
 VP_DIVE_CLOCK_DISPLAY|In dive: %dh %02dm %02ds
+
+VP_CURRENT_CASH|Current: 
+
+VP_CASH_AT_ENCELADUS|Shipped to Enceladus: 
+
+VP_SHOW_SHIPPED_CARGO_VALUE|Show shipped cargo value
+
+VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of any ores successfully sent to Enceladus through cargo containers or wingmen.

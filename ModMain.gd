@@ -61,6 +61,8 @@ func _init(modLoader = ModLoader):
 #	installScriptExtension("ships/MPU.gd")
 	
 	installScriptExtension("AchievementAbstract.gd")
+	
+	replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
 
 
 

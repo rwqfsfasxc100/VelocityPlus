@@ -216,6 +216,12 @@ VP_RING={
 		"type":"bool",
 		"default":true
 	},
+	"show_shipped_cargo_value":{
+		"name":"VP_SHOW_SHIPPED_CARGO_VALUE",
+		"description":"VP_SHOW_SHIPPED_CARGO_VALUE_DESC",
+		"type":"bool",
+		"default":true
+	},
 }
 VP_INPUTS={
 	"velocityplus_toggle_hud":{
