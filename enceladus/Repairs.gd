@@ -219,7 +219,7 @@ func repairs_needed_to_target(box):
 	var r = 1
 	var system = simulate_repair(base_system,r)
 	while status < target and status < maxRepairs and r < 8:
-		status = system.status
+		status = simulate_status(system)
 		repairs += 1
 		
 		r += 1
@@ -234,16 +234,20 @@ func cost_effective_action_list(box,cycles,targetVal):
 	var system = box.system
 	var ref = system.ref
 	var fix_price = ref.repairFixPrice
-	var current = getSystemPrice(simulate_repair(system,0),true)
+	var rx = simulate_repair(system,0)
+	var init_status = simulate_status(rx)
+	var current = getSystemPrice(rx,true)
+	
 	var replace_value = ref.repairReplacementPrice
 	var replaceCost = (replace_value - current)
-	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost,"status":system.status}})
+	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost,"status":init_status}})
 	for specific_cycle in range(cycles):
 		var previous_cost = (specific_cycle * fix_price) + fix_price
 		var c = specific_cycle + 1
 		if simulate_repair(system,specific_cycle).status >= targetVal:
 			break
 		var rv = simulate_repair(system,c)
+		var sim_status = simulate_status(rv)
 		var repair = getSystemPrice(rv,true)
 		
 		var repair_gain = repair - previous_cost
@@ -251,7 +255,7 @@ func cost_effective_action_list(box,cycles,targetVal):
 		var replace_cost = replace_value - repair_gain
 		var replace_gain = repair_gain - (replace_cost + previous_cost)
 		
-		opts.merge({c:{"repair":repair_gain,"replace":replace_gain,"replace_cost":replace_cost,"status":rv.status}})
+		opts.merge({c:{"repair":repair_gain,"replace":replace_gain,"replace_cost":replace_cost,"status":sim_status}})
 		
 	
 	var best_value = 0
@@ -282,7 +286,15 @@ func cost_effective_action_list(box,cycles,targetVal):
 	return [repairs_to_perform,do_replace,replace_cost]
 
 
-
+func simulate_status(system):
+	var damage = system["damage"]
+	
+	var dmg1 = damage[0]["current"] / damage[0]["max"]
+	var dmg2 = damage[1]["current"] / damage[1]["max"]
+	var dmg3 = damage[2]["current"] / damage[2]["max"]
+	
+	var newstatus = clamp(100 - max(max(dmg1, dmg2), dmg3) * 100, 0, 100)
+	return newstatus
 
 
 #	if ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs"):
