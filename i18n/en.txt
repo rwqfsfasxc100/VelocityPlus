@@ -221,3 +221,5 @@ VP_AUTOREPAIRS_MENU_BUTTON|Auto Repairs
 VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE|Target repair percentage
 
 VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC|The repair percentage that auto repair will aim to achieve based on matching criteria. May go over this amount if the last repair performed crosses the threshold. \nCost effective priority mode will replace equipment if it is more cost effective than achieving this target. \nIgnored by only replace and max profit modes.
+
+VP_DIVE_CLOCK_DISPLAY|In dive: %dh %02dm %02ds

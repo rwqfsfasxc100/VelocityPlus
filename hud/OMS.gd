@@ -44,11 +44,10 @@ func _input(event):
 
 func _physics_process(delta):
 	if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS"):
-		var now = CurrentGame.getInGameTimestamp()
-		var text = CurrentGame.timeToString(now)
+		var text = ""
 		if _diveClockGame != null:
-			var timeInDive = int(now - _diveClockGame.diveStartTime)
-			text += "\nIn dive: %dh %02dm %02ds" % [
+			var timeInDive = int(ceil(_diveClockGame.realtimePlayed))
+			text += TranslationServer.translate("VP_DIVE_CLOCK_DISPLAY") % [
 				timeInDive / 3600,
 				timeInDive / 60 % 60,
 				timeInDive % 60,
