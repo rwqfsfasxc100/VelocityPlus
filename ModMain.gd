@@ -7,7 +7,7 @@ const MOD_PRIORITY = -1
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
 const MOD_VERSION_MINOR = 2
-const MOD_VERSION_BUGFIX = 6
+const MOD_VERSION_BUGFIX = 7
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
@@ -28,7 +28,7 @@ func _init(modLoader = ModLoader):
 	config = ConfigDriver.__get_config("VelocityPlus")
 	
 	installScriptExtension("enceladus/Upgrades.gd")
-	
+	installScriptExtension("CurrentGame.gd")
 	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
 		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
 	

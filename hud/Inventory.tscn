@@ -5,31 +5,54 @@
 [node name="Inventory" instance=ExtResource( 1 )]
 
 [node name="Insurance" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="1"]
-margin_right = 456.0
-
-[node name="Waiting_1" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="2"]
-margin_left = 460.0
-margin_right = 702.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-text = "VP_CASH_AT_ENCELADUS"
-align = 2
-
-[node name="MoneyWaiting" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="3"]
-margin_left = 706.0
 margin_right = 746.0
-margin_bottom = 19.0
-text = "0 E$"
 
-[node name="Waiting_2" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="4"]
+[node name="Waiting_2" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="2"]
 margin_left = 750.0
 margin_right = 900.0
 margin_bottom = 19.0
 text = "VP_CURRENT_CASH"
 
-[node name="Money" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="5"]
+[node name="Money" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2" index="3"]
 margin_left = 904.0
 size_flags_horizontal = 1
+
+[node name="VP_BOX" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer" index="1"]
+modulate = Color( 0.5, 4, 0.5, 1 )
+margin_top = 19.0
+margin_right = 944.0
+margin_bottom = 38.0
+size_flags_vertical = 0
+
+[node name="Waiting_0" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX" index="0"]
+margin_right = 130.0
+margin_bottom = 19.0
+text = "VP_SOLD_GOODS"
+align = 2
+
+[node name="SoldGoods" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX" index="1"]
+margin_left = 134.0
+margin_right = 174.0
+margin_bottom = 19.0
+text = "0 E$"
+
+[node name="Waiting_1" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX" index="2"]
+margin_left = 178.0
+margin_right = 900.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "VP_CASH_AT_ENCELADUS"
+align = 2
+
+[node name="MoneyWaiting" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX" index="3"]
+margin_left = 904.0
+margin_right = 944.0
+margin_bottom = 19.0
+text = "0 E$"
+
+[node name="HBoxContainer" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer" index="2"]
+margin_top = 38.0
+margin_bottom = 57.0
 
 [node name="RealTime" type="Label" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer" index="1"]
 modulate = Color( 0.5, 4, 0.5, 1 )
@@ -43,5 +66,14 @@ align = 2
 [node name="InGameTime" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer" index="2"]
 margin_left = 754.0
 size_flags_horizontal = 1
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer" index="3"]
+margin_top = 57.0
+
+[node name="PanelContainer" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/MarginContainer" index="0"]
+margin_bottom = 204.0
+
+[node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Comms/VBoxContainer/MarginContainer/PanelContainer" index="0"]
+margin_bottom = 195.0
 
 [editable path="MarginContainer/VBoxContainer/Comms/VBoxContainer/TutorialSticker"]

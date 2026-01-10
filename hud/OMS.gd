@@ -3,9 +3,11 @@ extends "res://hud/OMS.gd"
 onready var _diveClock = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer/RealTime")
 onready var _diveClockGame = get_tree().root.get_node_or_null("Game")
 
-onready var money_waiting_label = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2/MoneyWaiting")
-onready var money_waiting_label_1 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2/Waiting_1")
+onready var money_waiting_label = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/MoneyWaiting")
+onready var money_waiting_label_1 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_1")
 onready var money_waiting_label_2 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer2/Waiting_2")
+onready var soldGoods = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_0")
+onready var soldGoods_1 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods")
 
 var ship
 
@@ -13,6 +15,8 @@ var ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
 
 func _ready():
 	ship = get_parent().get_parent()
+	if ship == CurrentGame.getPlayerShip():
+		CurrentGame.sold_goods_on_this_dive = 0
 
 var money_format = "%s E$"
 
@@ -53,17 +57,23 @@ func _physics_process(delta):
 				money_waiting_label.visible = true
 				money_waiting_label_1.visible = true
 				money_waiting_label_2.visible = true
+				soldGoods.visible = true
+				soldGoods_1.visible = true
 				ship.configMutex.lock()
 				if "remoteCargo" in ship.shipConfig:
 					for mineral in ship.shipConfig.remoteCargo.keys():
 						value += CurrentGame.getMineralMarketPricePerKg(mineral) * ship.shipConfig.remoteCargo[mineral]
 				ship.configMutex.unlock()
 				var txt = money_format % CurrentGame.formatThousands(value)
-				money_waiting_label.text = str(txt) + " | "
-				
+				money_waiting_label.text = str(txt) #+ " | "
+				var soldVal = max(CurrentGame.sold_goods_on_this_dive,0)
+				var soldTex = money_format % CurrentGame.formatThousands(soldVal)
+				soldGoods_1.text = soldTex
 		else:
 			if money_waiting_label != null and money_waiting_label_1 != null and money_waiting_label_2 != null:
 				money_waiting_label.visible = false
 				money_waiting_label_1.visible = false
 				money_waiting_label_2.visible = false
+				soldGoods.visible = false
+				soldGoods_1.visible = false
 				

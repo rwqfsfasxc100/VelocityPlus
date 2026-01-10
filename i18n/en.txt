@@ -230,4 +230,6 @@ VP_CASH_AT_ENCELADUS|Shipped to Enceladus:
 
 VP_SHOW_SHIPPED_CARGO_VALUE|Show shipped cargo value
 
-VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of any ores successfully sent to Enceladus through cargo containers or wingmen.
+VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of all goods sold to entities in the ring, as well as any ores successfully sent to Enceladus through cargo containers or wingmen.
+
+VP_SOLD_GOODS|Sold goods: 
