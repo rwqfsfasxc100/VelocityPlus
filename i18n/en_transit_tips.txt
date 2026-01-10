@@ -1,0 +1,7 @@
+locale|en
+
+VP_TRANSIT_TIP_1|The THI Standalone Cradles can be used to collect any stray lifepods, drones or containers you may find without needing to spend extra for hardware fitted to the cradle first.
+
+VP_TRANSIT_TIP_2|Anything specific that frustrates you or you may want tweaking? Make a request for VelocityPlus and it may make it's way into a feature.
+
+VP_TRANSIT_TIP_3|Use Mod Menu 2 to change the numerous configs that VelocityPlus uses to curate your experience.

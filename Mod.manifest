@@ -18,6 +18,7 @@ version_bugfix=7
 TAG_ALLOW_ACHIEVEMENTS={"type":"bool","value":false}
 TAG_OVERHAUL={"type":"bool","value":true}
 TAG_QOL={"type":"bool","value":true}
+TAG_ADD_TRANSIT_TIPS={"type":"array","value":["VP_TRANSIT_TIP_1","VP_TRANSIT_TIP_2","VP_TRANSIT_TIP_3"]}
 
 [configs]
 

@@ -161,6 +161,7 @@ func _ready():
 	updateTL("i18n/en_30.txt", "|")
 	updateTL("i18n/en_1.txt", "|")
 	updateTL("i18n/en.txt", "|")
+	updateTL("i18n/en_transit_tips.txt", "|")
 	
 	installScriptExtension("enceladus/Repairs.gd")
 	replaceScene("enceladus/Repairs.tscn")
