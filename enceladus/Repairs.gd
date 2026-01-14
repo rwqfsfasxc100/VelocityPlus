@@ -7,7 +7,8 @@ var repairStepAmount = 0.5
 
 var printable_status = "VelocityPlus AutoRepair Operation status: [system: %s; status: %s; operation: %s]"
 var appraisal_status = "VelocityPlus AutoRepair Appraisal status: [system: %s; mode: %s; operation: %s]"
-var force_appraisal_status = "VelocityPlus AutoRepair Appraisal status: [system: %s; repairs: %s; decision: %s]"
+var force_appraisal_status = "VelocityPlus AutoRepair Appraisal status: [system: %s; repairs missing: %s; decision: %s]"
+var force_appraisal_decision = "VelocityPlus AutoRepair Appraisal status: [system: %s; operation: %s; decision: %s]"
 var multiappraisal_status = "VelocityPlus AutoRepair Appraisal status: [system: %s; repairs: %s; replace: %s; decision: %s]"
 
 
@@ -44,6 +45,7 @@ func createRepairMenuFor(ship):
 					mustTarget = true
 				"VP_AUTOREPAIR_PRIORITY_ONLYREPAIR":
 					mustTarget = true
+					shouldOnlyMode = 1
 				"VP_AUTOREPAIR_PRIORITY_ONLYREPLACE":
 					shouldOnlyMode = 2
 				"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
@@ -196,18 +198,53 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 		var cycles = box.appriseRequiredRepairSteps()
 		if forcemode == 0:
 			action_list = cost_effective_action_list(box,cycles,targetVal)
-		
-		
-		if mustTarget:
-			var force_repairs = repairs_needed_to_target(box)
-			if force_repairs > action_list[0]:
-				action_list[0] = force_repairs
-				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"force repair (target not met)"])
 		if forcemode == 2:
 			action_list = [0,true,replaceCost]
+		if mustTarget and not action_list[1]:
+			var force_repairs = repairs_needed_to_target(box)
+			if force_repairs > action_list[0]:
+				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target not met)"])
+				var l = find_most_effective_match(box,action_list,forcemode,replaceCost,force_repairs)
+				
+				action_list[0] += l[0]
+				action_list[1] = l[1] 
+				
+		
+		
 	
 	
 	return action_list
+
+func find_most_effective_match(box,current_actions,force_mode,replaceCost,target):
+	
+	if force_mode == 1:
+		return current_actions
+	if force_mode == 2:
+		return [0,true,replaceCost]
+	var sys = box.system
+	var fix_price = sys.ref.repairFixPrice
+	var add_actions = [0,false]
+	var replace_value = sys.ref.repairReplacementPrice
+	var finished = false
+	var operations = 0
+	for f in range(target - current_actions[0]):
+		if finished:
+			continue
+		var cycle = current_actions[0] + f
+		var rprice = getSystemPrice(simulate_repair(sys,current_actions[0] + f),true)
+		var replace_cost_after_repair = replace_value - rprice
+		var cost_of_all_fixes = (fix_price * (target - operations))
+		if cost_of_all_fixes < replace_cost_after_repair:
+			add_actions[0] += 1
+			Debug.l(force_appraisal_decision % [box.system.name,"repair", "fix price of %s cheaper than replace price of %s" % [fix_price,replace_cost_after_repair]])
+		else:
+			add_actions[1] = true
+			Debug.l(force_appraisal_decision % [box.system.name,"replace", "replace price of %s cheaper than fix price of %s [%s x%s]" % [replace_cost_after_repair,cost_of_all_fixes,fix_price,target - operations]])
+			finished = true
+		operations += 1
+	current_actions[0] += add_actions[0]
+	current_actions[1] = add_actions[1]
+	return current_actions
 
 func repairs_needed_to_target(box):
 	var repairs = 0
