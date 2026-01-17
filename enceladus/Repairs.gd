@@ -204,7 +204,7 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 			var force_repairs = repairs_needed_to_target(box)
 			if force_repairs > action_list[0]:
 				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target not met)"])
-				var l = find_most_effective_match(box,action_list,forcemode,replaceCost,force_repairs)
+				var l = find_most_effective_match(box,action_list.duplicate(true),forcemode,replaceCost,force_repairs)
 				
 				action_list[0] += l[0]
 				action_list[1] = l[1] 
