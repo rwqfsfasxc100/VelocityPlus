@@ -223,6 +223,26 @@ VP_RING={
 		"type":"bool",
 		"default":true
 	},
+	"show_transactions":{
+		"name":"VP_SHOW_TRANSACTIONS",
+		"description":"VP_SHOW_TRANSACTIONS_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"show_transactions_sold_goods":{
+		"name":"VP_SHOW_SOLD_GOODS",
+		"description":"VP_SHOW_SOLD_GOODS_DESC",
+		"type":"bool",
+		"default":true,
+		"requires_bools":["VelocityPlus/VP_RING/show_transactions"],
+	},
+	"show_transactions_bought_goods":{
+		"name":"VP_SHOW_BOUGHT_GOODS",
+		"description":"VP_SHOW_BOUGHT_GOODS_DESC",
+		"type":"bool",
+		"default":true,
+		"requires_bools":["VelocityPlus/VP_RING/show_transactions"],
+	},
 }
 VP_INPUTS={
 	"velocityplus_toggle_hud":{

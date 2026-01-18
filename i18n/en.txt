@@ -230,6 +230,18 @@ VP_CASH_AT_ENCELADUS|Shipped to Enceladus:
 
 VP_SHOW_SHIPPED_CARGO_VALUE|Show shipped cargo value
 
-VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of all goods sold to entities in the ring, as well as any ores successfully sent to Enceladus through cargo containers or wingmen.
+VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of all ores successfully sent to Enceladus through cargo containers or wingmen.
 
-VP_SOLD_GOODS|Sold goods: 
+VP_SOLD_GOODS|Transactions: 
+
+VP_SHOW_TRANSACTIONS|Show transactions
+
+VP_SHOW_TRANSACTIONS_DESC|Shows the net change to your balance from interactions in the rings.
+
+VP_SHOW_SOLD_GOODS|Show transaction net positives
+
+VP_SHOW_SOLD_GOODS_DESC|Shows the net positive portion of total ring transactions.
+
+VP_SHOW_BOUGHT_GOODS|Show transaction net negatives
+
+VP_SHOW_BOUGHT_GOODS_DESC|Shows the net negative portion of total ring transactions.
