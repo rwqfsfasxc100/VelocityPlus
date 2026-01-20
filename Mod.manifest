@@ -179,6 +179,12 @@ VP_SHIPS={
 		"type":"bool",
 		"default":true
 	},
+	"microwaves_melt_ore":{
+		"name":"VP_MIKES_MELT_ORE",
+		"description":"VP_MIKES_MELT_ORE_DESC",
+		"type":"bool",
+		"default":true
+	},
 }
 VP_RING={
 	"remove_max_speed_limit":{

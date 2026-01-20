@@ -245,3 +245,7 @@ VP_SHOW_SOLD_GOODS_DESC|Shows the net positive portion of total ring transaction
 VP_SHOW_BOUGHT_GOODS|Show transaction net negatives
 
 VP_SHOW_BOUGHT_GOODS_DESC|Shows the net negative portion of total ring transactions.
+
+VP_MIKES_MELT_ORE|Microwaves melt ore
+
+VP_MIKES_MELT_ORE_DESC|Allows for microwave emitters to melt the water content out of an ore chunk.

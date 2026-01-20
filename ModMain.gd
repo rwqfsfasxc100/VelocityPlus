@@ -53,6 +53,7 @@ func _init(modLoader = ModLoader):
 	
 #	installScriptExtension("ships/ship-ctrl-neg-depth.gd")
 	
+	installScriptExtension("weapons/emp.gd")
 	
 	installScriptExtension("hud/OMS.gd")
 	
@@ -63,9 +64,9 @@ func _init(modLoader = ModLoader):
 	installScriptExtension("AchievementAbstract.gd")
 	
 	replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
-
-
-
+	
+	
+	
 #	if config.get("VP_SHIPS",{})["disable_gimballed_weapons"]:
 #		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
 #	if config.get("VP_SHIPS",{})["disable_turrets_turning"]:
