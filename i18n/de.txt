@@ -1,0 +1,251 @@
+locale|en
+
+DKB_MARKET_VALUE|Total Market Value: 
+
+SYSTEM_CRADLE|THI Standalone Cradle
+
+SYSTEM_CRADLE_SPECS|Power usage (nominal): 20 MW\nCradle mass: 500 kg\nManufacturer: Titan Heavy Industries
+
+SYSTEM_CRADLE_DESC|A cheap, standalone cradle from the cargo container line of equipment produced by Titan Heavy Industries. Many captains may fail to see the use in entering the rings without anything attached to the cradle, however salvage crews may see benefit to having a readily accessible cradle to retrieve any lifepods or drones.
+
+SYSTEM_CRADLE_MANUAL|Empty cradle arm can catch drones and lifepods.
+
+
+VELOCITYPLUS_DESCRIPTION|Provides a large collection of togglable and tunable features. \n\nThe mod currently implements the following: \n\n * Show mineral market worth - displays the total value of your ore in the mineral market.\n * Add empty cradle equipment - Adds empty cradles to side hardpoints.\n * MVFS shader style - Allows the removal or swapping out of the shader used in the Minding Virtual Flight Service.\n * Hide portraits - Allows the crew portraits to be hidden wherever they may be visible outside of the crew menu.\n * Fix Voyager RSLS MPU in the OCP-209 - Flips the Voyager MPU in the OCP-209 to make it easier to fill.\n * Remove 200 m/s velocity limit - Removes the velocity limits set by the emergency autopilot.\n * Allow travel outside of the ring area - Lets you exit the normal play area (< 0km and > 3,006km depths).\n * Variate broadcasted location timers - Variates the times provided by other crews and personnel to make them feel more natural to being taken from their astrogation computer. Broadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.\n * Fix gimballed and turreted weapons in place - Prevents any equipment that can rotate from targeting, locking them to their 0 degree angle.\n * Hide undamaged equipment from repairs - Repair menu will only display equipment below 100%.\n * Add tooltips to Enceladus menus - Adds more tooltips to explain why you can or cannot do something.\n * Enable achievements - allows achievements and leadearboards to be earned with mods enabled.\n * Increase crew marker limits - Increases the number of tracked ores and transponders your crew can manage at once.\n * Manipulator arms lock on AP target - Having an object selected with the autopilot will have the AR-1500M target that above anything else.\n * Display negative depth - The HUD now displays distance from the rings as negative depth rather than blanking out.\n * Display dive time - Shows both realtime and total dive time in the mechanic tab.\n * Show equipment reliability - Displays equipment reliability information in the User Manual tab.\n * Toggle HUD & MPU - Adds keybinds to toggle the HUD's display or toggle the MPU's power.\n * Pilots reduce astrogation calculation time - Having a pilot onboard will help reduce the time it takes to calculate an astrogation jump. \n * Save stats - Display the stats of a save, including current money & insurance, and playtime.\n * Companion return behaviour - allow you to choose the default behaviour of companions when they run low on propellant, as well as extend the number of hail options once that happens.\n * Disable pilot's automatic adrenaline - prevent the pilot from activating adrenaline on a dive.\n
+
+VELOCITYPLUS_BRIEF|A quality of life feature mod with many configurable features.
+
+
+VP_ENCELADUS|Enceladus
+
+VP_CREW|Crew
+
+VP_SHIPS|Ships
+
+VP_RING|In-Ring
+
+VP_INPUTS|Inputs
+
+VP_MINERAL_MARKET|Show mineral market worth
+
+VP_MINERAL_MARKET_DESC|Adds an extra textbox displaying the value of your stake in the mineral market at that current moment
+
+VP_ADD_CRADLES|Add empty cradle equipment
+
+VP_ADD_CRADLES_DESC|Adds cradles without anything attached in the appropriate hardpoint menus
+
+VP_SIMULATION_SHADER|MVFS shader style
+
+VP_SIMULATION_SHADER_DESC|Modify the shader and/or background of the Minding Virtual Flight Service
+
+VP_MVFS_NONE|NONE
+
+VP_MVFS_SHADER|Remove HEX
+
+VP_MVFS_SHADER_AND_BACKGROUND|Remove HEX and BG
+
+VP_MVFS_LUMA_EDGE|Equipment preview shader
+
+VP_HIDE_CREW_EPRIME|Hide portraits on Enceladus Prime
+
+VP_HIDE_CREW_EPRIME_DESC|Removes the crew portraits from the Enceladus Prime menu. \n\nYou will need to check the crew tab to see who you have onboard
+
+VP_HIDE_CREW_OMS|Hide portraits in OMS
+
+VP_HIDE_CREW_OMS_DESC|Removes the crew portraits in OMS menus. \n\nYou may need to keep a mental track of crew to know where they are
+
+VP_OCP_VOYAGER|Fix Voyager RSLS MPU in the OCP-209
+
+VP_OCP_VOYAGER_DESC|Flips the Voyager 180 degrees to be more reliable at fitting ore chunks into it's mouth
+
+VP_REMOVE_SPEED_LIMIT|Remove 200 m/s velocity limit
+
+VP_REMOVE_SPEED_LIMIT_DESC|Unlocks the velocity limit to allow you to travel at any velocity.\n\nYou will need to resort to other methods to leave the rings
+
+VP_EXIT_LEFT|Allow travel past the ring's outer edge
+
+VP_EXIT_LEFT_DESC|Traveling past the left edge (into negative depth) will now no longer return you to Enceladus.\n\nYou will need to resort to other methods to leave the rings
+
+VP_EXIT_RIGHT|Allow travel into the Encke Gap
+
+VP_EXIT_RIGHT_DESC|Travelling into the Encke Gap (past 3005 km) will now no longer return you to Enceladus.\n\nYou will need to resort to other methods to leave the rings
+
+VP_VARIATED_BROADCASTS|Variate broadcasted location timers
+
+VP_VARIATED_BROADCASTS_DESC|Provides a range of time for which any broadcast-like astrogation target will be provided on to give the impression that the data is being provided as it was from the source's computer.\n\nBroadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
+
+VP_REMOVE_GIMBALS|Fix gimballed and turreted weapons in place
+
+VP_REMOVE_GIMBALS_DESC|Fixes gimballed weapons (e.g. CL-200AP and AEMD-14) and turrets (e.g. PDMWG, NDPT-4205) in place.
+
+VP_HIDE_UNDAMAGED_EQUIPMENT|Hide undamaged equipment from repairs
+
+VP_HIDE_UNDAMAGED_EQUIPMENT_DESC|Removes any equipment at 100% durability in the repairs menu, and makes repairs more streamlined
+
+DKB_DEALER_TRADE_IN_OK|Sells your selected ship to provide it's monetary value towards the ship purchase.
+
+DKB_DEALER_TRADE_IN_MAINT|This ship cannot be traded in due to it currently being under maintenance.
+
+DKB_CANNOT_REPAIR|This equipment is unable to be repaired.\nYour mechanic is not able to repair this anymore,\nor the replacement may be cheaper
+
+DKB_REPAIR_EQUIPMENT|Repair this equipment
+
+DKB_CANNOT_REPLACE|This equipment item cannot be replaced
+
+DKB_REPLACE_EQUIPMENT|Replace equipment
+
+VP_BETTER_TOOLTIPS|Add tooltips to Enceladus menus
+
+VP_BETTER_TOOLTIPS_DESC|Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help explain why they're disabled.
+
+VP_ENABLE_ACHIEVEMENTS|Enable achievements
+
+VP_ENABLE_ACHIEVEMENTS_DESC|Enables achievements while mods are enabled
+
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS|Achievements on cheated saves
+
+VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC|Allow achievements to be earned on cheated saves.\n\nRequires Enable Achievements to work.
+
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI|Geologist mineral marker limit multiplier
+
+VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC|Multiplies the number of geologist ore markers displayed around ore chunks by 5; from 200 to 1000
+
+VP_ASTROGATOR_TACTICAL_LIMIT_MULTI|Astrogator tactical marker limit multiplier
+
+VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC|Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; from 50 to 250
+
+VP_ARM_TARGET_TO_AP|Manipulator arms lock on AP target
+
+VP_ARM_TARGET_TO_AP_DESC|Makes all manipulator arms attempt to prioritize the object selected by the autopilot over all others.
+
+VP_DISPLAY_NEGATIVE_DEPTH|Display negative depth
+
+VP_DISPLAY_NEGATIVE_DEPTH_DESC|Distance from the rings is displayed as negative depth.
+
+VP_SHOW_DIVE_TIME|Display dive time
+
+VP_SHOW_DIVE_TIME_DESC|Adds a timer for the active pilot time in a dive next to the current date and time in OMS.
+
+VP_SHOW_EQUIPMENT_RELIABILITY|Show equipment reliability
+
+VP_SHOW_EQUIPMENT_RELIABILITY_DESC|Shows reliability data of equipment in the User Manual box in the equipment tab.
+
+VP_TOGGLE_HUD|Toggle HUD
+
+VP_TOGGLE_HUD_DESC|Toggles the visibility of all HUD elements, including autopilot overlays
+
+VP_TOGGLE_MPU|Toggle MPU
+
+VP_TOGGLE_MPU_DESC|Toggles the power to the MPU. Shortcut to pressing it's power button in OMS
+
+VP_PILOTS_REDUCE_ASTRO_CALC|Pilots reduce astrogation calculation time
+
+VP_PILOTS_REDUCE_ASTRO_CALC_DESC|Modifies the time it takes to calculate an astrogation maneuver based on the pilot's skill and/or experience.
+
+VP_MIN_ASTROGATION_TIME|Minimum astrogation calculation time
+
+VP_MIN_ASTROGATION_TIME_DESC|The minimum possible time that a pilot can take to perform an astrogation maneuver.
+
+VP_MAX_ASTROGATION_TIME|Maximum astrogation calculation time
+
+VP_MAX_ASTROGATION_TIME_DESC|The base time it takes for an astrogation maneuver to be performed by the computer w/o a pilot.
+
+VP_PILOT_SKILL_BIAS|Pilot skill bias
+
+VP_PILOT_SKILL_BIAS_DESC|The bias used to determine the astrogation calculation time reduction. \nValues closer to 0.0 will favour education level. \nValues closer to 1.0 will favour experience level. \n0.5 uses average of experience and education equally. 
+
+VP_SAVE_INFO_BUTTON|Save Stats
+
+VP_SAVE_INFO_TEMPLATE|Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %s\nOwned ships: %s\nSeed: %s\nShip Playtime:\n%s\nEquipment Playtime:\n%s\nMiscelaneous Playtime:\n%s\n
+
+VP_MINUTES_INDICATOR|%s minutes
+
+VP_HOURS_INDICATOR|%s hours
+
+VP_SCOOP_RETURN_PROTOCOL|NT Companion end of run protocol
+
+VP_SCOOP_RETURN_PROTOCOL_DESC|The AI behaviour that NT Companions will default to when they're at the end of their run
+
+VP_RETURN_TO_ENCELADUS|Return to Enceladus Prime
+
+VP_RETURN_TO_CRADLE|Return to the cradle
+
+VP_HOLD_POSITION|Stop and hold in place
+
+VP_BIRDFEED|Birdfeed collected ore
+
+VP_SCOOP_RETURN_DIALOGUE_EXTRAS|Extend companion return behaviour options
+
+VP_SCOOP_RETURN_DIALOGUE_EXTRAS_DESC|Adds the ability to request the NT Companion to hold position once they run low on propellant.
+
+VP_PILOTS_DISABLE_ADRENALINE|Disable pilot's automatic adrenaline
+
+VP_PILOTS_DISABLE_ADRENALINE_DESC|Prevents the pilot from automatically engaging the adrenaline booster when you get close to objects.
+
+VP_AUTOREPAIRS|Auto Repairs
+
+VP_AUTOMATIC_REPAIRS_TOGGLE|Enable auto repairs
+
+VP_AUTOMATIC_REPAIRS_TOGGLE_DESC|Automatically repair the active ship based on the matching criteria.
+
+VP_AUTOREPAIR_PRIORITY|Auto repair priority mode
+
+VP_AUTOREPAIR_PRIORITY_DESC|The priority of how equipment should be repaired. \n\n * Cost effective - Repairs and replaces equipment to most efficiently spend money based on matching criteria. \nMay not result in a pilotable ship. \n\n * Only repair - repair equipment based on matching criteria. Will never replace equipment. \n\n * Only replace - replace equipment based on matching criteria. Will only repair equipment. \n\n * Maximise profit - Repairs and replaces to maximize the money able to be earned from a ship, based on specific criteria. \nMay not result in a pilotable ship.
+
+VP_AUTOREPAIR_PRIORITY_ONLYREPAIR|Only repair
+
+VP_AUTOREPAIR_PRIORITY_ONLYREPLACE|Only replace
+
+VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE|Cost effective
+
+VP_AUTOREPAIR_PRIORITY_MAXPROFIT|Maximise profit
+
+VP_AUTOREPAIR_MINIMUM_MONEY|Minimum money
+
+VP_AUTOREPAIR_MINIMUM_MONEY_DESC|The absolute minimum available cash available to perform auto repairs. \nInsurance is included within the calculation. \nSetting a minimum insurance value will prevent cash from being used in any auto repair operation.
+
+VP_AUTOREPAIR_MINIMUM_INSURANCE|Minimum insurance
+
+VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC|The minimum available insurance needed to perform auto repairs. \nHaving this set to zero will allow for money from your bank account to repair.
+
+VP_AUTOREPAIR_MAXIMUM_REPAIR|Maximum repair cost
+
+VP_AUTOREPAIR_MAXIMUM_REPAIR_DESC|The most that auto repair can spend in a single repair action.
+
+VP_AUTOREPAIR_MAXIMUM_REPLACE|Maximum replace cost
+
+VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC|The most that auto repair can spend to replace equipment.
+
+VP_AUTOREPAIRS_MENU_BUTTON|Auto Repairs
+
+VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE|Target repair percentage
+
+VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC|The repair percentage that auto repair will aim to achieve based on matching criteria. May go over this amount if the last repair performed crosses the threshold. \nCost effective priority mode will replace equipment if it is more cost effective than achieving this target. \nIgnored by only replace and max profit modes.
+
+VP_DIVE_CLOCK_DISPLAY|In dive: %dh %02dm %02ds
+
+VP_CURRENT_CASH|Current: 
+
+VP_CASH_AT_ENCELADUS|Shipped to Enceladus: 
+
+VP_SHOW_SHIPPED_CARGO_VALUE|Show shipped cargo value
+
+VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of all ores successfully sent to Enceladus through cargo containers or wingmen.
+
+VP_SOLD_GOODS|Transactions: 
+
+VP_SHOW_TRANSACTIONS|Show transactions
+
+VP_SHOW_TRANSACTIONS_DESC|Shows the net change to your balance from interactions in the rings.
+
+VP_SHOW_SOLD_GOODS|Show transaction net positives
+
+VP_SHOW_SOLD_GOODS_DESC|Shows the net positive portion of total ring transactions.
+
+VP_SHOW_BOUGHT_GOODS|Show transaction net negatives
+
+VP_SHOW_BOUGHT_GOODS_DESC|Shows the net negative portion of total ring transactions.
+
+VP_MIKES_MELT_ORE|Microwaves melt ore
+
+VP_MIKES_MELT_ORE_DESC|Allows for microwave emitters to melt the water content out of an ore chunk.
