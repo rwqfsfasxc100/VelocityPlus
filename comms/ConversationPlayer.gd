@@ -34,9 +34,9 @@ func _ready():
 		if randCheck == 0:
 			var stat = HevLib.__get_stat_data("stat:salvaged_ships")
 			if name.begins_with("DIALOG_SALVAGE_START_"):
-				if stat == 0:
+				if stat >= 0 and stat < 7:
 					self.name = "DIALOG_SALVAGE_START_NEW_" + name.split("DIALOG_SALVAGE_START_")[1]
-				if stat >= 1 and stat <= 5:
+				if stat >= 7 and stat < 15:
 					self.name = "DIALOG_SALVAGE_START_BEGINNER_" + name.split("DIALOG_SALVAGE_START_")[1]
 				if stat >= 35 and stat < 50:
 					self.name = "DIALOG_SALVAGE_START_EXPERIENCED_" + name.split("DIALOG_SALVAGE_START_")[1]
@@ -45,9 +45,9 @@ func _ready():
 			
 			if name.begins_with("DIALOG_SALVAGE_BYE_"):
 			
-				if stat == 0:
+				if stat >= 0 and stat < 7:
 					self.name = "DIALOG_SALVAGE_BYE_NEW_" + name.split("DIALOG_SALVAGE_BYE_")[1]
-				if stat >= 1 and stat <= 5:
+				if stat >= 7 and stat < 15:
 					self.name = "DIALOG_SALVAGE_BYE_BEGINNER_" + name.split("DIALOG_SALVAGE_BYE_")[1]
 				if stat >= 35 and stat < 50:
 					self.name = "DIALOG_SALVAGE_BYE_EXPERIENCED_" + name.split("DIALOG_SALVAGE_BYE_")[1]

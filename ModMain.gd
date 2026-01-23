@@ -146,7 +146,6 @@ func _ready():
 #		var WebTranslate = load("res://HevLib/pointers/WebTranslate.gd")
 #		var fallback = [
 #			modPath + "i18n/en_ends.txt",
-#			modPath + "i18n/en_base.txt",
 #			modPath + "i18n/en_60.txt",
 #			modPath + "i18n/en_45.txt",
 #			modPath + "i18n/en_30.txt",
@@ -156,7 +155,6 @@ func _ready():
 #		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
 #	else:
 	updateTL("i18n/en_ends.txt", "|")
-	updateTL("i18n/en_base.txt", "|")
 	updateTL("i18n/en_60.txt", "|")
 	updateTL("i18n/en_45.txt", "|")
 	updateTL("i18n/en_30.txt", "|")
