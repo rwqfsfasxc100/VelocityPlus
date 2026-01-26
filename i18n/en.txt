@@ -249,3 +249,13 @@ VP_SHOW_BOUGHT_GOODS_DESC|Shows the net negative portion of total ring transacti
 VP_MIKES_MELT_ORE|Microwaves melt ore
 
 VP_MIKES_MELT_ORE_DESC|Allows for microwave emitters to melt the water content out of an ore chunk.
+
+VP_TOGGLE_SYSTEMS_AT_ENCELADUS|Toggle ship systems at Enceladus
+
+VP_TOGGLE_SYSTEMS_AT_ENCELADUS_DESC|Adds a tab to Enceladus Prime's equipment menu that lets you selectively toggle which systems are active upon entry to the rings. \n\nDamage or loss to ship and/or it's systems due to automatic disabling are not covered by any warranties.
+
+VP_REMEMBER_TOGGLED_SYSTEMS|Remember systems toggled in OMS
+
+VP_REMEMBER_TOGGLED_SYSTEMS_DESC|Whether to have the ship automatically remember the equipment you disabled on your dive. Make sure to double check this at Enceladus to prevent loss of ship or systems.
+
+VP_ENABLED_SYSTEMS|System Toggles

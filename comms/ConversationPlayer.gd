@@ -13,12 +13,12 @@ func _ready():
 			poiTimeHours = random
 			if random >= 1 and random < 16:
 				self.name = "DIALOG_SALVAGE_EXPOSE_FAST_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
-			if random >=30 and random < 45:
-				self.name = "DIALOG_SALVAGE_EXPOSE_DELAYED_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
-			if random >= 45 and random < 60:
-				self.name = "DIALOG_SALVAGE_EXPOSE_SLOW_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
-			if random >= 60 and random <= 80:
-				self.name = "DIALOG_SALVAGE_EXPOSE_OLD_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
+#			if random >=30 and random < 45:
+#				self.name = "DIALOG_SALVAGE_EXPOSE_DELAYED_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
+#			if random >= 45 and random < 60:
+#				self.name = "DIALOG_SALVAGE_EXPOSE_SLOW_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
+#			if random >= 60 and random <= 80:
+#				self.name = "DIALOG_SALVAGE_EXPOSE_OLD_" + name.split("DIALOG_SALVAGE_EXPOSE_")[1]
 			
 		if name.begins_with("DIALOG_PIRATE_BUSINESS_DEAL"):
 			var random = RNG.randf_range(168,2592)

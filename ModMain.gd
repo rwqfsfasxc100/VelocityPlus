@@ -27,6 +27,12 @@ func _init(modLoader = ModLoader):
 	var ConfigDriver = load("res://HevLib/pointers/ConfigDriver.gd")
 	config = ConfigDriver.__get_config("VelocityPlus")
 	
+	if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
+		installScriptExtension("hud/SystemList.gd")
+		installScriptExtension("ships/ship_handle_system_toggles.gd")
+		installScriptExtension("enceladus/Tuning.gd")
+	
+	
 	installScriptExtension("enceladus/Upgrades.gd")
 	installScriptExtension("CurrentGame.gd")
 	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
@@ -80,6 +86,7 @@ func _init(modLoader = ModLoader):
 	installScriptExtension("hud/Leaving Rings.gd")
 	installScriptExtension("weapons/PDT.gd")
 	
+#	installScriptExtension("Shipyard.gd")
 	
 	replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 	

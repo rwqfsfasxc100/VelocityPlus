@@ -46,7 +46,7 @@ DIALOG_SALVAGE_EXPOSE_OLD_KITSUNE_2|Polar telescope array caught a slowly tumbli
 
 DIALOG_SALVAGE_EXPOSE_OLD_KITSUNE_3|We got an ND-LIS Kitsune, pinging as {random/ship/1/shipname}, parked sideways on a chunk of ice like its pilot tried to land in zero-G and failed. No hull breaches, no real damage, just a shuttle sitting where it absolutely shouldn’t be. Probably some freelancer who thought \"compact\" meant \"indestructible.\" If you want an easy salvage, this one’s a freebie.
 
-DIALOG_SALVAGE_EXPOSE_OLD_OCP_1|We got a sighting of an OCP 209, pinging as {random/ship/1/shipname}, parked in a mid-density ice field like someone was building something and then walked away. Hull’s intact, manipulators are still attached. If you want a ship that can carry half the station with it, get in before someone else claims the parts.
+DIALOG_SALVAGE_EXPOSE_OLD_OCP_1|We got a sighting of an OCP 209, pinging as {random/ship/1/shipname}, parked in a high-density ice field right next to a moonlet. Hull’s intact, manipulators are still attached, but looks like someone had the smart idea to try and fly the moonlet back to Enceladus, and didn't even make it out of the rings before running out of propellant. If you want to clean up the mess of one of the Pope's disciples, then it's all yours.
 
 DIALOG_SALVAGE_EXPOSE_OLD_OCP_2|Heads up, wreck chasers - an entire orbital construction platform just turned up in long-range scans. OCP 209, designation {random/ship/1/shipname}, fully intact but completely silent. No distress calls, no crew response, just sitting dead in the rings.
 

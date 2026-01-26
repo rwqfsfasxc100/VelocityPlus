@@ -44,6 +44,7 @@ var prevent_adrenaline = false
 func _ready():
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
+#	handleSystemToggles()
 
 func modify():
 	var config = ConfigDriverVP.__get_config("VelocityPlus")
@@ -70,6 +71,8 @@ func modify():
 		trajectoryTime = clamp(modifier,minimum,maximum)
 	if config.get("VP_RING",{}).get("display_negative_depth",true):
 		show_neg_depth = true
+
+
 
 #func handleTrajectoryProgress(delta):
 #	var config = ConfigDriverVP.__get_config("VelocityPlus")

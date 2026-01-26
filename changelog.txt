@@ -1,0 +1,271 @@
+[1.3.0]
+
+1="* Added the ability to toggle ship systems while at Enceladus"
+1.1="* Lets you decide which equipment items are turned on or off when starting a dive"
+1.2="* Can be toggled through the tuning menu, and tested in the Minding Virtual Flight Service"
+1.3="* Be warned with cradled equipment, as they will eject their cargo immediately upon entering the rings. Especially be warned with external impact absorbers, as these are the only non-drone cradle equipment and cannot be hailed to return on their own"
+1.4="* Enabled by default"
+1.5="* Optionally can be set to remember the enabled and disabled equipment from previous dive."
+1.6="* Disabled by default due to causing undesirable results if you forget to re-enable systems from the previous dive."
+2="* Added custom SRO dialogue based on number of derelicts salvaged and randomly selected time left on the POI."
+2.1="* Under the variate broadcasted location timers toggle"
+2.2="* Entry and exit call dialogues:"
+2.2.1="* Uses 'newcomer' type entry and exit calls when you have salvaged 6 or fewer derelicts"
+2.2.2="* Uses 'beginner' type entry and exit calls when you have salvaged between 7 and 14 derelicts"
+2.2.3="* Uses vanilla entry and exit calls when you have salvaged between 15 and 34 derelicts"
+2.2.4="* Uses 'experienced' type entry and exit calls when you have salvaged between 35 and 49 derelicts"
+2.2.5="* Uses 'master' type entry and exit calls when you have salvaged 50 or more derelicts"
+2.3="* Variates derelict dialogue based on the time remaining for the derelict POI:"
+2.3.1="* If the time left is 15 hours or less, the call hints at it being quicker for someone else to find and salvage the derelict"
+3="* Added changelog.txt file"
+
+[1.2.10]
+
+1="* Added the ability to melt down the water content of ore chunks externally through any microwave weapon"
+
+[1.2.9]
+
+1="* Fixed auto repairs doubling the amount of repairs needed to be added to match when the efficiency prediction engine has determined the number of repairs needed is lower than what is required to match cost effective mode's target"
+2="* Changed sold goods display to show information regarding all transactions in the ring, including a label for net change as well as gain and spent values, and has been renamed to transactions"
+3="* Split functionality of the show shipped cargo value toggle."
+3.1="* This toggle now only controls the display showing the cargo safely shipped to Enceladus"
+4="* Added toggle to show or hide the transactions display"
+5="* Added toggle to show or hide the net positive transactions"
+6="* Added toggle to show or hide the net negative transactions"
+7="* Updated updateTL functionality for future use."
+
+[1.2.8]
+
+1="* Auto repair now can replace equipment to meet the repair target during cost effective repairs "
+1.1="* This is mostly going to affect RCS, due to some units having low cost effective percentages and high fix costs, but may see use elsewhere"
+
+[1.2.7]
+
+1="* Added a third line to the OMS info lines. The shipped cargo information is moved to this line alongside a new bit of information listing the amount earned from selling goods in the ring."
+2="* Added transit tips"
+3="* Updated minimum HevLib version to 1.10.12"
+
+[1.2.6]
+
+1="* Updated dive clock to move it next to the vanilla date & time display, and removed it's date and time now only showing the pilot time"
+2="* Added new shipped cargo to Enceladus display, showing the value of the cargo successfully shipped to Enceladus Prime through cargo containers and wingmen"
+
+[1.2.5]
+
+1="* Fixed Auto Repair equipment status evaluation sometimes being overridden and using the current damage, messing up repair calculations."
+1.1="* Repairs should now have damage status properly simulated for more accurate repairs"
+
+[1.2.4]
+
+1="* Fixed dive clock display the wrong time after astrogation"
+2="* Dive clock text now uses the translation server"
+3="* Increased minimum HevLib version to 1.10.10"
+
+[1.2.3]
+
+1="* Fixed MBTF display not updating and hiding text when selecting equipment without any usage data"
+2="* Removed Auto Repairs submenu button from the repairs menu."
+2.1="* This button and it's respective menu was plagued with issues that I was unable to fix."
+2.2="* Please use ModMenu2 to modify settings for Auto Repairs from now on."
+
+[1.2.2]
+
+1="* Autorepair submenu now no longer resets the slider's value"
+2="* cost effective mode once again respects the target repair value"
+3="* Updated autorepair logging to display equipment health percentage after x repairs"
+
+[1.2.1]
+
+1="* fixed issue with repair submenu sliders not setting their value correctly"
+
+[1.2.0]
+
+1="* Added Auto Repair"
+1.1="* Performs repairs based on several criteria"
+1.2="* Modes: "
+1.2.1="* Cost effective - performs the most cost effective operation to. Default mode."
+1.2.2="* Only repair - only performs repair operations to meet the desired repair status"
+1.2.3="* Only replace - automatically replaces all equipment"
+1.2.4="* Maximise profit - performs maintenance to procure the most cash from the derelict. Makes the ship worth the most in it's current form, and will not replace equipment to squeeze extra cash (green numbers when selling will indicate when it's effective to do so)"
+1.3="* Operators: "
+1.3.1="* Minimum money - The absolute minimum available cash available to perform auto repairs. Insurance is included within the calculation. Defaults to 100,000"
+1.3.2="* Minimum insurance - The minimum available insurance needed to perform auto repairs. Having this set to zero will allow for money from your bank account to repair. Defaults to 0"
+1.3.3="* Maximum repair cost - The most that auto repair can spend in a single repair action. Defaults to 250,000"
+1.3.4="* Maximum replace cost - The most that auto repair can spend to replace equipment. Defaults to 2,500,000"
+1.3.5="* Target repair percentage - The repair percentage that auto repair will aim to achieve based on matching criteria. May go over this amount if the last repair performed crosses the threshold. Cost effective priority mode will replace equipment if it is more cost effective than achieving this target. Ignored by only replace and max profit modes. Defaults to 70%"
+1.4="* For safety reasons, Auto Repair is performed only when opening the Repairs menu at Enceladus Prime."
+1.5="* Auto Repair is disabled by default (I know people don't read these so I would rather not get complaints by this being active upon updating)"
+2="* Minding Virtual Flight Service shader changes are now compatible with versions including the addition of the premium subscription."
+3="* HevLib checker script now works properly and can read MV2.2"
+
+[1.1.15]
+
+1="* Added ability to disable the pilot's automatic adrenaline. Adrenaline will still activate by default."
+
+[1.1.14]
+
+1="* Fixed issue with arm focus not respecting arms requesting a hard lock on their target, which included all cradled equipment"
+
+[1.1.13]
+
+1="* Fixed issue with language-specific numerical spacing for the mineral market total value display"
+
+[1.1.12]
+
+1="* Save Stats menu will now only process save data and cause a large slowdown when the menu is being created, rather than with the opening of the save options menu."
+2="* Improved efficiency of the pilot astro calc speed and negative depth modifications, even for cases with them disabled."
+
+[1.1.11]
+
+1="* Updated manifest to include a more complete credits"
+2="* Removed redundant MM1 menus, considering that it's been discontinued."
+3="* Added save stats panel, accessible from HevLib's save options menu."
+4="* Default NT companion behaviour after running out of propellant can now be chosen, with the options of "Return to Enceladus Prime", "Return to the cradle", or "Stop and hold in place""
+5="* Added the option to ask the cradle to hold position after it has stated it's running low on propellant"
+
+[1.1.10]
+
+1="* Pilots now affect the astrogation calculation speed through launching by experience."
+1.1="* Takes into account the pilot's education and experience, with a 30:70 bias between the two."
+1.2="* By default, the time will range from 10 seconds (vanilla default) and reduce all the way to 3 seconds with a top-of-the-line pilot."
+1.3="* All values can be tuned in the config"
+2="* You can once again use the mouse to use the MVFS button in the equipment menu again"
+3="* Fixed missing translations with SRO broadcasts"
+4="* Increased minimum HevLib version to 1.9.11"
+
+[1.1.9]
+
+1="* Fixed MTBF display causing a misshapen equipment simulator on some equipment, moving it to the user manual tab"
+2="* Upgraded to ManifestV2.2 "
+2.1="* This means that updates can now be checked again, this time using Mod Menu 2"
+2.2="* This upgrades the config system to use ModConfiguration.cfg, allowing it to be easily edited by Mod Menu 2. Note that this will invalidate existing configurations, meaning you'd need to set them up again"
+3="* Empty cradle toggle once again lets you disable the cradles from being added"
+4="* A majority of settings can now be changed on the fly, with only the following handful still requiring a restart to change: "
+4.1="* MVFS Shader Style"
+4.2="* Hide portraits on Enceladus Prime"
+4.3="* Hide portraits in OMS"
+4.4="* Fix Voyager RSLS MPU in the OCP-209"
+5="* Increased minimum HevLib requirement to 1.9.10"
+
+[1.1.8]
+
+1="* Fixed MPU toggle when using some modded MPUs"
+2="* "MPU toggle now works considerably more efficiently
+
+[1.1.7]
+
+1="* Fixed issue with the HUD and MPU toggles"
+2="* Increased minimum HevLib requirement to 1.7.2"
+
+[1.1.6]
+
+1="* Fixed the reliability info check crashing on any object using the PDT code, outside of vanilla gimballed weapons (AEMD-14 & CL-200AP)"
+
+[1.1.5]
+
+1="* Added reliability information on various equipment "
+1.1="* Parity fix for the legacy ShowReliabilty mod"
+1.2="* Enabled by default"
+1.3="* Made several improvements over the original mod: "
+1.3.1="* Damage stats for mass drivers, microwaves and lasers are now properly supported"
+1.3.2="* Stats will no longer show for cradles/arms without a damage model"
+1.3.3="* Stats now properly show up for gimballed/turreted equipment"
+2="* Updated checker script to look for HevLib 1.7.1"
+
+[1.1.4]
+
+1="* Added cradle positioning tags"
+2="* Will only take effect once HevLib updates."
+
+[1.1.3]
+
+1="* Fixed empty cradle resell prices not having been updated from the price drop"
+2="* Fixed left empty cradle folding weirdly when unpowered"
+
+[1.1.2]
+
+1="* Now uses HevLib WeaponSlotDriver tools"
+2="* Updated HevLib check to now look for v1.6.9 or newer"
+
+[1.1.1]
+
+1="* Added support for the new and improved EquipmentDriver handling from HevLib 1.6.8"
+
+[1.1.0]
+
+1="* Used new mod checker script to scan for a HevLib instance "
+1.1="* Now displays a popup and directs you to the download if it does not exist"
+2="* Depth meter now displays distance from the rings as negative depth "
+2.1="* Enabled by default"
+3="* Added game date & time and dive time in OMS "
+3.1="* Enabled by default"
+3.2="* Ported from the legacy DiveClock mod"
+4="* Manipulator arms will prioritise an object selected with the autopilot, if any exists "
+4.1="* Enabled by default"
+4.2="* Parity fix for legacy ARMFocus mod, as it is currently broken"
+5="* The geologist mineral marker and astrogator tactical marker limits have now been multiplied by 5x (now 1000 and 250, respectively) "
+5.1="* Both default to enabled"
+5.2="* Ported from the legacy rmIdLim mod"
+6="* Allowed achievements and stats to be earned while playing with mods "
+6.1="* Enabled by default"
+6.2="* Ported from the AchieveDeez mod"
+7="* Allowed achievements and stats to be earned while playing on cheated saves "
+7.1="* Disabled by default"
+7.2="* Ported from the AcheetaDeez mod"
+8="* MPUs can now be toggled on and off with a keybind "
+8.1="* Defaults to 'M'"
+8.2="* Ported from the M is for MPU and ZKY mods"
+9="* Renamed toggle_hud to velocityplus_toggle_hud in the config file"
+10="* Shortened mineral market total line due to wrapping causing undesired resizes with a value worth many millions"
+11="* Improved HevLib check to properly enforce installation"
+12="* Updated manifest to ManifestV2.1"
+
+[1.0.3]
+
+1="* Patched WebTranslate instance to work with HevLib 1.6.7 changes"
+2="* Updated the HevLib checker to now use a minimum version"
+
+[1.0.2]
+
+1="* Added tooltips to repair and dealership menus to help explain disabled buttons "
+1.1="* Enabled by default"
+1.2="* Parity fix for issue #5284"
+1.3="* May not display correctly in game versions prior to 1.74.23"
+
+[1.0.1]
+
+1="* Adjusted the price of empty cradles to be more accurate to other cradled equipment"
+2="* Repair menu now only displays equipment not at 100%. "
+2.1="* Enabled by default"
+2.2="* Parity fix for issue #5241"
+
+[1.0.0]
+
+1="* Adds a label containing the total value of ore stored in the mineral market (Defaults to enabled) "
+1.1="* Parity fix for issue #5033"
+2="* Adds the ability to adjust the shader style of the Minding Virtual Flight Service"
+2.1="* Ported from and expanded from the No Simulation Hex mod"
+2.2="* Remove HEX - disables the HEX shader overlay (Default)"
+2.3="* Remove HEX and BG - disables the HEX shader and replaces the background with a solid black base"
+2.4="* Equipment preview shader - swaps out the shader to make the MVFS appear like the equipment previews"
+3="* Allows the removal of crew portraits "
+3.1="* Ported from the No Crew Portraits mod"
+3.2="* Allows the portraits at Enceladus and in OMS to be toggled independently of each other"
+3.3="* Disabled by default"
+4="* Adds empty cradle equipment for 50k E$ "
+4.1="* Parity fix for issue #5133"
+5="* Flips the Voyager 180 degrees in OCP holds (Defaults to enabled) "
+5.1="* Ported from the OCP Voyager Fix mod"
+6="* Removes the 200 m/s velocity limit (Defaults to enabled) "
+6.1="* Ported from the Remove Ring Restrictions mod"
+7="* Removes the automatic return to Enceladus by exiting the ring (negative depth) (Defaults to enabled) "
+7.1="* Ported from the Remove Ring Restrictions mod"
+8="* Removes the automatic return to Enceladus by entering the Encke Gap (3005km) (Defaults to enabled) "
+8.1="* Ported from the Remove Ring Restrictions mod"
+9="* Variates the time of broadcast-like astrogation targets (Defaults to enabled) "
+9.1="* Ported from the RingActivity mod"
+9.2="* Broadcast-like astro targets include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations."
+10="* Allows the fixing of gimballed and turreted equipment in place (Defaults to disabled)"
+11="* Hud can be quickly hidden from view with a keybind "
+11.1="* Ported from the HUD Hider mod"
+11.2="* Defaults to F6"

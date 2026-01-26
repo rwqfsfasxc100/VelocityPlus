@@ -185,6 +185,19 @@ VP_SHIPS={
 		"type":"bool",
 		"default":true
 	},
+	"toggle_systems_at_enceladus":{
+		"name":"VP_TOGGLE_SYSTEMS_AT_ENCELADUS",
+		"description":"VP_TOGGLE_SYSTEMS_AT_ENCELADUS_DESC",
+		"type":"bool",
+		"default":true
+	},
+	"remember_toggled_systems":{
+		"name":"VP_REMEMBER_TOGGLED_SYSTEMS",
+		"description":"VP_REMEMBER_TOGGLED_SYSTEMS_DESC",
+		"type":"bool",
+		"default":false,
+		"requires_bools":["VelocityPlus/VP_SHIPS/toggle_systems_at_enceladus"],
+	},
 }
 VP_RING={
 	"remove_max_speed_limit":{

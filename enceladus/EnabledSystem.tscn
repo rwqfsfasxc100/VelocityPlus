@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://menu/MenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://VelocityPlus/enceladus/EnabledSystem.gd" type="Script" id=2]
+[ext_resource path="res://SmoothScrollTo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menu/sfx/PlaySoundsOnTheseButtons.tscn" type="PackedScene" id=5]
+
+[node name="EnabledSystem" type="VBoxContainer"]
+margin_right = 1160.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1160.0
+margin_bottom = 41.0
+grow_horizontal = 2
+
+[node name="Name" type="Button" parent="HBoxContainer"]
+margin_right = 1100.0
+margin_bottom = 41.0
+focus_mode = 1
+size_flags_horizontal = 3
+text = "SYSTEM_NAME"
+flat = true
+clip_text = true
+align = 0
+
+[node name="SmoothScrollTo" parent="HBoxContainer/Name" instance=ExtResource( 3 )]
+
+[node name="Value" type="CheckButton" parent="HBoxContainer"]
+margin_left = 1104.0
+margin_right = 1160.0
+margin_bottom = 41.0
+flat = true
+align = 2
+
+[node name="SmoothScrollTo" parent="HBoxContainer/Value" instance=ExtResource( 3 )]
+focusAt = NodePath("../../..")
+
+[node name="PlaySoundsOnTheseButtons" parent="HBoxContainer" instance=ExtResource( 5 )]
+
+[connection signal="toggled" from="HBoxContainer/Value" to="." method="changed"]
