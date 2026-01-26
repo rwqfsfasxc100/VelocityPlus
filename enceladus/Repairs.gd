@@ -69,7 +69,7 @@ func createRepairMenuFor(ship):
 					available_cash = currentInsurance - min_insurance
 				else:
 					available_cash = (currentCash + currentInsurance) - min_cash
-				handle_operation(b,target,available_cash,mustTarget,ship,shouldOnlyMode,target)
+				handle_operation(b,available_cash,mustTarget,ship,shouldOnlyMode,target)
 #					clear_next(b)
 #				yield(wait(1),"completed")
 #		for b in validSystems:
@@ -130,7 +130,7 @@ func handleFocuses(ship):
 		get_node("Autorepairs/PanelContainer/Buttons/Autorepairs").grab_focus()
 	return focused
 
-func handle_operation(b,target,available_cash,mustTarget,ship,forceMode,targetVal):
+func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal):
 	var action_list = appraise_for_cost_efficiency(b,mustTarget,forceMode,targetVal)
 	var max_repair = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_repair")
 	var max_replace = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_replace")
@@ -205,14 +205,8 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 			if force_repairs > action_list[0]:
 				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target not met)"])
 				var l = find_most_effective_match(box,action_list.duplicate(true),forcemode,replaceCost,force_repairs)
-				
 				action_list[0] += l[0]
 				action_list[1] = l[1] 
-				
-		
-		
-	
-	
 	return action_list
 
 func find_most_effective_match(box,current_actions,force_mode,replaceCost,target):
@@ -230,7 +224,6 @@ func find_most_effective_match(box,current_actions,force_mode,replaceCost,target
 	for f in range(target - current_actions[0]):
 		if finished:
 			continue
-		var cycle = current_actions[0] + f
 		var rprice = getSystemPrice(simulate_repair(sys,current_actions[0] + f),true)
 		var replace_cost_after_repair = replace_value - rprice
 		var cost_of_all_fixes = (fix_price * (target - operations))
