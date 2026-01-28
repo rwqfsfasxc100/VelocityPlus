@@ -70,35 +70,18 @@ func createRepairMenuFor(ship):
 				else:
 					available_cash = (currentCash + currentInsurance) - min_cash
 				handle_operation(b,available_cash,mustTarget,ship,shouldOnlyMode,target)
-#					clear_next(b)
-#				yield(wait(1),"completed")
-#		for b in validSystems:
-#			can_update(true,b)
-#			b.updateStatuses()
-
-func can_update(can,b):
-	if "allow_hide" in b:
-		b.allow_hide = can
-	clear_next(b)
-	b.set_process(can)
-	b.set_physics_process(can)
-	for i in b.get_children():
-		can_update(can,i)
-
-func clear_next(b):
-	if "next" in b and "tooltipLabel" in b and b.tooltipLabel:
-		b.next.clear()
-	for i in b.get_children():
-		clear_next(i)
-
-func wait(frames):
-	while frames > 0:
-#		yield(get_tree(),"idle_frame")
-		frames -= 1
 
 func replaceIfCan(b,ship):
 	if b.isReplaceable(b.system):
-		Debug.l(printable_status % [b.system.name,b.system.status,"replace"])
+		var sim = b.system.duplicate(true)
+		var s = simulate_repair(sim,1)
+		var stat = b.system.status
+		var status = simulate_status(s)
+		if stat < status:
+			stat = status
+		Tool.remove(s)
+		Tool.remove(sim)
+		Debug.l(printable_status % [b.system.name,stat,"replace"])
 		b.doReplaceSystem()
 #		yield(b,"fixed")
 		handleFocuses(ship)
@@ -108,7 +91,15 @@ func replaceIfCan(b,ship):
 
 func fixIfCan(b,ship):
 	if b.shouldBeFixed(b.system):
-		Debug.l(printable_status % [b.system.name,b.system.status,"fix"])
+		var sim = b.system.duplicate(true)
+		var s = simulate_repair(sim,1)
+		var stat = b.system.status
+		var status = simulate_status(s)
+		if stat < status:
+			stat = status
+		Tool.remove(s)
+		Tool.remove(sim)
+		Debug.l(printable_status % [b.system.name,stat,"fix"])
 		b.doFixSystem()
 #		yield(b,"fixed")
 		handleFocuses(ship)
@@ -118,8 +109,6 @@ func fixIfCan(b,ship):
 		return false
 
 func handleFocuses(ship):
-#	yield(get_tree(),"idle_frame")
-#	yield(ship,"systemPoll")
 	var focused = false
 	for b in systemsBox.get_children():
 		if b.visible:
@@ -206,7 +195,8 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target not met)"])
 				var l = find_most_effective_match(box,action_list.duplicate(true),forcemode,replaceCost,force_repairs)
 				action_list[0] += l[0]
-				action_list[1] = l[1] 
+				action_list[1] = l[1]
+	
 	return action_list
 
 func find_most_effective_match(box,current_actions,force_mode,replaceCost,target):
@@ -326,76 +316,6 @@ func simulate_status(system):
 	var newstatus = clamp(100 - max(max(dmg1, dmg2), dmg3) * 100, 0, 100)
 	return newstatus
 
-
-#	if ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs"):
-#		var mode = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","method_priority")
-#		for i in systemsBox.get_children():
-#			if i.has_method("isFubar"):
-#				handle_repair_key(mode,i)
-
-#func updateStatuses(ship):
-#	.updateStatuses(ship)
-	
-
-
-func handle_repair_key(mode,menu):
-	match mode:
-		"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE":
-			calculate_repairs(true,true,true,true,menu)
-		"VP_AUTOREPAIR_PRIORITY_ONLYREPAIR":
-			calculate_repairs(true,false,true,false,menu)
-		"VP_AUTOREPAIR_PRIORITY_ONLYREPLACE":
-			calculate_repairs(false,true,false,false,menu)
-		"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
-			calculate_repairs(true,true,false,true,menu)
-		
-
-func calculate_repairs(can_repair:bool,can_replace:bool,match_target:bool,cost_effective:bool,button):
-	var queue = {}
-	if can_repair:
-#		queue.merge()
-		perform_repair(button,cost_effective)
-	
-
-func repair_cycles(system,cost_effective:bool,cycles:int):
-	var ref = system.ref
-	if "repairReplacementPrice" in ref:
-		pass
-	else:
-		return {}
-	
-	if "repairFixPrice" in ref:
-		pass
-	else:
-		return {}
-	
-	var queue = {"repairs":0}
-	for i in range(cycles):
-		if cost_effective:
-			var do = is_repair_cost_effective(system,i)
-			if do:
-				queue.repairs += 1
-			else:
-				break
-	pass
-	
-	
-	
-	
-	return queue
-
-func perform_repair(button,cost_effective:bool):
-	if button.shouldBeFixed(button.system):
-		var cycles = button.appriseRequiredRepairSteps()
-		repair_cycles(button.system,cost_effective,cycles)
-	else:
-		return {}
-
-
-func perform_replace(button):
-	
-	pass
-
 func getSystemPrice(system,adjust = true):
 	var pf = pow(system.status / 100, 2)
 	var o = system.ref
@@ -408,8 +328,6 @@ func getSystemPrice(system,adjust = true):
 func simulate_repair(system,specific_cycle):
 	if specific_cycle == 0:
 		return system
-#	var ref2 = system.ref.duplicate(7)
-	
 	var after_repair = system.duplicate(true)
 	after_repair.damage.clear()
 	for d in system.damage:
@@ -436,82 +354,3 @@ func simulate_repair(system,specific_cycle):
 		var newstatus = clamp(100 - max(max(dmg1, dmg2), dmg3) * 100, 0, 100)
 		after_repair.status = newstatus
 	return after_repair
-
-func simulate_replace(system):
-	var after_repair = system.duplicate(true)
-	after_repair.damage.clear()
-	for d in system.damage:
-		var newdmg = d.duplicate(true)
-		var total = 0
-		newdmg.current = total
-		after_repair.damage.append(newdmg)
-	var current = 0
-	var dmg1 = 0.0
-	var dmg2 = 0.0
-	var dmg3 = 0.0
-	for d in after_repair.damage:
-		current += 1
-		var val = d.current / d.max
-		match current:
-			1:
-				dmg1 = val
-			2:
-				dmg2 = val
-			3:
-				dmg3 = val
-	
-	var newstatus = clamp(100 - max(max(dmg1, dmg2), dmg3) * 100, 0, 100)
-	after_repair.status = newstatus
-	return after_repair
-
-func is_repair_cost_effective(system,specific_cycle):
-	var ref = system.ref
-	var fix_price = ref.repairFixPrice
-	var offset = price_offset_after_repair(system,specific_cycle)
-	
-	return fix_price < offset
-
-func cost_effective_action(box,specific_cycle,total_cycles):
-	var system = box.system
-	var ref = system.ref
-	var fix_price = ref.repairFixPrice
-	var current = getSystemPrice(simulate_repair(system,specific_cycle),true)
-	var repair = getSystemPrice(simulate_repair(system,specific_cycle + 1),true)
-	var replace = getSystemPrice(simulate_replace(system),false)
-	
-	var repair_value_gained = repair - current
-	var replace_value_gained = replace - current
-	
-	var repairEffective = fix_price < repair_value_gained
-	var replaceEffective = replace_value_gained > current
-	
-	var mode = 0
-	if repairEffective:
-		mode = 1
-	if replaceEffective:
-		mode = 2
-	if repairEffective and replaceEffective:
-		if repair_value_gained > replace_value_gained:
-			mode = 1
-		else:
-			mode = 2
-	match mode:
-		0:
-			Debug.l(appraisal_status % [box.system.name,mode,"skip (all options lose money)"])
-		1:
-			Debug.l(appraisal_status % [box.system.name,mode,"repair (most cost effective)"])
-		2:
-			Debug.l(appraisal_status % [box.system.name,mode,"replace (most cost effective)"])
-	return mode
-
-func price_offset_after_repair(system,specific_cycle):
-	var current = getSystemPrice(simulate_repair(system,specific_cycle),true)
-	var sim = getSystemPrice(simulate_repair(system,specific_cycle + 1),true)
-	var difference = sim - current
-	return difference
-
-func price_offset_after_replace(system,specific_cycle):
-	var current = getSystemPrice(simulate_repair(system,specific_cycle),true)
-	var sim = getSystemPrice(simulate_replace(system),false)
-	var difference = sim - current
-	return difference
