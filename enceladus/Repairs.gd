@@ -71,10 +71,10 @@ func createRepairMenuFor(ship):
 					available_cash = (currentCash + currentInsurance) - min_cash
 				handle_operation(b,available_cash,mustTarget,ship,shouldOnlyMode,target)
 
-func replaceIfCan(b,ship):
+func replaceIfCan(b,ship,cycle = 0):
 	if b.isReplaceable(b.system):
 		var sim = b.system.duplicate(true)
-		var s = simulate_repair(sim,1)
+		var s = simulate_repair(sim,cycle + 1)
 		var stat = b.system.status
 		var status = simulate_status(s)
 		if stat < status:
@@ -89,10 +89,10 @@ func replaceIfCan(b,ship):
 		Debug.l(printable_status % [b.system.name,b.system.status,"skip (cannot replace)"])
 	return false
 
-func fixIfCan(b,ship):
+func fixIfCan(b,ship,cycle = 0):
 	if b.shouldBeFixed(b.system):
 		var sim = b.system.duplicate(true)
-		var s = simulate_repair(sim,1)
+		var s = simulate_repair(sim,cycle + 1)
 		var stat = b.system.status
 		var status = simulate_status(s)
 		if stat < status:
@@ -151,10 +151,10 @@ func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal):
 	
 	for i in range(affordable_repairs):
 		if fixPrice <= max_repair:
-			fixIfCan(b,ship)
+			fixIfCan(b,ship,i)
 	if replace:
 		if replaceCost <= max_replace:
-			replaceIfCan(b,ship)
+			replaceIfCan(b,ship,affordable_repairs - 1)
 	
 	
 	handleFocuses(ship)
@@ -192,10 +192,9 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 		if mustTarget and not action_list[1]:
 			var force_repairs = repairs_needed_to_target(box)
 			if force_repairs > action_list[0]:
-				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target not met)"])
+				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target of %s not met)" % force_repairs])
 				var l = find_most_effective_match(box,action_list.duplicate(true),forcemode,replaceCost,force_repairs)
-				action_list[0] += l[0]
-				action_list[1] = l[1]
+				action_list = l
 	
 	return action_list
 
@@ -219,7 +218,7 @@ func find_most_effective_match(box,current_actions,force_mode,replaceCost,target
 		var cost_of_all_fixes = (fix_price * (target - operations))
 		if cost_of_all_fixes < replace_cost_after_repair:
 			add_actions[0] += 1
-			Debug.l(force_appraisal_decision % [box.system.name,"repair", "fix price of %s cheaper than replace price of %s" % [fix_price,replace_cost_after_repair]])
+			Debug.l(force_appraisal_decision % [box.system.name,"repair", "fix price of %s [%s x%s] cheaper than replace price of %s" % [cost_of_all_fixes,fix_price,target,replace_cost_after_repair]])
 		else:
 			add_actions[1] = true
 			Debug.l(force_appraisal_decision % [box.system.name,"replace", "replace price of %s cheaper than fix price of %s [%s x%s]" % [replace_cost_after_repair,cost_of_all_fixes,fix_price,target - operations]])
@@ -260,7 +259,7 @@ func cost_effective_action_list(box,cycles,targetVal):
 	
 	var replace_value = ref.repairReplacementPrice
 	var replaceCost = (replace_value - current)
-	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost,"status":init_status}})
+	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost,"repair_cost":0,"status":init_status}})
 	for specific_cycle in range(cycles):
 		var previous_cost = (specific_cycle * fix_price) + fix_price
 		var c = specific_cycle + 1
@@ -275,7 +274,7 @@ func cost_effective_action_list(box,cycles,targetVal):
 		var replace_cost = replace_value - repair_gain
 		var replace_gain = repair_gain - (replace_cost + previous_cost)
 		
-		opts.merge({c:{"repair":repair_gain,"replace":replace_gain,"replace_cost":replace_cost,"status":sim_status}})
+		opts.merge({c:{"repair":repair_gain,"replace":replace_gain,"replace_cost":replace_cost,"repair_cost":previous_cost,"status":sim_status}})
 		
 	
 	var best_value = 0
