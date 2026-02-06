@@ -6,8 +6,8 @@ const MOD_PRIORITY = -1
 # Name of the mod, used for writing to the logs
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
-const MOD_VERSION_MINOR = 2
-const MOD_VERSION_BUGFIX = 10
+const MOD_VERSION_MINOR = 3
+const MOD_VERSION_BUGFIX = 0
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
