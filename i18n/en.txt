@@ -259,3 +259,7 @@ VP_REMEMBER_TOGGLED_SYSTEMS|Remember systems toggled in OMS
 VP_REMEMBER_TOGGLED_SYSTEMS_DESC|Whether to have the ship automatically remember the equipment you disabled on your dive. Make sure to double check this at Enceladus to prevent loss of ship or systems.
 
 VP_ENABLED_SYSTEMS|System Toggles
+
+VP_ASTROGATOR_TRACKING_TIME|Maximum astrogator tracking time
+
+VP_ASTROGATOR_TRACKING_TIME_DESC|Lets you determine the maximum tracking time of your astrogators, with the current time scaling to match.

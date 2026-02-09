@@ -145,6 +145,16 @@ VP_CREW={
 		"default":0.3,
 		"requires_bools":["VelocityPlus/VP_CREW/pilots_reduce_astro_calculations"],
 	},
+	"astrogation_tracking_time_modifier":{
+		"name":"VP_ASTROGATOR_TRACKING_TIME",
+		"description":"VP_ASTROGATOR_TRACKING_TIME_DESC",
+		"type":"int",
+        "style":"slider",
+        "min":45,
+        "max":360,
+        "step":15,
+		"default":90,
+	},
 }
 VP_SHIPS={
 	"fix_voyager_MPU_in_OCP":{

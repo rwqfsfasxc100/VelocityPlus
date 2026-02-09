@@ -25,3 +25,9 @@ func logEvent(type: String, details = {}):
 				var data = details["LOG_EVENT_DETAILS_DIALOG_EXPENSES"]
 				if data != 0.0:
 					this_dive_transactions_spent += abs(data)
+
+func deriveStats(stats):
+	var s = .deriveStats(stats)
+	var multi = VPCFG.__get_value("VelocityPlus","VP_CREW","astrogation_tracking_time_modifier")
+	stats.CREW_STATS_ASTROGATOR_TIME = max(12 * 3600, 24 * 3600 * (stats.CREW_OCCUPATION_ASTROGATOR.experience * 30 * 3 * (multi / 90)))
+	return s
