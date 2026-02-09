@@ -46,4 +46,4 @@ func _physics_process(delta):
 								p.mineralContent = mm / nm
 							p.fillerContent = 1 - p.mineralContent
 								
-							
+				Tool.release(hitpoint.collider)
