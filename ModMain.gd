@@ -38,11 +38,6 @@ func _init(modLoader = ModLoader):
 	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
 		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
 	
-	if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
-		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
-	if config.get("VP_CREW",{}).get("hide_in_OMS",false):
-		replaceScene("hud/OMS.tscn")
-	
 	
 	if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
 		replaceScene("ships/ocp-209.tscn")
@@ -68,6 +63,11 @@ func _init(modLoader = ModLoader):
 #	installScriptExtension("ships/MPU.gd")
 	
 	installScriptExtension("AchievementAbstract.gd")
+	
+	if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
+		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
+	if config.get("VP_CREW",{}).get("hide_in_OMS",false):
+		replaceScene("hud/OMS.tscn")
 	
 	replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
 	
