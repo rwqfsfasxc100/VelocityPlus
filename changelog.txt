@@ -1,3 +1,13 @@
+[1.3.2]
+
+1="* Enabling hide crew portraits in OMS no longer prevents the MPU or HUD toggle keybinds from working"
+2="* Updated missing changelogs and toggle description texts"
+
+[1.3.1]
+
+1="* Fixed claim overflow that caused issues when microwaves were attempting to melt ore chunks"
+2="* Added the option to adjust the maximum astrogator tracking time, with current maximums scaling to match"
+
 [1.3.0]
 
 1="* Added the ability to toggle ship systems while at Enceladus"
