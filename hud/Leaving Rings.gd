@@ -4,13 +4,21 @@ var noSpeedLimit = false
 var goLeft = false
 var goRight = false
 
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var pointersVP
+
+func updateValues():
+	if pointersVP:
+		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
+
 var config = {}
 func _init():
-	config = ConfigDriver.__get_config("VelocityPlus")
-	visible = true
-	if config.get("VP_RING",{}).get("remove_max_speed_limit",true):
-		warnVelocity = 1.79769e308
+	if CurrentGame != null:
+		pointersVP = CurrentGame.get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+		updateValues()
+		visible = true
+		if config.get("VP_RING",{}).get("remove_max_speed_limit",true):
+			warnVelocity = 1.79769e308
 	
 	
 	
@@ -18,7 +26,6 @@ func _process(delta):
 	if not is_visible_in_tree():
 		return 
 	if Tool.claim(ship):
-		config = ConfigDriver.__get_config("VelocityPlus")
 		var v = CurrentGame.globalCoords(ship.global_position).x
 		var leftMost = false
 		var rightMost = false

@@ -15,6 +15,8 @@ var _savedObjects := []
 var ADD_EQUIPMENT_ITEMS = []
 var check
 var config = {}
+
+var pointers = preload("res://HevLib/pointers.gd").new()
 func _init(modLoader = ModLoader):
 	l("Initializing DLC")
 	loadDLC()
@@ -24,8 +26,8 @@ func _init(modLoader = ModLoader):
 	var mc = load(md + "mod_checker_script.tscn").instance()
 	add_child(mc)
 	
-	var ConfigDriver = load("res://HevLib/pointers/ConfigDriver.gd")
-	config = ConfigDriver.__get_config("VelocityPlus")
+#	var ConfigDriver = load("res://HevLib/pointers/ConfigDriver.gd")
+	config = pointers.ConfigDriver.__get_config("VelocityPlus")
 	
 	if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
 		installScriptExtension("hud/SystemList.gd")

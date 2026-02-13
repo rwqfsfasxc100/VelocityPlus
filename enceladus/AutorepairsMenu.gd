@@ -1,7 +1,5 @@
 extends Popup
 
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
-
 export var enable_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair/CheckButton")
 onready var enable = get_node_or_null(enable_p)
 export var mode_button_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MethodPrio/OptionButton")
@@ -22,6 +20,18 @@ onready var maxreplace = get_node_or_null(minmoney_p)
 export var target_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/Target/HSlider")
 onready var target = get_node_or_null(minmoney_p)
 
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
+
+var config = {}
 func _ready():
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE",0)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_ONLYREPAIR",1)
@@ -31,7 +41,7 @@ func _ready():
 
 func _visibility_changed():
 	if is_visible_in_tree():
-		var config = ConfigDriver.__get_config("VelocityPlus")
+		
 		
 		enable.pressed = config["VP_AUTOREPAIRS"]["automatic_repairs"]
 		
@@ -64,7 +74,7 @@ func set_slider_val(val,s,v,code = false):
 
 func save_slider_val(val,s,opt,v):
 	if not s in code_changed:
-		ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS",opt,val)
+		pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS",opt,val)
 		get_node(v).text = str(val)
 
 var lastFocus = null
@@ -93,19 +103,19 @@ func cancel():
 
 
 func enabled_toggle(button_pressed):
-	ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs",button_pressed)
+	pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs",button_pressed)
 
 
 func method_select(index):
 	match index:
 		0:
-			ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE")
+			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE")
 		1:
-			ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR")
+			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR")
 		2:
-			ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE")
+			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE")
 		3:
-			ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_MAXPROFIT")
+			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_MAXPROFIT")
 
 
 func minmoney_changed(value):

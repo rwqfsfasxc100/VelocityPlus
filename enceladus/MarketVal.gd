@@ -4,13 +4,21 @@ extends Label
 
 export  var format = "%s E$"
 
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
-var config = {}
-func _ready():
-	config = ConfigDriver.__get_config("VelocityPlus")
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		mineral_market_show_total_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
+
+var mineral_market_show_total_value = true
 
 func _process(delta):
-	if config.get("VP_ENCELADUS",{}).get("mineral_market_show_total_value",true):
+	if mineral_market_show_total_value:
 		get_parent().visible = true
 		var sliders = get_parent().get_parent().get_parent().get_parent().get_node("MarginContainer/ScrollContainer/MarginContainer/Market").get_children()
 		var total = 0

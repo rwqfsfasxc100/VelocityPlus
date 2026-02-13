@@ -1,9 +1,34 @@
 extends "res://enceladus/Repairs.gd"
 
-var ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
-
 var repairStepAmount = 0.5
 
+
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		cfg_do_automatic_repairs = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs")
+		cfg_method_priority = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","method_priority")
+		cfg_max_repair = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_repair")
+		cfg_max_replace = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_replace")
+		cfg_min_cash = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","minimum_money")
+		cfg_min_insurance = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","minimum_insurance")
+		cfg_target = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","target_percent")
+		
+		
+
+var cfg_do_automatic_repairs = false
+var cfg_method_priority = "VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE"
+var cfg_max_repair = 250000
+var cfg_max_replace = 2500000
+var cfg_min_cash = 100000
+var cfg_min_insurance = 0
+var cfg_target = 70
 
 var printable_status = "VelocityPlus AutoRepair Operation status: [system: %s; status: %s; operation: %s]"
 var appraisal_status = "VelocityPlus AutoRepair Appraisal status: [system: %s; mode: %s; operation: %s]"
@@ -17,9 +42,9 @@ func createRepairMenuFor(ship):
 #	yield(get_tree(),"idle_frame")
 #	yield(ship,"systemPoll")
 	
-	if ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs") and handleFocuses(ship):
+	if cfg_do_automatic_repairs and handleFocuses(ship):
 		var validSystems = []
-		var mode = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","method_priority")
+		var mode = cfg_method_priority
 		Debug.l("VelocityPlus AutoRepair: Attempting repairs on ship %s %s [%s], using repair mode [%s]" % [ship.getTransponder(),ship.getShipName(),TranslationServer.translate(ship.shipName),TranslationServer.translate(mode)])
 		for b in systemsBox.get_children():
 #			yield(get_tree(),"idle_frame")
@@ -30,11 +55,11 @@ func createRepairMenuFor(ship):
 #			can_update(false,b)
 		for b in validSystems:
 			
-			var max_repair = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_repair")
-			var max_replace = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_replace")
-			var min_cash = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","minimum_money")
-			var min_insurance = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","minimum_insurance")
-			var target = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","target_percent")
+			var max_repair = cfg_max_repair
+			var max_replace = cfg_max_replace
+			var min_cash = cfg_min_cash
+			var min_insurance = cfg_min_insurance
+			var target = cfg_target
 			
 			var shouldOnlyMode = 0
 			
@@ -121,8 +146,8 @@ func handleFocuses(ship):
 
 func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal):
 	var action_list = appraise_for_cost_efficiency(b,mustTarget,forceMode,targetVal)
-	var max_repair = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_repair")
-	var max_replace = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","maximum_replace")
+	var max_repair = cfg_max_repair
+	var max_replace = cfg_max_replace
 	
 	var repairs = action_list[0]
 	var replace = action_list[1]
@@ -161,8 +186,8 @@ func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal):
 	return false
 
 func isValidForAuto(box) -> bool:
-	var mode = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","method_priority")
-	var target = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","target_percent")
+	var mode = cfg_method_priority
+	var target = cfg_target
 	if not "repairReplacementPrice" in box.system.ref:
 		return false
 	if not "repairFixPrice" in box.system.ref:
@@ -234,7 +259,7 @@ func repairs_needed_to_target(box):
 	var maxRepairs = CurrentGame.getRepairLimit(true)
 	var base_system = box.system
 	var status = base_system.status
-	var target = ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","target_percent")
+	var target = cfg_target
 	var r = 1
 	var system = simulate_repair(base_system,r)
 	while status < target and status < maxRepairs and r < 8:

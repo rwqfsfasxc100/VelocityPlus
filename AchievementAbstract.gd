@@ -3,11 +3,21 @@ extends "res://achievement/AchivementAbstract.gd"
 var enable_achievements = false
 var cheetah = false
 
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
-var config = {}
+var pointers
+
 func _ready():
+	yield(get_tree(),"idle_frame")
+	pointers = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointers.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
 	cheetah = CurrentGame.cheetah
-	config = ConfigDriver.__get_config("VelocityPlus")
+
+func updateValues():
+	if pointers:
+		config = pointers.ConfigDriver.__get_config("VelocityPlus")
+#const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var config = {}
+	
 
 func _physics_process(delta):
 	enable_achievements = config.get("VP_ENCELADUS",{}).get("enable_achievements",true)

@@ -15,7 +15,20 @@ onready var soldGoods_5 = get_node_or_null("MarginContainer/VBoxContainer/Comms/
 
 var ship
 
-var ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		show_dive_clock = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS")
+		show_shipped_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_shipped_cargo_value")
+		show_transactions = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions")
+		show_transactions_sold_goods = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions_sold_goods")
+		show_transactions_bought_goods = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions_bought_goods")
 
 func _ready():
 	ship = get_parent().get_parent()
@@ -39,9 +52,15 @@ func _input(event):
 					if node.systemName == current_mpu:
 						node.enabled = !node.enabled
 
+var show_dive_clock = true
+var show_shipped_value = true
+var show_transactions = true
+var show_transactions_sold_goods = true
+var show_transactions_bought_goods = true
+
 func _physics_process(delta):
 	if int(Time.get_ticks_msec() * 1000) % 4 == 0:
-		if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS"):
+		if show_dive_clock:
 			var text = ""
 			if _diveClockGame != null and _diveClock != null:
 				var timeInDive = int(ceil(_diveClockGame.realtimePlayed))
@@ -56,7 +75,7 @@ func _physics_process(delta):
 			if _diveClock != null:
 				_diveClock.visible = false
 		
-		if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_shipped_cargo_value"):
+		if show_shipped_value:
 			
 			var value = 0.0
 			ship.configMutex.lock()
@@ -72,7 +91,7 @@ func _physics_process(delta):
 			money_waiting_label.visible = false
 			money_waiting_label_1.visible = false
 			
-		if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions"):
+		if show_transactions:
 			soldGoods.visible = true
 			soldGoods_1.visible = true
 			var mGain = CurrentGame.this_dive_transactions_gain
@@ -81,7 +100,7 @@ func _physics_process(delta):
 			var soldTex = money_format % CurrentGame.formatThousands(soldVal)
 			soldGoods_1.text = soldTex
 			
-			if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions_sold_goods"):
+			if show_transactions_sold_goods:
 				soldGoods_2.visible = true
 				soldGoods_3.visible = true
 				soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
@@ -89,7 +108,7 @@ func _physics_process(delta):
 				soldGoods_2.visible = false
 				soldGoods_3.visible = false
 				
-			if ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions_bought_goods"):
+			if show_transactions_bought_goods:
 				soldGoods_4.visible = true
 				soldGoods_5.visible = true
 				soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))

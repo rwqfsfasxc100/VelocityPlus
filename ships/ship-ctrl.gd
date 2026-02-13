@@ -37,7 +37,17 @@ extends "res://ships/ship-ctrl.gd"
 #func _input(event):
 #	breakpoint
 
-const ConfigDriverVP = preload("res://HevLib/pointers/ConfigDriver.gd")
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
+
 
 var prevent_adrenaline = false
 
@@ -45,9 +55,9 @@ func _ready():
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
 #	handleSystemToggles()
-
+var config = {}
 func modify():
-	var config = ConfigDriverVP.__get_config("VelocityPlus")
+	
 	prevent_adrenaline = config.get("VP_CREW",{}).get("pilots_disable_adrenaline",false)
 	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
 		var education = 0
@@ -69,8 +79,7 @@ func modify():
 		var shrink = (maximum - diff)/maximum
 		var modifier = lerp(minimum,maximum,shrink)
 		trajectoryTime = clamp(modifier,minimum,maximum)
-	if config.get("VP_RING",{}).get("display_negative_depth",true):
-		show_neg_depth = true
+	show_neg_depth = config.get("VP_RING",{}).get("display_negative_depth",true)
 
 
 
@@ -122,11 +131,11 @@ func isInEscapeCondition():
 		return false
 	
 	
-	if CurrentGame.globalCoords(global_position).x < 0 and ConfigDriverVP.__get_value("VelocityPlus","VP_RING","allow_exit_of_ring_to_the_left") == false:
+	if CurrentGame.globalCoords(global_position).x < 0 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_left",true) == false:
 		return true
-	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and ConfigDriverVP.__get_value("VelocityPlus","VP_RING","allow_exit_of_ring_to_the_right") == false:
+	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_right",true) == false:
 		return true
-	if linear_velocity.length() > 2000 and ConfigDriverVP.__get_value("VelocityPlus","VP_RING","remove_max_speed_limit") == false:
+	if linear_velocity.length() > 2000 and config.get("VP_RING",{}).get("remove_max_speed_limit",true) == false:
 		return true
 	
 	
@@ -187,7 +196,7 @@ func aiControlCompanion(delta):
 				aiDesire = piad
 				aiTarget = null
 				companion_finish = true
-				var cf = ConfigDriverVP.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+				var cf = config.get("VP_SHIPS",{}).get("scoop_automatic_return_protocol_override","VP_RETURN_TO_ENCELADUS")
 				match cf:
 					"VP_RETURN_TO_CRADLE":
 						aiAction = AI.dock

@@ -5,6 +5,18 @@ var _showReliability_system = null
 var disable_when_false = PoolStringArray(["damageModel"])
 var disable_when_true = PoolStringArray([])
 
+
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		cfg_show_equipment_reliability = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
+
 func previewShipSystem(slot,system,control=""):
 	.previewShipSystem(slot,system,control)
 	if slot == null or system is int or system is float:
@@ -18,10 +30,11 @@ func _ready():
 	var mtbf = MTBF_container.instance()
 	cont.add_child(mtbf)
 	mtbf_label = mtbf.get_node("VBoxContainer/Label")
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+#const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
 # Wait until the ship in the simulation is fully instantiated.
+var cfg_show_equipment_reliability
 func _process(delta):
-	if ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability"):
+	if cfg_show_equipment_reliability:
 		if _showReliability_system == null:
 			return
 		var system = _showReliability_system

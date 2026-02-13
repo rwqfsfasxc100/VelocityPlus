@@ -1,10 +1,23 @@
 extends "res://comms/ConversationPlayer.gd"
+#
+#var HevLib = load("res://HevLib/Functions.gd").new()
+#const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
 
-var HevLib = load("res://HevLib/Functions.gd").new()
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var pointersVP
 
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations")
+
+
+var broadcast_variations = true
 func _ready():
-	if ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations"):
+	if broadcast_variations:
 		var name = self.name
 		var RNG = RandomNumberGenerator.new()
 		RNG.randomize()
@@ -32,7 +45,7 @@ func _ready():
 		
 		var randCheck = RNG.randf_range(0,1)
 		if randCheck == 0:
-			var stat = HevLib.__get_stat_data("stat:salvaged_ships")
+			var stat = pointersVP.Achievements.__get_stat_data("stat:salvaged_ships")
 			if name.begins_with("DIALOG_SALVAGE_START_"):
 				if stat >= 0 and stat < 7:
 					self.name = "DIALOG_SALVAGE_START_NEW_" + name.split("DIALOG_SALVAGE_START_")[1]

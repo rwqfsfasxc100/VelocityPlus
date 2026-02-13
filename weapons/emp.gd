@@ -1,9 +1,20 @@
 extends "res://weapons/emp.gd"
 
-const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+var pointersVPEMP
+
+func _enter_tree():
+	pointersVPEMP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVPEMP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVPEMP:
+		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore")
+
+var allowed_to = true
 
 func _physics_process(delta):
-	if firepower > 0:
+	if firepower > 0 and allowed_to:
 		var energyRequired = delta * firepower * getPowerDraw() * 1000
 		var energy = ship.drawEnergy(energyRequired)
 		if randf() < chokeCache:
@@ -17,7 +28,7 @@ func _physics_process(delta):
 				var p = hitpoint.collider
 				if "comp_val" in p:
 					if "fillerContent" in p and "mineralContent" in p:
-						if ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore") and p.fillerContent > 0.05 and p.mass > 0.02:
+						if p.fillerContent > 0.05 and p.mass > 0.02:
 							var pv = getPowerDraw()
 							var cv = p.comp_val
 							var filler = p.fillerContent * p.mass
@@ -33,7 +44,7 @@ func _physics_process(delta):
 							p.fillerContent = 1 - mc
 				else:
 					if "fillerContent" in p and "mineralContent" in p:
-						if ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore") and p.fillerContent > 0.05 and p.mass > 0.02:
+						if p.fillerContent > 0.05 and p.mass > 0.02:
 							var pv = getPowerDraw()
 							var filler = p.fillerContent * p.mass
 							var mm = p.mass * p.mineralContent
