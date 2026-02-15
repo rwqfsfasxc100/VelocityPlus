@@ -59,7 +59,7 @@ VP_ENCELADUS={
 		"name":"VP_ENABLE_ACHIEVEMENTS",
 		"description":"VP_ENABLE_ACHIEVEMENTS_DESC",
 		"type":"bool",
-		"default":true
+		"default":false
 	},
 	"enable_achievements_on_cheated_saves":{
 		"name":"VP_ENABLE_ACHIEVEMENTS_ON_CHEATS",
