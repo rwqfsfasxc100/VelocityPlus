@@ -224,15 +224,15 @@ VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC|The repair percentage that auto rep
 
 VP_DIVE_CLOCK_DISPLAY|In dive: %dh %02dm %02ds
 
-VP_CURRENT_CASH|Current: 
+VP_CURRENT_CASH|Current:
 
-VP_CASH_AT_ENCELADUS|Shipped to Enceladus: 
+VP_CASH_AT_ENCELADUS|Shipped Goods:
 
 VP_SHOW_SHIPPED_CARGO_VALUE|Show shipped cargo value
 
 VP_SHOW_SHIPPED_CARGO_VALUE_DESC|Shows the value of all ores successfully sent to Enceladus through cargo containers or wingmen.
 
-VP_SOLD_GOODS|Transactions: 
+VP_SOLD_GOODS|Transactions:
 
 VP_SHOW_TRANSACTIONS|Show transactions
 
