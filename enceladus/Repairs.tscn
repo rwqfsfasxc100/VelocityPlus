@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enceladus/Repairs.tscn" type="PackedScene" id=1]
 [ext_resource path="res://VelocityPlus/enceladus/Autorepairs.gd" type="Script" id=2]
 [ext_resource path="res://VelocityPlus/enceladus/AutorepairsMenu.gd" type="Script" id=3]
 [ext_resource path="res://HevLib/ui/themes/hev_theme.tres" type="Theme" id=4]
+[ext_resource path="res://menu/MenuTheme.tres" type="Theme" id=5]
 
 [node name="Repairs" instance=ExtResource( 1 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="MarginContainer" parent="." index="1"]
 margin_bottom = 84.0
@@ -17,21 +20,26 @@ margin_bottom = 82.0
 margin_top = 0.0
 margin_bottom = 2.0
 
-[node name="Autorepairs" type="Control" parent="." index="3"]
-visible = false
+[node name="Control" type="Control" parent="." index="3"]
 margin_left = 16.0
 margin_top = 2.0
-margin_right = 1079.0
-margin_bottom = 84.0
+margin_right = 56.0
+margin_bottom = 42.0
 mouse_filter = 2
+
+[node name="Autorepairs" type="Control" parent="Control" index="0"]
+margin_right = 1063.0
+margin_bottom = 82.0
+mouse_filter = 2
+theme = ExtResource( 5 )
 script = ExtResource( 2 )
 
-[node name="PanelContainer" type="PanelContainer" parent="Autorepairs" index="0"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/Autorepairs" index="0"]
 margin_right = 32.0
 margin_bottom = 4.0
 mouse_filter = 2
 
-[node name="Buttons" type="HBoxContainer" parent="Autorepairs/PanelContainer" index="0"]
+[node name="Buttons" type="HBoxContainer" parent="Control/Autorepairs/PanelContainer" index="0"]
 margin_left = 16.0
 margin_top = 2.0
 margin_right = 652.0
@@ -41,94 +49,94 @@ grow_vertical = 0
 mouse_filter = 2
 alignment = 2
 
-[node name="Autorepairs" type="Button" parent="Autorepairs/PanelContainer/Buttons" index="0"]
+[node name="Autorepairs" type="Button" parent="Control/Autorepairs/PanelContainer/Buttons" index="0"]
 margin_right = 636.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 200, 0 )
 text = "VP_AUTOREPAIRS_MENU_BUTTON"
 align = 2
 
-[node name="Popup" type="Popup" parent="Autorepairs" index="1"]
+[node name="Popup" type="Popup" parent="Control/Autorepairs" index="1"]
 visible = true
 margin_right = 1280.0
 margin_bottom = 450.0
 popup_exclusive = true
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="Autorepairs/Popup" index="0"]
+[node name="ColorRect" type="ColorRect" parent="Control/Autorepairs/Popup" index="0"]
 margin_right = 1280.0
 margin_bottom = 450.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="PanelContainer" type="PanelContainer" parent="Autorepairs/Popup" index="1"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/Autorepairs/Popup" index="1"]
 margin_right = 1280.0
 margin_bottom = 450.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Autorepairs/Popup/PanelContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer" index="0"]
 margin_left = 16.0
 margin_top = 2.0
 margin_right = 1264.0
 margin_bottom = 448.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer" index="0"]
 margin_right = 1248.0
 margin_bottom = 39.0
 text = "VP_AUTOREPAIRS"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer" index="1"]
 margin_top = 43.0
 margin_right = 1248.0
 margin_bottom = 401.0
 size_flags_vertical = 3
 theme = ExtResource( 4 )
 
-[node name="EnableAutorepair" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="0"]
+[node name="EnableAutorepair" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="0"]
 margin_right = 1248.0
 margin_bottom = 42.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair" index="0"]
 margin_top = 2.0
 margin_right = 1158.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 text = "VP_AUTOMATIC_REPAIRS_TOGGLE"
 
-[node name="CheckButton" type="CheckButton" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair" index="1"]
+[node name="CheckButton" type="CheckButton" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair" index="1"]
 margin_left = 1162.0
 margin_right = 1248.0
 margin_bottom = 42.0
 
-[node name="MethodPrio" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="1"]
+[node name="MethodPrio" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="1"]
 margin_top = 46.0
 margin_right = 1248.0
 margin_bottom = 88.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MethodPrio" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MethodPrio" index="0"]
 margin_top = 2.0
 margin_right = 894.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 text = "VP_AUTOREPAIR_PRIORITY"
 
-[node name="OptionButton" type="OptionButton" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MethodPrio" index="1"]
+[node name="OptionButton" type="OptionButton" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MethodPrio" index="1"]
 margin_left = 898.0
 margin_right = 1248.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 350, 0 )
 
-[node name="MinMoney" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="2"]
+[node name="MinMoney" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="2"]
 margin_top = 92.0
 margin_right = 1248.0
 margin_bottom = 140.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney" index="0"]
 margin_top = 5.0
 margin_right = 690.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 text = "VP_AUTOREPAIR_MINIMUM_MONEY"
 
-[node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney" index="1"]
+[node name="Val" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney" index="1"]
 margin_left = 694.0
 margin_top = 5.0
 margin_right = 894.0
@@ -136,7 +144,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 200, 0 )
 align = 2
 
-[node name="HSlider" type="HSlider" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney" index="2"]
+[node name="HSlider" type="HSlider" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney" index="2"]
 margin_left = 898.0
 margin_right = 1248.0
 margin_bottom = 48.0
@@ -146,19 +154,19 @@ max_value = 5e+06
 step = 50000.0
 value = 100000.0
 
-[node name="MinInsurance" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="3"]
+[node name="MinInsurance" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="3"]
 margin_top = 144.0
 margin_right = 1248.0
 margin_bottom = 192.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance" index="0"]
 margin_top = 5.0
 margin_right = 690.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 text = "VP_AUTOREPAIR_MINIMUM_INSURANCE"
 
-[node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance" index="1"]
+[node name="Val" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance" index="1"]
 margin_left = 694.0
 margin_top = 5.0
 margin_right = 894.0
@@ -166,7 +174,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 200, 0 )
 align = 2
 
-[node name="HSlider" type="HSlider" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance" index="2"]
+[node name="HSlider" type="HSlider" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance" index="2"]
 margin_left = 898.0
 margin_right = 1248.0
 margin_bottom = 48.0
@@ -174,19 +182,19 @@ rect_min_size = Vector2( 350, 0 )
 max_value = 500000.0
 step = 25000.0
 
-[node name="MaxRepair" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="4"]
+[node name="MaxRepair" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="4"]
 margin_top = 196.0
 margin_right = 1248.0
 margin_bottom = 244.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair" index="0"]
 margin_top = 5.0
 margin_right = 690.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 text = "VP_AUTOREPAIR_MAXIMUM_REPAIR"
 
-[node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair" index="1"]
+[node name="Val" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair" index="1"]
 margin_left = 694.0
 margin_top = 5.0
 margin_right = 894.0
@@ -194,7 +202,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 200, 0 )
 align = 2
 
-[node name="HSlider" type="HSlider" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair" index="2"]
+[node name="HSlider" type="HSlider" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair" index="2"]
 margin_left = 898.0
 margin_right = 1248.0
 margin_bottom = 48.0
@@ -204,19 +212,19 @@ max_value = 500000.0
 step = 500.0
 value = 250000.0
 
-[node name="MaxReplace" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="5"]
+[node name="MaxReplace" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="5"]
 margin_top = 248.0
 margin_right = 1248.0
 margin_bottom = 296.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace" index="0"]
 margin_top = 5.0
 margin_right = 690.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 text = "VP_AUTOREPAIR_MAXIMUM_REPLACE"
 
-[node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace" index="1"]
+[node name="Val" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace" index="1"]
 margin_left = 694.0
 margin_top = 5.0
 margin_right = 894.0
@@ -224,7 +232,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 200, 0 )
 align = 2
 
-[node name="HSlider" type="HSlider" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace" index="2"]
+[node name="HSlider" type="HSlider" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace" index="2"]
 margin_left = 898.0
 margin_right = 1248.0
 margin_bottom = 48.0
@@ -233,19 +241,19 @@ max_value = 5e+06
 step = 20000.0
 value = 2.5e+06
 
-[node name="Target" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="6"]
+[node name="Target" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer" index="6"]
 margin_top = 300.0
 margin_right = 1248.0
 margin_bottom = 348.0
 
-[node name="Label" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target" index="0"]
+[node name="Label" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target" index="0"]
 margin_top = 5.0
 margin_right = 690.0
 margin_bottom = 43.0
 size_flags_horizontal = 3
 text = "VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE"
 
-[node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target" index="1"]
+[node name="Val" type="Label" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target" index="1"]
 margin_left = 694.0
 margin_top = 5.0
 margin_right = 894.0
@@ -253,7 +261,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 200, 0 )
 align = 2
 
-[node name="HSlider" type="HSlider" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target" index="2"]
+[node name="HSlider" type="HSlider" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target" index="2"]
 margin_left = 898.0
 margin_right = 1248.0
 margin_bottom = 48.0
@@ -262,36 +270,36 @@ min_value = 50.0
 max_value = 99.0
 value = 70.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer" index="2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer" index="2"]
 margin_top = 405.0
 margin_right = 1248.0
 margin_bottom = 446.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2" index="0"]
 margin_right = 1248.0
 margin_bottom = 41.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer" index="0"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer" index="0"]
 margin_right = 1248.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="CANCEL" type="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/HBoxContainer2" index="0"]
+[node name="CANCEL" type="Button" parent="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/HBoxContainer2" index="0"]
 margin_left = 486.0
 margin_right = 761.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 275, 0 )
 text = "OK"
 
-[connection signal="pressed" from="Autorepairs/PanelContainer/Buttons/Autorepairs" to="Autorepairs/Popup" method="show_menu"]
-[connection signal="about_to_show" from="Autorepairs/Popup" to="Autorepairs/Popup" method="_about_to_show"]
-[connection signal="visibility_changed" from="Autorepairs/Popup" to="Autorepairs/Popup" method="_visibility_changed"]
-[connection signal="toggled" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair/CheckButton" to="Autorepairs/Popup" method="enabled_toggle"]
-[connection signal="item_selected" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MethodPrio/OptionButton" to="Autorepairs/Popup" method="method_select"]
-[connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney/HSlider" to="Autorepairs/Popup" method="minmoney_changed"]
-[connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/HSlider" to="Autorepairs/Popup" method="mininsurance_changed"]
-[connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/HSlider" to="Autorepairs/Popup" method="maxrepair_changed"]
-[connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/HSlider" to="Autorepairs/Popup" method="maxreplace_changed"]
-[connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target/HSlider" to="Autorepairs/Popup" method="target_changed"]
-[connection signal="pressed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/HBoxContainer2/CANCEL" to="Autorepairs/Popup" method="cancel"]
+[connection signal="pressed" from="Control/Autorepairs/PanelContainer/Buttons/Autorepairs" to="Control/Autorepairs/Popup" method="show_menu"]
+[connection signal="about_to_show" from="Control/Autorepairs/Popup" to="Control/Autorepairs/Popup" method="_about_to_show"]
+[connection signal="visibility_changed" from="Control/Autorepairs/Popup" to="Control/Autorepairs/Popup" method="_visibility_changed"]
+[connection signal="toggled" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair/CheckButton" to="Control/Autorepairs/Popup" method="enabled_toggle"]
+[connection signal="item_selected" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MethodPrio/OptionButton" to="Control/Autorepairs/Popup" method="method_select"]
+[connection signal="value_changed" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinMoney/HSlider" to="Control/Autorepairs/Popup" method="minmoney_changed"]
+[connection signal="value_changed" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/HSlider" to="Control/Autorepairs/Popup" method="mininsurance_changed"]
+[connection signal="value_changed" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/HSlider" to="Control/Autorepairs/Popup" method="maxrepair_changed"]
+[connection signal="value_changed" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/HSlider" to="Control/Autorepairs/Popup" method="maxreplace_changed"]
+[connection signal="value_changed" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer/Target/HSlider" to="Control/Autorepairs/Popup" method="target_changed"]
+[connection signal="pressed" from="Control/Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/HBoxContainer2/CANCEL" to="Control/Autorepairs/Popup" method="cancel"]

@@ -95,6 +95,7 @@ func createRepairMenuFor(ship):
 				else:
 					available_cash = (currentCash + currentInsurance) - min_cash
 				handle_operation(b,available_cash,mustTarget,ship,shouldOnlyMode,target)
+	handleFocuses(ship)
 
 func replaceIfCan(b,ship,cycle = 0):
 	if b.isReplaceable(b.system):
@@ -109,7 +110,7 @@ func replaceIfCan(b,ship,cycle = 0):
 		Debug.l(printable_status % [b.system.name,stat,"replace"])
 		b.doReplaceSystem()
 #		yield(b,"fixed")
-		handleFocuses(ship)
+#		handleFocuses(ship)
 	else:
 		Debug.l(printable_status % [b.system.name,b.system.status,"skip (cannot replace)"])
 	return false
@@ -127,7 +128,7 @@ func fixIfCan(b,ship,cycle = 0):
 		Debug.l(printable_status % [b.system.name,stat,"fix"])
 		b.doFixSystem()
 #		yield(b,"fixed")
-		handleFocuses(ship)
+#		handleFocuses(ship)
 		return true
 	else:
 		Debug.l(printable_status % [b.system.name,b.system.status,"skip (cannot fix)"])
@@ -141,7 +142,7 @@ func handleFocuses(ship):
 			focused = true
 			break
 	if not focused:
-		get_node("Autorepairs/PanelContainer/Buttons/Autorepairs").grab_focus()
+		get_node("Control/Autorepairs/PanelContainer/Buttons/Autorepairs").grab_focus()
 	return focused
 
 func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal):

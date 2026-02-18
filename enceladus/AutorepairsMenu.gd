@@ -9,16 +9,16 @@ export var minmoney_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/Min
 onready var minmoney = get_node_or_null(minmoney_p)
 
 export var mininsurance_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/HSlider")
-onready var mininsurance = get_node_or_null(minmoney_p)
+onready var mininsurance = get_node_or_null(mininsurance_p)
 
 export var maxrepair_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/HSlider")
-onready var maxrepair = get_node_or_null(minmoney_p)
+onready var maxrepair = get_node_or_null(maxrepair_p)
 
 export var maxreplace_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/HSlider")
-onready var maxreplace = get_node_or_null(minmoney_p)
+onready var maxreplace = get_node_or_null(maxreplace_p)
 
 export var target_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/Target/HSlider")
-onready var target = get_node_or_null(minmoney_p)
+onready var target = get_node_or_null(target_p)
 
 var pointersVP
 
@@ -135,4 +135,4 @@ func maxreplace_changed(value):
 
 
 func target_changed(value):
-	save_slider_val(value,target,"maximum_replace","PanelContainer/VBoxContainer/VBoxContainer/Target/Val")
+	save_slider_val(value,target,"target_percent","PanelContainer/VBoxContainer/VBoxContainer/Target/Val")
