@@ -1,3 +1,20 @@
+[1.3.5]
+
+1="* Re-added the Auto Repairs submenu to the repairs menu at Enceladus, with bugs fixed"
+2="* Auto repairs no longer cause a substantial lag frame when operating"
+3="* Auto repairs no longer spam the UI hover sound after operating"
+4="* Repairs menu now no longer hides randomly"
+
+[1.3.4]
+
+1="* Shortened texts for the transaction and shipped displays, now will not stretch OMS when several displays had exceeded 6 characters"
+
+[1.3.3]
+
+1="* Changed over all pointer handling to use the HevLib~Pointers node."
+1.1="* This change should make the mod considerably more efficient at checking for config updates, allowing hardware closer to DV's minimum spec level to run smoothly"
+2="* Increased minimum HevLib version to 1.11.8 - this is a REQUIRED upgrade for this"
+
 [1.3.2]
 
 1="* Enabling hide crew portraits in OMS no longer prevents the MPU or HUD toggle keybinds from working"
