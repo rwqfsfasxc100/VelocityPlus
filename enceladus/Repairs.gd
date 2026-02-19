@@ -9,6 +9,7 @@ func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
 	updateValues()
+	set_physics_process(false)
 
 func updateValues():
 	if pointersVP:
@@ -36,6 +37,25 @@ var force_appraisal_status = "VelocityPlus AutoRepair Appraisal status: [system:
 var force_appraisal_decision = "VelocityPlus AutoRepair Appraisal status: [system: %s; operation: %s; decision: %s]"
 var multiappraisal_status = "VelocityPlus AutoRepair Appraisal status: [system: %s; repairs: %s; replace: %s; decision: %s]"
 
+var queued_repairs = []
+
+var yield_frame = true
+func _physics_process(delta):
+	if queued_repairs.size() > 0:
+		if not visible or $Shower.is_playing():
+			return
+		if yield_frame:
+			yield_frame = false
+		else:
+			var pq = queued_repairs.pop_front()
+			match pq[1]:
+				"fix":
+					pq[0].doFixSystem()
+				"replace":
+					pq[0].doReplaceSystem()
+			yield_frame = true
+	else:
+		set_physics_process(false)
 
 func createRepairMenuFor(ship):
 	.createRepairMenuFor(ship)
@@ -95,6 +115,8 @@ func createRepairMenuFor(ship):
 				else:
 					available_cash = (currentCash + currentInsurance) - min_cash
 				handle_operation(b,available_cash,mustTarget,ship,shouldOnlyMode,target)
+		if queued_repairs.size() > 0:
+			set_physics_process(true)
 	handleFocuses(ship)
 
 func replaceIfCan(b,ship,cycle = 0):
@@ -108,7 +130,8 @@ func replaceIfCan(b,ship,cycle = 0):
 		Tool.remove(s)
 		Tool.remove(sim)
 		Debug.l(printable_status % [b.system.name,stat,"replace"])
-		b.doReplaceSystem()
+		queued_repairs.append([b,"replace"])
+#		b.doReplaceSystem()
 #		yield(b,"fixed")
 #		handleFocuses(ship)
 	else:
@@ -126,7 +149,8 @@ func fixIfCan(b,ship,cycle = 0):
 		Tool.remove(s)
 		Tool.remove(sim)
 		Debug.l(printable_status % [b.system.name,stat,"fix"])
-		b.doFixSystem()
+		queued_repairs.append([b,"fix"])
+#		b.doFixSystem()
 #		yield(b,"fixed")
 #		handleFocuses(ship)
 		return true
