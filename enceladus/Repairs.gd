@@ -48,11 +48,14 @@ func _physics_process(delta):
 			yield_frame = false
 		else:
 			var pq = queued_repairs.pop_front()
-			match pq[1]:
-				"fix":
-					pq[0].doFixSystem()
-				"replace":
-					pq[0].doReplaceSystem()
+			if is_instance_valid(pq[0]):
+				match pq[1]:
+					"fix":
+						pq[0].doFixSystem()
+					"replace":
+						pq[0].doReplaceSystem()
+			else:
+				pass
 			yield_frame = true
 	else:
 		set_physics_process(false)
@@ -139,24 +142,25 @@ func replaceIfCan(b,ship,cycle = 0):
 	return false
 
 func fixIfCan(b,ship,cycle = 0):
-	if b.shouldBeFixed(b.system):
-		var sim = b.system.duplicate(true)
-		var s = simulate_repair(sim,cycle + 1)
-		var stat = b.system.status
-		var status = simulate_status(s)
-		if stat < status:
-			stat = status
-		Tool.remove(s)
-		Tool.remove(sim)
-		Debug.l(printable_status % [b.system.name,stat,"fix"])
-		queued_repairs.append([b,"fix"])
-#		b.doFixSystem()
-#		yield(b,"fixed")
-#		handleFocuses(ship)
-		return true
-	else:
-		Debug.l(printable_status % [b.system.name,b.system.status,"skip (cannot fix)"])
-		return false
+	if is_instance_valid(b):
+		if b.shouldBeFixed(b.system):
+			var sim = b.system.duplicate(true)
+			var s = simulate_repair(sim,cycle + 1)
+			var stat = b.system.status
+			var status = simulate_status(s)
+			if stat < status:
+				stat = status
+			Tool.remove(s)
+			Tool.remove(sim)
+			Debug.l(printable_status % [b.system.name,stat,"fix"])
+			queued_repairs.append([b,"fix"])
+	#		b.doFixSystem()
+	#		yield(b,"fixed")
+	#		handleFocuses(ship)
+			return true
+		else:
+			Debug.l(printable_status % [b.system.name,b.system.status,"skip (cannot fix)"])
+			return false
 
 func handleFocuses(ship):
 	var focused = false
