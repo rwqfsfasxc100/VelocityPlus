@@ -11,7 +11,12 @@ func _enter_tree():
 	wp = get_node_or_null(weaponPath)
 	default_fire_mode = autoFire
 	default_gimbal_limit = gimbalLimit
-	default_fire_action = wp.command
+	if wp:
+		default_fire_action = wp.command
+	else:
+		yield(get_tree(),"idle_frame")
+		wp = get_node_or_null(weaponPath)
+		default_fire_action = wp.command
 	pointersVPPDT = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVPPDT.ConfigDriver.__establish_connection("updateValues",self)
 	updateValues()
