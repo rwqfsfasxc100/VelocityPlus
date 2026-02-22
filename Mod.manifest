@@ -208,6 +208,21 @@ VP_SHIPS={
 		"default":false,
 		"requires_bools":["VelocityPlus/VP_SHIPS/toggle_systems_at_enceladus"],
 	},
+	"override_turret_autofire":{
+		"name":"VP_OVERRIDE_TURRET_AUTOFIRE",
+		"description":"VP_OVERRIDE_TURRET_AUTOFIRE_DESC",
+		"type":"bool",
+		"default":false
+	},
+	"turret_override_mode":{
+		"name":"VP_TURRET_OVERRIDE_MODE",
+		"description":"VP_TURRET_OVERRIDE_MODE_DESC",
+		"type":"option_button",
+		"store_method":"string",
+		"options":["VP_TURRET_OVERRIDE_NOFIRE","VP_TURRET_OVERRIDE_FIRE"],
+		"default":"VP_TURRET_OVERRIDE_NOFIRE",
+		"requires_bools":["VelocityPlus/VP_SHIPS/override_turret_autofire"],
+	},
 }
 VP_RING={
 	"remove_max_speed_limit":{

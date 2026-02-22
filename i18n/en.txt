@@ -263,3 +263,15 @@ VP_ENABLED_SYSTEMS|System Toggles
 VP_ASTROGATOR_TRACKING_TIME|Maximum astrogator tracking time
 
 VP_ASTROGATOR_TRACKING_TIME_DESC|Lets you determine the maximum tracking time of your astrogators, with the current time scaling to match.
+
+VP_OVERRIDE_TURRET_AUTOFIRE|Override turret auto-fire behaviour
+
+VP_OVERRIDE_TURRET_AUTOFIRE_DESC|Whether the defauly auto-fire mode of all turrets is overriden. Look to 'turret override operation mode' to handle what it uses as default.
+
+VP_TURRET_OVERRIDE_MODE|Turret override operation mode
+
+VP_TURRET_OVERRIDE_MODE_DESC|The operation mode that all turrets use when 'override turret auto-fire behaviour' is enabled.
+
+VP_TURRET_OVERRIDE_NOFIRE|Require user input
+
+VP_TURRET_OVERRIDE_FIRE|Auto-fire weapon
