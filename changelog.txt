@@ -1,3 +1,15 @@
+[1.3.7]
+
+1="* Auto repairs submenu now has tooltips"
+2="* Added ability to override turret fire controls"
+2.1="* This lets you either have all turrets auto-fire, or all turrets require manual input"
+3="* Fixed crash when reopening the repairs menu too quickly when auto repairs is working"
+
+[1.3.6]
+
+1="* Fixed auto repairs over repairing equipment due to fixing stuff too fast"
+2="* Auto repairs now animates the repairing of equipment, with each item being fixed on alternate physics frames"
+
 [1.3.5]
 
 1="* Re-added the Auto Repairs submenu to the repairs menu at Enceladus, with bugs fixed"
