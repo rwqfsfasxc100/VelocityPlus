@@ -40,6 +40,11 @@ const cradle_right = {
 	"test_protocol":"detach",
 	"equipment_type":"EQUIPMENT_CARGO_CONTAINER", 
 	"slot_type":"HARDPOINT",
+	"config":{
+		"id":"VelocityPlus",
+		"section":"VP_ENCELADUS",
+		"entry":"add_empty_cradle_equipment"
+	},
 	"weapon_slot":{
 		"path":"res://VelocityPlus/weapons/EmptyCradle.tscn",
 		"data":[
