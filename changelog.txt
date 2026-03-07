@@ -1,3 +1,7 @@
+[1.3.11]
+
+1="* Added toggle to disable SANBUS on maintenance drone units. Disabled by default."
+
 [1.3.10]
 
 1="* Fixed issue with dive clock being mispositioned when the dive timer was disabled"
