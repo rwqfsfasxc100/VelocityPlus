@@ -223,6 +223,12 @@ VP_SHIPS={
 		"default":"VP_TURRET_OVERRIDE_NOFIRE",
 		"requires_bools":["VelocityPlus/VP_SHIPS/override_turret_autofire"],
 	},
+	"disable_maint_sanbus":{
+		"name":"VP_DISABLE_MAINTENANCE_SANBUS",
+		"description":"VP_DISABLE_MAINTENANCE_SANBUS_DESC",
+		"type":"bool",
+		"default":false,
+	},
 }
 VP_RING={
 	"remove_max_speed_limit":{

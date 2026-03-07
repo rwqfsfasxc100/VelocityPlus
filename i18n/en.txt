@@ -275,3 +275,7 @@ VP_TURRET_OVERRIDE_MODE_DESC|The operation mode that all turrets use when 'overr
 VP_TURRET_OVERRIDE_NOFIRE|Require user input
 
 VP_TURRET_OVERRIDE_FIRE|Auto-fire weapon
+
+VP_DISABLE_MAINTENANCE_SANBUS|Disable SANBUS on maintenance drones
+
+VP_DISABLE_MAINTENANCE_SANBUS_DESC|Prevents maintenance drones from being blocked from operating on a ship when another system is currently targeting it.

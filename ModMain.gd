@@ -56,6 +56,7 @@ func _init(modLoader = ModLoader):
 	
 #	installScriptExtension("ships/ship-ctrl-neg-depth.gd")
 	
+	installScriptExtension("weapons/drone-plant.gd")
 	installScriptExtension("weapons/emp.gd")
 	
 	installScriptExtension("hud/OMS.gd")
