@@ -12,6 +12,7 @@ func updateValues():
 		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore")
 
 var allowed_to = true
+var legacy_multimineral_handle = false
 
 func _physics_process(delta):
 	if firepower > 0 and allowed_to:
@@ -26,7 +27,7 @@ func _physics_process(delta):
 			
 			if hitpoint and Tool.claim(hitpoint.collider):
 				var p = hitpoint.collider
-				if "comp_val" in p:
+				if legacy_multimineral_handle and "comp_val" in p:
 					if "fillerContent" in p and "mineralContent" in p:
 						if p.fillerContent > 0.05 and p.mass > 0.02:
 							var pv = getPowerDraw()
