@@ -1,3 +1,9 @@
+[1.3.12]
+
+1="* Reduced logging from translations being defined during the mod loading phase"
+2="* Removed legacy simulator shader modifications and the version checker associated with it now that 1.89.0 has been released"
+3="* Improved handling for cases where HevLib was not downloaded correctly"
+
 [1.3.11]
 
 1="* Added toggle to disable SANBUS on maintenance drone units. Disabled by default."

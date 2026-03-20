@@ -7,7 +7,7 @@ const MOD_PRIORITY = -1
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
 const MOD_VERSION_MINOR = 3
-const MOD_VERSION_BUGFIX = 11
+const MOD_VERSION_BUGFIX = 12
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
@@ -15,83 +15,98 @@ var _savedObjects := []
 var ADD_EQUIPMENT_ITEMS = []
 var check
 var config = {}
-
-var pointers = preload("res://HevLib/pointers.gd").new()
+var d = Directory.new()
+var correct = d.file_exists("res://HevLib/pointers.gd")
+var pointers = null
 func _init(modLoader = ModLoader):
-	l("Initializing DLC")
-	loadDLC()
+	if correct:
+		pointers = load("res://HevLib/pointers.gd").new()
+		l("Initializing DLC")
+		loadDLC()
+		
+		var mp = self.get_script().get_path()
+		var md = mp.split(mp.split("/")[mp.split("/").size() - 1])[0]
+		var mc = load(md + "mod_checker_script.tscn").instance()
+		add_child(mc)
+		
+		config = pointers.ConfigDriver.__get_config("VelocityPlus")
+		
+		if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
+			installScriptExtension("hud/SystemList.gd")
+			installScriptExtension("ships/ship_handle_system_toggles.gd")
+			installScriptExtension("enceladus/Tuning.gd")
+		
+		
+		installScriptExtension("enceladus/Upgrades.gd")
+		installScriptExtension("CurrentGame.gd")
+		if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
+			replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
+		
+		
+		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
+			replaceScene("ships/ocp-209.tscn")
+		
+		installScriptExtension("comms/ConversationPlayer.gd")
+	#	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
+		
+		installScriptExtension("enceladus/SystemShipRepairUI.gd")
+		
+		
+		replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
+		installScriptExtension("tooltips/DoTradeIn.gd")
+		
+		
+	#	installScriptExtension("ships/ship-ctrl-neg-depth.gd")
+		
+		installScriptExtension("weapons/drone-plant.gd")
+		installScriptExtension("weapons/emp.gd")
+		
+		installScriptExtension("hud/OMS.gd")
+		
+		installScriptExtension("ships/DockingArm.gd")
+		
+	#	installScriptExtension("ships/MPU.gd")
+		
+		installScriptExtension("AchievementAbstract.gd")
+		
+		if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
+			replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
+		if config.get("VP_CREW",{}).get("hide_in_OMS",false):
+			replaceScene("hud/OMS.tscn")
+		
+		replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
+		
+		
+		
+	#	if config.get("VP_SHIPS",{})["disable_gimballed_weapons"]:
+	#		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
+	#	if config.get("VP_SHIPS",{})["disable_turrets_turning"]:
+	#		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
+		
+		# Don't Change
+	#	installScriptExtension("Hud.gd")
+	#	replaceScene("weapons/weaponslots/Cradles/WeaponSlot.tscn",weaponslot_path)
+		installScriptExtension("ships/ship-ctrl.gd")
+		installScriptExtension("hud/Escape Veloity.gd")
+		installScriptExtension("hud/Leaving Rings.gd")
+		installScriptExtension("weapons/PDT.gd")
+		
+	#	installScriptExtension("Shipyard.gd")
+		
+		replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
+		
+		
+		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
+		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
+			0:
+				pass
+			1:
+				replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
+			2:
+				replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
+			3:
+				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
 	
-	var mp = self.get_script().get_path()
-	var md = mp.split(mp.split("/")[mp.split("/").size() - 1])[0]
-	var mc = load(md + "mod_checker_script.tscn").instance()
-	add_child(mc)
-	
-#	var ConfigDriver = load("res://HevLib/pointers/ConfigDriver.gd")
-	config = pointers.ConfigDriver.__get_config("VelocityPlus")
-	
-	if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
-		installScriptExtension("hud/SystemList.gd")
-		installScriptExtension("ships/ship_handle_system_toggles.gd")
-		installScriptExtension("enceladus/Tuning.gd")
-	
-	
-	installScriptExtension("enceladus/Upgrades.gd")
-	installScriptExtension("CurrentGame.gd")
-	if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
-		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
-	
-	
-	if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
-		replaceScene("ships/ocp-209.tscn")
-	
-	installScriptExtension("comms/ConversationPlayer.gd")
-#	var weaponslot_path = "res://weapons/WeaponSlot.tscn"
-	
-	installScriptExtension("enceladus/SystemShipRepairUI.gd")
-	
-	
-	replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
-	installScriptExtension("tooltips/DoTradeIn.gd")
-	
-	
-#	installScriptExtension("ships/ship-ctrl-neg-depth.gd")
-	
-	installScriptExtension("weapons/drone-plant.gd")
-	installScriptExtension("weapons/emp.gd")
-	
-	installScriptExtension("hud/OMS.gd")
-	
-	installScriptExtension("ships/DockingArm.gd")
-	
-#	installScriptExtension("ships/MPU.gd")
-	
-	installScriptExtension("AchievementAbstract.gd")
-	
-	if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
-		replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
-	if config.get("VP_CREW",{}).get("hide_in_OMS",false):
-		replaceScene("hud/OMS.tscn")
-	
-	replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
-	
-	
-	
-#	if config.get("VP_SHIPS",{})["disable_gimballed_weapons"]:
-#		replaceScene("weapons/weaponslots/NoGimballedWeapons/WeaponSlot.tscn",weaponslot_path)
-#	if config.get("VP_SHIPS",{})["disable_turrets_turning"]:
-#		replaceScene("weapons/weaponslots/NoTurningTurrets/WeaponSlot.tscn",weaponslot_path)
-	
-	# Don't Change
-#	installScriptExtension("Hud.gd")
-#	replaceScene("weapons/weaponslots/Cradles/WeaponSlot.tscn",weaponslot_path)
-	installScriptExtension("ships/ship-ctrl.gd")
-	installScriptExtension("hud/Escape Veloity.gd")
-	installScriptExtension("hud/Leaving Rings.gd")
-	installScriptExtension("weapons/PDT.gd")
-	
-#	installScriptExtension("Shipyard.gd")
-	
-	replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 	
 
 var cradle_left = {
@@ -119,37 +134,8 @@ var cradle_right = {
 
 func _ready():
 	l("Readying")
-	var version = CurrentGame.version.split(".")
-	var modern = false
-	if int(version[0]) >= 1:
-		if int(version[1]) >= 86:
-			modern = true
 	
-	if modern:
-		
-		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
-		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
-			0:
-				pass
-			1:
-				replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
-			2:
-				replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
-			3:
-				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
-	else:
-		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
-		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
-			0:
-				pass
-			1:
-				replaceScene("enceladus/Simulator/background/SimulationLayer-old.tscn",simulator_path)
-			2:
-				replaceScene("enceladus/Simulator/nobackground/SimulationLayer-old.tscn",simulator_path)
-			3:
-				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer-old.tscn",simulator_path)
-	
-	if Directory.new().file_exists("res://HevLib/ModMain.gd"):
+	if d.file_exists("res://HevLib/ModMain.gd"):
 		if config.get("VP_ENCELADUS",{}).get("add_empty_cradle_equipment",true): # Implementation for issue #5133 ; https://git.kodera.pl/games/delta-v/-/issues/5133
 			addEquipmentItem(cradle_left)
 			addEquipmentItem(cradle_right)
@@ -164,13 +150,13 @@ func _ready():
 #		]
 #		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
 #	else:
-	updateTL("i18n/en_ends.txt", "|")
-	updateTL("i18n/en_60.txt", "|")
-	updateTL("i18n/en_45.txt", "|")
-	updateTL("i18n/en_30.txt", "|")
-	updateTL("i18n/en_1.txt", "|")
-	updateTL("i18n/en.txt", "|")
-	updateTL("i18n/en_transit_tips.txt", "|")
+	updateTL("i18n/en_ends.txt", "|",true,false)
+	updateTL("i18n/en_60.txt", "|",true,false)
+	updateTL("i18n/en_45.txt", "|",true,false)
+	updateTL("i18n/en_30.txt", "|",true,false)
+	updateTL("i18n/en_1.txt", "|",true,false)
+	updateTL("i18n/en.txt", "|",true,false)
+	updateTL("i18n/en_transit_tips.txt", "|",true,false)
 	
 	installScriptExtension("enceladus/Repairs.gd")
 	replaceScene("enceladus/Repairs.tscn")
