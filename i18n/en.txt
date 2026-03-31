@@ -286,10 +286,32 @@ VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX|Repair all to 100% (fix only)
 
 VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE|Repair all to 100% (replace only)
 
-VP_AUTOREPAIRS_FIX_TO_100_PERCENT_TOOLTIP|Repairs everything on the ship to 100% (or as close to) as cost-effectively as possible.
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_TOOLTIP|Repairs everything on the ship to 100% (or as close to) as cost-effectively as possible. \nWARNING: ignores specified cost limitations and can run you dry.
 
-VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX_TOOLTIP|Fixes everything on the ship to 100% (or as close to) as possible.
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX_TOOLTIP|Fixes everything on the ship to 100% (or as close to) as possible. \nWARNING: ignores specified cost limitations and can run you dry.
 
-VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE_TOOLTIP|Replaces everything on the ship.
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE_TOOLTIP|Replaces everything on the ship. \nWARNING: ignores specified cost limitations and can run you dry.
 
 VP_FIX_ACTION|FIX
+
+VP_FIX_ACTION_TOOLTIP|Run this operation for repairs
+
+VP_AUTOREPAIRS_MANUAL_START|Repair from current settings
+
+VP_AUTOREPAIRS_MANUAL_START_TOOLTIP|Repairs equipment based on the above operands
+
+VP_AUTOREPAIRS_FIX_TO_CURRENT|Repair from current settings (cost-effective)
+
+VP_AUTOREPAIRS_FIX_TO_CURRENT_TOOLTIP|Repairs equipment based on the current monetary and target settings as cost-effectively as possible.
+
+VP_AUTOREPAIRS_FIX_TO_CURRENT_REPAIR|Repair from current settings (fix only)
+
+VP_AUTOREPAIRS_FIX_TO_CURRENT_REPAIR_TOOLTIP|Repairs equipment based on the current monetary and target settings using only repairs.
+
+VP_AUTOREPAIRS_FIX_TO_CURRENT_REPLACE|Repair from current settings (replace only)
+
+VP_AUTOREPAIRS_FIX_TO_CURRENT_REPLACE_TOOLTIP|Replaces equipment based on the current monetary and target settings.
+
+VP_AUTOREPAIRS_MANUAL_MAX_PROFIT|Repair from current settings (maximize profit)
+
+VP_AUTOREPAIRS_MANUAL_MAX_PROFIT_TOOLTIP|Repairs equipment based on the current monetary and target settings to maximize profit as much as possible.

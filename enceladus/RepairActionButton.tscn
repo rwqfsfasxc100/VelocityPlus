@@ -36,4 +36,7 @@ margin_left = 848.0
 margin_right = 1198.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 350, 0 )
+hint_tooltip = "VP_FIX_ACTION_TOOLTIP"
 text = "VP_FIX_ACTION"
+
+[node name="PlaySoundsOnTheseButtons" parent="Action" instance=ExtResource( 2 )]

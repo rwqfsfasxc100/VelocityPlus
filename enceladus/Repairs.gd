@@ -173,10 +173,8 @@ func handleFocuses(ship):
 		get_node("Control/Autorepairs/PanelContainer/Buttons/Autorepairs").grab_focus()
 	return focused
 
-func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal):
+func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal,max_repair = cfg_max_repair,max_replace = cfg_max_replace):
 	var action_list = appraise_for_cost_efficiency(b,mustTarget,forceMode,targetVal)
-	var max_repair = cfg_max_repair
-	var max_replace = cfg_max_replace
 	
 	var repairs = action_list[0]
 	var replace = action_list[1]
@@ -253,6 +251,7 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 		if forcemode == 2:
 			action_list = [0,true,replaceCost]
 		if mustTarget and not action_list[1]:
+			var status = simulate_status(sys)
 			action_list[1] = true
 	return action_list
 
@@ -421,24 +420,76 @@ func manual_fix_repair():
 
 func manual_replace_repair():
 	manual_opt(2)
+	
+func manual_max_profit():
+	manual_opt(6)
+
+func manual_current():
+	manual_opt(-1)
+
+func manual_ce():
+	manual_opt(3)
+
+func manual_f():
+	manual_opt(4)
+
+func manual_r():
+	manual_opt(5)
 
 func manual_opt(how : int):
 	var validSystems = []
-#	match how:
-#		0:
-#			pass
-#		1:
-#			pass
-#		2:
-#			pass
-	for b in systemsBox.get_children():
-		if b.visible and manual_check(b):
-			validSystems.append(b)
 	var max_repair = cfg_max_repair
 	var max_replace = cfg_max_replace
 	var min_cash = cfg_min_cash
 	var min_insurance = cfg_min_insurance
+	var mustTarget = true
 	var target = 100
+	match how:
+		-1:
+			var mode = cfg_method_priority
+			match mode:
+				"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE":
+					how = 0
+					target = cfg_target
+				"VP_AUTOREPAIR_PRIORITY_ONLYREPAIR":
+					how = 1
+					target = cfg_target
+				"VP_AUTOREPAIR_PRIORITY_ONLYREPLACE":
+					how = 2
+					mustTarget = false
+					target = cfg_target
+				"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
+					mustTarget = false
+		0:
+			max_repair = 10000000
+			max_replace = 10000000
+			min_cash = 0
+			min_insurance = 0
+		1:
+			max_repair = 10000000
+			max_replace = 10000000
+			min_cash = 0
+			min_insurance = 0
+		2:
+			max_repair = 10000000
+			max_replace = 10000000
+			min_cash = 0
+			min_insurance = 0
+		3,4,5:
+			target = cfg_target
+			how -= 3
+		6:
+			how = 0
+			max_repair = 10000000
+			max_replace = 10000000
+			min_cash = 0
+			min_insurance = 0
+			mustTarget = false
+	for b in systemsBox.get_children():
+		if b.visible and manual_check(b):
+			validSystems.append(b)
+	
+	
 	for b in validSystems:
 		var currentCash = CurrentGame.getMoney()
 		var currentInsurance = CurrentGame.getInsurance()
@@ -458,7 +509,7 @@ func manual_opt(how : int):
 				available_cash = currentInsurance - min_insurance
 			else:
 				available_cash = (currentCash + currentInsurance) - min_cash
-			handle_operation(b,available_cash,true,CurrentGame.getPlayerShip(),how,target)
+			handle_operation(b,available_cash,mustTarget,CurrentGame.getPlayerShip(),how,target)
 	if queued_repairs.size() > 0:
 			set_physics_process(true)
 
