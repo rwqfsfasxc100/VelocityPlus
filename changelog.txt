@@ -1,3 +1,9 @@
+[1.3.13]
+
+1="* Updated credits for supporters"
+2="* Improved auto repair heuristics when handling the replacing of equipment"
+3="* Added several buttons to the auto repairs submenu that lets you manually trigger the repair operations, alongside some options not normally accessible through the automatic operation of the tool."
+
 [1.3.12]
 
 1="* Reduced logging from translations being defined during the mod loading phase"
