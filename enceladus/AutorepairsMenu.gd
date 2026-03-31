@@ -1,23 +1,23 @@
 extends Popup
 
-export var enable_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/EnableAutorepair/CheckButton")
+export var enable_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/EnableAutorepair/CheckButton")
 onready var enable = get_node_or_null(enable_p)
-export var mode_button_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MethodPrio/OptionButton")
+export var mode_button_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MethodPrio/OptionButton")
 onready var mode_button = get_node_or_null(mode_button_p)
 
-export var minmoney_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MinMoney/HSlider")
+export var minmoney_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/HSlider")
 onready var minmoney = get_node_or_null(minmoney_p)
 
-export var mininsurance_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/HSlider")
+export var mininsurance_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/HSlider")
 onready var mininsurance = get_node_or_null(mininsurance_p)
 
-export var maxrepair_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/HSlider")
+export var maxrepair_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/HSlider")
 onready var maxrepair = get_node_or_null(maxrepair_p)
 
-export var maxreplace_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/HSlider")
+export var maxreplace_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/HSlider")
 onready var maxreplace = get_node_or_null(maxreplace_p)
 
-export var target_p = NodePath("PanelContainer/VBoxContainer/VBoxContainer/Target/HSlider")
+export var target_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/HSlider")
 onready var target = get_node_or_null(target_p)
 
 var pointersVP
@@ -55,11 +55,11 @@ func _visibility_changed():
 			"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
 				mode_button.selected = 3
 		yield(get_tree(),"idle_frame")
-		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_money"],minmoney,"PanelContainer/VBoxContainer/VBoxContainer/MinMoney/Val",true)
-		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_insurance"],mininsurance,"PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/Val",true)
-		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_repair"],maxrepair,"PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/Val",true)
-		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_replace"],maxreplace,"PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/Val",true)
-		set_slider_val(config["VP_AUTOREPAIRS"]["target_percent"],target,"PanelContainer/VBoxContainer/VBoxContainer/Target/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_money"],minmoney,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_insurance"],mininsurance,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_repair"],maxrepair,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_replace"],maxreplace,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/Val",true)
+		set_slider_val(config["VP_AUTOREPAIRS"]["target_percent"],target,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/Val",true)
 
 var code_changed = []
 
@@ -119,20 +119,20 @@ func method_select(index):
 
 
 func minmoney_changed(value):
-	save_slider_val(value,minmoney,"minimum_money","PanelContainer/VBoxContainer/VBoxContainer/MinMoney/Val")
+	save_slider_val(value,minmoney,"minimum_money","PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/Val")
 
 
 func mininsurance_changed(value):
-	save_slider_val(value,mininsurance,"minimum_insurance","PanelContainer/VBoxContainer/VBoxContainer/MinInsurance/Val")
+	save_slider_val(value,mininsurance,"minimum_insurance","PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/Val")
 
 
 func maxrepair_changed(value):
-	save_slider_val(value,maxrepair,"maximum_repair","PanelContainer/VBoxContainer/VBoxContainer/MaxRepair/Val")
+	save_slider_val(value,maxrepair,"maximum_repair","PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/Val")
 
 
 func maxreplace_changed(value):
-	save_slider_val(value,maxreplace,"maximum_replace","PanelContainer/VBoxContainer/VBoxContainer/MaxReplace/Val")
+	save_slider_val(value,maxreplace,"maximum_replace","PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/Val")
 
 
 func target_changed(value):
-	save_slider_val(value,target,"target_percent","PanelContainer/VBoxContainer/VBoxContainer/Target/Val")
+	save_slider_val(value,target,"target_percent","PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/Val")

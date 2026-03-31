@@ -76,13 +76,13 @@ func createRepairMenuFor(ship):
 				validSystems.append(b)
 #		for b in validSystems:
 #			can_update(false,b)
+		
+		var max_repair = cfg_max_repair
+		var max_replace = cfg_max_replace
+		var min_cash = cfg_min_cash
+		var min_insurance = cfg_min_insurance
+		var target = cfg_target
 		for b in validSystems:
-			
-			var max_repair = cfg_max_repair
-			var max_replace = cfg_max_replace
-			var min_cash = cfg_min_cash
-			var min_insurance = cfg_min_insurance
-			var target = cfg_target
 			
 			var shouldOnlyMode = 0
 			
@@ -222,7 +222,7 @@ func isValidForAuto(box) -> bool:
 	if not "repairFixPrice" in box.system.ref:
 		return false
 	if box.system.status >= 99.5:
-				return false
+		return false
 	match mode:
 		"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR":
 			if box.system.status >= target:
@@ -244,17 +244,22 @@ func appraise_for_cost_efficiency(box,mustTarget,forcemode,targetVal):
 		if forcemode == 2:
 			action_list = [0,true,replaceCost]
 		if mustTarget and not action_list[1]:
-			var force_repairs = repairs_needed_to_target(box)
+			var force_repairs = repairs_needed_to_target(box, targetVal)
 			if force_repairs > action_list[0]:
 				Debug.l(force_appraisal_status % [box.system.name,force_repairs,"missing repairs (target of %s not met)" % force_repairs])
 				var l = find_most_effective_match(box,action_list.duplicate(true),forcemode,replaceCost,force_repairs)
 				action_list = l
-	
+	elif box.isReplaceable(sys):
+		if forcemode == 2:
+			action_list = [0,true,replaceCost]
+		if mustTarget and not action_list[1]:
+			action_list[1] = true
 	return action_list
 
 func find_most_effective_match(box,current_actions,force_mode,replaceCost,target):
 	
 	if force_mode == 1:
+		current_actions[0] = target
 		return current_actions
 	if force_mode == 2:
 		return [0,true,replaceCost]
@@ -282,13 +287,13 @@ func find_most_effective_match(box,current_actions,force_mode,replaceCost,target
 	current_actions[1] = add_actions[1]
 	return current_actions
 
-func repairs_needed_to_target(box):
+func repairs_needed_to_target(box, target_override = 0):
 	var repairs = 0
 	
 	var maxRepairs = CurrentGame.getRepairLimit(true)
 	var base_system = box.system
 	var status = base_system.status
-	var target = cfg_target
+	var target = target_override if target_override else cfg_target
 	var r = 1
 	var system = simulate_repair(base_system,r)
 	while status < target and status < maxRepairs and r < 8:
@@ -407,3 +412,61 @@ func simulate_repair(system,specific_cycle):
 		var newstatus = clamp(100 - max(max(dmg1, dmg2), dmg3) * 100, 0, 100)
 		after_repair.status = newstatus
 	return after_repair
+
+func manual_cost_effective_repair():
+	manual_opt(0)
+
+func manual_fix_repair():
+	manual_opt(1)
+
+func manual_replace_repair():
+	manual_opt(2)
+
+func manual_opt(how : int):
+	var validSystems = []
+#	match how:
+#		0:
+#			pass
+#		1:
+#			pass
+#		2:
+#			pass
+	for b in systemsBox.get_children():
+		if b.visible and manual_check(b):
+			validSystems.append(b)
+	var max_repair = cfg_max_repair
+	var max_replace = cfg_max_replace
+	var min_cash = cfg_min_cash
+	var min_insurance = cfg_min_insurance
+	var target = 100
+	for b in validSystems:
+		var currentCash = CurrentGame.getMoney()
+		var currentInsurance = CurrentGame.getInsurance()
+		
+		var can_afford = true
+		
+		if min_insurance > 0:
+			if currentInsurance < min_insurance:
+				can_afford = false
+		else:
+			if currentCash + currentInsurance < min_cash:
+				can_afford = false
+		
+		if can_afford:
+			var available_cash = 0
+			if min_insurance > 0:
+				available_cash = currentInsurance - min_insurance
+			else:
+				available_cash = (currentCash + currentInsurance) - min_cash
+			handle_operation(b,available_cash,true,CurrentGame.getPlayerShip(),how,target)
+	if queued_repairs.size() > 0:
+			set_physics_process(true)
+
+func manual_check(box):
+	if not "repairReplacementPrice" in box.system.ref:
+		return false
+	if not "repairFixPrice" in box.system.ref:
+		return false
+	if box.system.status >= 99.5:
+		return false
+	return true

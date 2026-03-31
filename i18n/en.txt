@@ -279,3 +279,17 @@ VP_TURRET_OVERRIDE_FIRE|Auto-fire weapon
 VP_DISABLE_MAINTENANCE_SANBUS|Disable SANBUS on maintenance drones
 
 VP_DISABLE_MAINTENANCE_SANBUS_DESC|Prevents maintenance drones from being blocked from operating on a ship when another system is currently targeting it.
+
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT|Repair all to 100% (cost-effective)
+
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX|Repair all to 100% (fix only)
+
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE|Repair all to 100% (replace only)
+
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_TOOLTIP|Repairs everything on the ship to 100% (or as close to) as cost-effectively as possible.
+
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX_TOOLTIP|Fixes everything on the ship to 100% (or as close to) as possible.
+
+VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE_TOOLTIP|Replaces everything on the ship.
+
+VP_FIX_ACTION|FIX
