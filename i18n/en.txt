@@ -315,3 +315,7 @@ VP_AUTOREPAIRS_FIX_TO_CURRENT_REPLACE_TOOLTIP|Replaces equipment based on the cu
 VP_AUTOREPAIRS_MANUAL_MAX_PROFIT|Repair from current settings (maximize profit)
 
 VP_AUTOREPAIRS_MANUAL_MAX_PROFIT_TOOLTIP|Repairs equipment based on the current monetary and target settings to maximize profit as much as possible.
+
+VP_HIDE_CREW_SUITS|Hide crew suits
+
+VP_HIDE_CREW_SUITS_DESC|If any crew portraits are visible, their EVA suits will be removed.

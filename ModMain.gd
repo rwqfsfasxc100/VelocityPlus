@@ -69,10 +69,12 @@ func _init(modLoader = ModLoader):
 		
 		installScriptExtension("AchievementAbstract.gd")
 		
-		if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
-			replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
-		if config.get("VP_CREW",{}).get("hide_in_OMS",false):
-			replaceScene("hud/OMS.tscn")
+		installScriptExtension("enceladus/CrewFaceOnEnceladus.gd")
+		installScriptExtension("hud/RestricedCrewList.gd")
+#		if config.get("VP_CREW",{}).get("hide_on_enceladus",false):
+#			replaceScene("enceladus/CrewFaceOnEnceladus.tscn")
+#		if config.get("VP_CREW",{}).get("hide_in_OMS",false):
+#			replaceScene("hud/OMS.tscn")
 		
 		replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
 		

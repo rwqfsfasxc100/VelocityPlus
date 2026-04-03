@@ -88,6 +88,12 @@ VP_CREW={
 		"type":"bool",
 		"default":false
 	},
+	"hide_crew_suit":{
+		"name":"VP_HIDE_CREW_SUITS",
+		"description":"VP_HIDE_CREW_SUITS_DESC",
+		"type":"bool",
+		"default":false
+	},
 	"mineral_marker_limit_multiplier":{
 		"name":"VP_GEOLOGIST_MINERAL_LIMIT_MULTI",
 		"description":"VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC",
