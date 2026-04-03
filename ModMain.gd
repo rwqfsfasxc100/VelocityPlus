@@ -31,10 +31,10 @@ func _init(modLoader = ModLoader):
 		
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
 		
-		if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
-			installScriptExtension("hud/SystemList.gd")
-			installScriptExtension("ships/ship_handle_system_toggles.gd")
-			installScriptExtension("enceladus/Tuning.gd")
+#		if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
+		installScriptExtension("hud/SystemList.gd")
+		installScriptExtension("ships/ship_handle_system_toggles.gd")
+		installScriptExtension("enceladus/Tuning.gd")
 		
 		
 		installScriptExtension("enceladus/Upgrades.gd")

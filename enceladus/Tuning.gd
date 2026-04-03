@@ -1,36 +1,48 @@
 extends "res://enceladus/Tuning.gd"
 
+var pointersVP
+
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	updateValues()
+
+func updateValues():
+	if pointersVP:
+		toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+
+var toggle_systems_at_enceladus = false
 var omsToggleCfg = "omstoggles.%s.%s"
 onready var systemLabel = preload("res://VelocityPlus/enceladus/EnabledSystem.tscn")
 onready var systemTitle = preload("res://VelocityPlus/enceladus/EnabledItems.tscn")
 
 func fillTuneableSystems():
 	.fillTuneableSystems()
-	
-	var node = get_node(itemsNodePath)
-	if Tool.claim(ship):
-		if not ship.setup:
-			yield(ship,"setup")
-		var systems = ship.getSystems()
-		if not "omstoggles" in ship.shipConfig:
-			ship.shipConfig.merge({"omstoggles":{}})
-		var oms = ship.shipConfig["omstoggles"]
-		node.add_child(systemTitle.instance())
-		for system in systems:
-			var sys = systems[system]
-			var vname = sys.name
-			if sys.togleable:
-				var pos = null
-				if "position" in sys.ref:
-					pos = ship.get_path_to(sys.ref)
-				var current = ship.getConfig(omsToggleCfg % [system,vname],true)
-				ship.setConfig(omsToggleCfg % [system,vname],current)
-				var label = systemLabel.instance()
-				label.tuningItem = vname
-				label.tune = current
-				label.connect("value_changed",self,"handleOMSToggle",[system,vname,pos])
-				node.add_child(label)
-		Tool.release(ship)
+	if toggle_systems_at_enceladus:
+		var node = get_node(itemsNodePath)
+		if Tool.claim(ship):
+			if not ship.setup:
+				yield(ship,"setup")
+			var systems = ship.getSystems()
+			if not "omstoggles" in ship.shipConfig:
+				ship.shipConfig.merge({"omstoggles":{}})
+			var oms = ship.shipConfig["omstoggles"]
+			node.add_child(systemTitle.instance())
+			for system in systems:
+				var sys = systems[system]
+				var vname = sys.name
+				if sys.togleable:
+					var pos = null
+					if "position" in sys.ref:
+						pos = ship.get_path_to(sys.ref)
+					var current = ship.getConfig(omsToggleCfg % [system,vname],true)
+					ship.setConfig(omsToggleCfg % [system,vname],current)
+					var label = systemLabel.instance()
+					label.tuningItem = vname
+					label.tune = current
+					label.connect("value_changed",self,"handleOMSToggle",[system,vname,pos])
+					node.add_child(label)
+			Tool.release(ship)
 	yield(get_tree(),"idle_frame")
 	set_draw(false,false)
 
