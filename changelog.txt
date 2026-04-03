@@ -1,3 +1,11 @@
+[1.3.14]
+
+1="* Updated updateTL function"
+2="* Toggling crew portrait visibility at Enceladus and in the OMS menus now no longer requires a game restart"
+3="* System toggles can now have it's functionality toggled without needing to restart the game"
+4="* Changing the simulation shader now no longer needs a restart to the game"
+5="* Toggling companion halt on return now no longer requires a restart to the game"
+
 [1.3.13]
 
 1="* Updated credits for supporters"
