@@ -47,6 +47,30 @@ func _enter_tree():
 func updateValues():
 	if pointersVP:
 		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
+		toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+
+var toggle_systems_at_enceladus = false
+
+
+const omsToggleCfg = "omstoggles.%s.%s"
+
+
+func handleSystemToggles():
+	if not setup:
+		yield(self,"setup")
+	if not "omstoggles" in shipConfig:
+		shipConfig.merge({"omstoggles":{}})
+	var oms = shipConfig["omstoggles"]
+	var systems = getSystems()
+	if systems.keys().size() > 0:
+		for system in systems:
+			var sys = systems[system]
+			var toggleable = sys.togleable
+			var current = sys.name
+			if toggleable:
+				var cg = getConfig(omsToggleCfg % [system,current],true)
+				sys.ref.enabled = cg
+
 
 
 var prevent_adrenaline = false
@@ -55,6 +79,8 @@ func _ready():
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
 #	handleSystemToggles()
+	if toggle_systems_at_enceladus:
+		handleSystemToggles()
 var config = {}
 func modify():
 	

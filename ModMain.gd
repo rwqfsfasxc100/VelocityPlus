@@ -31,16 +31,18 @@ func _init(modLoader = ModLoader):
 		
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
 		
+		installScriptExtension("enceladus/Simulator/SimulationLayer.gd")
+		
 #		if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
 		installScriptExtension("hud/SystemList.gd")
-		installScriptExtension("ships/ship_handle_system_toggles.gd")
+#		installScriptExtension("ships/ship_handle_system_toggles.gd")
 		installScriptExtension("enceladus/Tuning.gd")
 		
 		
 		installScriptExtension("enceladus/Upgrades.gd")
 		installScriptExtension("CurrentGame.gd")
-		if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
-			replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
+#		if config.get("VP_SHIPS",{}).get("add_scoop_halt_on_return",false):
+		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
 		
 		
 		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
@@ -98,17 +100,17 @@ func _init(modLoader = ModLoader):
 		replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 		
 		
-		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
-		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
-			0:
-				pass
-			1:
-				replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
-			2:
-				replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
-			3:
-				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
-	
+#		var simulator_path = "res://enceladus/Simulator/SimulationLayer.tscn"
+#		match config.get("VP_ENCELADUS",{}).get("simulator_shader",1):
+#			0:
+#				pass
+#			1:
+#				replaceScene("enceladus/Simulator/background/SimulationLayer.tscn",simulator_path)
+#			2:
+#				replaceScene("enceladus/Simulator/nobackground/SimulationLayer.tscn",simulator_path)
+#			3:
+#				replaceScene("enceladus/Simulator/lumaedge/SimulationLayer.tscn",simulator_path)
+#
 	
 
 var cradle_left = {
