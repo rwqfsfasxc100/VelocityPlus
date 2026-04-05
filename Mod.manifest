@@ -11,7 +11,7 @@ credits=["Za'krin - Mod Main design, original implementation of updateTL","harry
 
 version_major=1
 version_minor=3
-version_bugfix=14
+version_bugfix=15
 
 [tags]
 
@@ -59,6 +59,13 @@ VP_ENCELADUS={
 		"name":"VP_ENABLE_ACHIEVEMENTS",
 		"description":"VP_ENABLE_ACHIEVEMENTS_DESC",
 		"type":"bool",
+		"default":false
+	},
+	"enable_leaderboards":{
+		"name":"VP_ENABLE_LEADERBOARDS",
+		"description":"VP_ENABLE_LEADERBOARDS_DESC",
+		"type":"bool",
+		"requires_bools":["VelocityPlus/VP_ENCELADUS/enable_achievements"],
 		"default":false
 	},
 	"enable_achievements_on_cheated_saves":{
