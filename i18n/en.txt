@@ -319,3 +319,7 @@ VP_AUTOREPAIRS_MANUAL_MAX_PROFIT_TOOLTIP|Repairs equipment based on the current 
 VP_HIDE_CREW_SUITS|Hide crew suits
 
 VP_HIDE_CREW_SUITS_DESC|If any crew portraits are visible, their EVA suits will be removed.
+
+VP_ENABLE_LEADERBOARDS|Enable Steam Leaderboards
+
+VP_ENABLE_LEADERBOARDS_DESC|Allow leaderboards to be earned with mods enabled.\n\nRequires Enable Achievements to work.

@@ -1,6 +1,7 @@
 extends "res://achievement/AchivementAbstract.gd"
 
 var enable_achievements = false
+var enable_leaderboards = false
 var cheetah = false
 
 var pointers
@@ -15,14 +16,13 @@ func _ready():
 func updateValues():
 	if pointers:
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
+		enable_achievements = config.get("VP_ENCELADUS",{}).get("enable_achievements",true)
+		enable_leaderboards = config.get("VP_ENCELADUS",{}).get("enable_leaderboards",true)
+		if config.get("VP_ENCELADUS",{}).get("enable_achievements_on_cheated_saves",false):
+			cheetah = false
+	
 #const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
 var config = {}
-	
-
-func _physics_process(delta):
-	enable_achievements = config.get("VP_ENCELADUS",{}).get("enable_achievements",true)
-	if config.get("VP_ENCELADUS",{}).get("enable_achievements_on_cheated_saves",false):
-		cheetah = false
 
 func validateStatAchievements():
 	CurrentGame.checkGameState()
