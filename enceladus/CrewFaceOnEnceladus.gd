@@ -1,10 +1,16 @@
 extends "res://enceladus/CrewFaceOnEnceladus.gd"
 
+var vac_tex
+var vc
 var pointersVP
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
 	yield(CurrentGame.get_tree(),"idle_frame")
+	vac_tex = get_node_or_null("C/O/Face/Sprite").material.get_shader_param("mask")
+	
+	vc = StreamTexture.new()
+	vc.load_path = "res://VelocityPlus/enceladus/vaccover.stex"
 	updateValues()
 
 func updateValues():
@@ -17,6 +23,7 @@ func updateValues():
 			if hideVac:
 				get_node_or_null("C/O").position = Vector2(120,100)
 				get_node_or_null("C/O/Face/Sprite").z_index = 2
+				get_node_or_null("C/O/Face/Sprite").material.set_shader_param("mask",vc)
 				get_node_or_null("C/O/Vac").visible = false
 				get_node_or_null("C/O/Screen2").texture_scale = 50
 				get_node_or_null("C/O/Screen2").energy = 2.19
@@ -27,6 +34,7 @@ func updateValues():
 			else:
 				get_node_or_null("C/O").position = Vector2(120,0)
 				get_node_or_null("C/O/Face/Sprite").z_index = 1
+				get_node_or_null("C/O/Face/Sprite").material.set_shader_param("mask",vac_tex)
 				get_node_or_null("C/O/Vac").visible = true
 				get_node_or_null("C/O/Screen2").texture_scale = 4.34
 				get_node_or_null("C/O/Screen2").energy = 4.05
