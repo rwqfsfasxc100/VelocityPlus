@@ -55,13 +55,13 @@ func _physics_process(delta):
 
 func getThrust(force = false):
 	var outThrust = .getThrust(force)
-	if adjust_thrust_to_temperature:
+	if adjust_thrust_to_temperature and not externalPower:
 		if temp > 1000:
 			var multi = (float(temp)/float(avgTarget))
 			var s0 = multi - 1.0
 			var s1 = s0 * adjust_thrust_multi
 			var s2 = s1 + 1.0
 			if multi != 1:
-				var newthrust = outThrust * s2
+				var newthrust = max(outThrust * s2,outThrust * 0.1)
 				return newthrust
 	return outThrust

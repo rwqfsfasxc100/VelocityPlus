@@ -1,3 +1,12 @@
+[1.4.1]
+
+1="* Fixed temp thrust modifiers producing negative thrust in very extreme conditions"
+1.1="* This was only capable of happening on high multiplier values"
+1.2="* Now will always be able to produce at least 10% thrust in the absolute worst cases"
+2="* Temp thrust modifiers now no longer affect self-igniting thrusters"
+2.1="* Temperature may still be a factor due to some pressure being required for ignition on some thrusters"
+2.2="* This mainly affects fusion or NSWR thrusters"
+
 [1.4.0]
 
 1="* Added temperature-based thrust modifiers for thrusters"
