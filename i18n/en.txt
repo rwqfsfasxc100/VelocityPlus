@@ -323,3 +323,15 @@ VP_HIDE_CREW_SUITS_DESC|If any crew portraits are visible, their EVA suits will 
 VP_ENABLE_LEADERBOARDS|Enable Steam Leaderboards
 
 VP_ENABLE_LEADERBOARDS_DESC|Allow leaderboards to be earned with mods enabled.\n\nRequires Enable Achievements to work.
+
+VP_TEMPERATURE_BASED_THRUST|Temperature-based thrust modifier
+
+VP_TEMPERATURE_BASED_THRUST_DESC|Thrusters will linearly adjust their thrust based on the current temperature against the current target temperature. Thermal requirements will scale if nullify thermal change is not enabled.
+
+VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL|Nullify thermal change
+
+VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL_DESC|Whether the thermal requirement changes should be ignored.
+
+VP_TEMPERATURE_BASED_THRUST_MULTI|Temperature-based thrust multiplier
+
+VP_TEMPERATURE_BASED_THRUST_MULTI_DESC|The magnitude of which the thrust is modified

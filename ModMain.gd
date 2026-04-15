@@ -38,6 +38,7 @@ func _init(modLoader = ModLoader):
 #		installScriptExtension("ships/ship_handle_system_toggles.gd")
 		installScriptExtension("enceladus/Tuning.gd")
 		
+		installScriptExtension("sfx/thruster.gd")
 		
 		installScriptExtension("enceladus/Upgrades.gd")
 		installScriptExtension("CurrentGame.gd")
