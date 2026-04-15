@@ -332,6 +332,6 @@ VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL|Nullify thermal change
 
 VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL_DESC|Whether the thermal requirement changes should be ignored.
 
-VP_TEMPERATURE_BASED_THRUST_MULTI|Temperature-based thrust multiplier
+VP_TEMPERATURE_BASED_THRUST_MULTI|Temperature-based thrust multiplier percentage
 
 VP_TEMPERATURE_BASED_THRUST_MULTI_DESC|The magnitude of which the thrust is modified
