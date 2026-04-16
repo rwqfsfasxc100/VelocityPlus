@@ -6,7 +6,7 @@ var goRight = false
 
 var pointersVP
 
-func updateValues():
+func vp_leavingring_UV():
 	if pointersVP:
 		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
 
@@ -14,8 +14,8 @@ var config = {}
 func _init():
 	if CurrentGame != null:
 		pointersVP = CurrentGame.get_tree().get_root().get_node_or_null("HevLib~Pointers")
-		pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-		updateValues()
+		pointersVP.ConfigDriver.__establish_connection("vp_leavingring_UV",self)
+		vp_leavingring_UV()
 		visible = true
 		if config.get("VP_RING",{}).get("remove_max_speed_limit",true):
 			warnVelocity = 1.79769e308

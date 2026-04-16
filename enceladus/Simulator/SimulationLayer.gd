@@ -8,8 +8,8 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_sim_UV",self)
+	vp_sim_UV()
 
 var basic_shader = null
 var premium_shader = null
@@ -17,7 +17,7 @@ var premium_shader = null
 var simulator_shader = 0
 var old_shader = 0
 
-func updateValues():
+func vp_sim_UV():
 	if pointersVP:
 		simulator_shader = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","simulator_shader")
 	else:

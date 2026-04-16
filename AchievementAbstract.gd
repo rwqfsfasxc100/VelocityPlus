@@ -9,11 +9,11 @@ var pointers
 func _ready():
 	yield(get_tree(),"idle_frame")
 	pointers = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointers.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointers.ConfigDriver.__establish_connection("vp_achievements_UV",self)
+	vp_achievements_UV()
 	cheetah = CurrentGame.cheetah
 
-func updateValues():
+func vp_achievements_UV():
 	if pointers:
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
 		enable_achievements = config.get("VP_ENCELADUS",{}).get("enable_achievements",true)

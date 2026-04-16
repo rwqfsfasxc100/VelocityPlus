@@ -6,10 +6,10 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_syslist_UV",self)
+	vp_syslist_UV()
 
-func updateValues():
+func vp_syslist_UV():
 	if pointersVP:
 		remember_toggled_systems = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","remember_toggled_systems")
 		toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")

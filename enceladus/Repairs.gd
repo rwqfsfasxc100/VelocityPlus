@@ -7,11 +7,11 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_autorepairs_UV",self)
+	vp_autorepairs_UV()
 	set_physics_process(false)
 
-func updateValues():
+func vp_autorepairs_UV():
 	if pointersVP:
 		cfg_do_automatic_repairs = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","automatic_repairs")
 		cfg_method_priority = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_AUTOREPAIRS","method_priority")

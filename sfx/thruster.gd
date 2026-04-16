@@ -3,7 +3,7 @@ extends "res://sfx/thruster.gd"
 var VP_pointers
 
 
-func updateValues():
+func vp_thrusterTempModeration_UV():
 	if VP_pointers:
 		adjust_thrust_to_temperature = VP_pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
 		adjust_thrust_nullify_thermal = VP_pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
@@ -27,11 +27,11 @@ func a3(how):
 func _ready():
 	if ship.isPlayerControlled() or ship.isRealShip():
 		VP_pointers = CurrentGame.get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	#	VP_pointers.ConfigDriver.__establish_connection("updateValues",self)
+	#	VP_pointers.ConfigDriver.__establish_connection("vp_thrusterTempModeration_UV",self)
 		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
 		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a2",self,"VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
 		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a3",self,"VelocityPlus","VP_SHIPS","adjust_thrust_multi")
-		updateValues()
+		vp_thrusterTempModeration_UV()
 		yield(CurrentGame.get_tree(),"idle_frame")
 		interruptObject = load("res://VelocityPlus/sfx/ThrusterShipInterrupt.gd").new(VP_pointers,ship,self)
 		ship = interruptObject

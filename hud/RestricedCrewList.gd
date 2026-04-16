@@ -6,11 +6,11 @@ var vacPath = NodePath("C/O/Vac")
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
+	pointersVP.ConfigDriver.__establish_connection("vp_crewrestrictedlist_UV",self)
 	yield(self,"drawn_crew")
-	updateValues()
+	vp_crewrestrictedlist_UV()
 
-func updateValues():
+func vp_crewrestrictedlist_UV():
 	if pointersVP:
 		var hideCrew = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","hide_in_OMS")
 		if hideCrew:

@@ -6,10 +6,10 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_fixtooltip_UV",self)
+	vp_fixtooltip_UV()
 
-func updateValues():
+func vp_fixtooltip_UV():
 	if pointersVP:
 		showVPToolTips = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","extra_tooltips")
 

@@ -10,14 +10,14 @@ func _init(p,s,o):
 	pointers = p
 	pointers.ConfigDriver.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
 	pointers.ConfigDriver.__subscribe_to_setting_change("a2",self,"VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
-	updateValues()
+	vp_thrusterInterrupt_UV()
 
 func a1(how):
 	adjust_thrust_to_temperature = how
 func a2(how):
 	adjust_thrust_nullify_thermal = how
 
-func updateValues():
+func vp_thrusterInterrupt_UV():
 	if pointers:
 		adjust_thrust_to_temperature = pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
 		adjust_thrust_nullify_thermal = pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")

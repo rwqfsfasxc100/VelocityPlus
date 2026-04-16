@@ -4,10 +4,10 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_armfocus_UV",self)
+	vp_armfocus_UV()
 
-func updateValues():
+func vp_armfocus_UV():
 	if pointersVP:
 		armFocuses = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","arm_focuses_to_targeted_object")
 

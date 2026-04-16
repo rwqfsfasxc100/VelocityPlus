@@ -19,10 +19,10 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
+	vp_omslabels_UV()
 
-func updateValues():
+func vp_omslabels_UV():
 	if pointersVP:
 		show_dive_clock = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS")
 		show_shipped_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_shipped_cargo_value")

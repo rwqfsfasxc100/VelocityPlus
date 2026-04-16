@@ -8,10 +8,10 @@ var pointersVP
 
 func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVP.ConfigDriver.__establish_connection("vp_marketval_UV",self)
+	vp_marketval_UV()
 
-func updateValues():
+func vp_marketval_UV():
 	if pointersVP:
 		mineral_market_show_total_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
 

@@ -19,15 +19,15 @@ func _enter_tree():
 		if wp:
 			default_fire_action = wp.command
 	pointersVPPDT = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVPPDT.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVPPDT.ConfigDriver.__establish_connection("vp_turretfixer_UV",self)
+	vp_turretfixer_UV()
 
 var fixed = false
 
 var do_change_mode = false
 var autofire_type = "VP_TURRET_OVERRIDE_NOFIRE"
 
-func updateValues():
+func vp_turretfixer_UV():
 	if pointersVPPDT:
 		fixed = pointersVPPDT.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","disable_gimballed_and_turreted_weapons")
 		do_change_mode = pointersVPPDT.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","override_turret_autofire")

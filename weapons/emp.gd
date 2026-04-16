@@ -4,10 +4,10 @@ var pointersVPEMP
 
 func _enter_tree():
 	pointersVPEMP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVPEMP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVPEMP.ConfigDriver.__establish_connection("vp_microwavemelting_UV",self)
+	vp_microwavemelting_UV()
 
-func updateValues():
+func vp_microwavemelting_UV():
 	if pointersVPEMP:
 		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore")
 

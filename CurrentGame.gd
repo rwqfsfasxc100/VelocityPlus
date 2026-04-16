@@ -5,10 +5,10 @@ var pointersVPEMP
 func _ready():
 	yield(get_tree(),"idle_frame")
 	pointersVPEMP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVPEMP.ConfigDriver.__establish_connection("updateValues",self)
-	updateValues()
+	pointersVPEMP.ConfigDriver.__establish_connection("vp_shippedgoods_UV",self)
+	vp_shippedgoods_UV()
 
-func updateValues():
+func vp_shippedgoods_UV():
 	if pointersVPEMP:
 		show_shipped_cargo_value = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_shipped_cargo_value")
 		astrogation_tracking_time_modifier = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","astrogation_tracking_time_modifier")
