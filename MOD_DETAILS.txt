@@ -1,0 +1,7 @@
+;MOD_ID|hev.VelocityPlus
+;MOD_NAME|Velocity Plus
+;MOD_ZIP_NAME|VelocityPlus.zip
+
+[b]Velocity Plus[/b]
+
+Description example text
