@@ -23,11 +23,20 @@ A collection of small QOL changes and additions.
  * Increase crew marker limits - Increases the number of tracked ores and transponders your crew can manage at once.
  * Manipulator arms lock on AP target - Having an object selected with the autopilot will have the AR-1500M target that above anything else.
  * Display negative depth - The HUD now displays distance from the rings as negative depth rather than blanking out.
- * Display dive time - Shows both realtime and total dive time in the mechanic tab.
+ * Display dive time - Shows total dive time in the mechanic tab next to the game's clock.
  * Show equipment reliability - Displays equipment reliability information in the User Manual tab.
  * Toggle HUD & MPU - Adds keybinds to toggle the HUD's display or toggle the MPU's power.
  * Pilots reduce astrogation calculation time - Having a pilot onboard will help reduce the time it takes to calculate an astrogation jump. 
  * Save stats - Display the stats of a save, including current money & insurance, and playtime.
  * Companion return behaviour - allow you to choose the default behaviour of companions when they run low on propellant, as well as extend the number of hail options once that happens.
  * Disable pilot's automatic adrenaline - prevent the pilot from activating adrenaline on a dive.
-
+ * Auto Repair - system to calculate and perform the best repair/replace operations, based on multiple selected criteria.
+ * Transactions - shows the net transaction amount of all direct bank transactions, alongside a breakdown of a total of all payments to you and purchases you've made.
+ * Microwaves melt ore - any microwave system can melt down the water content of ore chunks for a lighter load and a quicker process.
+ * Toggle ship systems at Enceladus - allows you to choose what systems are enabled or disabled at the start of a dive within the tuning menu, with additional options to remember toggled systems from the previous dive.
+ * Maximum astrogator tracking time - allows you to modify the maximum amount of time your astrogator is able to keep track of POIs.
+ * Hide crew suits - allows you to hide the crew's suits whenever visible
+ * Override turret auto-fire behaviour - allows you to choose the targeting and auto-fire behaviour of turret-like equipment
+ * Disable SANBUS on maintenance drones - allows maintenance drones to ignore other targeting systems
+ * Temperature-based thrust modifier - allows for thrusters to have their thrust change based on the current reactor temperature
+ * Natural time skip - When opening a save, the time since the save was last opened will be added to the game time, simulating a natural passage of time
