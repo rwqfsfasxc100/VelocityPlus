@@ -81,6 +81,12 @@ VP_ENCELADUS={
 		"type":"bool",
 		"default":true
 	},
+	"natural_time_skip":{
+		"name":"VP_NATURAL_TIME_SKIP",
+		"description":"VP_NATURAL_TIME_SKIP_DESC",
+		"type":"bool",
+		"default":true
+	},
 }
 VP_CREW={
 	"hide_on_enceladus":{
