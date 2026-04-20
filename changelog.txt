@@ -1,3 +1,13 @@
+[1.4.2]
+
+1="* Added natural time skip"
+1.1="* Time spent between the last time game was saved will be added to a save when opening it to simulate natural time passage"
+1.2="* Enabled by default"
+2="* Made config updater functions use unique names to prevent conflicts with other mods"
+3="* Updated Ukranian translations"
+4="* Switched over to driver-based translations"
+5="* Updated description"
+
 [1.4.1]
 
 1="* Fixed temp thrust modifiers producing negative thrust in very extreme conditions"
