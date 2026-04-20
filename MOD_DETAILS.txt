@@ -10,35 +10,66 @@ All changes are toggleable and/or tuneable in the mod menu.
 
 [center][u]Current Changes:[/u][/center]
 
- * Show mineral market worth - displays the total value of your ore in the mineral market.
- * Add empty cradle equipment - Adds empty cradles to side hardpoints.
- * MVFS shader style - Allows the removal or swapping out of the shader used in the Minding Virtual Flight Service.
- * Hide portraits - Allows the crew portraits to be hidden wherever they may be visible outside of the crew menu.
- * Fix Voyager RSLS MPU in the OCP-209 - Flips the Voyager MPU in the OCP-209 to make it easier to fill.
- * Remove 200 m/s velocity limit - Removes the velocity limits set by the emergency autopilot.
- * Allow travel outside of the ring area - Lets you exit the normal play area (< 0km and > 3,006km depths).
- * Variate broadcasted location timers - Variates the times provided by other crews and personnel to make them feel more natural to being taken from their astrogation computer. Broadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
- * Fix gimballed and turreted weapons in place - Prevents any equipment that can rotate from targeting, locking them to their 0 degree angle.
- * Hide undamaged equipment from repairs - Repair menu will only display equipment below 100%.
- * Add tooltips to Enceladus menus - Adds more tooltips to explain why you can or cannot do something.
- * Enable achievements - allows achievements and leadearboards to be earned with mods enabled.
- * Increase crew marker limits - Increases the number of tracked ores and transponders your crew can manage at once.
- * Manipulator arms lock on AP target - Having an object selected with the autopilot will have the AR-1500M target that above anything else.
- * Display negative depth - The HUD now displays distance from the rings as negative depth rather than blanking out.
- * Display dive time - Shows total dive time in the mechanic tab next to the game's clock.
- * Show equipment reliability - Displays equipment reliability information in the User Manual tab.
- * Toggle HUD & MPU - Adds keybinds to toggle the HUD's display or toggle the MPU's power.
- * Pilots reduce astrogation calculation time - Having a pilot onboard will help reduce the time it takes to calculate an astrogation jump. 
- * Save stats - Display the stats of a save, including current money & insurance, and playtime.
- * Companion return behaviour - allow you to choose the default behaviour of companions when they run low on propellant, as well as extend the number of hail options once that happens.
- * Disable pilot's automatic adrenaline - prevent the pilot from activating adrenaline on a dive.
- * Auto Repair - system to calculate and perform the best repair/replace operations, based on multiple selected criteria.
- * Transactions - shows the net transaction amount of all direct bank transactions, alongside a breakdown of a total of all payments to you and purchases you've made.
- * Microwaves melt ore - any microwave system can melt down the water content of ore chunks for a lighter load and a quicker process.
- * Toggle ship systems at Enceladus - allows you to choose what systems are enabled or disabled at the start of a dive within the tuning menu, with additional options to remember toggled systems from the previous dive.
- * Maximum astrogator tracking time - allows you to modify the maximum amount of time your astrogator is able to keep track of POIs.
- * Hide crew suits - allows you to hide the crew's suits whenever visible
- * Override turret auto-fire behaviour - allows you to choose the targeting and auto-fire behaviour of turret-like equipment
- * Disable SANBUS on maintenance drones - allows maintenance drones to ignore other targeting systems
- * Temperature-based thrust modifier - allows for thrusters to have their thrust change based on the current reactor temperature
- * Natural time skip - When opening a save, the time since the save was last opened will be added to the game time, simulating a natural passage of time
+ * [b]Show mineral market worth[/b] - displays the total value of your ore in the mineral market.
+
+ * [b]Add empty cradle equipment[/b] - Adds empty cradles to side hardpoints.
+
+ * [b]MVFS shader style[/b] - Allows the removal or swapping out of the shader used in the Minding Virtual Flight Service.
+
+ * [b]Hide portraits[/b] - Allows the crew portraits to be hidden wherever they may be visible outside of the crew menu.
+
+ * [b]Fix Voyager RSLS MPU in the OCP-209[/b] - Flips the Voyager MPU in the OCP-209 to make it easier to fill.
+
+ * [b]Remove 200 m/s velocity limit[/b] - Removes the velocity limits set by the emergency autopilot.
+
+ * [b]Allow travel outside of the ring area[/b] - Lets you exit the normal play area (< 0km and > 3,006km depths).
+
+ * [b]Variate broadcasted location timers[/b] - Variates the times provided by other crews and personnel to make them feel more natural to being taken from their astrogation computer. Broadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.
+
+ * [b]Fix gimballed and turreted weapons in place[/b] - Prevents any equipment that can rotate from targeting, locking them to their 0 degree angle.
+
+ * [b]Hide undamaged equipment from repairs[/b] - Repair menu will only display equipment below 100%.
+
+ * [b]Add tooltips to Enceladus menus[/b] - Adds more tooltips to explain why you can or cannot do something.
+
+ * [b]Enable achievements[/b] - allows achievements and leadearboards to be earned with mods enabled.
+
+ * [b]Increase crew marker limits[/b] - Increases the number of tracked ores and transponders your crew can manage at once.
+
+ * [b]Manipulator arms lock on AP target[/b] - Having an object selected with the autopilot will have the AR-1500M target that above anything else.
+
+ * [b]Display negative depth[/b] - The HUD now displays distance from the rings as negative depth rather than blanking out.
+
+ * [b]Display dive time[/b] - Shows total dive time in the mechanic tab next to the game's clock.
+
+ * [b]Show equipment reliability[/b] - Displays equipment reliability information in the User Manual tab.
+
+ * [b]Toggle HUD & MPU[/b] - Adds keybinds to toggle the HUD's display or toggle the MPU's power.
+
+ * [b]Pilots reduce astrogation calculation time[/b] - Having a pilot onboard will help reduce the time it takes to calculate an astrogation jump. 
+
+ * [b]Save stats[/b] - Display the stats of a save, including current money & insurance, and playtime.
+
+ * [b]Companion return behaviour[/b] - allow you to choose the default behaviour of companions when they run low on propellant, as well as extend the number of hail options once that happens.
+
+ * [b]Disable pilot's automatic adrenaline[/b] - prevent the pilot from activating adrenaline on a dive.
+
+ * [b]Auto Repair[/b] - system to calculate and perform the best repair/replace operations, based on multiple selected criteria.
+
+ * [b]Transactions[/b] - shows the net transaction amount of all direct bank transactions, alongside a breakdown of a total of all payments to you and purchases you've made.
+
+ * [b]Microwaves melt ore[/b] - any microwave system can melt down the water content of ore chunks for a lighter load and a quicker process.
+
+ * [b]Toggle ship systems at Enceladus[/b] - allows you to choose what systems are enabled or disabled at the start of a dive within the tuning menu, with additional options to remember toggled systems from the previous dive.
+
+ * [b]Maximum astrogator tracking time[/b] - allows you to modify the maximum amount of time your astrogator is able to keep track of POIs.
+
+ * [b]Hide crew suits[/b] - allows you to hide the crew's suits whenever visible
+
+ * [b]Override turret auto-fire behaviour[/b] - allows you to choose the targeting and auto-fire behaviour of turret-like equipment
+
+ * [b]Disable SANBUS on maintenance drones[/b] - allows maintenance drones to ignore other targeting systems
+
+ * [b]Temperature-based thrust modifier[/b] - allows for thrusters to have their thrust change based on the current reactor temperature
+
+ * [b]Natural time skip[/b] - When opening a save, the time since the save was last opened will be added to the game time, simulating a natural passage of time
