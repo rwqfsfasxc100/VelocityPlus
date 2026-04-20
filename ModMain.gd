@@ -32,7 +32,6 @@ func _init(modLoader = ModLoader):
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
 		
 		installScriptExtension("enceladus/Simulator/SimulationLayer.gd")
-		
 #		if config.get("VP_SHIPS",{}).get("toggle_systems_at_enceladus",true):
 		installScriptExtension("hud/SystemList.gd")
 #		installScriptExtension("ships/ship_handle_system_toggles.gd")
@@ -155,13 +154,7 @@ func _ready():
 #		]
 #		WebTranslate.__webtranslate("https://github.com/rwqfsfasxc100/VelocityPlus",fallback, "res://VelocityPlus/ModMain.gd")
 #	else:
-	updateTL("i18n/en_ends.txt", "|",true,false)
-	updateTL("i18n/en_60.txt", "|",true,false)
-	updateTL("i18n/en_45.txt", "|",true,false)
-	updateTL("i18n/en_30.txt", "|",true,false)
-	updateTL("i18n/en_1.txt", "|",true,false)
-	updateTL("i18n/en.txt", "|",true,false)
-	updateTL("i18n/en_transit_tips.txt", "|",true,false)
+	
 	
 	installScriptExtension("enceladus/Repairs.gd")
 	replaceScene("enceladus/Repairs.tscn")
