@@ -1,3 +1,8 @@
+[1.4.3]
+
+1="* Natural time skip will now pay your crew automatically"
+1.1="* Previously, this could cause issues with very old saves causing your entire crew to leave you since you failed to give them pay in the ranges of several months to years"
+
 [1.4.2]
 
 1="* Added natural time skip"
