@@ -60,3 +60,6 @@ func yieldTimeSkip(age):
 	yield(Tool.makeTimer(3, self), "timeout")
 	Debug.l("Natural Time Skip: save is %s old, advancing by %s seconds" % [timeToString(age),age])
 	advanceTimeBySeconds(age)
+	for c in getCrew():
+		while shouldPayWages(c) and canAffordSalary(c):
+			paySalary(c)
