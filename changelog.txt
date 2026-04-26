@@ -1,3 +1,9 @@
+[1.4.4]
+
+1="* Made reduced update rate of the OMS value displays"
+2="* Reduced the number of calls requesting config data, with any scripts requesting more than one or two different config entries instead fetching the entire config and sorting from there"
+3="* Removed unused scripts"
+
 [1.4.3]
 
 1="* Natural time skip will now pay your crew automatically"
