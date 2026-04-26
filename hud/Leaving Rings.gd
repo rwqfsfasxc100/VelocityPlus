@@ -8,7 +8,7 @@ var pointersVP
 
 func vp_leavingring_UV():
 	if pointersVP:
-		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
+		config = pointersVP.ConfigDriver.__get_config("VelocityPlus").get("VP_RING",{})
 
 var config = {}
 func _init():
@@ -17,7 +17,7 @@ func _init():
 		pointersVP.ConfigDriver.__establish_connection("vp_leavingring_UV",self)
 		vp_leavingring_UV()
 		visible = true
-		if config.get("VP_RING",{}).get("remove_max_speed_limit",true):
+		if config.get("remove_max_speed_limit",true):
 			warnVelocity = 1.79769e308
 	
 	
@@ -29,9 +29,9 @@ func _process(delta):
 		var v = CurrentGame.globalCoords(ship.global_position).x
 		var leftMost = false
 		var rightMost = false
-		if v > 3.005e+07 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_right",true) == false:
+		if v > 3.005e+07 and config.get("allow_exit_of_ring_to_the_right",true) == false:
 			rightMost = true
-		if v < 10000 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_left",true) == false:
+		if v < 10000 and config.get("allow_exit_of_ring_to_the_left",true) == false:
 			leftMost = true
 		
 		if leftMost or rightMost:
