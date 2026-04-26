@@ -78,26 +78,26 @@ func _physics_process(delta):
 		else:
 			if _diveClock != null:
 				_diveClock.visible = false
-		if int(Time.get_ticks_msec() * 1000) % 20 == 0:
-			if show_shipped_value:
-				shipped_cargo_amt = 0.0
-				ship.configMutex.lock()
-				if "remoteCargo" in ship.shipConfig:
-					for mineral in ship.shipConfig.remoteCargo.keys():
-						shipped_cargo_amt += CurrentGame.getMineralMarketPricePerKg(mineral) * ship.shipConfig.remoteCargo[mineral]
-				ship.configMutex.unlock()
-				var txt = money_format % CurrentGame.formatThousands(shipped_cargo_amt)
-				money_waiting_label.text = str(txt)
-			if show_transactions:
-				var mGain = CurrentGame.this_dive_transactions_gain
-				var mSpent = -CurrentGame.this_dive_transactions_spent
-				var soldVal = mGain + mSpent
-				var soldTex = money_format % CurrentGame.formatThousands(soldVal)
-				soldGoods_1.text = soldTex
-				if show_transactions_sold_goods:
-					soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
-				if show_transactions_bought_goods:
-					soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
+	if int(Time.get_ticks_msec() * 1000) % 20 == 0:
+		if show_shipped_value:
+			shipped_cargo_amt = 0.0
+			ship.configMutex.lock()
+			if "remoteCargo" in ship.shipConfig:
+				for mineral in ship.shipConfig.remoteCargo.keys():
+					shipped_cargo_amt += CurrentGame.getMineralMarketPricePerKg(mineral) * ship.shipConfig.remoteCargo[mineral]
+			ship.configMutex.unlock()
+			var txt = money_format % CurrentGame.formatThousands(shipped_cargo_amt)
+			money_waiting_label.text = str(txt)
+		if show_transactions:
+			var mGain = CurrentGame.this_dive_transactions_gain
+			var mSpent = -CurrentGame.this_dive_transactions_spent
+			var soldVal = mGain + mSpent
+			var soldTex = money_format % CurrentGame.formatThousands(soldVal)
+			soldGoods_1.text = soldTex
+			if show_transactions_sold_goods:
+				soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
+			if show_transactions_bought_goods:
+				soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
 			
 		
 
