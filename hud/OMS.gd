@@ -24,11 +24,15 @@ func _enter_tree():
 
 func vp_omslabels_UV():
 	if pointersVP:
-		show_dive_clock = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS")
-		show_shipped_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_shipped_cargo_value")
-		show_transactions = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions")
-		show_transactions_sold_goods = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions_sold_goods")
-		show_transactions_bought_goods = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","show_transactions_bought_goods")
+		var config = pointersVP.ConfigDriver.__get_config("VelocityPlus").get("VP_RING",{})
+		show_dive_clock = config.get("show_dive_time_in_OMS",true)
+		show_shipped_value = config.get("show_shipped_cargo_value",true)
+		show_transactions = config.get("show_transactions",true)
+		show_transactions_sold_goods = config.get("show_transactions_sold_goods",true)
+		show_transactions_bought_goods = config.get("show_transactions_bought_goods",true)
+		handle_visibility()
+
+
 
 func _ready():
 	ship = get_parent().get_parent()
@@ -37,7 +41,7 @@ func _ready():
 		CurrentGame.this_dive_transactions_spent = 0
 
 var money_format = "%s E$"
-
+var shipped_cargo_amt = 0.0
 
 func _input(event):
 	if !ship.cutscene and ship.isPlayerControlled():
@@ -70,55 +74,64 @@ func _physics_process(delta):
 					timeInDive % 60,
 				]
 				_diveClock.text = text + " | "
-				_diveClock.visible = true
+				
 		else:
 			if _diveClock != null:
 				_diveClock.visible = false
+		if int(Time.get_ticks_msec() * 1000) % 20 == 0:
+			if show_shipped_value:
+				shipped_cargo_amt = 0.0
+				ship.configMutex.lock()
+				if "remoteCargo" in ship.shipConfig:
+					for mineral in ship.shipConfig.remoteCargo.keys():
+						shipped_cargo_amt += CurrentGame.getMineralMarketPricePerKg(mineral) * ship.shipConfig.remoteCargo[mineral]
+				ship.configMutex.unlock()
+				var txt = money_format % CurrentGame.formatThousands(shipped_cargo_amt)
+				money_waiting_label.text = str(txt)
+			if show_transactions:
+				var mGain = CurrentGame.this_dive_transactions_gain
+				var mSpent = -CurrentGame.this_dive_transactions_spent
+				var soldVal = mGain + mSpent
+				var soldTex = money_format % CurrentGame.formatThousands(soldVal)
+				soldGoods_1.text = soldTex
+				if show_transactions_sold_goods:
+					soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
+				if show_transactions_bought_goods:
+					soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
+			
 		
-		if show_shipped_value:
-			
-			var value = 0.0
-			ship.configMutex.lock()
-			if "remoteCargo" in ship.shipConfig:
-				for mineral in ship.shipConfig.remoteCargo.keys():
-					value += CurrentGame.getMineralMarketPricePerKg(mineral) * ship.shipConfig.remoteCargo[mineral]
-			ship.configMutex.unlock()
-			money_waiting_label.visible = true
-			money_waiting_label_1.visible = true
-			var txt = money_format % CurrentGame.formatThousands(value)
-			money_waiting_label.text = str(txt) #+ " | "
+
+func handle_visibility():
+	if show_dive_clock and _diveClock != null:
+		_diveClock.visible = true
+	else:
+		if _diveClock != null:
+			_diveClock.visible = false
+	if show_shipped_value:
+		money_waiting_label.visible = true
+		money_waiting_label_1.visible = true
+	else:
+		money_waiting_label.visible = false
+		money_waiting_label_1.visible = false
+	if show_transactions:
+		soldGoods.visible = true
+		soldGoods_1.visible = true
+		if show_transactions_sold_goods:
+			soldGoods_2.visible = true
+			soldGoods_3.visible = true
 		else:
-			money_waiting_label.visible = false
-			money_waiting_label_1.visible = false
-			
-		if show_transactions:
-			soldGoods.visible = true
-			soldGoods_1.visible = true
-			var mGain = CurrentGame.this_dive_transactions_gain
-			var mSpent = -CurrentGame.this_dive_transactions_spent
-			var soldVal = mGain + mSpent
-			var soldTex = money_format % CurrentGame.formatThousands(soldVal)
-			soldGoods_1.text = soldTex
-			
-			if show_transactions_sold_goods:
-				soldGoods_2.visible = true
-				soldGoods_3.visible = true
-				soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
-			else:
-				soldGoods_2.visible = false
-				soldGoods_3.visible = false
-				
-			if show_transactions_bought_goods:
-				soldGoods_4.visible = true
-				soldGoods_5.visible = true
-				soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
-			else:
-				soldGoods_4.visible = false
-				soldGoods_5.visible = false
-		else:
-			soldGoods.visible = false
-			soldGoods_1.visible = false
 			soldGoods_2.visible = false
 			soldGoods_3.visible = false
+		if show_transactions_bought_goods:
+			soldGoods_4.visible = true
+			soldGoods_5.visible = true
+		else:
 			soldGoods_4.visible = false
 			soldGoods_5.visible = false
+	else:
+		soldGoods.visible = false
+		soldGoods_1.visible = false
+		soldGoods_2.visible = false
+		soldGoods_3.visible = false
+		soldGoods_4.visible = false
+		soldGoods_5.visible = false
