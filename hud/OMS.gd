@@ -17,10 +17,6 @@ var ship
 
 var pointersVP
 
-func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
-	vp_omslabels_UV()
 
 func vp_omslabels_UV():
 	if pointersVP:
@@ -30,11 +26,15 @@ func vp_omslabels_UV():
 		show_transactions = config.get("show_transactions",true)
 		show_transactions_sold_goods = config.get("show_transactions_sold_goods",true)
 		show_transactions_bought_goods = config.get("show_transactions_bought_goods",true)
+		
 		handle_visibility()
 
 
 
 func _ready():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
+	vp_omslabels_UV()
 	ship = get_parent().get_parent()
 	if ship == CurrentGame.getPlayerShip():
 		CurrentGame.this_dive_transactions_gain = 0

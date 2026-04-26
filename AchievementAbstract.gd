@@ -15,10 +15,10 @@ func _ready():
 
 func vp_achievements_UV():
 	if pointers:
-		config = pointers.ConfigDriver.__get_config("VelocityPlus")
-		enable_achievements = config.get("VP_ENCELADUS",{}).get("enable_achievements",true)
-		enable_leaderboards = config.get("VP_ENCELADUS",{}).get("enable_leaderboards",true)
-		if config.get("VP_ENCELADUS",{}).get("enable_achievements_on_cheated_saves",false):
+		config = pointers.ConfigDriver.__get_config("VelocityPlus").get("VP_ENCELADUS",{})
+		enable_achievements = config.get("enable_achievements",true)
+		enable_leaderboards = config.get("enable_leaderboards",true)
+		if config.get("enable_achievements_on_cheated_saves",false):
 			cheetah = false
 	
 #const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")

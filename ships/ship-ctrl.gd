@@ -1,41 +1,4 @@
 extends "res://ships/ship-ctrl.gd"
-#
-#var MPUs = []
-#var HUDs = []
-#
-#func _ready():
-#	var children = get_children()
-#	for child in children:
-#		var scriptobj = child.get_script()
-#		if scriptobj != null:
-#			var script = scriptobj.get_path()
-#			if script == "res://hud/Hud.gd":
-#				HUDs.append(child)
-#			if script == "res://ships/modules/MineralProcessingUnit.gd":
-#				MPUs.append(child)
-#	var mname = self.shipName
-##	breakpoint
-#
-#func _process(delta):
-#	if !self.cutscene and self.isPlayerControlled():
-#		if Input.is_action_pressed("velocityplus_toggle_mpu"):
-#			for mpu in MPUs:
-#				mpu.enabled = not mpu.enabled
-#		if Input.is_action_just_pressed("velocityplus_toggle_hud"):
-#			for hud in HUDs:
-#				hud.visible = !hud.visible
-#var key_actions = []
-#
-#var action_dict = {}
-
-#func _ready():
-#	set_process_input(true)
-#	key_actions = InputMap.get_actions()
-#	for action in key_actions:
-#		action_dict.merge({action:false})
-
-#func _input(event):
-#	breakpoint
 
 var pointersVP
 
@@ -44,10 +7,16 @@ func _enter_tree():
 	pointersVP.ConfigDriver.__establish_connection("vp_shipmanager_UV",self)
 	vp_shipmanager_UV()
 
+var velocityPlus_config_ships = {}
+var velocityPlus_config_crew = {}
+var velocityPlus_config_ring = {}
 func vp_shipmanager_UV():
 	if pointersVP:
-		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
-		toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+		var velocityPlus_config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
+		velocityPlus_config_crew = velocityPlus_config.get("VP_CREW")
+		velocityPlus_config_ring = velocityPlus_config.get("VP_RING")
+		velocityPlus_config_ships = velocityPlus_config.get("VP_SHIPS")
+		toggle_systems_at_enceladus = velocityPlus_config_ships.get("toggle_systems_at_enceladus",false)
 
 var toggle_systems_at_enceladus = false
 
@@ -81,11 +50,10 @@ func _ready():
 #	handleSystemToggles()
 	if toggle_systems_at_enceladus:
 		handleSystemToggles()
-var config = {}
 func modify():
 	
-	prevent_adrenaline = config.get("VP_CREW",{}).get("pilots_disable_adrenaline",false)
-	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
+	prevent_adrenaline = velocityPlus_config_crew.get("pilots_disable_adrenaline",false)
+	if velocityPlus_config_crew.get("pilots_reduce_astro_calculations",true):
 		var education = 0
 		var experience = 0
 		var crewData = CurrentGame.getCurrentlyActiveCrewNames()
@@ -97,41 +65,17 @@ func modify():
 				if dta.talent >= education:
 					education = dta.talent
 		
-		var minimum = float(config.get("VP_CREW",{}).get("minimum_astrogation_time",3))
-		var maximum = float(config.get("VP_CREW",{}).get("maximum_astrogation_time",10))
-		var bias = float(config.get("VP_CREW",{}).get("pilot_skill_bias",0.3))
+		var minimum = float(velocityPlus_config_crew.get("minimum_astrogation_time",3))
+		var maximum = float(velocityPlus_config_crew.get("maximum_astrogation_time",10))
+		var bias = float(velocityPlus_config_crew.get("pilot_skill_bias",0.3))
 		var exmod = lerp(education,experience,bias)
 		var diff = (exmod * maximum)
 		var shrink = (maximum - diff)/maximum
 		var modifier = lerp(minimum,maximum,shrink)
 		trajectoryTime = clamp(modifier,minimum,maximum)
-	show_neg_depth = config.get("VP_RING",{}).get("display_negative_depth",true)
+	show_neg_depth = velocityPlus_config_ring.get("display_negative_depth",true)
 
 
-
-#func handleTrajectoryProgress(delta):
-#	var config = ConfigDriverVP.__get_config("VelocityPlus")
-#	if config.get("VP_CREW",{}).get("pilots_reduce_astro_calculations",true):
-#		var education = 0
-#		var experience = 0
-#		var crewData = CurrentGame.getCurrentlyActiveCrewNames()
-#		for crew in crewData:
-#			var dta = CurrentGame.state.crew[crew]
-#			if dta.occupation == "CREW_OCCUPATION_PILOT":
-#				if dta.experience >= experience:
-#					experience = dta.experience
-#				if dta.talent >= education:
-#					education = dta.talent
-#
-#		var minimum = float(config.get("VP_CREW",{}).get("minimum_astrogation_time",3))
-#		var maximum = float(config.get("VP_CREW",{}).get("maximum_astrogation_time",10))
-#		var bias = float(config.get("VP_CREW",{}).get("pilot_skill_bias",0.3))
-#		var exmod = lerp(education,experience,bias)
-#		var diff = (exmod * maximum)
-#		var shrink = (maximum - diff)/maximum
-#		var modifier = lerp(minimum,maximum,shrink)
-#		trajectoryTime = clamp(modifier,minimum,maximum)
-#	.handleTrajectoryProgress(delta)
 var show_neg_depth = false
 func sensorGet(sensor):
 	match sensor:
@@ -157,11 +101,11 @@ func isInEscapeCondition():
 		return false
 	
 	
-	if CurrentGame.globalCoords(global_position).x < 0 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_left",true) == false:
+	if CurrentGame.globalCoords(global_position).x < 0 and velocityPlus_config_ring.get("allow_exit_of_ring_to_the_left",true) == false:
 		return true
-	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and config.get("VP_RING",{}).get("allow_exit_of_ring_to_the_right",true) == false:
+	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and velocityPlus_config_ring.get("allow_exit_of_ring_to_the_right",true) == false:
 		return true
-	if linear_velocity.length() > 2000 and config.get("VP_RING",{}).get("remove_max_speed_limit",true) == false:
+	if linear_velocity.length() > 2000 and velocityPlus_config_ring.get("remove_max_speed_limit",true) == false:
 		return true
 	
 	
@@ -222,7 +166,7 @@ func aiControlCompanion(delta):
 				aiDesire = piad
 				aiTarget = null
 				companion_finish = true
-				var cf = config.get("VP_SHIPS",{}).get("scoop_automatic_return_protocol_override","VP_RETURN_TO_ENCELADUS")
+				var cf = velocityPlus_config_ships.get("scoop_automatic_return_protocol_override","VP_RETURN_TO_ENCELADUS")
 				match cf:
 					"VP_RETURN_TO_CRADLE":
 						aiAction = AI.dock
