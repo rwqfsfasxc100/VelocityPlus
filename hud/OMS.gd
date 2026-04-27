@@ -61,9 +61,10 @@ var show_shipped_value = true
 var show_transactions = true
 var show_transactions_sold_goods = true
 var show_transactions_bought_goods = true
-
+var vpFrameUpdateTimer = 0
 func _physics_process(delta):
-	if int(Time.get_ticks_msec() * 1000) % 4 == 0:
+	vpFrameUpdateTimer += 1
+	if vpFrameUpdateTimer % 5 == 0:
 		if show_dive_clock:
 			var text = ""
 			if _diveClockGame != null and _diveClock != null:
@@ -78,7 +79,7 @@ func _physics_process(delta):
 		else:
 			if _diveClock != null:
 				_diveClock.visible = false
-	if int(Time.get_ticks_msec() * 1000) % 20 == 0:
+	if vpFrameUpdateTimer % 20 == 0:
 		if show_shipped_value:
 			shipped_cargo_amt = 0.0
 			ship.configMutex.lock()
@@ -99,7 +100,8 @@ func _physics_process(delta):
 			if show_transactions_bought_goods:
 				soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
 			
-		
+	if vpFrameUpdateTimer > 100:
+		vpFrameUpdateTimer = 0
 
 func handle_visibility():
 	if show_dive_clock and _diveClock != null:
