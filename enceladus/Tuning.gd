@@ -2,10 +2,6 @@ extends "res://enceladus/Tuning.gd"
 
 var pointersVP
 
-func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("vp_tuning_UV",self)
-	vp_tuning_UV()
 
 func vp_tuning_UV():
 	if pointersVP:
@@ -73,6 +69,9 @@ func handleOMSToggle(how,opt,system,pos):
 onready var tex_rect = $VB/WindowMargin/Window/VP/TextureRect
 
 func _ready():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("vp_tuning_UV",self)
+	vp_tuning_UV()
 	tex_rect.set_script(load("res://VelocityPlus/enceladus/tex_rect_draw.gd"))
 
 func tuningChanged(system, type, to, protocol):

@@ -6,7 +6,7 @@ var sim_cover_basic_path = NodePath("MarginContainer/SimulateViewport/Simulation
 var sim_cover_premium_path = NodePath("MarginContainer/SimulateViewport/SimulationLayer/SimulationCoverPremium")
 var pointersVP
 
-func _enter_tree():
+func _ready():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_sim_UV",self)
 	vp_sim_UV()

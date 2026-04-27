@@ -2,10 +2,6 @@ extends "res://ships/ship-ctrl.gd"
 
 var pointersVP
 
-func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("vp_shipmanager_UV",self)
-	vp_shipmanager_UV()
 
 var velocityPlus_config_ships = {}
 var velocityPlus_config_crew = {}
@@ -45,6 +41,11 @@ func handleSystemToggles():
 var prevent_adrenaline = false
 
 func _ready():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("vp_shipmanager_UV",self)
+	vp_shipmanager_UV()
+	
+	
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
 #	handleSystemToggles()

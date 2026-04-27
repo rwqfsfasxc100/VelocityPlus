@@ -3,7 +3,7 @@ extends "res://enceladus/CrewFaceOnEnceladus.gd"
 var vac_tex
 var vc
 var pointersVP
-func _enter_tree():
+func _ready():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_enceladuscrewface_UV",self)
 	yield(CurrentGame.get_tree(),"idle_frame")

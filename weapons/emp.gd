@@ -2,7 +2,7 @@ extends "res://weapons/emp.gd"
 
 var pointersVPEMP
 
-func _enter_tree():
+func _ready():
 	pointersVPEMP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVPEMP.ConfigDriver.__establish_connection("vp_microwavemelting_UV",self)
 	vp_microwavemelting_UV()
