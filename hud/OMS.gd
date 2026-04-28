@@ -1,17 +1,17 @@
 extends "res://hud/OMS.gd"
 
-onready var _diveClock = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer/RealTime")
+var _diveClock# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer/_diveClock")
 onready var _diveClockGame = get_tree().root.get_node_or_null("Game")
 
-onready var money_waiting_label = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/MoneyWaiting")
-onready var money_waiting_label_1 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_1")
+var money_waiting_label# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/MoneyWaiting")
+var money_waiting_label_1# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_1")
 
-onready var soldGoods = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_0")
-onready var soldGoods_1 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods")
-onready var soldGoods_2 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods2")
-onready var soldGoods_3 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods3")
-onready var soldGoods_4 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods4")
-onready var soldGoods_5 = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods5")
+var soldGoods# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_0")
+var soldGoods_1# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods")
+var soldGoods_2# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_2")
+var soldGoods_3# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_3")
+var soldGoods_4# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_4")
+var soldGoods_5# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_5")
 
 var ship
 
@@ -30,8 +30,76 @@ func vp_omslabels_UV():
 		handle_visibility()
 
 
-
 func _ready():
+	var headBox = $MarginContainer/VBoxContainer/Comms/VBoxContainer
+	var box2 = headBox.get_node("HBoxContainer2")
+	var box1 = headBox.get_node("HBoxContainer")
+	var w2Label = Label.new()
+	w2Label.name = "Waiting_2"
+	w2Label.text = "VP_CURRENT_CASH"
+	box2.get_node("Money").size_flags_horizontal = 1
+	var vp_box = HBoxContainer.new()
+	vp_box.name = "VP_BOX"
+	vp_box.modulate = Color( 0.5, 4, 0.5, 1 )
+	vp_box.size_flags_vertical = 0
+	soldGoods = Label.new()
+	soldGoods.name = "Waiting_0"
+	money_waiting_label_1 = Label.new()
+	money_waiting_label_1.name = "Waiting_1"
+	money_waiting_label_1.size_flags_horizontal = 3
+	money_waiting_label_1.align = 2
+	money_waiting_label_1.text = "VP_CASH_AT_ENCELADUS"
+	soldGoods.text = "VP_SOLD_GOODS"
+	soldGoods.align = 2
+	soldGoods_1 = Label.new()
+	soldGoods_2 = Label.new()
+	soldGoods_3 = Label.new()
+	soldGoods_4 = Label.new()
+	soldGoods_5 = Label.new()
+	soldGoods_1.name = "SoldGoods"
+	soldGoods_2.name = "soldGoods_2"
+	soldGoods_3.name = "soldGoods_3"
+	soldGoods_4.name = "soldGoods_4"
+	soldGoods_5.name = "soldGoods_5"
+	soldGoods_1.text = "0 E$"
+	soldGoods_2.text = "|+"
+	soldGoods_3.text = "0 E$"
+	soldGoods_4.text = "|-"
+	soldGoods_5.text = "0 E$"
+	money_waiting_label_1.size_flags_horizontal = 3
+	money_waiting_label_1.text = "VP_CASH_AT_ENCELADUS"
+	money_waiting_label_1.align = 2
+	money_waiting_label = Label.new()
+	money_waiting_label.name = "MoneyWaiting"
+	money_waiting_label.text = "0 E$"
+	var label2 = Label.new()
+	label2.name = "Label2"
+	label2.size_flags_horizontal = 3
+	_diveClock = Label.new()
+	_diveClock.name = "_diveClock"
+	_diveClock.modulate = Color( 0.5, 4, 0.5, 1 )
+	_diveClock.text = "In dive: 0h 00m 00s | "
+	_diveClock.align = 2
+	var igt = box1.get_node("InGameTime")
+	igt.size_flags_horizontal = 1
+	box2.add_child(w2Label)
+	vp_box.add_child(soldGoods)
+	vp_box.add_child(soldGoods_1)
+	vp_box.add_child(soldGoods_2)
+	vp_box.add_child(soldGoods_3)
+	vp_box.add_child(soldGoods_4)
+	vp_box.add_child(soldGoods_5)
+	vp_box.add_child(money_waiting_label_1)
+	vp_box.add_child(money_waiting_label)
+	box1.add_child(label2)
+	box1.add_child(_diveClock)
+	headBox.add_child(vp_box)
+	headBox.move_child(vp_box,1)
+	box2.move_child(w2Label,2)
+	box1.move_child(label2,1)
+	box1.move_child(_diveClock,2)
+	
+	
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
 	vp_omslabels_UV()
