@@ -1,3 +1,8 @@
+[1.4.6]
+
+1="* Moved over to using a script to add OMS labels"
+2="* Reordered auto repair manual buttons"
+
 [1.4.5]
 
 1="* Improved efficiency of loading comms scripts"
