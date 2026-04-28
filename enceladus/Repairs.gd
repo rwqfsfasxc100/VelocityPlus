@@ -5,10 +5,11 @@ var repairStepAmount = 0.5
 
 var pointersVP
 
-func _ready():
+func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_autorepairs_UV",self)
 	vp_autorepairs_UV()
+func _ready():
 	set_physics_process(false)
 
 func vp_autorepairs_UV():

@@ -26,11 +26,14 @@ func vp_autorepairsmenu_VP():
 	if pointersVP:
 		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
 
-var config = {}
-func _ready():
+func _enter_tree():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_autorepairsmenu_VP",self)
 	vp_autorepairsmenu_VP()
+
+var config = {}
+func _ready():
+	
 	
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE",0)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_ONLYREPAIR",1)

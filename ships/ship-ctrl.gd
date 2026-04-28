@@ -36,16 +36,14 @@ func handleSystemToggles():
 				var cg = getConfig(omsToggleCfg % [system,current],true)
 				sys.ref.enabled = cg
 
-
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("vp_shipmanager_UV",self)
+	vp_shipmanager_UV()
 
 var prevent_adrenaline = false
 
 func _ready():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("vp_shipmanager_UV",self)
-	vp_shipmanager_UV()
-	
-	
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
 #	handleSystemToggles()

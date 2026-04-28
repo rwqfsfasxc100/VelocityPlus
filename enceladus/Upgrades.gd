@@ -13,6 +13,11 @@ func vp_upgrades_UV():
 	if pointersVP:
 		cfg_show_equipment_reliability = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
 
+func _enter_tree():
+	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP.ConfigDriver.__establish_connection("vp_upgrades_UV",self)
+	vp_upgrades_UV()
+
 func previewShipSystem(slot,system,control=""):
 	.previewShipSystem(slot,system,control)
 	if slot == null or system is int or system is float:
@@ -22,10 +27,6 @@ var mtbf_label
 const manual_container_path = NodePath("VB/WindowMargin/TabHintContainer/Window/UPGRADE_MANUAL")
 const MTBF_container = preload("res://VelocityPlus/enceladus/MTBF_container.tscn")
 func _ready():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP.ConfigDriver.__establish_connection("vp_upgrades_UV",self)
-	vp_upgrades_UV()
-	
 	var cont = get_node(manual_container_path)
 	var mtbf = MTBF_container.instance()
 	cont.add_child(mtbf)
