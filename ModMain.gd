@@ -39,18 +39,14 @@ func _init(modLoader = ModLoader):
 		
 		installScriptExtension("enceladus/Upgrades.gd")
 		installScriptExtension("CurrentGame.gd")
-		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
 		
 		
-		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
-			replaceScene("ships/ocp-209.tscn")
 		
 		installScriptExtension("comms/ConversationPlayer.gd")
 		
 		installScriptExtension("enceladus/SystemShipRepairUI.gd")
 		
 		
-		replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
 		installScriptExtension("tooltips/DoTradeIn.gd")
 		
 		
@@ -66,7 +62,7 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("enceladus/CrewFaceOnEnceladus.gd")
 		installScriptExtension("hud/RestricedCrewList.gd")
 		
-		replaceScene("hud/Inventory.tscn","res://hud/OMS.tscn")
+		
 		
 		
 		installScriptExtension("ships/ship-ctrl.gd")
@@ -76,7 +72,10 @@ func _init(modLoader = ModLoader):
 		
 		replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 		
-		
+		replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
+		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
+		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
+			replaceScene("ships/ocp-209.tscn")
 #
 	
 
@@ -180,7 +179,7 @@ func updateTL(path:String, delim:String = ",", useRelativePath:bool = true, full
 
 func installScriptExtension(path:String):
 	var childPath:String = str(modPath + path)
-	var childScript:Script = ResourceLoader.load(childPath)
+	var childScript:Script = load(childPath)
 
 	childScript.new()
 
@@ -200,19 +199,6 @@ func replaceScene(newPath:String, oldPath:String = ""):
 	newPath = str(modPath + newPath)
 
 	var scene := load(newPath)
-	scene.take_over_path(oldPath)
-	_savedObjects.append(scene)
-	l("Finished updating: %s" % oldPath)
-
-func replaceSceneForce(newPath:String, oldPath:String = ""):
-	l("Updating scene: %s" % newPath)
-
-	if oldPath.empty():
-		oldPath = str("res://" + newPath)
-
-	newPath = str(modPath + newPath)
-
-	var scene := ResourceLoader.load(newPath,"",true)
 	scene.take_over_path(oldPath)
 	_savedObjects.append(scene)
 	l("Finished updating: %s" % oldPath)
