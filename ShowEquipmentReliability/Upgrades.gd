@@ -21,8 +21,11 @@ func _enter_tree():
 func previewShipSystem(slot,system,control=""):
 	.previewShipSystem(slot,system,control)
 	if slot == null or system is int or system is float:
+		mtbf_label.visible = false
 		return
 	_showReliability_system = system
+	yield(get_tree().create_timer(0.25),"timeout")
+	showReliabilityDisplay()
 var mtbf_label
 const manual_container_path = NodePath("VB/WindowMargin/TabHintContainer/Window/UPGRADE_MANUAL")
 var MTBF_container = load("res://VelocityPlus/ShowEquipmentReliability/MTBF_container.tscn")
@@ -34,13 +37,16 @@ func _ready():
 
 # Wait until the ship in the simulation is fully instantiated.
 var cfg_show_equipment_reliability
-func _process(delta):
+#func _process(delta):
+func showReliabilityDisplay():
 	if cfg_show_equipment_reliability:
 		if _showReliability_system == null:
+			mtbf_label.visible = false
 			return
 		var system = _showReliability_system
 		var n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + system, true, false)
 		if n == null or n is InstancePlaceholder:
+			mtbf_label.visible = false
 			return
 		_showReliability_system = null  # OK, it's instantiated.
 		
@@ -48,33 +54,32 @@ func _process(delta):
 		var damagePropertyExists = false
 		var txt = ""
 		
-		for p in n.get_property_list():
-			if p.name == "weaponPath":
-				var pname = n.get(p.name)
-				var path = pname
-				var objname = n.name
-				var sysname = n.systemName
-				var split = str(path).split(sysname)
-				if split.size() >= 2:
-					path = split[1].lstrip("/")
-				n = n.get_node(path)
+		if "weaponPath" in n:
+			var path = n.get("weaponPath")
+			var objname = n.name
+			var sysname = n.systemName
+			var split = str(path).split(sysname)
+			if split.size() >= 2:
+				path = split[1].lstrip("/")
+			n = n.get_node(path)
 		
 		for p in n.get_property_list():
-			if p.name in disable_when_false:
-				var check = n.get(p.name)
+			var propertyName = p.name
+			if propertyName in disable_when_false:
+				var check = n.get(propertyName)
 				if check == false:
 					enabled = false
-			if p.name in disable_when_true:
-				var check = n.get(p.name)
+			if propertyName in disable_when_true:
+				var check = n.get(propertyName)
 				if check == true:
 					enabled = false
 			
-			if p.name.begins_with("damage") and p.name.ends_with("Capacity"):
+			if propertyName.begins_with("damage") and propertyName.ends_with("Capacity"):
 				damagePropertyExists = true
-				var nm = p.name.substr(6, p.name.length() - 8)
+				var nm = propertyName.substr(6, propertyName.length() - 8)
 				var units = ""
 				var factor = 1
-				match p.name:
+				match propertyName:
 					# I made these up. They're probably wrong.
 					"damageWearCapacity":
 						nm = "MTBF at 100% stress"
@@ -144,7 +149,7 @@ func _process(delta):
 						units = "MJ"
 						factor = 1 / 1000000.0
 					
-				txt = txt + "\n%s: %s %s" % [nm, _showReliability_formatFloat(n.get(p.name) * factor), units]
+				txt = txt + "\n%s: %s %s" % [nm, _showReliability_formatFloat(n.get(propertyName) * factor), units]
 		if enabled and damagePropertyExists:
 			mtbf_label.text = txt
 			mtbf_label.visible = true
