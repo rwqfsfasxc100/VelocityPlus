@@ -7,6 +7,7 @@
 3.2="* Was 5 * 50 = 250, now 5 * 20 = 100"
 4="* Equipment reliability display now appropriately hides itself on equipment without a possible damage model"
 5="* Toggling the disable pilot adrenaline feature now no longer requires the pilot to gain XP in some form to accept the adjusted behaviour"
+6="* AutoRepairs submenu's addition is now completely script-driven"
 
 [1.4.6]
 
