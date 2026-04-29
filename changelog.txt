@@ -1,3 +1,10 @@
+[1.5.1]
+
+1="* Improved the equipment reliability display"
+1.1="* Now appropriately hides itself on equipment without a possible damage model"
+1.2="* Check now only runs once, which provides a very minor performance boost"
+2="* Added mod icon"
+
 [1.5.0]
 
 1="* Reorganized mod structure to keep parts separate from each other"
@@ -5,10 +12,9 @@
 3="* Mineral and tactical markers were not having their limits extended"
 3.1="* The description for the tactical marker extension has been updated to show actual limits"
 3.2="* Was 5 * 50 = 250, now 5 * 20 = 100"
-4="* Equipment reliability display now appropriately hides itself on equipment without a possible damage model"
-5="* Toggling the disable pilot adrenaline feature now no longer requires the pilot to gain XP in some form to accept the adjusted behaviour"
-6="* AutoRepairs submenu's addition is now completely script-driven"
-7="* Added a particle effect to Microwaves Melt Ore that gives a visual for ores that are still burning off water"
+4="* Toggling the disable pilot adrenaline feature now no longer requires the pilot to gain XP in some form to accept the adjusted behaviour"
+5="* AutoRepairs submenu's addition is now completely script-driven"
+6="* Added a particle effect to Microwaves Melt Ore that gives a visual for ores that are still burning off water"
 
 [1.4.6]
 
