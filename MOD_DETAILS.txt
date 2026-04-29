@@ -4,7 +4,7 @@
 ;AUTHOR|__hev
 ;MOD_ZIP_NAME|VelocityPlus.zip
 
-[b]Velocity Plus[/b]
+[center][b]Velocity Plus[/b][/center]
 
 A large quality of life mod for [i]∆V: Rings of Saturn[/i]
 
