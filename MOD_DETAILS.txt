@@ -1,5 +1,6 @@
 ;MOD_ID|hev.VelocityPlus
 ;MOD_NAME|Velocity Plus
+;MOD_ICON|https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/refs/heads/main/icon.png
 ;MOD_ZIP_NAME|VelocityPlus.zip
 
 [b]Velocity Plus[/b]
