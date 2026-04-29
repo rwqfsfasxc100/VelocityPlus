@@ -17,7 +17,7 @@ const cradle_left = {
 		"entry":"add_empty_cradle_equipment"
 	},
 	"weapon_slot":{
-		"path":"res://VelocityPlus/weapons/EmptyCradle-L.tscn",
+		"path":"res://VelocityPlus/EmptyCradles/EmptyCradle-L.tscn",
 		"data":[
 			{
 				"property":"position",
@@ -46,7 +46,7 @@ const cradle_right = {
 		"entry":"add_empty_cradle_equipment"
 	},
 	"weapon_slot":{
-		"path":"res://VelocityPlus/weapons/EmptyCradle.tscn",
+		"path":"res://VelocityPlus/EmptyCradles/EmptyCradle.tscn",
 		"data":[
 			{
 				"property":"position",

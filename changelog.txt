@@ -1,3 +1,13 @@
+[1.5.0]
+
+1="* Reorganized mod structure to keep parts separate from each other"
+2="* Fixed Hide Undamaged Equipment From Repairs not disabling itself"
+3="* Mineral and tactical markers were not having their limits extended"
+3.1="* The description for the tactical marker extension has been updated to show actual limits"
+3.2="* Was 5 * 50 = 250, now 5 * 20 = 100"
+4="* Equipment reliability display now appropriately hides itself on equipment without a possible damage model"
+5="* Toggling the disable pilot adrenaline feature now no longer requires the pilot to gain XP in some form to accept the adjusted behaviour"
+
 [1.4.6]
 
 1="* Moved over to using a script to add OMS labels"

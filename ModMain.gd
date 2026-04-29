@@ -31,53 +31,42 @@ func _init(modLoader = ModLoader):
 		
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
 		
-		installScriptExtension("enceladus/Simulator/SimulationLayer.gd")
-		installScriptExtension("hud/SystemList.gd")
-		installScriptExtension("enceladus/Tuning.gd")
-		
-		installScriptExtension("sfx/thruster.gd")
-		
-		installScriptExtension("enceladus/Upgrades.gd")
-		installScriptExtension("CurrentGame.gd")
-		
-		
-		
-		installScriptExtension("comms/ConversationPlayer.gd")
-		
-		installScriptExtension("enceladus/SystemShipRepairUI.gd")
-		
-		
-		installScriptExtension("tooltips/DoTradeIn.gd")
-		
-		
-		installScriptExtension("weapons/drone-plant.gd")
-		installScriptExtension("weapons/emp.gd")
-		
-		installScriptExtension("hud/OMS.gd")
-		
-		installScriptExtension("ships/DockingArm.gd")
-		
-		installScriptExtension("AchievementAbstract.gd")
-		
-		installScriptExtension("enceladus/CrewFaceOnEnceladus.gd")
-		installScriptExtension("hud/RestricedCrewList.gd")
-		
-		
-		
-		
-		installScriptExtension("ships/ship-ctrl.gd")
-		installScriptExtension("hud/Escape Veloity.gd")
-		installScriptExtension("hud/Leaving Rings.gd")
-		installScriptExtension("weapons/PDT.gd")
-		
-		replaceScene("enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
-		
-		replaceScene("tooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
-		replaceScene("comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
+		installScriptExtension("MVFSShaderStyles/SimulationLayer.gd")
+		installScriptExtension("VariatedBroadcasts/ConversationPlayer.gd")
+		installScriptExtension("CrewHider/CrewFaceOnEnceladus.gd")
+		installScriptExtension("CrewHider/RestricedCrewList.gd")
+		installScriptExtension("RemoveRingLimits/Escape Veloity.gd")
+		installScriptExtension("RemoveRingLimits/Leaving Rings.gd")
+		installScriptExtension("RemoveRingLimits/ship-ctrl.gd")
+		installScriptExtension("TurretOverrides/PDT.gd")
+		installScriptExtension("RemoveWeaponGimbals/PDT.gd")
+		replaceScene("ShowMarketValue/MineralMarket.tscn","res://enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
+		replaceScene("ScoopExtraReturnDialogue/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
 		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
-			replaceScene("ships/ocp-209.tscn")
-#
-	
+			replaceScene("OCPVoyagerFix/ocp-209.tscn","res://ships/ocp-209.tscn")
+		installScriptExtension("HideUndamagedEquipment/SystemShipRepairUI.gd")
+		installScriptExtension("BetterTooltips/DoTradeIn.gd")
+		replaceScene("BetterTooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
+		installScriptExtension("AchievementEnabler/AchievementAbstract.gd")
+		installScriptExtension("ExtendedCrewIdentificationLimits/AutopilotOverlay.gd")
+		installScriptExtension("ArmTargetToAutopilot/DockingArm.gd")
+		installScriptExtension("DisplayNegativeDepth/ship-ctrl.gd")
+		installScriptExtension("ExtraOMSDisplays/OMS.gd")
+		installScriptExtension("ExtraOMSDisplays/CurrentGame.gd")
+		installScriptExtension("ShowEquipmentReliability/Upgrades.gd")
+		installScriptExtension("PilotsReduceAstrogationCalcTime/ship-ctrl.gd")
+		installScriptExtension("ScoopAutoReturnProtocol/ship-ctrl.gd")
+		installScriptExtension("DisablePilotAutoAdrenaline/ship-ctrl.gd")
+		installScriptExtension("MicrowavesMeltOre/emp.gd")
+		installScriptExtension("ToggleSystemsAtEnceladus/SystemList.gd")
+		installScriptExtension("ToggleSystemsAtEnceladus/Tuning.gd")
+		installScriptExtension("ToggleSystemsAtEnceladus/ship-ctrl.gd")
+		installScriptExtension("MaxAstrogatorTrackingTime/CurrentGame.gd")
+		installScriptExtension("DisableMaintDroneSanBUS/drone-plant.gd")
+		installScriptExtension("TemperatureBasedThrust/thruster.gd")
+		installScriptExtension("NaturalTimeSkip/CurrentGame.gd")
+		installScriptExtension("AutoRepairs/Repairs.gd")
+
 
 var cradle_left = {
 	"system":"SYSTEM_CRADLE-L",
@@ -122,8 +111,6 @@ func _ready():
 #	else:
 	
 	
-	installScriptExtension("enceladus/Repairs.gd")
-	replaceScene("enceladus/Repairs.tscn")
 	l("Ready")
 
 

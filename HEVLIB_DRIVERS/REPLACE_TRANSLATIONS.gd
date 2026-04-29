@@ -229,8 +229,8 @@ const TRANSLATIONS = {
 			"version_hash": 361005976
 		},
 		"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC": {
-			"string": "Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; from 50 to 250",
-			"version_hash": 420902274
+			"string": "Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; from 20 to 100",
+			"version_hash": 3147898265
 		},
 		"VP_ARM_TARGET_TO_AP": {
 			"string": "Manipulator arms lock on AP target",
