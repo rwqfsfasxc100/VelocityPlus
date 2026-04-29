@@ -31,6 +31,7 @@ func _init(modLoader = ModLoader):
 		
 		config = pointers.ConfigDriver.__get_config("VelocityPlus")
 		
+		installScriptExtension("MicrowavesMeltOre/emp.gd")
 		installScriptExtension("MVFSShaderStyles/SimulationLayer.gd")
 		installScriptExtension("VariatedBroadcasts/ConversationPlayer.gd")
 		installScriptExtension("CrewHider/CrewFaceOnEnceladus.gd")
@@ -42,8 +43,6 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("RemoveWeaponGimbals/PDT.gd")
 		replaceScene("ShowMarketValue/MineralMarket.tscn","res://enceladus/MineralMarket.tscn") # Fixes issue #5033 ; https://git.kodera.pl/games/delta-v/-/issues/5033
 		replaceScene("ScoopExtraReturnDialogue/DIALOG_SCOOP_RETURNING_1.tscn","res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn")
-		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
-			replaceScene("OCPVoyagerFix/ocp-209.tscn","res://ships/ocp-209.tscn")
 		installScriptExtension("HideUndamagedEquipment/SystemShipRepairUI.gd")
 		installScriptExtension("BetterTooltips/DoTradeIn.gd")
 		replaceScene("BetterTooltips/SystemShipRepairUI.tscn","res://enceladus/SystemShipRepairUI.tscn")
@@ -57,7 +56,6 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("PilotsReduceAstrogationCalcTime/ship-ctrl.gd")
 		installScriptExtension("ScoopAutoReturnProtocol/ship-ctrl.gd")
 		installScriptExtension("DisablePilotAutoAdrenaline/ship-ctrl.gd")
-		installScriptExtension("MicrowavesMeltOre/emp.gd")
 		installScriptExtension("ToggleSystemsAtEnceladus/SystemList.gd")
 		installScriptExtension("ToggleSystemsAtEnceladus/Tuning.gd")
 		installScriptExtension("ToggleSystemsAtEnceladus/ship-ctrl.gd")
@@ -66,6 +64,8 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("TemperatureBasedThrust/thruster.gd")
 		installScriptExtension("NaturalTimeSkip/CurrentGame.gd")
 		installScriptExtension("AutoRepairs/Repairs.gd")
+		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
+			replaceScene("OCPVoyagerFix/ocp-209.tscn","res://ships/ocp-209.tscn")
 
 
 var cradle_left = {
