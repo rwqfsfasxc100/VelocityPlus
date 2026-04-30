@@ -1,3 +1,7 @@
+[1.5.2]
+
+1="* Fixed broken option names and tooltips for the auto repairs submenu"
+
 [1.5.1]
 
 1="* Improved the equipment reliability display"
