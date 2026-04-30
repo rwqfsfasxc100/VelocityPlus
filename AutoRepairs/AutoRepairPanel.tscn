@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://VelocityPlus/AutoRepairs/RepairActionButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HevLib/ui/mod_menu/PlaySoundsOnTheseButtons.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/MenuTheme.tres" type="Theme" id=3]
 [ext_resource path="res://HevLib/ui/themes/hev_theme.tres" type="Theme" id=4]
-[ext_resource path="res://menu/sfx/PlaySoundsOnTheseButtons.gd" type="Script" id=5]
 [ext_resource path="res://HevLib/development_tools/control_and_ui/scrollbox_helpers/ScrollWithKB.gd" type="Script" id=6]
 [ext_resource path="res://VelocityPlus/AutoRepairs/Autorepairs.gd" type="Script" id=7]
 [ext_resource path="res://VelocityPlus/AutoRepairs/AutorepairsMenu.gd" type="Script" id=8]
@@ -105,12 +104,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOMATIC_REPAIRS_TOGGLE_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/EnableAutorepair/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/EnableAutorepair/Label/Button" instance=ExtResource( 2 )]
 
 [node name="CheckButton" type="CheckButton" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/EnableAutorepair"]
 margin_left = 1142.0
@@ -135,12 +129,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOREPAIR_PRIORITY_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MethodPrio/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MethodPrio/Label/Button" instance=ExtResource( 2 )]
 
 [node name="OptionButton" type="OptionButton" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MethodPrio"]
 margin_left = 878.0
@@ -166,12 +155,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOREPAIR_MINIMUM_MONEY_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/Label/Button" instance=ExtResource( 2 )]
 
 [node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney"]
 margin_left = 674.0
@@ -209,12 +193,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/Label/Button" instance=ExtResource( 2 )]
 
 [node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance"]
 margin_left = 674.0
@@ -250,12 +229,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOREPAIR_MAXIMUM_REPAIR_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/Label/Button" instance=ExtResource( 2 )]
 
 [node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair"]
 margin_left = 674.0
@@ -293,12 +267,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/Label/Button" instance=ExtResource( 2 )]
 
 [node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace"]
 margin_left = 674.0
@@ -335,12 +304,7 @@ margin_bottom = 42.0
 hint_tooltip = "VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC"
 flat = true
 
-[node name="PlaySoundsOnTheseButtons" type="Node" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/Label/Button" instance=ExtResource( 2 )]
-pause_mode = 2
-script = ExtResource( 5 )
-tooltipLabelPath = NodePath("Separation/Tooltip/MarginContainer/PanelContainer/TooltipLabel")
-tooltipContainerPath = NodePath("Separation/Tooltip/MarginContainer")
-tooltipPositionPath = NodePath("Separation/Tooltip")
+[node name="PlaySoundsOnTheseButtons" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/Label/Button" instance=ExtResource( 2 )]
 
 [node name="Val" type="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target"]
 margin_left = 674.0
@@ -365,11 +329,30 @@ margin_right = 1228.0
 margin_bottom = 362.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="RepairFromCurrentOperands" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="RepairFromCurrentOperands" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 366.0
 margin_right = 1228.0
 margin_bottom = 408.0
-theme = ExtResource( 4 )
+
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFromCurrentOperands" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_MANUAL_START"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFromCurrentOperands/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_MANUAL_START_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFromCurrentOperands" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFromCurrentOperands" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
 
 [node name="HSeparator2" type="HSeparator" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 412.0
@@ -377,47 +360,180 @@ margin_right = 1228.0
 margin_bottom = 422.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="MaxProfit" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="MaxProfit" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 426.0
 margin_right = 1228.0
 margin_bottom = 468.0
-theme = ExtResource( 4 )
 
-[node name="FixToCurrent" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxProfit" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_MANUAL_MAX_PROFIT"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxProfit/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_MANUAL_MAX_PROFIT_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxProfit" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxProfit" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
+
+[node name="FixToCurrent" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 472.0
 margin_right = 1228.0
 margin_bottom = 514.0
-theme = ExtResource( 4 )
 
-[node name="RepairToCurrent" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/FixToCurrent" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_FIX_TO_CURRENT"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/FixToCurrent/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_FIX_TO_CURRENT_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/FixToCurrent" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/FixToCurrent" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
+
+[node name="RepairToCurrent" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 518.0
 margin_right = 1228.0
 margin_bottom = 560.0
-theme = ExtResource( 4 )
 
-[node name="ReplaceToCurrent" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairToCurrent" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_FIX_TO_CURRENT_REPAIR"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairToCurrent/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_FIX_TO_CURRENT_REPAIR_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairToCurrent" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairToCurrent" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
+
+[node name="ReplaceToCurrent" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 564.0
 margin_right = 1228.0
 margin_bottom = 606.0
-theme = ExtResource( 4 )
 
-[node name="CostEffectiveFixTo100" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceToCurrent" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_FIX_TO_CURRENT_REPLACE"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceToCurrent/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_FIX_TO_CURRENT_REPLACE_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceToCurrent" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceToCurrent" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
+
+[node name="CostEffectiveFixTo100" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 610.0
 margin_right = 1228.0
 margin_bottom = 652.0
-theme = ExtResource( 4 )
 
-[node name="RepairFixTo100" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/CostEffectiveFixTo100" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_FIX_TO_100_PERCENT"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/CostEffectiveFixTo100/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_FIX_TO_100_PERCENT_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/CostEffectiveFixTo100" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/CostEffectiveFixTo100" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
+
+[node name="RepairFixTo100" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 656.0
 margin_right = 1228.0
 margin_bottom = 698.0
-theme = ExtResource( 4 )
 
-[node name="ReplaceFixTo100" type="HBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFixTo100" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFixTo100/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_FIX_TO_100_PERCENT_FIX_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFixTo100" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFixTo100" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
+
+[node name="ReplaceFixTo100" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 702.0
 margin_right = 1228.0
 margin_bottom = 744.0
-theme = ExtResource( 4 )
+
+[node name="Label" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceFixTo100" index="0"]
+margin_top = 2.0
+margin_right = 670.0
+margin_bottom = 40.0
+text = "VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE"
+
+[node name="Button" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceFixTo100/Label" index="0"]
+hint_tooltip = "VP_AUTOREPAIRS_FIX_TO_100_PERCENT_REPLACE_TOOLTIP"
+
+[node name="Val" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceFixTo100" index="1"]
+margin_left = 674.0
+margin_top = 2.0
+margin_right = 874.0
+margin_bottom = 40.0
+
+[node name="Action" parent="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceFixTo100" index="2"]
+margin_left = 878.0
+margin_right = 1228.0
+margin_bottom = 42.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Autorepairs/Popup/PanelContainer/VBoxContainer"]
 margin_top = 605.0
@@ -452,3 +568,12 @@ text = "OK"
 [connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/HSlider" to="Autorepairs/Popup" method="maxreplace_changed"]
 [connection signal="value_changed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/HSlider" to="Autorepairs/Popup" method="target_changed"]
 [connection signal="pressed" from="Autorepairs/Popup/PanelContainer/VBoxContainer/VBoxContainer2/HBoxContainer/HBoxContainer2/CANCEL" to="Autorepairs/Popup" method="cancel"]
+
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFromCurrentOperands"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxProfit"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/FixToCurrent"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairToCurrent"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceToCurrent"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/CostEffectiveFixTo100"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/RepairFixTo100"]
+[editable path="Autorepairs/Popup/PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/ReplaceFixTo100"]
