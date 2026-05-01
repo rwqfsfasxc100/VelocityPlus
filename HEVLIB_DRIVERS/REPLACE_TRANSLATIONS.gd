@@ -257,12 +257,12 @@ const TRANSLATIONS = {
 			"version_hash": 2002526168
 		},
 		"VP_SHOW_EQUIPMENT_RELIABILITY": {
-			"string": "Show equipment reliability",
+			"string": "Show equipment MTBF reliability",
 			"version_hash": 3097883192
 		},
 		"VP_SHOW_EQUIPMENT_RELIABILITY_DESC": {
-			"string": "Shows reliability data of equipment in the User Manual box in the equipment tab.",
-			"version_hash": 2635786221
+			"string": "Shows the Mean Time Between Failures (MTBF) reliability data of equipment in the User Manual box in the equipment tab.",
+			"version_hash": 1469090141
 		},
 		"VP_TOGGLE_HUD": {
 			"string": "Toggle HUD",
