@@ -180,6 +180,7 @@ VP_SHIPS={
 		"name":"VP_OCP_VOYAGER",
 		"description":"VP_OCP_VOYAGER_DESC",
 		"type":"bool",
+		"require_restart":true,
 		"default":true
 	},
 	"disable_gimballed_and_turreted_weapons":{
