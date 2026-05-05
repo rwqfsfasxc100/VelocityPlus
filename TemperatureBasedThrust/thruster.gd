@@ -36,11 +36,11 @@ func _physics_process(delta):
 		count += 1
 		if count > 5:
 			count = 0
-			temp = ship.sensorGet("reactor_temperature")
 			var reactors = ship.reactors
 			var rt = 0
 			var rc = reactors.size()
 			if rc:
+				temp = ship.sensorGet("reactor_temperature")
 				for i in reactors:
 					rt += i.targetTemperature
 				avgTarget = floor(float(rt) / float(rc))
