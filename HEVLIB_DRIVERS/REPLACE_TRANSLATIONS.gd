@@ -258,7 +258,7 @@ const TRANSLATIONS = {
 		},
 		"VP_SHOW_EQUIPMENT_RELIABILITY": {
 			"string": "Show equipment MTBF reliability",
-			"version_hash": 3097883192
+			"version_hash": 2954876385
 		},
 		"VP_SHOW_EQUIPMENT_RELIABILITY_DESC": {
 			"string": "Shows the Mean Time Between Failures (MTBF) reliability data of equipment in the User Manual box in the equipment tab.",
@@ -1655,6 +1655,14 @@ const TRANSLATIONS = {
 		"VP_NATURAL_TIME_SKIP_DESC": {
 			"string": "When opening a save, the time since the save was last opened will be added to the game time, simulating a natural passage of time.",
 			"version_hash": 3782004868
+		},
+		"VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER": {
+			"string": "Station transfer speed multiplier",
+			"version_hash": 2270724452
+		},
+		"VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER_DESC": {
+			"string": "Allows you to control the speed of mineral/ammo/nanodrone delivery to a station by a specific factor.",
+			"version_hash": 3627287308
 		}
 	},
 	"uk_UA": {
