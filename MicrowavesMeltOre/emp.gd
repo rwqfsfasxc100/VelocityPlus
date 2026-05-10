@@ -23,6 +23,9 @@ var legacy_multimineral_handle = false
 
 var mike_burnoff_speed_factor = 2000
 
+var do_emit_dust = false
+var oreCollider = null
+
 func _physics_process(delta):
 	if firepower > 0 and allowed_to:
 		var energyRequired = delta * firepower * getPowerDraw() * 1000
@@ -37,6 +40,7 @@ func _physics_process(delta):
 			if hitpoint and Tool.claim(hitpoint.collider):
 				var p = hitpoint.collider
 				if "fillerContent" in p and "mineralContent" in p:
+					var processing = false
 					if legacy_multimineral_handle and "comp_val" in p:
 						if p.fillerContent > 0.05 and p.mass > 0.02:
 							var pv = getPowerDraw()
@@ -52,6 +56,7 @@ func _physics_process(delta):
 								p.mass = nm
 								mc = mm / nm
 							p.fillerContent = 1 - mc
+							processing = true
 					else:
 						if p.fillerContent > 0.05 and p.mass > 0.02:
 							var pv = getPowerDraw()
@@ -65,12 +70,31 @@ func _physics_process(delta):
 								p.mass = nm
 								p.mineralContent = mm / nm
 							p.fillerContent = 1 - p.mineralContent
-					var colliderBox = hitpoint.collider.get_node_or_null("Collision")
-					if colliderBox:
-						var emissionRadius = colliderBox.shape.radius * lerp(colliderBox.scale.x,colliderBox.scale.y,0.5)
-						emitter.process_material.emission_sphere_radius = emissionRadius
-						emitter.global_position = colliderBox.global_position
-						emitter.emit(true)
+							processing = true
+					
+					if processing:
+						var colliderBox = hitpoint.collider.get_node_or_null("Collision")
+						if colliderBox:
+							oreCollider = colliderBox
+							do_emit_dust = true
+						else:
+							do_emit_dust = false
+					else:
+						do_emit_dust = false
 				Tool.release(hitpoint.collider)
 			else:
-				emitter.emit(false)
+				do_emit_dust = false
+		else:
+			do_emit_dust = false
+	else:
+		do_emit_dust = false
+
+func _process(delta):
+	if oreCollider:
+		var emissionRadius = oreCollider.shape.radius * lerp(oreCollider.scale.x,oreCollider.scale.y,0.5)
+		emitter.process_material.emission_sphere_radius = emissionRadius
+		emitter.global_position = oreCollider.global_position
+	
+	emitter.emit(do_emit_dust)
+	
+	
