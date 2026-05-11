@@ -52,6 +52,7 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("DisplayNegativeDepth/ship-ctrl.gd")
 		installScriptExtension("ExtraOMSDisplays/OMS.gd")
 		installScriptExtension("ExtraOMSDisplays/CurrentGame.gd")
+		installScriptExtension("ExtraOMSDisplays/ship-ctrl.gd")
 		installScriptExtension("ShowEquipmentReliability/Upgrades.gd")
 		installScriptExtension("PilotsReduceAstrogationCalcTime/ship-ctrl.gd")
 		installScriptExtension("ScoopAutoReturnProtocol/ship-ctrl.gd")

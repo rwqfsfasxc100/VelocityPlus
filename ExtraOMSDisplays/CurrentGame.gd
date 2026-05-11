@@ -15,6 +15,8 @@ func vp_shippedgoods_UV():
 var this_dive_transactions_gain = 0
 var this_dive_transactions_spent = 0
 
+var vp_this_dive_time_spent_astrogating = 0
+
 var show_shipped_cargo_value = true
 func logEvent(type: String, details = {}):
 	.logEvent(type,details)

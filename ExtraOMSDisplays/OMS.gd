@@ -13,6 +13,13 @@ var soldGoods_3# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxCon
 var soldGoods_4# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_4")
 var soldGoods_5# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_5")
 
+var astro_vpbox
+var astro_vb_1
+var astro_hb_2
+var astro_vb_spacer
+var astroTimeLabel
+var astroTimeDescLabel
+
 var ship
 
 var pointersVP
@@ -26,6 +33,7 @@ func vp_omslabels_UV():
 		show_transactions = config.get("show_transactions",true)
 		show_transactions_sold_goods = config.get("show_transactions_sold_goods",true)
 		show_transactions_bought_goods = config.get("show_transactions_bought_goods",true)
+		show_time_spent_astrogating = config.get("show_astrogation_time",true)
 		
 		handle_visibility()
 
@@ -100,6 +108,50 @@ func _ready():
 	box1.move_child(_diveClock,2)
 	
 	
+	
+	var astroGC = get_node("MarginContainer/VBoxContainer/TabHintContainer/TabContainer/CREW_OCCUPATION_ASTROGATOR")
+	astro_vpbox = HBoxContainer.new()
+	astro_vpbox.modulate = Color("40ff40")
+	astro_vpbox.alignment = BoxContainer.ALIGN_END
+	astro_vpbox.anchor_bottom = 1
+	astro_vpbox.anchor_right = 1
+	astro_vpbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	astro_vpbox.name = "VP_ASTRO_BOX"
+	astroGC.add_child(astro_vpbox)
+	astro_vb_1 = VBoxContainer.new()
+	astro_vb_1.alignment = BoxContainer.ALIGN_END
+	astro_vb_1.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	astro_vpbox.add_child(astro_vb_1)
+	astro_vb_spacer = VBoxContainer.new()
+	astro_vb_spacer.alignment = BoxContainer.ALIGN_END
+	astro_vb_spacer.rect_min_size.x = 15
+	astro_vb_spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	astro_vpbox.add_child(astro_vb_spacer)
+	astro_hb_2 = HBoxContainer.new()
+	astro_hb_2.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	astro_vb_1.add_child(astro_hb_2)
+	
+#	var separator1 = Label.new()
+#	var separator2 = Label.new()
+#	separator1.size_flags_vertical = Label.SIZE_EXPAND_FILL
+#	separator2.size_flags_vertical = Label.SIZE_EXPAND_FILL
+	
+	astroTimeDescLabel = Label.new()
+	astroTimeLabel = Label.new()
+	astroTimeDescLabel.align = Label.ALIGN_RIGHT
+	astroTimeDescLabel.text = "VP_OMS_ASTRO_TIME_COUNTER_LABEL"
+	astroTimeLabel.text = Tool.readableTimeSpan(0)
+	astroTimeLabel.size_flags_horizontal = Label.SIZE_FILL
+	astroTimeLabel.rect_size.x = 10
+	astroTimeDescLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	astroTimeLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+#	astroGC.add_child(separator1)
+#	astroGC.add_child(separator2)
+	astro_hb_2.add_child(astroTimeDescLabel)
+	astro_hb_2.add_child(astroTimeLabel)
+	
+	
+	# Must be handled last to ensure all labels are loaded
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
 	vp_omslabels_UV()
@@ -107,6 +159,8 @@ func _ready():
 	if ship == CurrentGame.getPlayerShip():
 		CurrentGame.this_dive_transactions_gain = 0
 		CurrentGame.this_dive_transactions_spent = 0
+	
+	
 
 var money_format = "%s E$"
 var shipped_cargo_amt = 0.0
@@ -129,6 +183,7 @@ var show_shipped_value = true
 var show_transactions = true
 var show_transactions_sold_goods = true
 var show_transactions_bought_goods = true
+var show_time_spent_astrogating = true
 var vpFrameUpdateTimer = 0
 func _physics_process(delta):
 	vpFrameUpdateTimer += 1
@@ -147,7 +202,7 @@ func _physics_process(delta):
 		else:
 			if _diveClock != null:
 				_diveClock.visible = false
-	if vpFrameUpdateTimer % 20 == 0:
+	if vpFrameUpdateTimer % 10 == 0:
 		if show_shipped_value:
 			shipped_cargo_amt = 0.0
 			ship.configMutex.lock()
@@ -167,41 +222,22 @@ func _physics_process(delta):
 				soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
 			if show_transactions_bought_goods:
 				soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
-			
+		if show_time_spent_astrogating:
+			var t = CurrentGame.vp_this_dive_time_spent_astrogating
+			astroTimeLabel.text = Tool.readableTimeSpan(t)
 	if vpFrameUpdateTimer > 100:
 		vpFrameUpdateTimer = 0
 
 func handle_visibility():
-	if show_dive_clock and _diveClock != null:
-		_diveClock.visible = true
-	else:
-		if _diveClock != null:
-			_diveClock.visible = false
-	if show_shipped_value:
-		money_waiting_label.visible = true
-		money_waiting_label_1.visible = true
-	else:
-		money_waiting_label.visible = false
-		money_waiting_label_1.visible = false
-	if show_transactions:
-		soldGoods.visible = true
-		soldGoods_1.visible = true
-		if show_transactions_sold_goods:
-			soldGoods_2.visible = true
-			soldGoods_3.visible = true
-		else:
-			soldGoods_2.visible = false
-			soldGoods_3.visible = false
-		if show_transactions_bought_goods:
-			soldGoods_4.visible = true
-			soldGoods_5.visible = true
-		else:
-			soldGoods_4.visible = false
-			soldGoods_5.visible = false
-	else:
-		soldGoods.visible = false
-		soldGoods_1.visible = false
-		soldGoods_2.visible = false
-		soldGoods_3.visible = false
-		soldGoods_4.visible = false
-		soldGoods_5.visible = false
+	if _diveClock != null:
+		_diveClock.visible = show_dive_clock
+	money_waiting_label.visible = show_shipped_value
+	money_waiting_label_1.visible = show_shipped_value
+	soldGoods.visible = show_transactions
+	soldGoods_1.visible = show_transactions
+	soldGoods_2.visible = (show_transactions and show_transactions_sold_goods)
+	soldGoods_3.visible = (show_transactions and show_transactions_sold_goods)
+	soldGoods_4.visible = (show_transactions and show_transactions_bought_goods)
+	soldGoods_5.visible = (show_transactions and show_transactions_bought_goods)
+	astroTimeLabel.visible = show_time_spent_astrogating
+	astroTimeDescLabel.visible = show_time_spent_astrogating

@@ -346,6 +346,12 @@ VP_RING={
 		"default":true,
 		"requires_bools":["VelocityPlus/VP_RING/show_transactions"],
 	},
+	"show_astrogation_time":{
+		"name":"VP_SHOW_TIME_SPENT_ASTROGATING",
+		"description":"VP_SHOW_TIME_SPENT_ASTROGATING_DESC",
+		"type":"bool",
+		"default":true
+	},
 }
 VP_INPUTS={
 	"velocityplus_toggle_hud":{
