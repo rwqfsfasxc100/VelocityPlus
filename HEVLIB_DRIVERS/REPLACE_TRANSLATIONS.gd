@@ -61,8 +61,8 @@ const TRANSLATIONS = {
 			"version_hash": 295818150
 		},
 		"VP_MINERAL_MARKET_DESC": {
-			"string": "Adds an extra textbox displaying the value of your stake in the mineral market at that current moment",
-			"version_hash": 1839755565
+			"string": "Adds an extra textbox displaying the value of your stake in the mineral market at that current \nmoment.",
+			"version_hash": 2270543717
 		},
 		"VP_ADD_CRADLES": {
 			"string": "Add empty cradle equipment",
@@ -149,24 +149,24 @@ const TRANSLATIONS = {
 			"version_hash": 1170383482
 		},
 		"VP_VARIATED_BROADCASTS_DESC": {
-			"string": "Provides a range of time for which any broadcast-like astrogation target will be provided on to give the impression that the data is being provided as it was from the source's computer.\\n\\nBroadcasts include: locations provided by crew, locations provided by miner crews, SRO broadcasts, pirate container and ship locations.",
-			"version_hash": 306166695
+			"string": "Provides a range of time for which any broadcast-like astrogation target will be provided \non to give the impression that the data is being provided as it was from the source's computer.\n\nBroadcasts include: locations provided by crew, locations provided by miner crews, \nSRO broadcasts, pirate container and ship locations.",
+			"version_hash": 3862087739
 		},
 		"VP_REMOVE_GIMBALS": {
 			"string": "Fix gimballed and turreted weapons in place",
 			"version_hash": 2382214376
 		},
 		"VP_REMOVE_GIMBALS_DESC": {
-			"string": "Fixes gimballed weapons (e.g. CL-200AP and AEMD-14) and turrets (e.g. PDMWG, NDPT-4205) in place.",
-			"version_hash": 2078532638
+			"string": "Fixes gimballed weapons (e.g. CL-200AP and AEMD-14) and \nturrets (e.g. PDMWG, NDPT-4205) in place.",
+			"version_hash": 965388424
 		},
 		"VP_HIDE_UNDAMAGED_EQUIPMENT": {
 			"string": "Hide undamaged equipment from repairs",
 			"version_hash": 1623444711
 		},
 		"VP_HIDE_UNDAMAGED_EQUIPMENT_DESC": {
-			"string": "Removes any equipment at 100% durability in the repairs menu, and makes repairs more streamlined",
-			"version_hash": 1177482558
+			"string": "Removes any equipment at 100% durability in the repairs menu, and makes repairs more \nstreamlined.",
+			"version_hash": 546687222
 		},
 		"DKB_DEALER_TRADE_IN_OK": {
 			"string": "Sells your selected ship to provide it's monetary value towards the ship purchase.",
@@ -197,8 +197,8 @@ const TRANSLATIONS = {
 			"version_hash": 2761290251
 		},
 		"VP_BETTER_TOOLTIPS_DESC": {
-			"string": "Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help explain why they're disabled.",
-			"version_hash": 3628932424
+			"string": "Adds explanatory tooltips to various buttons in Enceladus's repair and dealership menus to help \nexplain why they're disabled.",
+			"version_hash": 939426226
 		},
 		"VP_ENABLE_ACHIEVEMENTS": {
 			"string": "Enable achievements",
@@ -221,24 +221,24 @@ const TRANSLATIONS = {
 			"version_hash": 3706834402
 		},
 		"VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC": {
-			"string": "Multiplies the number of geologist ore markers displayed around ore chunks by 5; from 200 to 1000",
-			"version_hash": 1259747971
+			"string": "Multiplies the number of geologist ore markers displayed around ore chunks by 5; \nfrom 200 to 1000",
+			"version_hash": 683727277
 		},
 		"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI": {
 			"string": "Astrogator tactical marker limit multiplier",
 			"version_hash": 361005976
 		},
 		"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC": {
-			"string": "Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; from 20 to 100",
-			"version_hash": 3147898265
+			"string": "Multiplies the number of astrogator tactical markers displayed around ships and personnel by 5; \nfrom 20 to 100",
+			"version_hash": 1534009603
 		},
 		"VP_ARM_TARGET_TO_AP": {
 			"string": "Manipulator arms lock on AP target",
 			"version_hash": 1792990882
 		},
 		"VP_ARM_TARGET_TO_AP_DESC": {
-			"string": "Makes all manipulator arms attempt to prioritize the object selected by the autopilot over all others.",
-			"version_hash": 2975772087
+			"string": "Makes all manipulator arms attempt to prioritize the object selected by the autopilot \nover all others.",
+			"version_hash": 4175092129
 		},
 		"VP_DISPLAY_NEGATIVE_DEPTH": {
 			"string": "Display negative depth",
@@ -261,8 +261,8 @@ const TRANSLATIONS = {
 			"version_hash": 2954876385
 		},
 		"VP_SHOW_EQUIPMENT_RELIABILITY_DESC": {
-			"string": "Shows the Mean Time Between Failures (MTBF) reliability data of equipment in the User Manual box in the equipment tab.",
-			"version_hash": 1469090141
+			"string": "Shows the Mean Time Between Failures (MTBF) reliability data of equipment in the User Manual \nbox in the equipment tab.",
+			"version_hash": 3850450055
 		},
 		"VP_TOGGLE_HUD": {
 			"string": "Toggle HUD",
@@ -285,8 +285,8 @@ const TRANSLATIONS = {
 			"version_hash": 2375028577
 		},
 		"VP_PILOTS_REDUCE_ASTRO_CALC_DESC": {
-			"string": "Modifies the time it takes to calculate an astrogation maneuver based on the pilot's skill and/or experience.",
-			"version_hash": 2431572351
+			"string": "Modifies the time it takes to calculate an astrogation maneuver based on the pilot's skill \nand/or experience.",
+			"version_hash": 1915358409
 		},
 		"VP_MIN_ASTROGATION_TIME": {
 			"string": "Minimum astrogation calculation time",
@@ -309,8 +309,8 @@ const TRANSLATIONS = {
 			"version_hash": 2845432875
 		},
 		"VP_PILOT_SKILL_BIAS_DESC": {
-			"string": "The bias used to determine the astrogation calculation time reduction. \\nValues closer to 0.0 will favour education level. \\nValues closer to 1.0 will favour experience level. \\n0.5 uses average of experience and education equally. ",
-			"version_hash": 310446039
+			"string": "The bias used to determine the astrogation calculation time reduction. \nValues closer to 0.0 will favour education level, while 1.0 will favour experience level. \n0.5 uses average of experience and education equally. ",
+			"version_hash": 4153893129
 		},
 		"VP_SAVE_INFO_BUTTON": {
 			"string": "Save Stats",
@@ -365,8 +365,8 @@ const TRANSLATIONS = {
 			"version_hash": 604349269
 		},
 		"VP_PILOTS_DISABLE_ADRENALINE_DESC": {
-			"string": "Prevents the pilot from automatically engaging the adrenaline booster when you get close to objects.",
-			"version_hash": 3680909668
+			"string": "Prevents the pilot from automatically engaging the adrenaline booster when you get close \nto objects.",
+			"version_hash": 2388578382
 		},
 		"VP_AUTOREPAIRS": {
 			"string": "Auto Repairs",
@@ -385,8 +385,8 @@ const TRANSLATIONS = {
 			"version_hash": 4118446312
 		},
 		"VP_AUTOREPAIR_PRIORITY_DESC": {
-			"string": "The priority of how equipment should be repaired. \\n\\n * Cost effective - Repairs and replaces equipment to most efficiently spend money based on matching criteria. \\nMay not result in a pilotable ship. \\n\\n * Only repair - repair equipment based on matching criteria. Will never replace equipment. \\n\\n * Only replace - replace equipment based on matching criteria. Will only repair equipment. \\n\\n * Maximise profit - Repairs and replaces to maximize the money able to be earned from a ship, based on specific criteria. \\nMay not result in a pilotable ship.",
-			"version_hash": 2674873094
+			"string": "The priority of how equipment should be repaired. \n\n * Cost effective - Repairs and replaces equipment to most efficiently spend money \nbased on matching criteria. May not result in a pilotable ship. \n\n * Only repair - repair equipment based on matching criteria. Will never replace equipment. \n\n * Only replace - replace equipment based on matching criteria. Will only repair equipment. \n\n * Maximise profit - Repairs and replaces to maximize the money able to be earned from \na ship, based on specific criteria. May not result in a pilotable ship.",
+			"version_hash": 1601431270
 		},
 		"VP_AUTOREPAIR_PRIORITY_ONLYREPAIR": {
 			"string": "Only repair",
@@ -445,8 +445,8 @@ const TRANSLATIONS = {
 			"version_hash": 4952109
 		},
 		"VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC": {
-			"string": "The repair percentage that auto repair will aim to achieve based on matching criteria. May go over this amount if the last repair performed crosses the threshold. \\nCost effective priority mode will replace equipment if it is more cost effective than achieving this target. \\nIgnored by only replace and max profit modes.",
-			"version_hash": 4107010817
+			"string": "The repair percentage that auto repair will aim to achieve based on matching criteria. \nMay go over this amount if the last repair performed crosses the threshold. \n\nCost effective priority mode will replace equipment if it is more cost effective than \nachieving this target. \n\nIgnored by only replace and max profit modes.",
+			"version_hash": 2730221641
 		},
 		"VP_DIVE_CLOCK_DISPLAY": {
 			"string": "In dive: %dh %02dm %02ds",
@@ -509,16 +509,16 @@ const TRANSLATIONS = {
 			"version_hash": 644688892
 		},
 		"VP_TOGGLE_SYSTEMS_AT_ENCELADUS_DESC": {
-			"string": "Adds a tab to Enceladus Prime's equipment menu that lets you selectively toggle which systems are active upon entry to the rings. \\n\\nDamage or loss to ship and/or it's systems due to automatic disabling are not covered by any warranties.",
-			"version_hash": 480349794
+			"string": "Adds a tab to Enceladus Prime's equipment menu that lets you selectively toggle which \nsystems are active upon entry to the rings. \n\nDamage or loss to ship and/or it's systems due to automatic disabling are not \ncovered by any warranties.",
+			"version_hash": 2132020950
 		},
 		"VP_REMEMBER_TOGGLED_SYSTEMS": {
 			"string": "Remember systems toggled in OMS",
 			"version_hash": 999685944
 		},
 		"VP_REMEMBER_TOGGLED_SYSTEMS_DESC": {
-			"string": "Whether to have the ship automatically remember the equipment you disabled on your dive. Make sure to double check this at Enceladus to prevent loss of ship or systems.",
-			"version_hash": 1602327042
+			"string": "Whether to have the ship automatically remember the equipment you disabled on your dive. \nMake sure to double check this at Enceladus to prevent loss of ship or systems.",
+			"version_hash": 978736844
 		},
 		"VP_ENABLED_SYSTEMS": {
 			"string": "System Toggles",
@@ -529,16 +529,16 @@ const TRANSLATIONS = {
 			"version_hash": 2590198059
 		},
 		"VP_ASTROGATOR_TRACKING_TIME_DESC": {
-			"string": "Lets you determine the maximum tracking time of your astrogators, with the current time scaling to match.",
-			"version_hash": 1471375855
+			"string": "Lets you determine the maximum tracking time of your astrogators, \nwith the current time scaling to match.",
+			"version_hash": 3767562969
 		},
 		"VP_OVERRIDE_TURRET_AUTOFIRE": {
 			"string": "Override turret auto-fire behaviour",
 			"version_hash": 3714217820
 		},
 		"VP_OVERRIDE_TURRET_AUTOFIRE_DESC": {
-			"string": "Whether the defauly auto-fire mode of all turrets is overriden. Look to 'turret override operation mode' to handle what it uses as default.",
-			"version_hash": 2760649088
+			"string": "Whether the defauly auto-fire mode of all turrets is overriden. \n\nLook to 'turret override operation mode' to handle what it uses as default.",
+			"version_hash": 2281873428
 		},
 		"VP_TURRET_OVERRIDE_MODE": {
 			"string": "Turret override operation mode",
@@ -561,8 +561,8 @@ const TRANSLATIONS = {
 			"version_hash": 2425682384
 		},
 		"VP_DISABLE_MAINTENANCE_SANBUS_DESC": {
-			"string": "Prevents maintenance drones from being blocked from operating on a ship when another system is currently targeting it.",
-			"version_hash": 2890011714
+			"string": "Prevents maintenance drones from being blocked from operating on a ship when \nanother system is currently targeting it.",
+			"version_hash": 1696225932
 		},
 		"VP_AUTOREPAIRS_FIX_TO_100_PERCENT": {
 			"string": "Repair all to 100% (cost-effective)",
@@ -609,8 +609,8 @@ const TRANSLATIONS = {
 			"version_hash": 3091079416
 		},
 		"VP_AUTOREPAIRS_FIX_TO_CURRENT_TOOLTIP": {
-			"string": "Repairs equipment based on the current monetary and target settings as cost-effectively as possible.",
-			"version_hash": 4042314592
+			"string": "Repairs equipment based on the current monetary and target settings as \ncost-effectively as possible.",
+			"version_hash": 517083082
 		},
 		"VP_AUTOREPAIRS_FIX_TO_CURRENT_REPAIR": {
 			"string": "Repair from current settings (fix only)",
@@ -633,8 +633,8 @@ const TRANSLATIONS = {
 			"version_hash": 1890242649
 		},
 		"VP_AUTOREPAIRS_MANUAL_MAX_PROFIT_TOOLTIP": {
-			"string": "Repairs equipment based on the current monetary and target settings to maximize profit as much as possible.",
-			"version_hash": 2139318572
+			"string": "Repairs equipment based on the current monetary and target settings to maximize \nprofit as much as possible.",
+			"version_hash": 957354358
 		},
 		"VP_HIDE_CREW_SUITS": {
 			"string": "Hide crew suits",
@@ -657,8 +657,8 @@ const TRANSLATIONS = {
 			"version_hash": 143843576
 		},
 		"VP_TEMPERATURE_BASED_THRUST_DESC": {
-			"string": "Thrusters will linearly adjust their thrust based on the current temperature against the current target temperature. Thermal requirements will scale if nullify thermal change is not enabled.",
-			"version_hash": 1320275706
+			"string": "Thrusters will linearly adjust their thrust based on the current temperature against the current \ntarget temperature. \n\nThermal requirements will scale if nullify thermal change is not enabled.",
+			"version_hash": 1867411576
 		},
 		"VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL": {
 			"string": "Nullify thermal change",
@@ -1653,16 +1653,28 @@ const TRANSLATIONS = {
 			"version_hash": 4085071938
 		},
 		"VP_NATURAL_TIME_SKIP_DESC": {
-			"string": "When opening a save, the time since the save was last opened will be added to the game time, simulating a natural passage of time.",
-			"version_hash": 3782004868
+			"string": "When opening a save, the time since the save was last opened will be added to the game time, \nsimulating a natural passage of time.",
+			"version_hash": 3614744046
 		},
 		"VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER": {
 			"string": "Station transfer speed multiplier",
 			"version_hash": 2270724452
 		},
 		"VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER_DESC": {
-			"string": "Allows you to control the speed of mineral/ammo/nanodrone delivery to a station by a specific factor.",
-			"version_hash": 3627287308
+			"string": "Allows you to control the speed of mineral/ammo/nanodrone delivery to a station by a \nspecific factor.",
+			"version_hash": 3739929142
+		},
+		"VP_OMS_ASTRO_TIME_COUNTER_LABEL": {
+			"string": "Time spent astrogating:",
+			"version_hash": 2210425947
+		},
+		"VP_SHOW_TIME_SPENT_ASTROGATING": {
+			"string": "Show total astrogation time",
+			"version_hash": 3059770340
+		},
+		"VP_SHOW_TIME_SPENT_ASTROGATING_DESC": {
+			"string": "Adds a set of labels on the bottom-right hand corner of the Astrogator tab that displays \nthe total time having spent astrogating.",
+			"version_hash": 2398496187
 		}
 	},
 	"uk_UA": {
