@@ -7,7 +7,7 @@ const MOD_PRIORITY = -1
 const MOD_NAME = "Velocity Plus"
 const MOD_VERSION_MAJOR = 1
 const MOD_VERSION_MINOR = 5
-const MOD_VERSION_BUGFIX = 3
+const MOD_VERSION_BUGFIX = 4
 const MOD_VERSION_METADATA = ""
 const MOD_IS_LIBRARY = false
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
@@ -67,6 +67,7 @@ func _init(modLoader = ModLoader):
 		installScriptExtension("AutoRepairs/Repairs.gd")
 		if config.get("VP_SHIPS",{}).get("fix_voyager_MPU_in_OCP",true):
 			replaceScene("OCPVoyagerFix/ocp-209.tscn","res://ships/ocp-209.tscn")
+		installScriptExtension("StationTransferSpeed/TradingHub.gd")
 
 
 var cradle_left = {

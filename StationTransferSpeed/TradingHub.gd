@@ -12,6 +12,6 @@ func _enter_tree():
 
 func vp_station_trade_transfer_speed_UV():
 	if pointersVP_base_transfer_speed:
-		transfer_speed_multi = pointersVP_base_transfer_speed.ConfigDriver.__get_value("VelocityPlus","VP_RING","station_trade_transfer_speed")
+		transfer_speed_multi = pointersVP_base_transfer_speed.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","station_trade_transfer_speed")
 	else: transfer_speed_multi = 1.0
 	tradePerSecond = base_transfer_speed * transfer_speed_multi

@@ -1,3 +1,7 @@
+[1.5.4]
+
+1="* Station transfer multiplier now is functional"
+
 [1.5.3]
 
 1="* Updated MTBF title and description"
