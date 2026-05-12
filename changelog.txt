@@ -1,3 +1,13 @@
+[1.5.3]
+
+1="* Updated MTBF title and description"
+2="* OCP Voyager Fix is now marked as requiring a restart"
+3="* Improved efficiency of thruster temperature fetching"
+4="* Added station transfer speed multiplier"
+5="* Fixed weirdness with ore dust particles while being microwaved, and now will stop emitting when the ore cannot have any more water melted off it"
+6="* Added astrogation time display to the Astrogator menu"
+7="* Updated tooltips to not get cut off by the screen border at lower resolutions"
+
 [1.5.2]
 
 1="* Fixed broken option names and tooltips for the auto repairs submenu"
