@@ -1,3 +1,7 @@
+[1.5.5]
+
+1="* Fixed an issue with the astrogation time label causing it to not be reset after returning to Enceladus Prime"
+
 [1.5.4]
 
 1="* Station transfer multiplier now is functional"
