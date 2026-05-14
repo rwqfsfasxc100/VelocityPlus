@@ -39,6 +39,7 @@ func vp_omslabels_UV():
 
 
 func _ready():
+	CurrentGame.vp_this_dive_time_spent_astrogating = 0
 	var headBox = $MarginContainer/VBoxContainer/Comms/VBoxContainer
 	var box2 = headBox.get_node("HBoxContainer2")
 	var box1 = headBox.get_node("HBoxContainer")
