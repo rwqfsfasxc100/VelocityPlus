@@ -1,7 +1,5 @@
 extends "res://enceladus/Upgrades.gd"
 
-var _showReliability_system = null
-
 var disable_when_false = PoolStringArray(["damageModel"])
 var disable_when_true = PoolStringArray([])
 
@@ -18,12 +16,16 @@ func _enter_tree():
 	pointersVP.ConfigDriver.__establish_connection("vp_upgrades_UV",self)
 	vp_upgrades_UV()
 
+var grace_item
+func preview(test, slot, system, item):
+	.preview(test, slot, system, item)
+	grace_item = item
+
 func previewShipSystem(slot,system,control=""):
 	.previewShipSystem(slot,system,control)
 	if slot == null or system is int or system is float:
 		mtbf_label.visible = false
 		return
-	_showReliability_system = system
 	yield(get_tree().create_timer(0.25),"timeout")
 	showReliabilityDisplay()
 var mtbf_label
@@ -40,15 +42,19 @@ var cfg_show_equipment_reliability
 #func _process(delta):
 func showReliabilityDisplay():
 	if cfg_show_equipment_reliability:
-		if _showReliability_system == null:
+		if grace_item == null:
 			mtbf_label.visible = false
 			return
-		var system = _showReliability_system
-		var n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + system, true, false)
+		var itemContainer = grace_item
+		var system = itemContainer.system
+		var n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.system, true, false)
+		if n == null and "nameOverride" in itemContainer and itemContainer.nameOverride != "":
+			n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.nameOverride, true, false)
 		if n == null or n is InstancePlaceholder:
 			mtbf_label.visible = false
 			return
-		_showReliability_system = null  # OK, it's instantiated.
+		grace_item = null  # OK, it's instantiated.
+		
 		
 		var enabled = true
 		var damagePropertyExists = false
