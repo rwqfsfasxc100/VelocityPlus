@@ -37,8 +37,13 @@ func vp_omslabels_UV():
 		
 		handle_visibility()
 
-
+var vp_currently_installed_mpu
+var vp_has_mpu = false
 func _ready():
+	ship = get_parent().get_parent()
+	vp_currently_installed_mpu = ship.getConfig("cargo.equipment")
+	if vp_currently_installed_mpu:
+		vp_has_mpu = true
 	CurrentGame.vp_this_dive_time_spent_astrogating = 0
 	var headBox = $MarginContainer/VBoxContainer/Comms/VBoxContainer
 	var box2 = headBox.get_node("HBoxContainer2")
@@ -156,7 +161,6 @@ func _ready():
 	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
 	vp_omslabels_UV()
-	ship = get_parent().get_parent()
 	if ship == CurrentGame.getPlayerShip():
 		CurrentGame.this_dive_transactions_gain = 0
 		CurrentGame.this_dive_transactions_spent = 0
@@ -168,16 +172,16 @@ var shipped_cargo_amt = 0.0
 
 func _input(event):
 	if !ship.cutscene and ship.isPlayerControlled():
-#		breakpoint
 		if event.is_action_pressed("velocityplus_toggle_hud"):
 			get_parent().visible = !get_parent().visible
-		if event.is_action_pressed("velocityplus_toggle_mpu"):
-			var current_mpu = ship.getConfig("cargo.equipment")
-			for node in ship.get_children():
-				if "systemName" in node and "removeChunks" in node:
-					var nname = node.name
-					if node.systemName == current_mpu:
-						node.enabled = !node.enabled
+		if vp_has_mpu:
+			if event.is_action_pressed("velocityplus_toggle_mpu"):
+				var shipSystems = ship.getSystems()
+				for node in shipSystems:
+					var sys = shipSystems[node]
+					if sys.name == vp_currently_installed_mpu:
+						sys.enabled = !sys.enabled
+						sys.ref.enabled = !sys.ref.enabled
 
 var show_dive_clock = true
 var show_shipped_value = true
