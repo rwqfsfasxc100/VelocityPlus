@@ -5,10 +5,10 @@ var scoop_autoreturn_protocol_config = {}
 var pointersVP_scoop_autoreturn_protocol
 func _enter_tree():
 	pointersVP_scoop_autoreturn_protocol = get_tree().get_root().get_node_or_null("HevLib~Pointers")
-	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__establish_connection("vp_shipmanager_UV",self)
-	vp_pilot_calc_time_reduction_UV()
+	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__establish_connection("vp_scoop_autoreturn_config_VP",self)
+	vp_scoop_autoreturn_config_VP()
 
-func vp_pilot_calc_time_reduction_UV():
+func vp_scoop_autoreturn_config_VP():
 	if pointersVP_scoop_autoreturn_protocol:
 		scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.pointersVP.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS")
 
