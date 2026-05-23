@@ -1,6 +1,6 @@
 [1.5.8]
 
-1="* Fixed crash caused my malformatted pointer calls"
+1="* Fixed crash caused by malformatted pointer calls"
 
 [1.5.7]
 
