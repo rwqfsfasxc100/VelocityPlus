@@ -10,7 +10,7 @@ func _enter_tree():
 
 func vp_scoop_autoreturn_config_VP():
 	if pointersVP_scoop_autoreturn_protocol:
-		scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.pointersVP.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS")
+		scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS")
 
 func aiControl(delta):
 	if shipName == "SHIP_POD":

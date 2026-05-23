@@ -10,7 +10,7 @@ func _enter_tree():
 
 func vp_pilot_calc_time_reduction_UV():
 	if pointersVP_pilots_reduce_astro_calc_time:
-		pilots_reduce_astro_calculations = pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.pointersVP.ConfigDriver.__get_config("VelocityPlus").get("VP_CREW")
+		pilots_reduce_astro_calculations = pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.__get_config("VelocityPlus").get("VP_CREW")
 
 
 func _ready():
