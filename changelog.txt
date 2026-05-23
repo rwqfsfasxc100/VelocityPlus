@@ -1,3 +1,17 @@
+[1.5.7]
+
+1="* Configs now are properly setup and will update when modified by MM2"
+2="* The following settings will now properly update when changed:"
+2.1="* Display negative depth"
+2.2="* Pilots reduce astrogation calculation time"
+2.3="* Remove 200 m/s velocity limit"
+2.4="* Allow travel past the ring's outer edge"
+2.5="* Allow travel into the Encke Gap"
+2.6="* Station transfer speed multiplier"
+3="* The following settings now work again:"
+3.1="* NT Companion end of run protocol"
+3.2="* Disable pilot's automatic adrenaline"
+
 [1.5.6]
 
 1="* Fixed MPU toggle not working if the MPU node isn't a direct descendant of the ship node"
