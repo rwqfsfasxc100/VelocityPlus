@@ -1,3 +1,7 @@
+[1.5.8]
+
+1="* Fixed crash caused my malformatted pointer calls"
+
 [1.5.7]
 
 1="* Configs now are properly setup and will update when modified by MM2"
