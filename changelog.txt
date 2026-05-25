@@ -1,6 +1,6 @@
 [1.5.9]
 
-1="* Fixed crash caused by ships with microwaves installed exiting the near vicinity to your ship"
+1="* Fixed crash caused by ships with microwaves installed on other ships that are exiting the near vicinity to your ship"
 2="* Microwaves melt ore is now more efficient by ensuring it's on screen before processing the particles"
 
 [1.5.8]
