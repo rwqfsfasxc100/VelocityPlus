@@ -13,10 +13,27 @@ func vp_microwavemelting_UV():
 	if pointersVPEMP:
 		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore")
 
+var visnotifier
 var emitter
 func _ready():
 	emitter = dustScene.instance()
 	add_child(emitter)
+	visnotifier = VisibilityNotifier2D.new()
+	visnotifier.rect = Rect2(-20,-20,40,40)
+	visnotifier.connect("screen_entered",self,"sc_entered")
+	visnotifier.connect("screen_exited",self,"sc_exited")
+	emitter.visnotify.connect("screen_entered",self,"pt_entered")
+	emitter.visnotify.connect("screen_exited",self,"pt_exited")
+	add_child(visnotifier)
+
+func sc_entered():
+	vis_on_screen = true
+func sc_exited():
+	vis_on_screen = false
+func pt_entered():
+	particles_on_screen = true
+func pt_exited():
+	particles_on_screen = false
 
 var allowed_to = true
 var legacy_multimineral_handle = false
@@ -25,6 +42,9 @@ var mike_burnoff_speed_factor = 2000
 
 var do_emit_dust = false
 var oreCollider = null
+
+var vis_on_screen = false
+var particles_on_screen = false
 
 func _physics_process(delta):
 	if firepower > 0 and allowed_to:
@@ -90,11 +110,12 @@ func _physics_process(delta):
 		do_emit_dust = false
 
 func _process(delta):
-	if oreCollider:
-		var emissionRadius = oreCollider.shape.radius * lerp(oreCollider.scale.x,oreCollider.scale.y,0.5)
-		emitter.process_material.emission_sphere_radius = emissionRadius
-		emitter.global_position = oreCollider.global_position
-	
-	emitter.emit(do_emit_dust)
-	
+	if vis_on_screen or particles_on_screen:
+		if Tool.claim(oreCollider):
+			var emissionRadius = oreCollider.shape.radius * lerp(oreCollider.scale.x,oreCollider.scale.y,0.5)
+			emitter.process_material.emission_sphere_radius = emissionRadius
+			emitter.global_position = oreCollider.global_position
+			emitter.emit(do_emit_dust)
+			Tool.release(oreCollider)
+		
 	
