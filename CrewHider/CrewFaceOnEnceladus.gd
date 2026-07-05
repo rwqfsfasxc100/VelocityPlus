@@ -4,7 +4,7 @@ var vac_tex
 var vc
 var pointersVP
 func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_enceladuscrewface_UV",self)
 	yield(CurrentGame.get_tree(),"idle_frame")
 	vac_tex = get_node_or_null("C/O/Face/Sprite").material.get_shader_param("mask")

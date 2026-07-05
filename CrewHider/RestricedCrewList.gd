@@ -5,7 +5,7 @@ signal drawn_crew
 var vacPath = NodePath("C/O/Vac")
 
 func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_crewrestrictedlist_UV",self)
 	yield(self,"drawn_crew")
 	vp_crewrestrictedlist_UV()

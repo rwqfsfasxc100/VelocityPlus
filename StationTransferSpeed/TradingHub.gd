@@ -6,7 +6,7 @@ var transfer_speed_multi = 1.0
 var pointersVP_base_transfer_speed
 func _enter_tree():
 	base_transfer_speed = tradePerSecond
-	pointersVP_base_transfer_speed = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_base_transfer_speed = ModLoader._savedObjects[0]
 	pointersVP_base_transfer_speed.ConfigDriver.__establish_connection("vp_station_trade_transfer_speed_UV",self)
 	vp_station_trade_transfer_speed_UV()
 

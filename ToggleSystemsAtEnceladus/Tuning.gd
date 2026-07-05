@@ -69,7 +69,7 @@ func handleOMSToggle(how,opt,system,pos):
 onready var tex_rect = $VB/WindowMargin/Window/VP/TextureRect
 
 func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_tuning_UV",self)
 	vp_tuning_UV()
 

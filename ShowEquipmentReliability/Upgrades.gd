@@ -12,7 +12,7 @@ func vp_upgrades_UV():
 		cfg_show_equipment_reliability = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
 
 func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_upgrades_UV",self)
 	vp_upgrades_UV()
 

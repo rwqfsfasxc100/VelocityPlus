@@ -4,8 +4,7 @@ var pointersVP_natural_time_skip
 
 var file = File.new()
 func _ready():
-	yield(get_tree(),"idle_frame")
-	pointersVP_natural_time_skip = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_natural_time_skip = ModLoader._savedObjects[0]
 	pointersVP_natural_time_skip.ConfigDriver.__establish_connection("vp_natural_time_skip_UV",self)
 	vp_natural_time_skip_UV()
 

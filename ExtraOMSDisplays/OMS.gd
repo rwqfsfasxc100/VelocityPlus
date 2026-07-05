@@ -158,7 +158,7 @@ func _ready():
 	
 	
 	# Must be handled last to ensure all labels are loaded
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
 	vp_omslabels_UV()
 	if ship == CurrentGame.getPlayerShip():

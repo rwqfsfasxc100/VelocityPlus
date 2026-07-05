@@ -16,7 +16,7 @@ func _enter_tree():
 		wp = get_node_or_null(weaponPath)
 		if wp:
 			default_fire_action = wp.command
-	pointersVP_turret_overrides = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_turret_overrides = ModLoader._savedObjects[0]
 	pointersVP_turret_overrides.ConfigDriver.__establish_connection("vp_turretfixer_UV",self)
 	vp_turretfixer_UV()
 

@@ -27,7 +27,7 @@ func vp_autorepairsmenu_VP():
 		config = pointersVP.ConfigDriver.__get_config("VelocityPlus")
 
 func _enter_tree():
-	pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_autorepairsmenu_VP",self)
 	vp_autorepairsmenu_VP()
 

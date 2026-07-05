@@ -6,7 +6,7 @@ var pointersVP_gimbal_remover
 
 func _enter_tree():
 	default_gimbal_limit = gimbalLimit
-	pointersVP_gimbal_remover = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_gimbal_remover = ModLoader._savedObjects[0]
 	pointersVP_gimbal_remover.ConfigDriver.__establish_connection("vp_gimbal_remover_UV",self)
 	vp_gimbal_remover_UV()
 

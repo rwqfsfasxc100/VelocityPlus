@@ -3,8 +3,7 @@ extends "res://CurrentGame.gd"
 var pointersVP_shipped_goods_display
 
 func _ready():
-	yield(get_tree(),"idle_frame")
-	pointersVP_shipped_goods_display = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_shipped_goods_display = ModLoader._savedObjects[0]
 	pointersVP_shipped_goods_display.ConfigDriver.__establish_connection("vp_shippedgoods_UV",self)
 	vp_shippedgoods_UV()
 

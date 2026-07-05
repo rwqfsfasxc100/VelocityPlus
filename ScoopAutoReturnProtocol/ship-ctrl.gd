@@ -4,7 +4,7 @@ var scoop_autoreturn_protocol_config = {}
 
 var pointersVP_scoop_autoreturn_protocol
 func _enter_tree():
-	pointersVP_scoop_autoreturn_protocol = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_scoop_autoreturn_protocol = ModLoader._savedObjects[0]
 	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__establish_connection("vp_scoop_autoreturn_config_VP",self)
 	vp_scoop_autoreturn_config_VP()
 

@@ -10,7 +10,7 @@ var base_tactical_id_limits = 0
 func _enter_tree():
 	base_mineral_id_limits = mineralMarkerMax
 	base_tactical_id_limits = tacticalMarkerMax
-	pointersVP_crew_id_limits = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_crew_id_limits = ModLoader._savedObjects[0]
 	pointersVP_crew_id_limits.ConfigDriver.__establish_connection("vp_crew_id_overrides_UV",self)
 	vp_crew_id_overrides_UV()
 

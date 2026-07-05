@@ -4,9 +4,10 @@ var enable_achievements = false
 var enable_leaderboards = false
 var cheetah = false
 
-var pointers = ModLoader._savedObjects[0]
+var pointers
 
 func _ready():
+	pointers = ModLoader._savedObjects[0]
 	pointers.ConfigDriver.__establish_connection("vp_achievements_UV",self)
 	vp_achievements_UV()
 	cheetah = CurrentGame.cheetah

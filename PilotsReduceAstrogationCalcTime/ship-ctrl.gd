@@ -4,7 +4,7 @@ var pilots_reduce_astro_calculations = {}
 
 var pointersVP_pilots_reduce_astro_calc_time
 func _enter_tree():
-	pointersVP_pilots_reduce_astro_calc_time = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_pilots_reduce_astro_calc_time = ModLoader._savedObjects[0]
 	pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.__establish_connection("vp_pilot_calc_time_reduction_UV",self)
 	vp_pilot_calc_time_reduction_UV()
 

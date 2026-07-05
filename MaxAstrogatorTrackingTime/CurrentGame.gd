@@ -5,8 +5,7 @@ var pointersVP_astro_tracking_time
 var astrogation_tracking_time_modifier = true
 
 func _ready():
-	yield(get_tree(),"idle_frame")
-	pointersVP_astro_tracking_time = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_astro_tracking_time = ModLoader._savedObjects[0]
 	pointersVP_astro_tracking_time.ConfigDriver.__establish_connection("vp_astrogator_tracking_time_UV",self)
 	vp_astrogator_tracking_time_UV()
 

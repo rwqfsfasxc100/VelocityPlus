@@ -11,7 +11,7 @@ var broadcast_variations = true
 func _ready():
 	var cname = self.name
 	if cname.begins_with("DIALOG_SALVAGE_"):
-		pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVP = ModLoader._savedObjects[0]
 		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
 		vp_conversation_UV()
 		if broadcast_variations:
@@ -49,7 +49,7 @@ func _ready():
 			if rename_this_comms_to:
 				self.name = rename_this_comms_to
 	elif cname.begins_with("DIALOG_POI_RANDOM_"):
-		pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVP = ModLoader._savedObjects[0]
 		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
 		vp_conversation_UV()
 		if broadcast_variations:
@@ -58,7 +58,7 @@ func _ready():
 			var random = RNG.randf_range(168,2592)
 			poiTimeHours = random
 	elif cname.begins_with("DIALOG_MINER_SEEN_"):
-		pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVP = ModLoader._savedObjects[0]
 		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
 		vp_conversation_UV()
 		if broadcast_variations:
@@ -67,7 +67,7 @@ func _ready():
 			var random = RNG.randf_range(168,2592)
 			poiTimeHours = random
 	elif cname == "DIALOG_PIRATE_BUSINESS_DEAL":
-		pointersVP = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVP = ModLoader._savedObjects[0]
 		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
 		vp_conversation_UV()
 		if broadcast_variations:

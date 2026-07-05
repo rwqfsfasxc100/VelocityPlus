@@ -29,7 +29,7 @@ func handleSystemToggles():
 				sys.ref.enabled = cg
 
 func _enter_tree():
-	pointersVP_toggle_systems_at_enceladusprime = get_tree().get_root().get_node_or_null("HevLib~Pointers")
+	pointersVP_toggle_systems_at_enceladusprime = ModLoader._savedObjects[0]
 	pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__establish_connection("vp_enceladusprime_ship_toggles_UV",self)
 	vp_enceladusprime_ship_toggles_UV()
 
