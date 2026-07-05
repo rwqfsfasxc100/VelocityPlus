@@ -27,7 +27,7 @@ func _init(modLoader = ModLoader):
 		var mc = load(md + "mod_checker_script.tscn").instance()
 		add_child(mc)
 		
-		config = ModLoader._savedObjects[0].ConfigDriver.__get_config("VelocityPlus")
+		config = modLoader._savedObjects[0].ConfigDriver.__get_config("VelocityPlus")
 		
 		installScriptExtension("MicrowavesMeltOre/emp.gd")
 		installScriptExtension("MVFSShaderStyles/SimulationLayer.gd")
