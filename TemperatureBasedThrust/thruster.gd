@@ -1,6 +1,6 @@
 extends "res://sfx/thruster.gd"
 
-var VP_pointers
+var VP_pointers = ModLoader._savedObjects[0]
 
 
 func vp_thrusterTempModeration_UV():
@@ -23,7 +23,6 @@ func a3(how):
 	adjust_thrust_multi = how
 func _ready():
 	if ship.isPlayerControlled() and ship.isRealShip():
-		VP_pointers = CurrentGame.get_tree().get_root().get_node_or_null("HevLib~Pointers")
 		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
 		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a3",self,"VelocityPlus","VP_SHIPS","adjust_thrust_multi")
 		vp_thrusterTempModeration_UV()

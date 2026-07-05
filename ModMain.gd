@@ -17,10 +17,8 @@ var check
 var config = {}
 var d = Directory.new()
 var correct = d.file_exists("res://HevLib/pointers.gd")
-var pointers = null
 func _init(modLoader = ModLoader):
 	if correct:
-		pointers = load("res://HevLib/pointers.gd").new()
 		l("Initializing DLC")
 		loadDLC()
 		
@@ -29,7 +27,7 @@ func _init(modLoader = ModLoader):
 		var mc = load(md + "mod_checker_script.tscn").instance()
 		add_child(mc)
 		
-		config = pointers.ConfigDriver.__get_config("VelocityPlus")
+		config = ModLoader._savedObjects[0].ConfigDriver.__get_config("VelocityPlus")
 		
 		installScriptExtension("MicrowavesMeltOre/emp.gd")
 		installScriptExtension("MVFSShaderStyles/SimulationLayer.gd")

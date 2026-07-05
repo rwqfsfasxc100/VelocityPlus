@@ -4,11 +4,9 @@ var enable_achievements = false
 var enable_leaderboards = false
 var cheetah = false
 
-var pointers
+var pointers = ModLoader._savedObjects[0]
 
 func _ready():
-	yield(get_tree(),"idle_frame")
-	pointers = get_tree().get_root().get_node_or_null("HevLib~Pointers")
 	pointers.ConfigDriver.__establish_connection("vp_achievements_UV",self)
 	vp_achievements_UV()
 	cheetah = CurrentGame.cheetah
