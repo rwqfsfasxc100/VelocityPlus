@@ -78,7 +78,7 @@ func _draw():
 #			draw_arc(pv,5,0,PI*2,1024,Color(0,0,2,1),5)
 
 func scale_poly(poly,scale):
-	var np = PoolVector2Array([])
+	var np = PoolVector2Array()
 	for point in poly:
 		np.append(Vector2(point.x / scale.x, point.y / scale.y))
 	return np

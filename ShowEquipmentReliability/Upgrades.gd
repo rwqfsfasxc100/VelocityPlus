@@ -1,7 +1,7 @@
 extends "res://enceladus/Upgrades.gd"
 
 var disable_when_false = PoolStringArray(["damageModel"])
-var disable_when_true = PoolStringArray([])
+var disable_when_true = PoolStringArray()
 
 
 var pointersVP
