@@ -1,453 +1,523 @@
 [mod_information]
 
-id="hev.VelocityPlus"
 name="Velocity Plus"
+id="hev.VelocityPlus"
 description="VELOCITYPLUS_DESCRIPTION"
 brief="VELOCITYPLUS_BRIEF"
 author="__hev"
-credits=["Za'krin - Mod Main design, original implementation of updateTL","harrygiel - original implementation of the MaximumSpeed mod which this mod fixes and uses for the remove speed limit module","CyberShadow - original implementation for the DiveClock, ShowReliability, and ARMFocus modules","Alfik0 - original implementation of the identification limit increase modules","   --- Supporters ---   ","GAZI - supporter (ko-fi)","Bagger dude - supporter (ko-fi)","WT - supporter (ko-fi)"]
+credits=PoolStringArray( "Za\'krin - Mod Main design, original implementation of updateTL", "harrygiel - original implementation of the MaximumSpeed mod which this mod fixes and uses for the remove speed limit module", "CyberShadow - original implementation for the DiveClock, ShowReliability, and ARMFocus modules", "Alfik0 - original implementation of the identification limit increase modules", "   --- Supporters ---   ", "GAZI - supporter (ko-fi)", "Bagger dude - supporter (ko-fi)", "WT - supporter (ko-fi)" )
 
 [version]
 
 version_major=1
-version_minor=5
-version_bugfix=9
+version_minor=6
+version_bugfix=0
 
 [tags]
 
-TAG_ALLOW_ACHIEVEMENTS={"type":"bool","value":false}
-TAG_OVERHAUL={"type":"bool","value":true}
-TAG_QOL={"type":"bool","value":true}
-TAG_ADD_TRANSIT_TIPS={"type":"array","value":["VP_TRANSIT_TIP_1","VP_TRANSIT_TIP_2","VP_TRANSIT_TIP_3"]}
+TAG_ALLOW_ACHIEVEMENTS={
+"type": "bool",
+"value": false
+}
+TAG_OVERHAUL={
+"type": "bool",
+"value": true
+}
+TAG_QOL={
+"type": "bool",
+"value": true
+}
+TAG_ADD_TRANSIT_TIPS={
+"type": "array",
+"value": [ "VP_TRANSIT_TIP_1", "VP_TRANSIT_TIP_2", "VP_TRANSIT_TIP_3" ]
+}
+
+[links]
+
+HEVLIB_GITHUB={
+"URL": "https://github.com/rwqfsfasxc100/VelocityPlus"
+}
+HEVLIB_DISCORD={
+"URL": "https://discord.com/channels/426287934870781952/1383342280878067762"
+}
+HEVLIB_DONATIONS={
+"URL": "https://ko-fi.com/00hev"
+}
+HEVLIB_BUGREPORTS={
+"URL": "https://forms.gle/vUoarawnYjy3hXJi9"
+}
 
 [configs]
 
 VP_ENCELADUS={
-	"mineral_market_show_total_value":{
-		"name":"VP_MINERAL_MARKET",
-		"description":"VP_MINERAL_MARKET_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"add_empty_cradle_equipment":{
-		"name":"VP_ADD_CRADLES",
-		"description":"VP_ADD_CRADLES_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"simulator_shader":{
-		"name":"VP_SIMULATION_SHADER",
-		"description":"VP_SIMULATION_SHADER_DESC",
-		"type":"option_button",
-		"store_method":"int",
-		"options":["VP_MVFS_NONE","VP_MVFS_SHADER","VP_MVFS_SHADER_AND_BACKGROUND","VP_MVFS_LUMA_EDGE"],
-		"default":1
-	},
-	"hide_unrepairable_equipment":{
-		"name":"VP_HIDE_UNDAMAGED_EQUIPMENT",
-		"description":"VP_HIDE_UNDAMAGED_EQUIPMENT_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"extra_tooltips":{
-		"name":"VP_BETTER_TOOLTIPS",
-		"description":"VP_BETTER_TOOLTIPS_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"enable_achievements":{
-		"name":"VP_ENABLE_ACHIEVEMENTS",
-		"description":"VP_ENABLE_ACHIEVEMENTS_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"enable_leaderboards":{
-		"name":"VP_ENABLE_LEADERBOARDS",
-		"description":"VP_ENABLE_LEADERBOARDS_DESC",
-		"type":"bool",
-		"requires_bools":["VelocityPlus/VP_ENCELADUS/enable_achievements"],
-		"default":false
-	},
-	"enable_achievements_on_cheated_saves":{
-		"name":"VP_ENABLE_ACHIEVEMENTS_ON_CHEATS",
-		"description":"VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC",
-		"type":"bool",
-		"requires_bools":["VelocityPlus/VP_ENCELADUS/enable_achievements"],
-		"default":false
-	},
-	"show_equipment_reliability":{
-		"name":"VP_SHOW_EQUIPMENT_RELIABILITY",
-		"description":"VP_SHOW_EQUIPMENT_RELIABILITY_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"natural_time_skip":{
-		"name":"VP_NATURAL_TIME_SKIP",
-		"description":"VP_NATURAL_TIME_SKIP_DESC",
-		"type":"bool",
-		"default":true
-	},
+"add_empty_cradle_equipment": {
+"default": true,
+"description": "VP_ADD_CRADLES_DESC",
+"display_order_position": 1,
+"name": "VP_ADD_CRADLES",
+"type": "bool"
+},
+"enable_achievements": {
+"default": false,
+"description": "VP_ENABLE_ACHIEVEMENTS_DESC",
+"display_order_position": 5,
+"name": "VP_ENABLE_ACHIEVEMENTS",
+"type": "bool"
+},
+"enable_achievements_on_cheated_saves": {
+"default": false,
+"description": "VP_ENABLE_ACHIEVEMENTS_ON_CHEATS_DESC",
+"display_order_position": 7,
+"name": "VP_ENABLE_ACHIEVEMENTS_ON_CHEATS",
+"requires_bools": [ "VelocityPlus/VP_ENCELADUS/enable_achievements" ],
+"type": "bool"
+},
+"enable_leaderboards": {
+"default": false,
+"description": "VP_ENABLE_LEADERBOARDS_DESC",
+"display_order_position": 6,
+"name": "VP_ENABLE_LEADERBOARDS",
+"requires_bools": [ "VelocityPlus/VP_ENCELADUS/enable_achievements" ],
+"type": "bool"
+},
+"extra_tooltips": {
+"default": true,
+"description": "VP_BETTER_TOOLTIPS_DESC",
+"display_order_position": 4,
+"name": "VP_BETTER_TOOLTIPS",
+"type": "bool"
+},
+"hide_unrepairable_equipment": {
+"default": true,
+"description": "VP_HIDE_UNDAMAGED_EQUIPMENT_DESC",
+"display_order_position": 3,
+"name": "VP_HIDE_UNDAMAGED_EQUIPMENT",
+"type": "bool"
+},
+"mineral_market_show_total_value": {
+"default": true,
+"description": "VP_MINERAL_MARKET_DESC",
+"display_order_position": 0,
+"name": "VP_MINERAL_MARKET",
+"type": "bool"
+},
+"natural_time_skip": {
+"default": true,
+"description": "VP_NATURAL_TIME_SKIP_DESC",
+"display_order_position": 9,
+"name": "VP_NATURAL_TIME_SKIP",
+"type": "bool"
+},
+"show_equipment_reliability": {
+"default": true,
+"description": "VP_SHOW_EQUIPMENT_RELIABILITY_DESC",
+"display_order_position": 8,
+"name": "VP_SHOW_EQUIPMENT_RELIABILITY",
+"type": "bool"
+},
+"simulator_shader": {
+"default": 1,
+"description": "VP_SIMULATION_SHADER_DESC",
+"display_order_position": 2,
+"name": "VP_SIMULATION_SHADER",
+"options": [ "VP_MVFS_NONE", "VP_MVFS_SHADER", "VP_MVFS_SHADER_AND_BACKGROUND", "VP_MVFS_LUMA_EDGE" ],
+"store_method": "int",
+"type": "optionbutton"
+}
 }
 VP_CREW={
-	"hide_on_enceladus":{
-		"name":"VP_HIDE_CREW_EPRIME",
-		"description":"VP_HIDE_CREW_EPRIME_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"hide_in_OMS":{
-		"name":"VP_HIDE_CREW_OMS",
-		"description":"VP_HIDE_CREW_OMS_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"hide_crew_suit":{
-		"name":"VP_HIDE_CREW_SUITS",
-		"description":"VP_HIDE_CREW_SUITS_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"mineral_marker_limit_multiplier":{
-		"name":"VP_GEOLOGIST_MINERAL_LIMIT_MULTI",
-		"description":"VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"tactical_marker_limit_multiplier":{
-		"name":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI",
-		"description":"VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"pilots_disable_adrenaline":{
-		"name":"VP_PILOTS_DISABLE_ADRENALINE",
-		"description":"VP_PILOTS_DISABLE_ADRENALINE_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"pilots_reduce_astro_calculations":{
-		"name":"VP_PILOTS_REDUCE_ASTRO_CALC",
-		"description":"VP_PILOTS_REDUCE_ASTRO_CALC_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"minimum_astrogation_time":{
-		"name":"VP_MIN_ASTROGATION_TIME",
-		"description":"VP_MIN_ASTROGATION_TIME_DESC",
-		"type":"float",
-        "style":"slider",
-        "min":1,
-        "max":15,
-        "step":0.5,
-		"default":3,
-		"requires_bools":["VelocityPlus/VP_CREW/pilots_reduce_astro_calculations"],
-	},
-	"maximum_astrogation_time":{
-		"name":"VP_MAX_ASTROGATION_TIME",
-		"description":"VP_MAX_ASTROGATION_TIME_DESC",
-		"type":"float",
-        "style":"slider",
-        "min":5,
-        "max":30,
-        "step":0.5,
-		"default":10,
-		"requires_bools":["VelocityPlus/VP_CREW/pilots_reduce_astro_calculations"],
-	},
-	"pilot_skill_bias":{
-		"name":"VP_PILOT_SKILL_BIAS",
-		"description":"VP_PILOT_SKILL_BIAS_DESC",
-		"type":"float",
-        "style":"slider",
-        "min":0.0,
-        "max":1.0,
-        "step":0.05,
-		"default":0.3,
-		"requires_bools":["VelocityPlus/VP_CREW/pilots_reduce_astro_calculations"],
-	},
-	"astrogation_tracking_time_modifier":{
-		"name":"VP_ASTROGATOR_TRACKING_TIME",
-		"description":"VP_ASTROGATOR_TRACKING_TIME_DESC",
-		"type":"int",
-        "style":"slider",
-        "min":45,
-        "max":360,
-        "step":15,
-		"default":90,
-	},
+"astrogation_tracking_time_modifier": {
+"default": 90.0,
+"description": "VP_ASTROGATOR_TRACKING_TIME_DESC",
+"display_order_position": 10,
+"max": 360.0,
+"min": 45.0,
+"name": "VP_ASTROGATOR_TRACKING_TIME",
+"step": 15.0,
+"style": "slider",
+"type": "int"
+},
+"hide_crew_suit": {
+"default": false,
+"description": "VP_HIDE_CREW_SUITS_DESC",
+"display_order_position": 2,
+"name": "VP_HIDE_CREW_SUITS",
+"type": "bool"
+},
+"hide_in_OMS": {
+"default": false,
+"description": "VP_HIDE_CREW_OMS_DESC",
+"display_order_position": 1,
+"name": "VP_HIDE_CREW_OMS",
+"type": "bool"
+},
+"hide_on_enceladus": {
+"default": false,
+"description": "VP_HIDE_CREW_EPRIME_DESC",
+"display_order_position": 0,
+"name": "VP_HIDE_CREW_EPRIME",
+"type": "bool"
+},
+"maximum_astrogation_time": {
+"default": 10.0,
+"description": "VP_MAX_ASTROGATION_TIME_DESC",
+"display_order_position": 8,
+"max": 30.0,
+"min": 5.0,
+"name": "VP_MAX_ASTROGATION_TIME",
+"requires_bools": [ "VelocityPlus/VP_CREW/pilots_reduce_astro_calculations" ],
+"step": 0.5,
+"style": "slider",
+"type": "float"
+},
+"mineral_marker_limit_multiplier": {
+"default": true,
+"description": "VP_GEOLOGIST_MINERAL_LIMIT_MULTI_DESC",
+"display_order_position": 3,
+"name": "VP_GEOLOGIST_MINERAL_LIMIT_MULTI",
+"type": "bool"
+},
+"minimum_astrogation_time": {
+"default": 3.0,
+"description": "VP_MIN_ASTROGATION_TIME_DESC",
+"display_order_position": 7,
+"max": 15.0,
+"min": 1.0,
+"name": "VP_MIN_ASTROGATION_TIME",
+"requires_bools": [ "VelocityPlus/VP_CREW/pilots_reduce_astro_calculations" ],
+"step": 0.5,
+"style": "slider",
+"type": "float"
+},
+"pilot_skill_bias": {
+"default": 0.3,
+"description": "VP_PILOT_SKILL_BIAS_DESC",
+"display_order_position": 9,
+"max": 1.0,
+"name": "VP_PILOT_SKILL_BIAS",
+"requires_bools": [ "VelocityPlus/VP_CREW/pilots_reduce_astro_calculations" ],
+"step": 0.05,
+"style": "slider",
+"type": "float"
+},
+"pilots_disable_adrenaline": {
+"default": false,
+"description": "VP_PILOTS_DISABLE_ADRENALINE_DESC",
+"display_order_position": 5,
+"name": "VP_PILOTS_DISABLE_ADRENALINE",
+"type": "bool"
+},
+"pilots_reduce_astro_calculations": {
+"default": true,
+"description": "VP_PILOTS_REDUCE_ASTRO_CALC_DESC",
+"display_order_position": 6,
+"name": "VP_PILOTS_REDUCE_ASTRO_CALC",
+"type": "bool"
+},
+"tactical_marker_limit_multiplier": {
+"default": true,
+"description": "VP_ASTROGATOR_TACTICAL_LIMIT_MULTI_DESC",
+"display_order_position": 4,
+"name": "VP_ASTROGATOR_TACTICAL_LIMIT_MULTI",
+"type": "bool"
+}
 }
 VP_SHIPS={
-	"fix_voyager_MPU_in_OCP":{
-		"name":"VP_OCP_VOYAGER",
-		"description":"VP_OCP_VOYAGER_DESC",
-		"type":"bool",
-		"require_restart":true,
-		"default":true
-	},
-	"disable_gimballed_and_turreted_weapons":{
-		"name":"VP_REMOVE_GIMBALS",
-		"description":"VP_REMOVE_GIMBALS_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"arm_focuses_to_targeted_object":{
-		"name":"VP_ARM_TARGET_TO_AP",
-		"description":"VP_ARM_TARGET_TO_AP_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"scoop_automatic_return_protocol_override":{
-		"name":"VP_SCOOP_RETURN_PROTOCOL",
-		"description":"VP_SCOOP_RETURN_PROTOCOL_DESC",
-		"type":"option_button",
-		"store_method":"string",
-		"options":["VP_RETURN_TO_ENCELADUS","VP_RETURN_TO_CRADLE","VP_HOLD_POSITION"],
-		"default":"VP_RETURN_TO_ENCELADUS"
-	},
-	"add_scoop_halt_on_return":{
-		"name":"VP_SCOOP_RETURN_DIALOGUE_EXTRAS",
-		"description":"VP_SCOOP_RETURN_DIALOGUE_EXTRAS_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"microwaves_melt_ore":{
-		"name":"VP_MIKES_MELT_ORE",
-		"description":"VP_MIKES_MELT_ORE_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"toggle_systems_at_enceladus":{
-		"name":"VP_TOGGLE_SYSTEMS_AT_ENCELADUS",
-		"description":"VP_TOGGLE_SYSTEMS_AT_ENCELADUS_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"remember_toggled_systems":{
-		"name":"VP_REMEMBER_TOGGLED_SYSTEMS",
-		"description":"VP_REMEMBER_TOGGLED_SYSTEMS_DESC",
-		"type":"bool",
-		"default":false,
-		"requires_bools":["VelocityPlus/VP_SHIPS/toggle_systems_at_enceladus"],
-	},
-	"override_turret_autofire":{
-		"name":"VP_OVERRIDE_TURRET_AUTOFIRE",
-		"description":"VP_OVERRIDE_TURRET_AUTOFIRE_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"turret_override_mode":{
-		"name":"VP_TURRET_OVERRIDE_MODE",
-		"description":"VP_TURRET_OVERRIDE_MODE_DESC",
-		"type":"option_button",
-		"store_method":"string",
-		"options":["VP_TURRET_OVERRIDE_NOFIRE","VP_TURRET_OVERRIDE_FIRE"],
-		"default":"VP_TURRET_OVERRIDE_NOFIRE",
-		"requires_bools":["VelocityPlus/VP_SHIPS/override_turret_autofire"],
-	},
-	"disable_maint_sanbus":{
-		"name":"VP_DISABLE_MAINTENANCE_SANBUS",
-		"description":"VP_DISABLE_MAINTENANCE_SANBUS_DESC",
-		"type":"bool",
-		"default":false,
-	},
-	"adjust_thrust_to_temperature":{
-		"name":"VP_TEMPERATURE_BASED_THRUST",
-		"description":"VP_TEMPERATURE_BASED_THRUST_DESC",
-		"type":"bool",
-		"default":false,
-	},
-	"adjust_thrust_nullify_thermal":{
-		"name":"VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL",
-		"description":"VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL_DESC",
-		"type":"bool",
-		"default":false,
-		"requires_bools":["VelocityPlus/VP_SHIPS/adjust_thrust_to_temperature"],
-	},
-	"adjust_thrust_multi":{
-		"name":"VP_TEMPERATURE_BASED_THRUST_MULTI",
-		"description":"VP_TEMPERATURE_BASED_THRUST_MULTI_DESC",
-		"type":"float",
-        "style":"slider",
-        "min":0.1,
-        "max":10.0,
-        "step":0.05,
-		"default":1.0,
-	},
-	"station_trade_transfer_speed":{
-		"name":"VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER",
-		"description":"VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER_DESC",
-		"type":"float",
-        "style":"slider",
-        "min":0.05,
-        "max":20.0,
-        "step":0.05,
-		"default":1.0,
-	},
+"add_scoop_halt_on_return": {
+"default": true,
+"description": "VP_SCOOP_RETURN_DIALOGUE_EXTRAS_DESC",
+"display_order_position": 4,
+"name": "VP_SCOOP_RETURN_DIALOGUE_EXTRAS",
+"type": "bool"
+},
+"adjust_thrust_multi": {
+"default": 1.0,
+"description": "VP_TEMPERATURE_BASED_THRUST_MULTI_DESC",
+"display_order_position": 13,
+"max": 10.0,
+"min": 0.1,
+"name": "VP_TEMPERATURE_BASED_THRUST_MULTI",
+"step": 0.05,
+"style": "slider",
+"type": "float"
+},
+"adjust_thrust_nullify_thermal": {
+"default": false,
+"description": "VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL_DESC",
+"display_order_position": 12,
+"name": "VP_TEMPERATURE_BASED_THRUST_NULLIFY_THERMAL",
+"requires_bools": [ "VelocityPlus/VP_SHIPS/adjust_thrust_to_temperature" ],
+"type": "bool"
+},
+"adjust_thrust_to_temperature": {
+"default": false,
+"description": "VP_TEMPERATURE_BASED_THRUST_DESC",
+"display_order_position": 11,
+"name": "VP_TEMPERATURE_BASED_THRUST",
+"type": "bool"
+},
+"arm_focuses_to_targeted_object": {
+"default": true,
+"description": "VP_ARM_TARGET_TO_AP_DESC",
+"display_order_position": 2,
+"name": "VP_ARM_TARGET_TO_AP",
+"type": "bool"
+},
+"disable_gimballed_and_turreted_weapons": {
+"default": false,
+"description": "VP_REMOVE_GIMBALS_DESC",
+"display_order_position": 1,
+"name": "VP_REMOVE_GIMBALS",
+"type": "bool"
+},
+"disable_maint_sanbus": {
+"default": false,
+"description": "VP_DISABLE_MAINTENANCE_SANBUS_DESC",
+"display_order_position": 10,
+"name": "VP_DISABLE_MAINTENANCE_SANBUS",
+"type": "bool"
+},
+"fix_voyager_MPU_in_OCP": {
+"default": true,
+"description": "VP_OCP_VOYAGER_DESC",
+"display_order_position": 0,
+"name": "VP_OCP_VOYAGER",
+"require_restart": true,
+"type": "bool"
+},
+"microwaves_melt_ore": {
+"default": true,
+"description": "VP_MIKES_MELT_ORE_DESC",
+"display_order_position": 5,
+"name": "VP_MIKES_MELT_ORE",
+"type": "bool"
+},
+"override_turret_autofire": {
+"default": false,
+"description": "VP_OVERRIDE_TURRET_AUTOFIRE_DESC",
+"display_order_position": 8,
+"name": "VP_OVERRIDE_TURRET_AUTOFIRE",
+"type": "bool"
+},
+"remember_toggled_systems": {
+"default": false,
+"description": "VP_REMEMBER_TOGGLED_SYSTEMS_DESC",
+"display_order_position": 7,
+"name": "VP_REMEMBER_TOGGLED_SYSTEMS",
+"requires_bools": [ "VelocityPlus/VP_SHIPS/toggle_systems_at_enceladus" ],
+"type": "bool"
+},
+"scoop_automatic_return_protocol_override": {
+"default": "VP_RETURN_TO_ENCELADUS",
+"description": "VP_SCOOP_RETURN_PROTOCOL_DESC",
+"display_order_position": 3,
+"name": "VP_SCOOP_RETURN_PROTOCOL",
+"options": [ "VP_RETURN_TO_ENCELADUS", "VP_RETURN_TO_CRADLE", "VP_HOLD_POSITION" ],
+"store_method": "string",
+"type": "optionbutton"
+},
+"station_trade_transfer_speed": {
+"default": 1.0,
+"description": "VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER_DESC",
+"display_order_position": 14,
+"max": 20.0,
+"min": 0.05,
+"name": "VP_STATION_TRADE_TRANSFER_SPEED_MULTIPLIER",
+"step": 0.05,
+"style": "slider",
+"type": "float"
+},
+"toggle_systems_at_enceladus": {
+"default": true,
+"description": "VP_TOGGLE_SYSTEMS_AT_ENCELADUS_DESC",
+"display_order_position": 6,
+"name": "VP_TOGGLE_SYSTEMS_AT_ENCELADUS",
+"type": "bool"
+},
+"turret_override_mode": {
+"default": "VP_TURRET_OVERRIDE_NOFIRE",
+"description": "VP_TURRET_OVERRIDE_MODE_DESC",
+"display_order_position": 9,
+"name": "VP_TURRET_OVERRIDE_MODE",
+"options": [ "VP_TURRET_OVERRIDE_NOFIRE", "VP_TURRET_OVERRIDE_FIRE" ],
+"requires_bools": [ "VelocityPlus/VP_SHIPS/override_turret_autofire" ],
+"store_method": "string",
+"type": "optionbutton"
+}
 }
 VP_RING={
-	"remove_max_speed_limit":{
-		"name":"VP_REMOVE_SPEED_LIMIT",
-		"description":"VP_REMOVE_SPEED_LIMIT_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"allow_exit_of_ring_to_the_left":{
-		"name":"VP_EXIT_LEFT",
-		"description":"VP_EXIT_LEFT_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"allow_exit_of_ring_to_the_right":{
-		"name":"VP_EXIT_RIGHT",
-		"description":"VP_EXIT_RIGHT_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"broadcast_variations":{
-		"name":"VP_VARIATED_BROADCASTS",
-		"description":"VP_VARIATED_BROADCASTS_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"display_negative_depth":{
-		"name":"VP_DISPLAY_NEGATIVE_DEPTH",
-		"description":"VP_DISPLAY_NEGATIVE_DEPTH_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"show_dive_time_in_OMS":{
-		"name":"VP_SHOW_DIVE_TIME",
-		"description":"VP_SHOW_DIVE_TIME_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"show_shipped_cargo_value":{
-		"name":"VP_SHOW_SHIPPED_CARGO_VALUE",
-		"description":"VP_SHOW_SHIPPED_CARGO_VALUE_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"show_transactions":{
-		"name":"VP_SHOW_TRANSACTIONS",
-		"description":"VP_SHOW_TRANSACTIONS_DESC",
-		"type":"bool",
-		"default":true
-	},
-	"show_transactions_sold_goods":{
-		"name":"VP_SHOW_SOLD_GOODS",
-		"description":"VP_SHOW_SOLD_GOODS_DESC",
-		"type":"bool",
-		"default":true,
-		"requires_bools":["VelocityPlus/VP_RING/show_transactions"],
-	},
-	"show_transactions_bought_goods":{
-		"name":"VP_SHOW_BOUGHT_GOODS",
-		"description":"VP_SHOW_BOUGHT_GOODS_DESC",
-		"type":"bool",
-		"default":true,
-		"requires_bools":["VelocityPlus/VP_RING/show_transactions"],
-	},
-	"show_astrogation_time":{
-		"name":"VP_SHOW_TIME_SPENT_ASTROGATING",
-		"description":"VP_SHOW_TIME_SPENT_ASTROGATING_DESC",
-		"type":"bool",
-		"default":true
-	},
+"allow_exit_of_ring_to_the_left": {
+"default": true,
+"description": "VP_EXIT_LEFT_DESC",
+"display_order_position": 1,
+"name": "VP_EXIT_LEFT",
+"type": "bool"
+},
+"allow_exit_of_ring_to_the_right": {
+"default": true,
+"description": "VP_EXIT_RIGHT_DESC",
+"display_order_position": 2,
+"name": "VP_EXIT_RIGHT",
+"type": "bool"
+},
+"broadcast_variations": {
+"default": true,
+"description": "VP_VARIATED_BROADCASTS_DESC",
+"display_order_position": 3,
+"name": "VP_VARIATED_BROADCASTS",
+"type": "bool"
+},
+"display_negative_depth": {
+"default": true,
+"description": "VP_DISPLAY_NEGATIVE_DEPTH_DESC",
+"display_order_position": 4,
+"name": "VP_DISPLAY_NEGATIVE_DEPTH",
+"type": "bool"
+},
+"remove_max_speed_limit": {
+"default": true,
+"description": "VP_REMOVE_SPEED_LIMIT_DESC",
+"display_order_position": 0,
+"name": "VP_REMOVE_SPEED_LIMIT",
+"type": "bool"
+},
+"show_astrogation_time": {
+"default": true,
+"description": "VP_SHOW_TIME_SPENT_ASTROGATING_DESC",
+"display_order_position": 10,
+"name": "VP_SHOW_TIME_SPENT_ASTROGATING",
+"type": "bool"
+},
+"show_dive_time_in_OMS": {
+"default": true,
+"description": "VP_SHOW_DIVE_TIME_DESC",
+"display_order_position": 5,
+"name": "VP_SHOW_DIVE_TIME",
+"type": "bool"
+},
+"show_shipped_cargo_value": {
+"default": true,
+"description": "VP_SHOW_SHIPPED_CARGO_VALUE_DESC",
+"display_order_position": 6,
+"name": "VP_SHOW_SHIPPED_CARGO_VALUE",
+"type": "bool"
+},
+"show_transactions": {
+"default": true,
+"description": "VP_SHOW_TRANSACTIONS_DESC",
+"display_order_position": 7,
+"name": "VP_SHOW_TRANSACTIONS",
+"type": "bool"
+},
+"show_transactions_bought_goods": {
+"default": true,
+"description": "VP_SHOW_BOUGHT_GOODS_DESC",
+"display_order_position": 9,
+"name": "VP_SHOW_BOUGHT_GOODS",
+"requires_bools": [ "VelocityPlus/VP_RING/show_transactions" ],
+"type": "bool"
+},
+"show_transactions_sold_goods": {
+"default": true,
+"description": "VP_SHOW_SOLD_GOODS_DESC",
+"display_order_position": 8,
+"name": "VP_SHOW_SOLD_GOODS",
+"requires_bools": [ "VelocityPlus/VP_RING/show_transactions" ],
+"type": "bool"
+}
 }
 VP_INPUTS={
-	"velocityplus_toggle_hud":{
-		"name":"VP_TOGGLE_HUD",
-		"description":"VP_TOGGLE_HUD_DESC",
-		"type":"Input",
-		"default":[ "F6" ]
-	},
-	"velocityplus_toggle_mpu":{
-		"name":"VP_TOGGLE_MPU",
-		"description":"VP_TOGGLE_MPU_DESC",
-		"type":"Input",
-		"default":[ "M" ]
-	},
+"velocityplus_toggle_hud": {
+"default": [ "F6" ],
+"description": "VP_TOGGLE_HUD_DESC",
+"display_order_position": 0,
+"name": "VP_TOGGLE_HUD",
+"type": "input"
+},
+"velocityplus_toggle_mpu": {
+"default": [ "M" ],
+"description": "VP_TOGGLE_MPU_DESC",
+"display_order_position": 1,
+"name": "VP_TOGGLE_MPU",
+"type": "input"
+}
 }
 VP_AUTOREPAIRS={
-	"automatic_repairs":{
-		"name":"VP_AUTOMATIC_REPAIRS_TOGGLE",
-		"description":"VP_AUTOMATIC_REPAIRS_TOGGLE_DESC",
-		"type":"bool",
-		"default":false
-	},
-	"method_priority":{
-		"name":"VP_AUTOREPAIR_PRIORITY",
-		"description":"VP_AUTOREPAIR_PRIORITY_DESC",
-		"type":"option_button",
-		"store_method":"string",
-		"options":["VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE","VP_AUTOREPAIR_PRIORITY_MAXPROFIT"],
-		"default":"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE"
-	},
-	"minimum_money":{
-		"name":"VP_AUTOREPAIR_MINIMUM_MONEY",
-		"description":"VP_AUTOREPAIR_MINIMUM_MONEY_DESC",
-		"type":"int",
-        "style":"slider",
-        "min":50000,
-        "max":5000000,
-        "step":50000,
-		"default":100000,
-	},
-	"minimum_insurance":{
-		"name":"VP_AUTOREPAIR_MINIMUM_INSURANCE",
-		"description":"VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC",
-		"type":"int",
-        "style":"slider",
-        "min":0,
-        "max":500000,
-        "step":25000,
-		"default":0,
-	},
-	"maximum_repair":{
-		"name":"VP_AUTOREPAIR_MAXIMUM_REPAIR",
-		"description":"VP_AUTOREPAIR_MAXIMUM_REPAIR_DESC",
-		"type":"int",
-        "style":"slider",
-        "min":500,
-        "max":500000,
-        "step":500,
-		"default":250000,
-	},
-	"maximum_replace":{
-		"name":"VP_AUTOREPAIR_MAXIMUM_REPLACE",
-		"description":"VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC",
-		"type":"int",
-        "style":"slider",
-        "min":0,
-        "max":5000000,
-        "step":20000,
-		"default":2500000,
-	},
-	"target_percent":{
-		"name":"VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE",
-		"description":"VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC",
-		"type":"int",
-        "style":"slider",
-        "min":50,
-        "max":100,
-        "step":1,
-		"default":70,
-	},
+"automatic_repairs": {
+"default": false,
+"description": "VP_AUTOMATIC_REPAIRS_TOGGLE_DESC",
+"display_order_position": 0,
+"name": "VP_AUTOMATIC_REPAIRS_TOGGLE",
+"type": "bool"
+},
+"maximum_repair": {
+"default": 250000.0,
+"description": "VP_AUTOREPAIR_MAXIMUM_REPAIR_DESC",
+"display_order_position": 4,
+"max": 500000.0,
+"min": 500.0,
+"name": "VP_AUTOREPAIR_MAXIMUM_REPAIR",
+"step": 500.0,
+"style": "slider",
+"type": "int"
+},
+"maximum_replace": {
+"default": 2.5e+06,
+"description": "VP_AUTOREPAIR_MAXIMUM_REPLACE_DESC",
+"display_order_position": 5,
+"max": 5e+06,
+"name": "VP_AUTOREPAIR_MAXIMUM_REPLACE",
+"step": 20000.0,
+"style": "slider",
+"type": "int"
+},
+"method_priority": {
+"default": "VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE",
+"description": "VP_AUTOREPAIR_PRIORITY_DESC",
+"display_order_position": 1,
+"name": "VP_AUTOREPAIR_PRIORITY",
+"options": [ "VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE", "VP_AUTOREPAIR_PRIORITY_ONLYREPAIR", "VP_AUTOREPAIR_PRIORITY_ONLYREPLACE", "VP_AUTOREPAIR_PRIORITY_MAXPROFIT" ],
+"store_method": "string",
+"type": "optionbutton"
+},
+"minimum_insurance": {
+"default": 0.0,
+"description": "VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC",
+"display_order_position": 3,
+"max": 500000.0,
+"name": "VP_AUTOREPAIR_MINIMUM_INSURANCE",
+"step": 25000.0,
+"style": "slider",
+"type": "int"
+},
+"minimum_money": {
+"default": 100000.0,
+"description": "VP_AUTOREPAIR_MINIMUM_MONEY_DESC",
+"display_order_position": 2,
+"max": 5e+06,
+"min": 50000.0,
+"name": "VP_AUTOREPAIR_MINIMUM_MONEY",
+"step": 50000.0,
+"style": "slider",
+"type": "int"
+},
+"target_percent": {
+"default": 70.0,
+"description": "VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC",
+"display_order_position": 6,
+"max": 100.0,
+"min": 50.0,
+"name": "VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE",
+"step": 1.0,
+"style": "slider",
+"type": "int"
 }
-
-[languages]
-
-en="100%"
-
-[links]
-
-HEVLIB_GITHUB={"URL":"https://github.com/rwqfsfasxc100/VelocityPlus"}
-HEVLIB_DISCORD={"URL":"https://discord.com/channels/426287934870781952/1383342280878067762"}
-HEVLIB_NEXUS={"URL":"https://www.nexusmods.com/dvringsofsaturn/mods/19"}
-HEVLIB_DONATIONS={"URL":"https://ko-fi.com/00hev"}
-HEVLIB_BUGREPORTS={"URL":"https://forms.gle/vUoarawnYjy3hXJi9"}
+}
 
 [manifest_definitions]
 
 manifest_version=2.2
 manifest_url="https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/main/Mod.manifest"
 changelog_path="changelog.txt"
+modlet_priority=-1
+expected_manifest_path="res://VelocityPlus/Mod.manifest"
