@@ -1,3 +1,9 @@
+[1.6.0]
+
+1=* Converted to modlet
+2=* Now requires the mod to exists on the proper manifest path
+3=* Added 3-Clause BSD NON-AI license.
+
 [1.5.9]
 
 1="* Fixed crash caused by ships with microwaves installed on other ships that are exiting the near vicinity to your ship"
