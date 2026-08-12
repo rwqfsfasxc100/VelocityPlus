@@ -12,8 +12,11 @@ func vp_pilot_calc_time_reduction_UV():
 	if pointersVP_pilots_reduce_astro_calc_time:
 		pilots_reduce_astro_calculations = pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.__get_config("VelocityPlus").get("VP_CREW")
 
-
+var vp_pilotsreduceadrenalinehandler_uinit : bool = false
 func _ready():
+	if vp_pilotsreduceadrenalinehandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_pilotsreduceadrenalinehandler_uinit = true
 	modify()
 	CurrentGame.connect("xpChanged",self,"modify")
 

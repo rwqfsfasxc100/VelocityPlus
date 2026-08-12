@@ -8,7 +8,11 @@ func vp_conversation_UV():
 
 
 var broadcast_variations = true
+var vp_varbroadcastshandler_uinit : bool = false
 func _ready():
+	if vp_varbroadcastshandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_varbroadcastshandler_uinit = true
 	var cname = self.name
 	if cname.begins_with("DIALOG_SALVAGE_"):
 		pointersVP = ModLoader._savedObjects[0]

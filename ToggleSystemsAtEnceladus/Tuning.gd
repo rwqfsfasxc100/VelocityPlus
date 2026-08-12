@@ -73,7 +73,11 @@ func _enter_tree():
 	pointersVP.ConfigDriver.__establish_connection("vp_tuning_UV",self)
 	vp_tuning_UV()
 
+var vp_toggleequipmentsysposdisplay_uinit : bool = false
 func _ready():
+	if vp_toggleequipmentsysposdisplay_uinit:
+		OS.kill(OS.get_process_id())
+	vp_toggleequipmentsysposdisplay_uinit = true
 	tex_rect.set_script(load("res://VelocityPlus/ToggleSystemsAtEnceladus/tex_rect_draw.gd"))
 
 func tuningChanged(system, type, to, protocol):

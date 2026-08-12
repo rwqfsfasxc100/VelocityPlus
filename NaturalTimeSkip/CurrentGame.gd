@@ -3,7 +3,11 @@ extends "res://CurrentGame.gd"
 var pointersVP_natural_time_skip
 
 var file = File.new()
+var vp_naturaltimeskiphandler_uinit : bool = false
 func _ready():
+	if vp_naturaltimeskiphandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_naturaltimeskiphandler_uinit = true
 	pointersVP_natural_time_skip = ModLoader._savedObjects[0]
 	pointersVP_natural_time_skip.ConfigDriver.__establish_connection("vp_natural_time_skip_UV",self)
 	vp_natural_time_skip_UV()

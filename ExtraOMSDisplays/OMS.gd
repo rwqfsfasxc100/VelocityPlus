@@ -39,7 +39,11 @@ func vp_omslabels_UV():
 
 var vp_currently_installed_mpu
 var vp_has_mpu = false
+var vp_omsextendeddisplayhandler_uinit : bool = false
 func _ready():
+	if vp_omsextendeddisplayhandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_omsextendeddisplayhandler_uinit = true
 	ship = get_parent().get_parent()
 	vp_currently_installed_mpu = ship.getConfig("cargo.equipment")
 	if vp_currently_installed_mpu:

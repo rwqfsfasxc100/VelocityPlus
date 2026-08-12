@@ -21,7 +21,11 @@ func a1(how):
 	adjust_thrust_to_temperature = how
 func a3(how):
 	adjust_thrust_multi = how
+var vp_tempbasedthrusthandler_uinit : bool = false
 func _ready():
+	if vp_tempbasedthrusthandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_tempbasedthrusthandler_uinit = true
 	if ship.isPlayerControlled() and ship.isRealShip():
 		VP_pointers = ModLoader._savedObjects[0]
 		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")

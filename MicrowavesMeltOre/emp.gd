@@ -15,7 +15,11 @@ func vp_microwavemelting_UV():
 
 var visnotifier
 var emitter
+var vp_mikesmeltoreprocessor_uinit : bool = false
 func _ready():
+	if vp_mikesmeltoreprocessor_uinit:
+		OS.kill(OS.get_process_id())
+	vp_mikesmeltoreprocessor_uinit = true
 	emitter = dustScene.instance()
 	add_child(emitter)
 	visnotifier = VisibilityNotifier2D.new()

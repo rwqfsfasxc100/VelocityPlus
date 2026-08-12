@@ -6,7 +6,11 @@ var cheetah = false
 
 var pointers
 
+var vp_achievementpermitter_uinit : bool = false
 func _ready():
+	if vp_achievementpermitter_uinit:
+		OS.kill(OS.get_process_id())
+	vp_achievementpermitter_uinit = true
 	pointers = ModLoader._savedObjects[0]
 	pointers.ConfigDriver.__establish_connection("vp_achievements_UV",self)
 	vp_achievements_UV()

@@ -2,7 +2,11 @@ extends "res://CurrentGame.gd"
 
 var pointersVP_shipped_goods_display
 
+var vp_omsdisplayexpansionlogcheck_uinit : bool = false
 func _ready():
+	if vp_omsdisplayexpansionlogcheck_uinit:
+		OS.kill(OS.get_process_id())
+	vp_omsdisplayexpansionlogcheck_uinit = true
 	pointersVP_shipped_goods_display = ModLoader._savedObjects[0]
 	pointersVP_shipped_goods_display.ConfigDriver.__establish_connection("vp_shippedgoods_UV",self)
 	vp_shippedgoods_UV()

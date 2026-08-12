@@ -31,7 +31,11 @@ func previewShipSystem(slot,system,control=""):
 var mtbf_label
 const manual_container_path = NodePath("VB/WindowMargin/TabHintContainer/Window/UPGRADE_MANUAL")
 var MTBF_container = load("res://VelocityPlus/ShowEquipmentReliability/MTBF_container.tscn")
+var vp_showequipmentreliabilityhandler_uinit : bool = false
 func _ready():
+	if vp_showequipmentreliabilityhandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_showequipmentreliabilityhandler_uinit = true
 	var cont = get_node(manual_container_path)
 	var mtbf = MTBF_container.instance()
 	cont.add_child(mtbf)

@@ -9,7 +9,11 @@ func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]
 	pointersVP.ConfigDriver.__establish_connection("vp_autorepairs_UV",self)
 	vp_autorepairs_UV()
+var vp_repairsautorepairmenu_uinit : bool = false
 func _ready():
+	if vp_repairsautorepairmenu_uinit:
+		OS.kill(OS.get_process_id())
+	vp_repairsautorepairmenu_uinit = true
 	add_child(load("res://VelocityPlus/AutoRepairs/AutoRepairPanel.tscn").instance())
 	set_physics_process(false)
 

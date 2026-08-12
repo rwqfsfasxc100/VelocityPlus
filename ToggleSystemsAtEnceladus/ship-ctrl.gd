@@ -33,7 +33,11 @@ func _enter_tree():
 	pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__establish_connection("vp_enceladusprime_ship_toggles_UV",self)
 	vp_enceladusprime_ship_toggles_UV()
 
+var vp_toggleequipmentpersisthandler_uinit : bool = false
 func _ready():
+	if vp_toggleequipmentpersisthandler_uinit:
+		OS.kill(OS.get_process_id())
+	vp_toggleequipmentpersisthandler_uinit = true
 	if toggle_systems_at_enceladus:
 		handleSystemToggles()
 
