@@ -2,7 +2,8 @@
 
 1=* Converted to modlet
 2=* Now requires the mod to exists on the proper manifest path
-3=* Added 3-Clause BSD NON-AI license.
+3=* Reduced memory usage of driver files
+4=* Added 3-Clause BSD NON-AI license.
 
 [1.5.9]
 
