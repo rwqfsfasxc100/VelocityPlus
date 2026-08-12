@@ -41,6 +41,7 @@ const LOAD_RESOURCES = {
 	"ShowMarketValue/MineralMarket.tscn":{"load_type":"scene","original_path":"res://enceladus/MineralMarket.tscn","onready":false},
 	"ScoopExtraReturnDialogue/DIALOG_SCOOP_RETURNING_1.tscn":{"load_type":"scene","original_path":"res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","onready":false},
 	"BetterTooltips/DoTradeIn.gd": {"load_type": "script", "onready": false},
+	"HideUndamagedEquipment/SystemShipRepairUI.gd": {"load_type": "script", "onready": false},
 	"BetterTooltips/SystemShipRepairUI.tscn":{"load_type":"scene","original_path":"res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","onready":false},
 	"AchievementEnabler/AchievementAbstract.gd": {"load_type": "script", "onready": false},
 	"ExtendedCrewIdentificationLimits/AutopilotOverlay.gd": {"load_type": "script", "onready": false},
