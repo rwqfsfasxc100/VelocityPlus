@@ -63,5 +63,8 @@ const LOAD_RESOURCES = {
 	"NaturalTimeSkip/CurrentGame.gd": {"load_type": "script", "onready": false},
 	"AutoRepairs/Repairs.gd": {"load_type": "script", "onready": false},
 	"StationTransferSpeed/TradingHub.gd": {"load_type": "script", "onready": false},
+	"AllHudEMPResist/Display-K37.gd":{"load_type":"script","onready":false},
+	"AllHudEMPResist/Display-K225.gd":{"load_type":"script","onready":false},
+	"AllHudEMPResist/Display-Prospector.gd":{"load_type":"script","onready":false},
 	"OCPVoyagerFix/ocp-209.tscn":{"load_type":"scene","original_path":"res://ships/ocp-209.tscn","onready":false,"config":{"id":"VelocityPlus","section":"VP_SHIPS","entry":"fix_voyager_MPU_in_OCP"}},
 }

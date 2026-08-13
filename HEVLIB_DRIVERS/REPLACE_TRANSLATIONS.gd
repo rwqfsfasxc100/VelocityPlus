@@ -1,5 +1,5 @@
 # This translation file is generated automatically
-# Do not modify anything directly, as this can break things for those working on them
+# Do not modify anything directly, as this will break things for translators
 # Please use Translation Tracker to modify these yourself, and contact the mod author to implement them
 # https://github.com/rwqfsfasxc100/TranslationTracker/releases/latest
 
@@ -1702,6 +1702,14 @@ const TRANSLATIONS = {
 		"VP_SHOW_TIME_SPENT_ASTROGATING_DESC": {
 			"string": "Adds a set of labels on the bottom-right hand corner of the Astrogator tab that displays \nthe total time having spent astrogating.",
 			"version_hash": 2398496187
+		},
+		"VP_ALWAYS_EMP_RESISTANT_HUDS": {
+			"string": "Always EMP-resistant HUDs",
+			"version_hash": 3875609110
+		},
+		"VP_ALWAYS_EMP_RESISTANT_HUDS_DESC": {
+			"string": "Sets all HUDs to have the same EMP-resistance as the OCP-209 or HAL9000 displays.",
+			"version_hash": 2856702804
 		}
 	},
 	"uk_UA": {

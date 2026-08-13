@@ -256,6 +256,13 @@ VP_SHIPS={
 "name": "VP_TEMPERATURE_BASED_THRUST",
 "type": "bool"
 },
+"always_emp_resistant_HUD": {
+"default": false,
+"description": "VP_ALWAYS_EMP_RESISTANT_HUDS_DESC",
+"display_order_position": 15,
+"name": "VP_ALWAYS_EMP_RESISTANT_HUDS",
+"type": "bool"
+},
 "arm_focuses_to_targeted_object": {
 "default": true,
 "description": "VP_ARM_TARGET_TO_AP_DESC",
@@ -521,3 +528,4 @@ manifest_url="https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/main/
 changelog_path="changelog.txt"
 modlet_priority=-1
 expected_manifest_path="res://VelocityPlus/Mod.manifest"
+conflicting_mod_ids=["hev.NoHudEmp","res://AcheetaDeez.ModMain.gd","res://AchieveDeez/ModMain.gd","res://MIsForMPU/ModMain.gd","res://DTT/ModMain.gd","res://ShowReliability/ModMain.gd","res://ARMFocus/ModMain.gd","res://rmIdLim/ModMain.gd","res://MaximumSpeed/ModMain.gd","hev.HudHider","hev.RingActivity","hev.NoMoreCrew","hev.RemoveLIMITS","hev.OCPVoyagerFix","hev.NoSimHex","res://DiveClock/ModMain.gd"]
