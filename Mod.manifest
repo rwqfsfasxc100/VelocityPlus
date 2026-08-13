@@ -524,8 +524,8 @@ VP_AUTOREPAIRS={
 [manifest_definitions]
 
 manifest_version=2.2
+conflicting_mod_ids=[ "hev.NoHudEmp", "res://AcheetaDeez.ModMain.gd", "res://AchieveDeez/ModMain.gd", "res://MIsForMPU/ModMain.gd", "res://DTT/ModMain.gd", "res://ShowReliability/ModMain.gd", "res://ARMFocus/ModMain.gd", "res://rmIdLim/ModMain.gd", "res://MaximumSpeed/ModMain.gd", "hev.HudHider", "hev.RingActivity", "hev.NoMoreCrew", "hev.RemoveLIMITS", "hev.OCPVoyagerFix", "hev.NoSimHex", "res://DiveClock/ModMain.gd" ]
 manifest_url="https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/main/Mod.manifest"
 changelog_path="changelog.txt"
 modlet_priority=-1
 expected_manifest_path="res://VelocityPlus/Mod.manifest"
-conflicting_mod_ids=["hev.NoHudEmp","res://AcheetaDeez.ModMain.gd","res://AchieveDeez/ModMain.gd","res://MIsForMPU/ModMain.gd","res://DTT/ModMain.gd","res://ShowReliability/ModMain.gd","res://ARMFocus/ModMain.gd","res://rmIdLim/ModMain.gd","res://MaximumSpeed/ModMain.gd","hev.HudHider","hev.RingActivity","hev.NoMoreCrew","hev.RemoveLIMITS","hev.OCPVoyagerFix","hev.NoSimHex","res://DiveClock/ModMain.gd"]
