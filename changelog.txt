@@ -1,3 +1,9 @@
+[1.6.2]
+
+1=* Added always EMP-resistant HUDs
+1.1=* Lets you port the EMP resistance from the OCP-209 and HAL9000 HUDs to all other displays.
+1.2=* Disabled by default.
+
 [1.6.1]
 
 1=* `Hide undamaged equipment from repairs` now works again
