@@ -94,6 +94,6 @@ func achive(what)->void :
 
 func updateLeaderboard(board: String, value: int):
 	CurrentGame.checkGameState()
-	if enable_achievements and not cheetah:
+	if enable_leaderboards and not CurrentGame.cheetah:
 		if not callIfCan("updateLeaderboard", [board, value]):
 			Debug.l("No leadarboards for %s: %f" % [board, value])
