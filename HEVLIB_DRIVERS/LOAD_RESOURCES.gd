@@ -42,7 +42,7 @@ const LOAD_RESOURCES = {
 	"ScoopExtraReturnDialogue/DIALOG_SCOOP_RETURNING_1.tscn":{"load_type":"scene","original_path":"res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","onready":false},
 	"BetterTooltips/DoTradeIn.gd": {"load_type": "script", "onready": false},
 	"HideUndamagedEquipment/SystemShipRepairUI.gd": {"load_type": "script", "onready": false},
-	"BetterTooltips/SystemShipRepairUI.tscn":{"load_type":"scene","original_path":"res://comms/conversation/subtrees/DIALOG_SCOOP_RETURNING_1.tscn","onready":false},
+	"BetterTooltips/SystemShipRepairUI.tscn":{"load_type":"scene","original_path":"res://enceladus/SystemShipRepairUI.tscn","onready":false},
 	"AchievementEnabler/AchievementAbstract.gd": {"load_type": "script", "onready": false},
 	"ExtendedCrewIdentificationLimits/AutopilotOverlay.gd": {"load_type": "script", "onready": false},
 	"ArmTargetToAutopilot/DockingArm.gd": {"load_type": "script", "onready": false},

@@ -11,7 +11,7 @@ credits=PoolStringArray( "Za\'krin - Mod Main design, original implementation of
 
 version_major=1
 version_minor=6
-version_bugfix=2
+version_bugfix=3
 
 [tags]
 
