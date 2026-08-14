@@ -1,6 +1,6 @@
 [1.6.3]
 
-1=* Fixed crash caused by NT Companions attempting to evaluate their nonexistant damage.
+1=* Fixed crash caused by NT Companions attempting to evaluate their nonexistent damage.
 
 [1.6.2]
 
