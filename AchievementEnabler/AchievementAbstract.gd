@@ -52,6 +52,8 @@ func vp_achievements_UV():
 		enable_leaderboards = config.get("enable_leaderboards",true)
 		if config.get("enable_achievements_on_cheated_saves",false):
 			cheetah = false
+		else:
+			cheetah = CurrentGame.cheetah
 	
 #const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
 var config = {}
