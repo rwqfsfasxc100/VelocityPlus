@@ -14,7 +14,7 @@
 # 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products
 # derived from this software without specific prior written permission.
 # 
-# 4. The source code and the binary form, and any modifications made to them may not be used for the purpose of input data, the training of, or improvment of machine learning algorithms,
+# 4. The source code and the binary form, and any modifications made to them may not be used for the purpose of input data, the training of, or improvement of machine learning algorithms,
 # including but not limited to artificial intelligence, natural language processing, or data mining. This condition applies to any derivatives,
 # modifications, or updates based on the Software code. Any usage of the source code or the binary form in an AI-training dataset is considered a breach of this License.
 # 
@@ -67,4 +67,6 @@ const LOAD_RESOURCES = {
 	"AllHudEMPResist/Display-K225.gd":{"load_type":"script","onready":false},
 	"AllHudEMPResist/Display-Prospector.gd":{"load_type":"script","onready":false},
 	"OCPVoyagerFix/ocp-209.tscn":{"load_type":"scene","original_path":"res://ships/ocp-209.tscn","onready":false,"config":{"id":"VelocityPlus","section":"VP_SHIPS","entry":"fix_voyager_MPU_in_OCP"}},
+	"ShowCrewAgenda/CrewBio.gd":{"load_type":"script","onready":false},
+	"ShowCrewAgenda/CrewBio.tscn":{"load_type":"scene","original_path":"res://enceladus/CrewBio.tscn"},
 }

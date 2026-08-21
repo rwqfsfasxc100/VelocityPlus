@@ -19,7 +19,7 @@
 # 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products
 # derived from this software without specific prior written permission.
 # 
-# 4. The source code and the binary form, and any modifications made to them may not be used for the purpose of input data, the training of, or improvment of machine learning algorithms,
+# 4. The source code and the binary form, and any modifications made to them may not be used for the purpose of input data, the training of, or improvement of machine learning algorithms,
 # including but not limited to artificial intelligence, natural language processing, or data mining. This condition applies to any derivatives,
 # modifications, or updates based on the Software code. Any usage of the source code or the binary form in an AI-training dataset is considered a breach of this License.
 # 
@@ -1710,6 +1710,70 @@ const TRANSLATIONS = {
 		"VP_ALWAYS_EMP_RESISTANT_HUDS_DESC": {
 			"string": "Sets all HUDs to have the same EMP-resistance as the OCP-209 or HAL9000 displays.",
 			"version_hash": 2856702804
+		},
+		"VP_CREDITS_CONTRIBUTORS_HEADER": {
+			"string": "   --- Contributors ---   ",
+			"version_hash": 3641455841
+		},
+		"VP_CREDITS_CONTRIBUTORS_ZAKRIN": {
+			"string": "Za'krin - Mod Main design, original implementation of updateTL",
+			"version_hash": 3828627238
+		},
+		"VP_CREDITS_CONTRIBUTORS_HARRYGIEL": {
+			"string": "harrygiel - original implementation of the MaximumSpeed mod which this mod fixes and uses for the remove speed limit module",
+			"version_hash": 653659874
+		},
+		"VP_CREDITS_CONTRIBUTORS_CYBERSHADOW": {
+			"string": "CyberShadow - original implementation for the DiveClock, ShowReliability, and ARMFocus modules",
+			"version_hash": 379833859
+		},
+		"VP_CREDITS_CONTRIBUTORS_ALFIK0": {
+			"string": "Alfik0 - original implementation of the identification limit increase modules",
+			"version_hash": 3249099814
+		},
+		"VP_CREW_AGENDA": {
+			"string": "Agenda",
+			"version_hash": 2801759493
+		},
+		"VP_AGENDANAME_AGENDA_LOOKING_FOR_CHILD": {
+			"string": "Looking for child",
+			"version_hash": 509701283
+		},
+		"VP_AGENDANAME_AGENDA_LOOKING_FOR_SIBLING": {
+			"string": "Looking for sibling",
+			"version_hash": 233410151
+		},
+		"VP_AGENDANAME_AGENDA_EX_PIRATE": {
+			"string": "Ex-Ganymedean",
+			"version_hash": 1664897064
+		},
+		"VP_AGENDANAME_AGENDA_NEEDS_MONEY_FOR_OPERATION": {
+			"string": "Sick",
+			"version_hash": 2089574095
+		},
+		"VP_AGENDANAME_AGENDA_CONSPIRACY_AI_THEORIST": {
+			"string": "Conspiracy theorist",
+			"version_hash": 1099480882
+		},
+		"VP_AGENDANAME_AGENDA_SINGER": {
+			"string": "Singer",
+			"version_hash": 3508884269
+		},
+		"VP_AGENDANAME_AGENDA_HAS_CAT": {
+			"string": "Cat-lover",
+			"version_hash": 1172089554
+		},
+		"VP_AGENDANAME_AGENDA_ANDROID": {
+			"string": "Hacker",
+			"version_hash": 3068516627
+		},
+		"VP_SHOW_CREW_AGENDA_AT_ENCELADUS": {
+			"string": "Show crew agenda at Enceladus",
+			"version_hash": 3386333600
+		},
+		"VP_SHOW_CREW_AGENDA_AT_ENCELADUS_DESC": {
+			"string": "Whether crew with agenda will have a label showing it in the Crew tab.",
+			"version_hash": 3905824848
 		}
 	},
 	"uk_UA": {

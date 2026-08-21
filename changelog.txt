@@ -1,3 +1,10 @@
+[1.6.4]
+
+1=* Added crew agenda labels to the Crew menu
+1.1=* Disabled by default
+1.2=* Currently does not support modded agendas, however the translation strings can be easy to add by the respective mod
+2=* Improved efficiency for the automatic companion return protocol
+
 [1.6.3]
 
 1=* Fixed crash caused by NT Companions attempting to evaluate their nonexistent damage.

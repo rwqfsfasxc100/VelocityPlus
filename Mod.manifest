@@ -5,13 +5,13 @@ id="hev.VelocityPlus"
 description="VELOCITYPLUS_DESCRIPTION"
 brief="VELOCITYPLUS_BRIEF"
 author="__hev"
-credits=PoolStringArray( "Za\'krin - Mod Main design, original implementation of updateTL", "harrygiel - original implementation of the MaximumSpeed mod which this mod fixes and uses for the remove speed limit module", "CyberShadow - original implementation for the DiveClock, ShowReliability, and ARMFocus modules", "Alfik0 - original implementation of the identification limit increase modules", "   --- Supporters ---   ", "GAZI - supporter (ko-fi)", "Bagger dude - supporter (ko-fi)", "WT - supporter (ko-fi)" )
+credits=PoolStringArray( "VP_CREDITS_CONTRIBUTORS_HEADER", "VP_CREDITS_CONTRIBUTORS_ZAKRIN", "VP_CREDITS_CONTRIBUTORS_HARRYGIEL", "VP_CREDITS_CONTRIBUTORS_CYBERSHADOW", "VP_CREDITS_CONTRIBUTORS_ALFIK0", "", "HEVLIB_CREDITS_TRANSLATORS_HEADER", "HEVLIB_CREDITS_TRANSLATORS_1WT1", "HEVLIB_CREDITS_TRANSLATORS_HEDRAUTA", "", "HEVLIB_CREDITS_SUPPORTERS_HEADER", "HEVLIB_CREDITS_SUPPORTERS_KOFI_GAZI", "HEVLIB_CREDITS_SUPPORTERS_KOFI_BAGGERDUDE", "HEVLIB_CREDITS_SUPPORTERS_KOFI_1WT1", "HEVLIB_CREDITS_SUPPORTERS_KOFI_TESSIER" )
 
 [version]
 
 version_major=1
 version_minor=6
-version_bugfix=3
+version_bugfix=4
 
 [tags]
 
@@ -212,6 +212,13 @@ VP_CREW={
 "description": "VP_PILOTS_REDUCE_ASTRO_CALC_DESC",
 "display_order_position": 6,
 "name": "VP_PILOTS_REDUCE_ASTRO_CALC",
+"type": "bool"
+},
+"show_crew_agenda_at_enceladus": {
+"default": false,
+"description": "VP_SHOW_CREW_AGENDA_AT_ENCELADUS_DESC",
+"display_order_position": 11,
+"name": "VP_SHOW_CREW_AGENDA_AT_ENCELADUS",
 "type": "bool"
 },
 "tactical_marker_limit_multiplier": {

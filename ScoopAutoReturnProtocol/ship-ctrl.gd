@@ -14,7 +14,7 @@
 # 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products
 # derived from this software without specific prior written permission.
 # 
-# 4. The source code and the binary form, and any modifications made to them may not be used for the purpose of input data, the training of, or improvment of machine learning algorithms,
+# 4. The source code and the binary form, and any modifications made to them may not be used for the purpose of input data, the training of, or improvement of machine learning algorithms,
 # including but not limited to artificial intelligence, natural language processing, or data mining. This condition applies to any derivatives,
 # modifications, or updates based on the Software code. Any usage of the source code or the binary form in an AI-training dataset is considered a breach of this License.
 # 
@@ -29,7 +29,7 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var scoop_autoreturn_protocol_config = {}
+var scoop_autoreturn_protocol_config = "VP_RETURN_TO_ENCELADUS"
 
 var pointersVP_scoop_autoreturn_protocol
 func _enter_tree():
@@ -39,7 +39,7 @@ func _enter_tree():
 
 func vp_scoop_autoreturn_config_VP():
 	if pointersVP_scoop_autoreturn_protocol:
-		scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS")
+		scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
 
 func aiControl(delta):
 	if shipName == "SHIP_POD":
@@ -96,8 +96,7 @@ func aiControlCompanion(delta):
 				aiDesire = piad
 				aiTarget = null
 				companion_finish = true
-				var cf = scoop_autoreturn_protocol_config.get("scoop_automatic_return_protocol_override","VP_RETURN_TO_ENCELADUS")
-				match cf:
+				match scoop_autoreturn_protocol_config:
 					"VP_RETURN_TO_CRADLE":
 						aiAction = AI.dock
 					"VP_HOLD_POSITION":
