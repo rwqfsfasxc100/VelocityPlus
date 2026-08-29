@@ -10,8 +10,8 @@ credits=PoolStringArray( "VP_CREDITS_CONTRIBUTORS_HEADER", "VP_CREDITS_CONTRIBUT
 [version]
 
 version_major=1
-version_minor=6
-version_bugfix=4
+version_minor=7
+version_bugfix=0
 
 [tags]
 
@@ -531,6 +531,11 @@ VP_AUTOREPAIRS={
 [manifest_definitions]
 
 manifest_version=2.2
+dependancy_mod_ids=[ {
+"blocking": true,
+"minimum_version": [ 1, 15, 49 ],
+"mod_id": "hev.LIBRARY"
+} ]
 conflicting_mod_ids=[ "hev.NoHudEmp", "res://AcheetaDeez.ModMain.gd", "res://AchieveDeez/ModMain.gd", "res://MIsForMPU/ModMain.gd", "res://DTT/ModMain.gd", "res://ShowReliability/ModMain.gd", "res://ARMFocus/ModMain.gd", "res://rmIdLim/ModMain.gd", "res://MaximumSpeed/ModMain.gd", "hev.HudHider", "hev.RingActivity", "hev.NoMoreCrew", "hev.RemoveLIMITS", "hev.OCPVoyagerFix", "hev.NoSimHex", "res://DiveClock/ModMain.gd" ]
 manifest_url="https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/main/Mod.manifest"
 changelog_path="changelog.txt"

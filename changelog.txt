@@ -1,3 +1,7 @@
+[1.7.0]
+
+1=* Changed weaponslot modifications to use the new property handling
+
 [1.6.4]
 
 1=* Added crew agenda labels to the Crew menu

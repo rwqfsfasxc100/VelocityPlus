@@ -50,11 +50,13 @@ const cradle_left = {
 		"data":[
 			{
 				"property":"position",
-				"value":"Vector2( 0, 196 )"
+				"value":Vector2( 0, 196 ),
+				"use_stringified_value":false
 			},
 			{
 				"property":"flip",
-				"value":"true"
+				"value":true,
+				"use_stringified_value":false
 			}
 		]
 	}
@@ -79,7 +81,8 @@ const cradle_right = {
 		"data":[
 			{
 				"property":"position",
-				"value":"Vector2( 0, 196 )"
+				"value":Vector2( 0, 196 ),
+				"use_stringified_value":false
 			}
 		]
 	}
