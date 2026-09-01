@@ -57,8 +57,7 @@ func vp_achievements_UV():
 			cheetah = false
 		else:
 			cheetah = CurrentGame.cheetah
-	
-#const ConfigDriver = preload("res://HevLib/pointers/ConfigDriver.gd")
+
 var config = {}
 
 func validateStatAchievements():
