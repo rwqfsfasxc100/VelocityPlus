@@ -11,7 +11,7 @@ credits=PoolStringArray( "VP_CREDITS_CONTRIBUTORS_HEADER", "VP_CREDITS_CONTRIBUT
 
 version_major=1
 version_minor=7
-version_bugfix=0
+version_bugfix=1
 
 [tags]
 
