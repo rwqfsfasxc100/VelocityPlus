@@ -223,7 +223,7 @@ func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal,max_r
 	
 	var current_cost = 0
 	
-	for i in range(repairs):
+	for i in repairs:
 		if available_cash >= fixPrice:
 			current_cost += fixPrice
 			available_cash -= fixPrice
@@ -239,7 +239,7 @@ func handle_operation(b,available_cash,mustTarget,ship,forceMode,targetVal,max_r
 			replaceCost = 0
 	
 	
-	for i in range(affordable_repairs):
+	for i in affordable_repairs:
 		if fixPrice <= max_repair:
 			fixIfCan(b,ship,i)
 	if replace:
@@ -306,7 +306,7 @@ func find_most_effective_match(box,current_actions,force_mode,replaceCost,target
 	var replace_value = sys.ref.repairReplacementPrice
 	var finished = false
 	var operations = 0
-	for f in range(target - current_actions[0]):
+	for f in (target - current_actions[0]):
 		if finished:
 			continue
 		var rprice = getSystemPrice(simulate_repair(sys,current_actions[0] + f),true)
@@ -356,7 +356,7 @@ func cost_effective_action_list(box,cycles,targetVal):
 	var replace_value = ref.repairReplacementPrice
 	var replaceCost = (replace_value - current)
 	opts.merge({0:{"repair":current,"replace":current - replaceCost,"replace_cost":replaceCost,"repair_cost":0,"status":init_status}})
-	for specific_cycle in range(cycles):
+	for specific_cycle in cycles:
 		var previous_cost = (specific_cycle * fix_price) + fix_price
 		var c = specific_cycle + 1
 		if simulate_repair(system,specific_cycle).status >= targetVal:
@@ -427,7 +427,7 @@ func simulate_repair(system,specific_cycle):
 	after_repair.damage.clear()
 	for d in system.damage:
 		var newdmg = d.duplicate(true)
-		for i in range(specific_cycle):
+		for i in specific_cycle:
 			var total = newdmg.current * repairStepAmount
 			newdmg.current = total
 		after_repair.damage.append(newdmg)
