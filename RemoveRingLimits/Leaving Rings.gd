@@ -52,7 +52,7 @@ func vp_leavingring_UV():
 var speed_limit_config = {}
 func _init():
 	if CurrentGame != null:
-		pointersVPRingEdgeRemoval = CurrentGame.get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVPRingEdgeRemoval = ModLoader._savedObjects[0]
 		pointersVPRingEdgeRemoval.ConfigDriver.__establish_connection("vp_leavingring_UV",self)
 		baseWarnVelocity = warnVelocity
 		vp_leavingring_UV()

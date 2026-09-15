@@ -47,7 +47,7 @@ func vp_escape_UV():
 
 func _init():
 	if CurrentGame != null:
-		pointersVPEscapeWarnVelocityOverride = CurrentGame.get_tree().get_root().get_node_or_null("HevLib~Pointers")
+		pointersVPEscapeWarnVelocityOverride = ModLoader._savedObjects[0]
 		pointersVPEscapeWarnVelocityOverride.ConfigDriver.__establish_connection("vp_escape_UV",self)
 		baseWarnVelocity = warnVelocity
 		vp_escape_UV()
