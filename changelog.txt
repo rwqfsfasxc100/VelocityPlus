@@ -1,3 +1,8 @@
+[1.7.2]
+
+1=* Updated escape velocity and leaving ring displays to use modern pointer node fetching
+2=* Improved efficiency and memory footprint of range iterations
+
 [1.7.1]
 
 1=* Removed unnecessary conflict
