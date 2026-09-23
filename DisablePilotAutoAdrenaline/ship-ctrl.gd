@@ -32,7 +32,7 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pointersVP_disable_pilot_auto_adrenaline
+var pointersVP_disable_pilot_auto_adrenaline:HevLibPointers
 func _enter_tree():
 	pointersVP_disable_pilot_auto_adrenaline = ModLoader._savedObjects[0]
 	pointersVP_disable_pilot_auto_adrenaline.ConfigDriver.__establish_connection("vp_disable_pilot_adrenaline_UV",self)
@@ -40,7 +40,7 @@ func _enter_tree():
 
 func vp_disable_pilot_adrenaline_UV():
 	if pointersVP_disable_pilot_auto_adrenaline:
-		prevent_adrenaline = pointersVP_disable_pilot_auto_adrenaline.ConfigDriver.pointers.ConfigDriver.__get_value("VelocityPlus","VP_CREW","pilots_disable_adrenaline")
+		prevent_adrenaline = pointersVP_disable_pilot_auto_adrenaline.ConfigDriver.__get_value("VelocityPlus","VP_CREW","pilots_disable_adrenaline")
 	
 var prevent_adrenaline = false
 

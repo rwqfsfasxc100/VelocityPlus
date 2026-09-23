@@ -34,7 +34,7 @@ extends "res://ships/modules/PDT.gd"
 
 var default_gimbal_limit = 0
 var fixed = false
-var pointersVP_gimbal_remover
+var pointersVP_gimbal_remover:HevLibPointers
 
 func _enter_tree():
 	default_gimbal_limit = gimbalLimit

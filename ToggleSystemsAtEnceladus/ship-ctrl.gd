@@ -32,7 +32,7 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pointersVP_toggle_systems_at_enceladusprime
+var pointersVP_toggle_systems_at_enceladusprime:HevLibPointers
 
 func vp_enceladusprime_ship_toggles_UV():
 	if pointersVP_toggle_systems_at_enceladusprime:

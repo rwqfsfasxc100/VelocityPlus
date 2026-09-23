@@ -52,7 +52,7 @@ onready var maxreplace = get_node_or_null(maxreplace_p)
 export var target_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/HSlider")
 onready var target = get_node_or_null(target_p)
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func vp_autorepairsmenu_VP():
 	if pointersVP:

@@ -32,7 +32,7 @@
 
 extends "res://CurrentGame.gd"
 
-var pointersVP_shipped_goods_display
+var pointersVP_shipped_goods_display:HevLibPointers
 
 var vp_omsdisplayexpansionlogcheck_uinit : bool = false
 func _ready():

@@ -32,7 +32,7 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pointersVP_show_neg_depth
+var pointersVP_show_neg_depth:HevLibPointers
 func _enter_tree():
 	pointersVP_show_neg_depth = ModLoader._savedObjects[0]
 	pointersVP_show_neg_depth.ConfigDriver.__establish_connection("vp_show_negative_depth_UV",self)

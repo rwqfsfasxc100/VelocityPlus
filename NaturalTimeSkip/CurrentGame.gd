@@ -32,7 +32,7 @@
 
 extends "res://CurrentGame.gd"
 
-var pointersVP_natural_time_skip
+var pointersVP_natural_time_skip:HevLibPointers
 
 var file = File.new()
 var vp_naturaltimeskiphandler_uinit : bool = false

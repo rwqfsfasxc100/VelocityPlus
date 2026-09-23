@@ -35,7 +35,7 @@ extends "res://ships/modules/PDT.gd"
 var default_fire_mode = true
 var default_fire_action = ""
 
-var pointersVP_turret_overrides
+var pointersVP_turret_overrides:HevLibPointers
 var wp
 
 func _enter_tree():

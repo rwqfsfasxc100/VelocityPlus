@@ -34,7 +34,7 @@ extends "res://ships/ship-ctrl.gd"
 
 var pilots_reduce_astro_calculations = {}
 
-var pointersVP_pilots_reduce_astro_calc_time
+var pointersVP_pilots_reduce_astro_calc_time:HevLibPointers
 func _enter_tree():
 	pointersVP_pilots_reduce_astro_calc_time = ModLoader._savedObjects[0]
 	pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.__establish_connection("vp_pilot_calc_time_reduction_UV",self)

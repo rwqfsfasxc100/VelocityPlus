@@ -32,7 +32,7 @@
 
 extends "res://weapons/emp.gd"
 
-var pointersVPEMP
+var pointersVPEMP:HevLibPointers
 
 var dustScene := load("res://VelocityPlus/MicrowavesMeltOre/drone-dust-persistent.tscn")
 

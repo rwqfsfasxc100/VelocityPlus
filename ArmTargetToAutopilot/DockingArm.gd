@@ -32,7 +32,7 @@
 
 extends "res://ships/modules/DockingArm.gd"
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

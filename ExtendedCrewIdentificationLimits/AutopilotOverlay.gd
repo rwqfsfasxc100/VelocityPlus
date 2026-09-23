@@ -32,7 +32,7 @@
 
 extends "res://hud/AutopilotOverlay.gd"
 
-var pointersVP_crew_id_limits
+var pointersVP_crew_id_limits:HevLibPointers
 
 var mineral_marker_limit_multiplier = true
 var tactical_marker_limit_multiplier = true

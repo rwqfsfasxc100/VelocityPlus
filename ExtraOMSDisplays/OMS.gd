@@ -54,7 +54,7 @@ var astroTimeDescLabel
 
 var ship
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 
 func vp_omslabels_UV():

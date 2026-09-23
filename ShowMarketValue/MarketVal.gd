@@ -36,7 +36,7 @@ extends Label
 
 export  var format = "%s E$"
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

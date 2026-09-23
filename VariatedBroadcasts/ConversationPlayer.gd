@@ -32,7 +32,7 @@
 
 extends "res://comms/ConversationPlayer.gd"
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func vp_conversation_UV():
 	if pointersVP:

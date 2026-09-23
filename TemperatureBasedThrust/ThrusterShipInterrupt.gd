@@ -34,7 +34,7 @@ extends Node
 var ship
 var thrusterObject
 
-var pointers
+var pointers:HevLibPointers
 
 func _init(p,s,o):
 	ship = s

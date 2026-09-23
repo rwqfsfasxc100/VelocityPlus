@@ -34,7 +34,7 @@ extends "res://enceladus/DoTradeIn.gd"
 # Fixes issue no. 5284
 # https://git.kodera.pl/games/delta-v/-/issues/5284
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

@@ -36,7 +36,7 @@ var goLeft = false
 var goRight = false
 var noSpeedLimit = false
 
-var pointersVPRingEdgeRemoval
+var pointersVPRingEdgeRemoval:HevLibPointers
 
 var baseWarnVelocity = 0
 

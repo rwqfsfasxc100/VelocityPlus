@@ -32,7 +32,7 @@
 
 extends "res://enceladus/Tuning.gd"
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 
 func vp_tuning_UV():

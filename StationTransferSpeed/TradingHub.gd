@@ -35,7 +35,7 @@ extends "res://story/habitat/TradingHub.gd"
 var base_transfer_speed = 0
 
 var transfer_speed_multi = 1.0
-var pointersVP_base_transfer_speed
+var pointersVP_base_transfer_speed:HevLibPointers
 func _enter_tree():
 	base_transfer_speed = tradePerSecond
 	pointersVP_base_transfer_speed = ModLoader._savedObjects[0]

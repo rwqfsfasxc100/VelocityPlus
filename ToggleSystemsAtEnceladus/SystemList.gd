@@ -34,7 +34,7 @@ extends "res://hud/SystemList.gd"
 
 var omsToggleCfg = "omstoggles.%s.%s"
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

@@ -32,7 +32,7 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pointersVP_remove_ring_limits
+var pointersVP_remove_ring_limits:HevLibPointers
 func _enter_tree():
 	pointersVP_remove_ring_limits = ModLoader._savedObjects[0]
 	pointersVP_remove_ring_limits.ConfigDriver.__establish_connection("vp_remove_ring_limits_UV",self)

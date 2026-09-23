@@ -34,7 +34,7 @@ extends "res://enceladus/SystemShipRepairUI.gd"
 
 var allow_hide = true
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

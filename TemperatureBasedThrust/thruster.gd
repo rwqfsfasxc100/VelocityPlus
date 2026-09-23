@@ -32,7 +32,7 @@
 
 extends "res://sfx/thruster.gd"
 
-var VP_pointers
+var VP_pointers:HevLibPointers
 
 
 func vp_thrusterTempModeration_UV():

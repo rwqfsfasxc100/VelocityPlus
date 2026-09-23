@@ -32,7 +32,7 @@
 
 extends "res://CurrentGame.gd"
 
-var pointersVP_astro_tracking_time
+var pointersVP_astro_tracking_time:HevLibPointers
 
 var astrogation_tracking_time_modifier = true
 

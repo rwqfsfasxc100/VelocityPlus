@@ -36,7 +36,7 @@ var alwaysOn_default = false
 
 export var alwaysOn = false
 
-var pointersVP_always_emp_huds
+var pointersVP_always_emp_huds:HevLibPointers
 func _enter_tree():
 	alwaysOn_default = alwaysOn
 	pointersVP_always_emp_huds = ModLoader._savedObjects[0]
@@ -45,7 +45,7 @@ func _enter_tree():
 
 func vp_always_emp_huds_UV():
 	if pointersVP_always_emp_huds:
-		if pointersVP_always_emp_huds.ConfigDriver.pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","always_emp_resistant_HUD"):
+		if pointersVP_always_emp_huds.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","always_emp_resistant_HUD"):
 			alwaysOn = true
 		else:
 			alwaysOn = alwaysOn_default

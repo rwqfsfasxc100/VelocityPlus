@@ -32,7 +32,7 @@
 
 extends "res://hud/components/RestricedCrewList.gd"
 
-var pointersVP
+var pointersVP:HevLibPointers
 signal drawn_crew
 var vacPath = NodePath("C/O/Vac")
 

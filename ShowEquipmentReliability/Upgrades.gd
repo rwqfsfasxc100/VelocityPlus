@@ -36,7 +36,7 @@ var disable_when_false = PoolStringArray(["damageModel"])
 var disable_when_true = PoolStringArray()
 
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 
 func vp_upgrades_UV():

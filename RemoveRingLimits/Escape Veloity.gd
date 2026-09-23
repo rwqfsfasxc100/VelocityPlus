@@ -34,7 +34,7 @@ extends "res://hud/Escape Veloity.gd"
 
 var noSpeedLimit = false
 
-var pointersVPEscapeWarnVelocityOverride
+var pointersVPEscapeWarnVelocityOverride:HevLibPointers
 
 var baseWarnVelocity = 0
 func vp_escape_UV():

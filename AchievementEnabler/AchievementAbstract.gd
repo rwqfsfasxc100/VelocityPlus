@@ -36,7 +36,7 @@ var enable_achievements = false
 var enable_leaderboards = false
 var cheetah = false
 
-var pointers
+var pointers:HevLibPointers
 
 var vp_achievementpermitter_uinit : bool = false
 func _ready():

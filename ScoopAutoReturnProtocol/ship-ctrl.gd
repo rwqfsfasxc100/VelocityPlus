@@ -34,7 +34,7 @@ extends "res://ships/ship-ctrl.gd"
 
 var scoop_autoreturn_protocol_config = "VP_RETURN_TO_ENCELADUS"
 
-var pointersVP_scoop_autoreturn_protocol
+var pointersVP_scoop_autoreturn_protocol:HevLibPointers
 func _enter_tree():
 	pointersVP_scoop_autoreturn_protocol = ModLoader._savedObjects[0]
 	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__establish_connection("vp_scoop_autoreturn_config_VP",self)

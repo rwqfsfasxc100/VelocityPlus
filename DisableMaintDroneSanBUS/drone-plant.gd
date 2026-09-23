@@ -32,7 +32,7 @@
 
 extends "res://weapons/drone-plant.gd"
 
-var pointersVPEMP
+var pointersVPEMP:HevLibPointers
 
 var baseSanbus = true
 

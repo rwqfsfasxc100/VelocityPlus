@@ -34,7 +34,7 @@ extends Button
 # Fixes issue no. 5340
 # https://git.kodera.pl/games/delta-v/-/issues/5340
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

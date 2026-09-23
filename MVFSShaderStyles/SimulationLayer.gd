@@ -36,7 +36,7 @@ var bg_sprite_path = NodePath("MarginContainer/SimulateViewport/Paralax/Parallax
 
 var sim_cover_basic_path = NodePath("MarginContainer/SimulateViewport/SimulationLayer/SimulationCoverBasic")
 var sim_cover_premium_path = NodePath("MarginContainer/SimulateViewport/SimulationLayer/SimulationCoverPremium")
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]

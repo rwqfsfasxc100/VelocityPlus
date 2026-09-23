@@ -34,7 +34,7 @@ extends "res://enceladus/CrewBio.gd"
 
 var vp_agendalabel = false
 
-var pointersVP_crew_agenda_labels
+var pointersVP_crew_agenda_labels:HevLibPointers
 func _enter_tree():
 	pointersVP_crew_agenda_labels = ModLoader._savedObjects[0]
 	pointersVP_crew_agenda_labels.ConfigDriver.__establish_connection("vp_agenda_labels_at_enceladus_UV",self)

@@ -35,7 +35,7 @@ extends "res://enceladus/Repairs.gd"
 var repairStepAmount = 0.5
 
 
-var pointersVP
+var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]
