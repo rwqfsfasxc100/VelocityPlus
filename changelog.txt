@@ -1,3 +1,8 @@
+[1.7.3]
+
+1=* Added type-casting for pointer methods
+2=* Fixed method calls to pointer classes that would break in future HevLib versions
+
 [1.7.2]
 
 1=* Updated escape velocity and leaving ring displays to use modern pointer node fetching
