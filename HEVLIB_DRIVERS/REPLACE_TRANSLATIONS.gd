@@ -1,5 +1,5 @@
 # This translation file is generated automatically
-# Do not modify anything directly, as this will break things for translators
+# Do not modify anything directly, as this will cause the file to break for translators
 # Please use Translation Tracker to modify these yourself, and contact the mod author to implement them
 # https://github.com/rwqfsfasxc100/TranslationTracker/releases/latest
 
@@ -1777,6 +1777,10 @@ const TRANSLATIONS = {
 		"VP_SHOW_CREW_AGENDA_AT_ENCELADUS_DESC": {
 			"string": "Whether crew with agenda will have a label showing it in the Crew tab.",
 			"version_hash": 3905824848
+		},
+		"VP_AGENDANAME_AGENDA_HISTORIAN": {
+			"string": "Hisorian",
+			"version_hash": 2503230338
 		}
 	},
 	"uk_UA": {

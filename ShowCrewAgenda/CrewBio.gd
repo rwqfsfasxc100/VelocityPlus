@@ -42,7 +42,7 @@ func _enter_tree():
 
 func vp_agenda_labels_at_enceladus_UV():
 	if pointersVP_crew_agenda_labels:
-		vp_agendalabel = pointersVP_crew_agenda_labels.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+		vp_agendalabel = pointersVP_crew_agenda_labels.ConfigDriver.__get_value("VelocityPlus","VP_CREW","show_crew_agenda_at_enceladus")
 
 
 func fillData():

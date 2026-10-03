@@ -1,3 +1,8 @@
+[1.7.4]
+
+1=* Fixed `Show crew agenda` always displaying
+2=* Added support for Abandoned Tech's Historian agenda
+
 [1.7.3]
 
 1=* Added type-casting for pointer methods
