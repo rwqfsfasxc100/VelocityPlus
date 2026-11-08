@@ -37,16 +37,16 @@ var VP_pointers:HevLibPointers
 
 func vp_thrusterTempModeration_UV():
 	if VP_pointers:
-		var config = VP_pointers.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS",{})
+		var config:Dictionary = VP_pointers.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS",{})
 		adjust_thrust_to_temperature = config.get("adjust_thrust_to_temperature",false)
 		adjust_thrust_multi = config.get("adjust_thrust_multi",1.0)
 
-var adjust_thrust_to_temperature = false
-var adjust_thrust_multi = 1.0
+var adjust_thrust_to_temperature:bool = false
+var adjust_thrust_multi:float = 1.0
 
-var temp = 0
-var avgTarget = 0
-var count = 0
+var temp:float = 0
+var avgTarget:float = 0
+var count:float = 0
 
 var interruptObject
 func a1(how):
@@ -72,9 +72,9 @@ func _physics_process(delta):
 		count += 1
 		if count > 5:
 			count = 0
-			var reactors = ship.reactors
-			var rt = 0
-			var rc = reactors.size()
+			var reactors:Array = ship.reactors
+			var rt:float = 0
+			var rc:int = reactors.size()
 			if rc:
 				temp = ship.sensorGet("reactor_temperature")
 				for i in reactors:
@@ -88,11 +88,7 @@ func getThrust(force = false):
 	var outThrust = .getThrust(force)
 	if adjust_thrust_to_temperature and not externalPower:
 		if temp > 1000:
-			var multi = (float(temp)/float(avgTarget))
-			var s0 = multi - 1.0
-			var s1 = s0 * adjust_thrust_multi
-			var s2 = s1 + 1.0
+			var multi:float = (temp/float(avgTarget))
 			if multi != 1:
-				var newthrust = max(outThrust * s2,outThrust * 0.1)
-				return newthrust
+				return max(outThrust * (((multi - 1.0) * adjust_thrust_multi) + 1.0),outThrust * 0.1)
 	return outThrust

@@ -1,3 +1,20 @@
+[1.8.0]
+
+1=* Added crew sorting via two options
+1.1=* Active crew first - boolean option that moves all active crew to the top of the list. Defaults to true
+1.2=* Crew sort method - whether crew is sorted and by which metric is prioritized
+1.3=* None - no additional sorting
+1.4=* Experience & Education -> Occupation -> Salary
+1.5=* Experience & Education -> Salary -> Occupation
+1.6=* Salary -> Experience & Education -> Occupation
+1.7=* Salary -> Occupation -> Experience & Education
+1.8=* Occupation -> Experience & Education -> Salary
+1.9=* Occupation -> Salary -> Experience & Education
+1.10=* If all else fails with two essentially equivalent crew, falls back to sorting by name
+2=* Improved the performance of several systems by switching to a subscription-based config check
+2.1=* More systems will be moved to this check when time permits
+3=* Type cast several systems for further improvements to performance
+
 [1.7.4]
 
 1=* Fixed `Show crew agenda` always displaying

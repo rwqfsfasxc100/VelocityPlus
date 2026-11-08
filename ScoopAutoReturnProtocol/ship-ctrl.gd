@@ -37,12 +37,11 @@ var scoop_autoreturn_protocol_config = "VP_RETURN_TO_ENCELADUS"
 var pointersVP_scoop_autoreturn_protocol:HevLibPointers
 func _enter_tree():
 	pointersVP_scoop_autoreturn_protocol = ModLoader._savedObjects[0]
-	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__establish_connection("vp_scoop_autoreturn_config_VP",self)
-	vp_scoop_autoreturn_config_VP()
+	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__subscribe_to_setting_change("vp_scoop_autoreturn_config_VP",self,"VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+	scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
 
-func vp_scoop_autoreturn_config_VP():
-	if pointersVP_scoop_autoreturn_protocol:
-		scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+func vp_scoop_autoreturn_config_VP(how:bool):
+	scoop_autoreturn_protocol_config = how
 
 func aiControl(delta):
 	if shipName == "SHIP_POD":
@@ -50,8 +49,7 @@ func aiControl(delta):
 	else:
 		.aiControl(delta)
 
-
-var companion_finish = false
+var companion_finish:bool = false
 func aiControlCompanion(delta):
 	if talkStandDown > 0:
 		talkStandDown -= delta

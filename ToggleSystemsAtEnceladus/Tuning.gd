@@ -35,12 +35,11 @@ extends "res://enceladus/Tuning.gd"
 var pointersVP:HevLibPointers
 
 
-func vp_tuning_UV():
-	if pointersVP:
-		toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+func vp_tuning_UV(how:bool):
+	toggle_systems_at_enceladus = how
 
-var toggle_systems_at_enceladus = false
-var omsToggleCfg = "omstoggles.%s.%s"
+var toggle_systems_at_enceladus:bool = false
+const omsToggleCfg = "omstoggles.%s.%s"
 onready var systemLabel = load("res://VelocityPlus/ToggleSystemsAtEnceladus/EnabledSystem.tscn")
 onready var systemTitle = load("res://VelocityPlus/ToggleSystemsAtEnceladus/EnabledItems.tscn")
 
@@ -102,8 +101,8 @@ onready var tex_rect = $VB/WindowMargin/Window/VP/TextureRect
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_tuning_UV",self)
-	vp_tuning_UV()
+	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_tuning_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
 
 var vp_toggleequipmentsysposdisplay_uinit : bool = false
 func _ready():

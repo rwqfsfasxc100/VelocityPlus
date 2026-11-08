@@ -54,8 +54,8 @@ func vp_thrusterInterrupt_UV():
 		adjust_thrust_to_temperature = pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
 		adjust_thrust_nullify_thermal = pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
 
-var adjust_thrust_to_temperature = false
-var adjust_thrust_nullify_thermal = false
+var adjust_thrust_to_temperature:bool = false
+var adjust_thrust_nullify_thermal:bool = false
 
 
 var deltaTime = 0.0
@@ -66,12 +66,7 @@ func _physics_process(delta):
 
 func drawThermal(how,what):
 	if adjust_thrust_to_temperature and adjust_thrust_nullify_thermal:
-		var temp_current = thrusterObject.temp
-		var temp_target = thrusterObject.avgTarget
-		var inverse_multi = float(temp_target) / float(temp_current)
-		
-		var newThermal = how * inverse_multi
-		return ship.drawThermal(newThermal,what)
+		return ship.drawThermal(how * (thrusterObject.avgTarget / float(thrusterObject.temp)),what)
 	return ship.drawThermal(how,what)
 
 

@@ -347,8 +347,8 @@ const TRANSLATIONS = {
 			"version_hash": 1041769507
 		},
 		"VP_SAVE_INFO_TEMPLATE": {
-			"string": "Date and time: %s\\nGame time elapsed: %s\\nWallet balance: %s\\nInsurance balance: %s\\nHired crew: %s\\nOwned ships: %s\\nSeed: %s\\nShip Playtime:\\n%s\\nEquipment Playtime:\\n%s\\nMiscelaneous Playtime:\\n%s\\n",
-			"version_hash": 1368792516
+			"string": "Date and time: %s\nGame time elapsed: %s\nWallet balance: %s\nInsurance balance: %s\nHired crew: %d\nOwned ships: %d\nSeed: %d\nShip Playtime:\n%s\nEquipment Playtime:\n%s\nMiscelaneous Playtime:\n%s\n",
+			"version_hash": 2974058583
 		},
 		"VP_MINUTES_INDICATOR": {
 			"string": "%s minutes",
@@ -1781,6 +1781,50 @@ const TRANSLATIONS = {
 		"VP_AGENDANAME_AGENDA_HISTORIAN": {
 			"string": "Hisorian",
 			"version_hash": 2503230338
+		},
+		"VP_SORT_CREW_BY": {
+			"string": "Crew sort method",
+			"version_hash": 1155216127
+		},
+		"VP_SORT_CREW_BY_DESC": {
+			"string": "The order by which crew would be organized by.",
+			"version_hash": 930802655
+		},
+		"VP_SORT_CREW_NONE": {
+			"string": "None",
+			"version_hash": 2089401301
+		},
+		"VP_SORT_CREW_STATS_OCCUPATION_PRICE": {
+			"string": "Experience & Education -> Occupation -> Salary",
+			"version_hash": 3873058310
+		},
+		"VP_SORT_CREW_STATS_PRICE_OCCUPATION": {
+			"string": "Experience & Education -> Salary -> Occupation",
+			"version_hash": 1055361606
+		},
+		"VP_SORT_CREW_PRICE_STATS_OCCUPATION": {
+			"string": "Salary -> Experience & Education -> Occupation",
+			"version_hash": 769575622
+		},
+		"VP_SORT_CREW_PRICE_OCCUPATION_STATS": {
+			"string": "Salary -> Occupation -> Experience & Education",
+			"version_hash": 2079359494
+		},
+		"VP_SORT_CREW_OCCUPATION_STATS_PRICE": {
+			"string": "Occupation -> Experience & Education -> Salary",
+			"version_hash": 1525282118
+		},
+		"VP_SORT_CREW_OCCUPATION_PRICE_STATS": {
+			"string": "Occupation -> Salary -> Experience & Education",
+			"version_hash": 2466403782
+		},
+		"VP_SORT_CREW_ACTIVE_FIRST": {
+			"string": "Active crew first",
+			"version_hash": 337359738
+		},
+		"VP_SORT_CREW_ACTIVE_FIRST_DESC": {
+			"string": "Automatically moves active crew to the top of the crew list before any additional sorting",
+			"version_hash": 2381857385
 		}
 	},
 	"uk_UA": {

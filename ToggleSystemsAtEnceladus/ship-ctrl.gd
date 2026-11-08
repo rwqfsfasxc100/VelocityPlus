@@ -34,11 +34,10 @@ extends "res://ships/ship-ctrl.gd"
 
 var pointersVP_toggle_systems_at_enceladusprime:HevLibPointers
 
-func vp_enceladusprime_ship_toggles_UV():
-	if pointersVP_toggle_systems_at_enceladusprime:
-		toggle_systems_at_enceladus = pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+func vp_enceladusprime_ship_toggles_UV(how:bool):
+	toggle_systems_at_enceladus = how
 
-var toggle_systems_at_enceladus = false
+var toggle_systems_at_enceladus:bool = false
 
 
 const omsToggleCfg = "omstoggles.%s.%s"
@@ -62,8 +61,8 @@ func handleSystemToggles():
 
 func _enter_tree():
 	pointersVP_toggle_systems_at_enceladusprime = ModLoader._savedObjects[0]
-	pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__establish_connection("vp_enceladusprime_ship_toggles_UV",self)
-	vp_enceladusprime_ship_toggles_UV()
+	pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__subscribe_to_setting_change("vp_enceladusprime_ship_toggles_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	toggle_systems_at_enceladus = pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
 
 var vp_toggleequipmentpersisthandler_uinit : bool = false
 func _ready():

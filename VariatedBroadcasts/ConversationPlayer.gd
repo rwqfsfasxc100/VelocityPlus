@@ -32,14 +32,11 @@
 
 extends "res://comms/ConversationPlayer.gd"
 
-var pointersVP:HevLibPointers
-
-func vp_conversation_UV():
-	if pointersVP:
-		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations")
+func vp_conversation_UV(how:bool):
+	broadcast_variations = how
 
 
-var broadcast_variations = true
+var broadcast_variations:bool = true
 var vp_varbroadcastshandler_uinit : bool = false
 func _ready():
 	if vp_varbroadcastshandler_uinit:
@@ -47,9 +44,9 @@ func _ready():
 	vp_varbroadcastshandler_uinit = true
 	var cname = self.name
 	if cname.begins_with("DIALOG_SALVAGE_"):
-		pointersVP = ModLoader._savedObjects[0]
-		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
-		vp_conversation_UV()
+		var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+		pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_conversation_UV",self,"VelocityPlus","VP_RING","broadcast_variations")
+		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations")
 		if broadcast_variations:
 			var rename_this_comms_to = ""
 			var RNG = RandomNumberGenerator.new()
@@ -85,27 +82,27 @@ func _ready():
 			if rename_this_comms_to:
 				self.name = rename_this_comms_to
 	elif cname.begins_with("DIALOG_POI_RANDOM_"):
-		pointersVP = ModLoader._savedObjects[0]
-		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
-		vp_conversation_UV()
+		var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+		pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_conversation_UV",self,"VelocityPlus","VP_RING","broadcast_variations")
+		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations")
 		if broadcast_variations:
 			var RNG = RandomNumberGenerator.new()
 			RNG.randomize()
 			var random = RNG.randf_range(168,2592)
 			poiTimeHours = random
 	elif cname.begins_with("DIALOG_MINER_SEEN_"):
-		pointersVP = ModLoader._savedObjects[0]
-		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
-		vp_conversation_UV()
+		var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+		pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_conversation_UV",self,"VelocityPlus","VP_RING","broadcast_variations")
+		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations")
 		if broadcast_variations:
 			var RNG = RandomNumberGenerator.new()
 			RNG.randomize()
 			var random = RNG.randf_range(168,2592)
 			poiTimeHours = random
 	elif cname == "DIALOG_PIRATE_BUSINESS_DEAL":
-		pointersVP = ModLoader._savedObjects[0]
-		pointersVP.ConfigDriver.__establish_connection("vp_conversation_UV",self)
-		vp_conversation_UV()
+		var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+		pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_conversation_UV",self,"VelocityPlus","VP_RING","broadcast_variations")
+		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations")
 		if broadcast_variations:
 			var RNG = RandomNumberGenerator.new()
 			RNG.randomize()

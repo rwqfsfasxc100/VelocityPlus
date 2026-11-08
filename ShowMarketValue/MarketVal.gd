@@ -34,39 +34,32 @@ extends Label
 # Fixes issue no. 5033
 # https://git.kodera.pl/games/delta-v/-/issues/5033
 
-export  var format = "%s E$"
+export (String) var format = "%s E$"
 
 var pointersVP:HevLibPointers
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_marketval_UV",self)
-	vp_marketval_UV()
+	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_marketval_UV",self,"VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
+	mineral_market_show_total_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
 
-func vp_marketval_UV():
-	if pointersVP:
-		mineral_market_show_total_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
+func vp_marketval_UV(how:bool):
+	mineral_market_show_total_value = how
 
-var mineral_market_show_total_value = true
+var mineral_market_show_total_value:bool = true
 
 func _process(delta):
 	if mineral_market_show_total_value:
 		get_parent().visible = true
-		var sliders = get_parent().get_parent().get_parent().get_parent().get_node("MarginContainer/ScrollContainer/MarginContainer/Market").get_children()
-		var total = 0
-		for slide in sliders:
-			var price = removeFormatting(slide.get_node("VBoxContainer/MarginContainer/HBoxContainer/Price").text)
-			var multi = removeFormatting(slide.get_node("VBoxContainer/MarginContainer/HBoxContainer/H/Owned").text)
-			var value = price * multi
-			total = total + value
-		var txt = CurrentGame.formatThousands(total)
-		text = format % txt
+		var total:float = 0
+		for slide in get_parent().get_parent().get_parent().get_parent().get_node("MarginContainer/ScrollContainer/MarginContainer/Market").get_children():
+			total += removeFormatting(slide.get_node("VBoxContainer/MarginContainer/HBoxContainer/Price").text) * removeFormatting(slide.get_node("VBoxContainer/MarginContainer/HBoxContainer/H/Owned").text)
+		text = format % CurrentGame.formatThousands(total)
 	else:
 		get_parent().visible = false
 
 func removeFormatting(value):
-	var vals = value.split(TranslationServer.translate("SEPARATOR_THOUSAND"))
-	var rets = ""
-	for val in vals:
-		rets = rets + val
+	var rets:String = ""
+	for val in value.split(TranslationServer.translate("SEPARATOR_THOUSAND")):
+		rets += val
 	return float(rets)

@@ -32,21 +32,20 @@
 
 extends "res://enceladus/Upgrades.gd"
 
-var disable_when_false = PoolStringArray(["damageModel"])
-var disable_when_true = PoolStringArray()
+var disable_when_false:PoolStringArray = PoolStringArray(["damageModel"])
+var disable_when_true:PoolStringArray = PoolStringArray()
 
 
 var pointersVP:HevLibPointers
 
 
-func vp_upgrades_UV():
-	if pointersVP:
-		cfg_show_equipment_reliability = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
+func vp_upgrades_UV(how:bool):
+	cfg_show_equipment_reliability = how
 
 func _enter_tree():
 	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_upgrades_UV",self)
-	vp_upgrades_UV()
+	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_upgrades_UV",self,"VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
+	cfg_show_equipment_reliability = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability",true)
 
 var grace_item
 func preview(test, slot, system, item):
@@ -62,28 +61,25 @@ func previewShipSystem(slot,system,control=""):
 	showReliabilityDisplay()
 var mtbf_label
 const manual_container_path = NodePath("VB/WindowMargin/TabHintContainer/Window/UPGRADE_MANUAL")
-var MTBF_container = load("res://VelocityPlus/ShowEquipmentReliability/MTBF_container.tscn")
+var MTBF_container:PackedScene = load("res://VelocityPlus/ShowEquipmentReliability/MTBF_container.tscn")
 var vp_showequipmentreliabilityhandler_uinit : bool = false
 func _ready():
 	if vp_showequipmentreliabilityhandler_uinit:
 		OS.kill(OS.get_process_id())
 	vp_showequipmentreliabilityhandler_uinit = true
-	var cont = get_node(manual_container_path)
-	var mtbf = MTBF_container.instance()
-	cont.add_child(mtbf)
+	var mtbf:Node = MTBF_container.instance()
+	get_node(manual_container_path).add_child(mtbf)
 	mtbf_label = mtbf.get_node("VBoxContainer/Label")
 
-# Wait until the ship in the simulation is fully instantiated.
-var cfg_show_equipment_reliability
-#func _process(delta):
+var cfg_show_equipment_reliability:bool = true
 func showReliabilityDisplay():
 	if cfg_show_equipment_reliability:
 		if grace_item == null:
 			mtbf_label.visible = false
 			return
-		var itemContainer = grace_item
-		var system = itemContainer.system
-		var n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.system, true, false)
+		var itemContainer:Node = grace_item
+		var system:String = itemContainer.system
+		var n:Node = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.system, true, false)
 		if n == null and "nameOverride" in itemContainer and itemContainer.nameOverride != "":
 			n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.nameOverride, true, false)
 		if n == null or n is InstancePlaceholder:
@@ -92,114 +88,111 @@ func showReliabilityDisplay():
 		grace_item = null  # OK, it's instantiated.
 		
 		
-		var enabled = true
-		var damagePropertyExists = false
-		var txt = ""
+		var enabled:bool = true
+		var damagePropertyExists:bool = false
+		var txt:String = ""
 		
 		if "weaponPath" in n:
-			var path = n.get("weaponPath")
-			var objname = n.name
-			var sysname = n.systemName
-			var split = str(path).split(sysname)
-			if split.size() >= 2:
-				path = split[1].lstrip("/")
+			var path:String = n.get("weaponPath")
+			var objname:String = n.name
+			var sysname:String = n.systemName
+			var split:PoolStringArray = path.split(sysname)
+			if split.size() > 1:
+				path = split[1].trim_prefix("/")
 			n = n.get_node(path)
 		
 		for p in n.get_property_list():
-			var propertyName = p.name
-			if propertyName in disable_when_false:
-				var check = n.get(propertyName)
-				if check == false:
-					enabled = false
-			if propertyName in disable_when_true:
-				var check = n.get(propertyName)
-				if check == true:
-					enabled = false
-			
-			if propertyName.begins_with("damage") and propertyName.ends_with("Capacity"):
-				damagePropertyExists = true
-				var nm = propertyName.substr(6, propertyName.length() - 8)
-				var units = ""
-				var factor = 1
-				match propertyName:
-					# I made these up. They're probably wrong.
-					"damageWearCapacity":
-						nm = "MTBF at 100% stress"
-						units = "h"
-						factor = 1 / 3600.0
-					"damageBentCapacity":
-						nm = "Bend resilience"
-						units = "kN"
-						factor = 1 / 1000.0
-					"damageChokeCapacity":
-						nm = "Choke resilience"
-						units = "kN"
-						factor = 1 / 1000.0
-					
-					# Mass driver and Mike specifics
-					"damageFocusCapacity":
-						nm = "Thermal resilience"
-						units = "MJ"
-						factor = 1 / 1000.0
-					
-					# Laser specifics
-					"damagePumpDamageCapacity":
-						nm = "Short-circuit resilience"
-						units = "MJ"
-						factor = 1 / 1000000.0
-					
-					
+			var propertyName:String = p.name
+			if enabled:
+				if propertyName in disable_when_false:
+					if n.get(propertyName) == false:
+						enabled = false
+			if enabled:
+				if propertyName in disable_when_true:
+					if n.get(propertyName) == true:
+						enabled = false
+			if enabled:
+				if propertyName.begins_with("damage") and propertyName.ends_with("Capacity"):
+					damagePropertyExists = true
+					var nm:String = propertyName.substr(6, propertyName.length() - 8)
+					var units:String = ""
+					var factor:float = 1
+					match propertyName:
+						"damageWearCapacity":
+							nm = "MTBF at 100% stress"
+							units = "h"
+							factor = 1 / 3600.0
+						"damageBentCapacity":
+							nm = "Bend resilience"
+							units = "kN"
+							factor = 1 / 1000.0
+						"damageChokeCapacity":
+							nm = "Choke resilience"
+							units = "kN"
+							factor = 1 / 1000.0
+						
+						# Mass driver and Mike specifics
+						"damageFocusCapacity":
+							nm = "Thermal resilience"
+							units = "MJ"
+							factor = 1 / 1000.0
+						
+						# Laser specifics
+						"damagePumpDamageCapacity":
+							nm = "Short-circuit resilience"
+							units = "MJ"
+							factor = 1 / 1000000.0
+						
+						# These aren't visible in the game right now, because
+						# you can't buy / customize computers.
+						"damageSensorsCapacity":
+							nm = "Impact resilience"
+							units = "kN"
+							factor = 1 / 1000.0
+						"damageShortCircuitCapacity":
+							nm = "Short-circuit resilience"
+							units = "MJ"
+							factor = 1 / 1000000.0
+						"damageOverheatCapacity":
+							nm = "Thermal resilience"
+							units = "MJ"
+							factor = 1 / 1000000.0
 
-					# These aren't visible in the game right now, because
-					# you can't buy / customize computers.
-					"damageSensorsCapacity":
-						nm = "Impact resilience"
-						units = "kN"
-						factor = 1 / 1000.0
-					"damageShortCircuitCapacity":
-						nm = "Short-circuit resilience"
-						units = "MJ"
-						factor = 1 / 1000000.0
-					"damageOverheatCapacity":
-						nm = "Thermal resilience"
-						units = "MJ"
-						factor = 1 / 1000000.0
-
-					# Neither are these (reactor != reactor core).
-					"damageRodsCapacity":
-						nm = "Shock resilience"
-						units = "m/s"
-					"damageLeakCapacity":
-						nm = "Impact resilience"
-						units = "kN"
-						factor = 1 / 1000.0
-					"damageTurbineCapacity":
-						nm = "Thermal resilience"
-						units = "MJ"
-						factor = 1 / 1000000.0
-					
-					# Also fusion reactor damage
-					"damageCoilsCapacity":
-						nm = "Acceleration dampening"
-						units = "m/s"
-					"damageCoolantCapacity":
-						nm = "Impact resilience"
-						units = "kN"
-						factor = 1 / 1000.0
-					"damageLaserCapacity":
-						nm = "Thermal resilience"
-						units = "MJ"
-						factor = 1 / 1000000.0
-					
-				txt = txt + "\n%s: %s %s" % [nm, _showReliability_formatFloat(n.get(propertyName) * factor), units]
+						# Neither are these (reactor != reactor core).
+						"damageRodsCapacity":
+							nm = "Shock resilience"
+							units = "m/s"
+						"damageLeakCapacity":
+							nm = "Impact resilience"
+							units = "kN"
+							factor = 1 / 1000.0
+						"damageTurbineCapacity":
+							nm = "Thermal resilience"
+							units = "MJ"
+							factor = 1 / 1000000.0
+						
+						# Also fusion reactor damage
+						"damageCoilsCapacity":
+							nm = "Acceleration dampening"
+							units = "m/s"
+						"damageCoolantCapacity":
+							nm = "Impact resilience"
+							units = "kN"
+							factor = 1 / 1000.0
+						"damageLaserCapacity":
+							nm = "Thermal resilience"
+							units = "MJ"
+							factor = 1 / 1000000.0
+						
+					txt += "\n%s: %s %s" % [nm, formatFloat(n.get(propertyName) * factor), units]
 		if enabled and damagePropertyExists:
 			mtbf_label.text = txt
 			mtbf_label.visible = true
 		else:
 			mtbf_label.visible = false
-func _showReliability_formatFloat(f):
+func formatFloat(f):
 	# Format without unneeded decimals
-	var s = "%f" % f
-	while s.find(".") >= 0 and (s.ends_with("0") or s.ends_with(".")):
+	var s:String = "%f" % f
+	while "." in s and (s.ends_with("0") or s.ends_with(".")):
 		s = s.substr(0, s.length() - 1)
 	return s

@@ -10,8 +10,8 @@ credits=PoolStringArray( "VP_CREDITS_CONTRIBUTORS_HEADER", "VP_CREDITS_CONTRIBUT
 [version]
 
 version_major=1
-version_minor=7
-version_bugfix=4
+version_minor=8
+version_bugfix=0
 
 [tags]
 
@@ -136,6 +136,22 @@ VP_CREW={
 "step": 15.0,
 "style": "slider",
 "type": "int"
+},
+"crew_sort_active_first": {
+"default": true,
+"description": "VP_SORT_CREW_ACTIVE_FIRST_DESC",
+"display_order_position": 12,
+"name": "VP_SORT_CREW_ACTIVE_FIRST",
+"type": "bool"
+},
+"crew_sort_method": {
+"default": 4,
+"description": "VP_SORT_CREW_BY_DESC",
+"display_order_position": 13,
+"name": "VP_SORT_CREW_BY",
+"options": [ "VP_SORT_CREW_NONE", "VP_SORT_CREW_PRICE_OCCUPATION_STATS", "VP_SORT_CREW_PRICE_STATS_OCCUPATION", "VP_SORT_CREW_STATS_PRICE_OCCUPATION", "VP_SORT_CREW_STATS_OCCUPATION_PRICE", "VP_SORT_CREW_OCCUPATION_STATS_PRICE", "VP_SORT_CREW_OCCUPATION_PRICE_STATS" ],
+"store_method": "int",
+"type": "optionbutton"
 },
 "hide_crew_suit": {
 "default": false,
