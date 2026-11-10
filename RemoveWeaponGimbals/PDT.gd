@@ -32,22 +32,13 @@
 
 extends "res://ships/modules/PDT.gd"
 
-var default_gimbal_limit:float = 0
-var fixed:bool = false
-var pointersVP_gimbal_remover:HevLibPointers
+var default_gimbal_limit:float = 0.0
 
 func _enter_tree():
 	default_gimbal_limit = gimbalLimit
-	pointersVP_gimbal_remover = ModLoader._savedObjects[0]
-	pointersVP_gimbal_remover.ConfigDriver.__subscribe_to_setting_change("vp_gimbal_remover_UV",self,"VelocityPlus","VP_SHIPS","disable_gimballed_and_turreted_weapons")
-	fixed = pointersVP_gimbal_remover.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","disable_gimballed_and_turreted_weapons")
+	var pointersVP_gimbal_remover:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_gimbal_remover.__subscribe_to_setting_change("vp_gimbal_remover_UV",self,"VelocityPlus","VP_SHIPS","disable_gimballed_and_turreted_weapons")
+	vp_gimbal_remover_UV(pointersVP_gimbal_remover.__get_value("VelocityPlus","VP_SHIPS","disable_gimballed_and_turreted_weapons",false))
 
 func vp_gimbal_remover_UV(how:bool):
-	if pointersVP_gimbal_remover:
-		fixed = how
-
-func _physics_process(delta):
-	if fixed:
-		gimbalLimit = 0
-	else:
-		gimbalLimit = default_gimbal_limit
+	gimbalLimit = 0 if how else default_gimbal_limit

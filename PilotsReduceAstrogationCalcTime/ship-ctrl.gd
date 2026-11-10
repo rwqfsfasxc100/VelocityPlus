@@ -32,44 +32,58 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pilots_reduce_astro_calculations = {}
-
-var pointersVP_pilots_reduce_astro_calc_time:HevLibPointers
 func _enter_tree():
-	pointersVP_pilots_reduce_astro_calc_time = ModLoader._savedObjects[0]
-	pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.__establish_connection("vp_pilot_calc_time_reduction_UV",self)
-	vp_pilot_calc_time_reduction_UV()
-
-func vp_pilot_calc_time_reduction_UV():
-	if pointersVP_pilots_reduce_astro_calc_time:
-		pilots_reduce_astro_calculations = pointersVP_pilots_reduce_astro_calc_time.ConfigDriver.__get_config("VelocityPlus").get("VP_CREW")
+	var pointersVP_pilots_reduce_astro_calc_time:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_pilots_reduce_astro_calc_time.__subscribe_to_setting_change("vp_do_reduce_calc_UV",self,"VelocityPlus","VP_CREW","pilots_reduce_astro_calculations")
+	pointersVP_pilots_reduce_astro_calc_time.__subscribe_to_setting_change("vp_min_time_UV",self,"VelocityPlus","VP_CREW","minimum_astrogation_time")
+	pointersVP_pilots_reduce_astro_calc_time.__subscribe_to_setting_change("vp_max_time_UV",self,"VelocityPlus","VP_CREW","maximum_astrogation_time")
+	pointersVP_pilots_reduce_astro_calc_time.__subscribe_to_setting_change("vp_skill_bias_UV",self,"VelocityPlus","VP_CREW","pilot_skill_bias")
+	vp_do_reduce_calc = pointersVP_pilots_reduce_astro_calc_time.__get_value("VelocityPlus","VP_CREW","pilots_reduce_astro_calculations",true)
+	vp_min_time = pointersVP_pilots_reduce_astro_calc_time.__get_value("VelocityPlus","VP_CREW","minimum_astrogation_time",3.0)
+	vp_max_time = pointersVP_pilots_reduce_astro_calc_time.__get_value("VelocityPlus","VP_CREW","maximum_astrogation_time",10.0)
+	vp_skill_bias = pointersVP_pilots_reduce_astro_calc_time.__get_value("VelocityPlus","VP_CREW","pilot_skill_bias",0.3)
 
 var vp_pilotsreduceadrenalinehandler_uinit : bool = false
 func _ready():
 	if vp_pilotsreduceadrenalinehandler_uinit:
 		OS.kill(OS.get_process_id())
 	vp_pilotsreduceadrenalinehandler_uinit = true
-	modify()
-	CurrentGame.connect("xpChanged",self,"modify")
+	vp_modify_crew_skill()
+	CurrentGame.connect("xpChanged",self,"vp_modify_crew_skill")
 
-func modify():
-	if pilots_reduce_astro_calculations.get("pilots_reduce_astro_calculations",true):
-		var education = 0
-		var experience = 0
-		var crewData = CurrentGame.getCurrentlyActiveCrewNames()
-		for crew in crewData:
-			var dta = CurrentGame.state.crew[crew]
-			if dta.occupation == "CREW_OCCUPATION_PILOT":
-				if dta.experience >= experience:
-					experience = dta.experience
-				if dta.talent >= education:
-					education = dta.talent
+var vp_do_reduce_calc:bool = true
+var vp_min_time:float = 3.0
+var vp_max_time:float = 10.0
+var vp_skill_bias:float = 0.3
+
+func vp_do_reduce_calc_UV(how:bool):
+	vp_do_reduce_calc = how
+	vp_modify_crew_skill()
+
+func vp_min_time_UV(how:float):
+	vp_min_time = how
+	vp_modify_crew_skill()
+
+func vp_max_time_UV(how:float):
+	vp_max_time = how
+	vp_modify_crew_skill()
+
+func vp_skill_bias_UV(how:float):
+	vp_skill_bias = how
+	vp_modify_crew_skill()
+
+func vp_modify_crew_skill():
+	if vp_do_reduce_calc:
+		var education:float = 0.0
+		var experience:float = 0.0
+		for crew in CurrentGame.getCurrentlyActiveCrewNames():
+			var dta:Dictionary = CurrentGame.state.crew[crew]
+			if dta["occupation"] == "CREW_OCCUPATION_PILOT":
+				var ex:float = dta["experience"]
+				var tal:float = dta["talent"]
+				if ex > experience:
+					experience = ex
+				if tal > education:
+					education = tal
 		
-		var minimum = float(pilots_reduce_astro_calculations.get("minimum_astrogation_time",3))
-		var maximum = float(pilots_reduce_astro_calculations.get("maximum_astrogation_time",10))
-		var bias = float(pilots_reduce_astro_calculations.get("pilot_skill_bias",0.3))
-		var exmod = lerp(education,experience,bias)
-		var diff = (exmod * maximum)
-		var shrink = (maximum - diff)/maximum
-		var modifier = lerp(minimum,maximum,shrink)
-		trajectoryTime = clamp(modifier,minimum,maximum)
+		trajectoryTime = clamp(lerp(vp_min_time,vp_max_time,(vp_max_time - (lerp(education,experience,vp_skill_bias) * vp_max_time))/vp_max_time),vp_min_time,vp_max_time)

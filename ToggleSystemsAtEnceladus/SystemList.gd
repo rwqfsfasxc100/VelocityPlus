@@ -32,25 +32,24 @@
 
 extends "res://hud/SystemList.gd"
 
-var omsToggleCfg = "omstoggles.%s.%s"
-
-var pointersVP:HevLibPointers
+const omsToggleCfg = "omstoggles.%s.%s"
 
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_syslist_UV",self)
-	vp_syslist_UV()
+	var pointersVP:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP.__subscribe_to_setting_change("vp_syslist_UV",self,"VelocityPlus","VP_SHIPS","remember_toggled_systems")
+	pointersVP.__subscribe_to_setting_change("vp_enc_toggle_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	remember_toggled_systems = pointersVP.__get_value("VelocityPlus","VP_SHIPS","remember_toggled_systems",false)
+	toggle_systems_at_enceladus = pointersVP.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus",true)
 
-func vp_syslist_UV():
-	if pointersVP:
-		remember_toggled_systems = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","remember_toggled_systems")
-		toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+func vp_syslist_UV(how:bool):
+	remember_toggled_systems = how
 
-var toggle_systems_at_enceladus = false
-var remember_toggled_systems = false
+func vp_enc_toggle_UV(how:bool):
+	toggle_systems_at_enceladus = how
+
+var toggle_systems_at_enceladus:bool = true
+var remember_toggled_systems:bool = false
 func toggle(s, b):
 	.toggle(s, b)
 	if toggle_systems_at_enceladus and remember_toggled_systems:
-		var vname = s.ref.name
-		var sname = s.name
-		ship.setConfig(omsToggleCfg % [vname,sname],b.pressed)
+		ship.setConfig(omsToggleCfg % [s.ref.name,s.name],b.pressed)

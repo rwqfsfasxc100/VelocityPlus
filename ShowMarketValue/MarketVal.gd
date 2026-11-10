@@ -36,12 +36,10 @@ extends Label
 
 export (String) var format = "%s E$"
 
-var pointersVP:HevLibPointers
-
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_marketval_UV",self,"VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
-	mineral_market_show_total_value = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
+	var pointersVP:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP.__subscribe_to_setting_change("vp_marketval_UV",self,"VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
+	mineral_market_show_total_value = pointersVP.__get_value("VelocityPlus","VP_ENCELADUS","mineral_market_show_total_value")
 
 func vp_marketval_UV(how:bool):
 	mineral_market_show_total_value = how

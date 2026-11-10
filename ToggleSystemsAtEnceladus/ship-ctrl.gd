@@ -32,8 +32,6 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pointersVP_toggle_systems_at_enceladusprime:HevLibPointers
-
 func vp_enceladusprime_ship_toggles_UV(how:bool):
 	toggle_systems_at_enceladus = how
 
@@ -46,23 +44,19 @@ const omsToggleCfg = "omstoggles.%s.%s"
 func handleSystemToggles():
 	if not setup:
 		yield(self,"setup")
-	if not "omstoggles" in shipConfig:
-		shipConfig.merge({"omstoggles":{}})
-	var oms = shipConfig["omstoggles"]
-	var systems = getSystems()
-	if systems.keys().size() > 0:
-		for system in systems:
-			var sys = systems[system]
-			var toggleable = sys.togleable
-			var current = sys.name
-			if toggleable:
-				var cg = getConfig(omsToggleCfg % [system,current],true)
-				sys.ref.enabled = cg
+	if not "omstoggles" in shipConfig.keys():
+		shipConfig["omstoggles"] = {}
+	var systems:Dictionary = getSystems()
+	if systems:
+		for system in systems.keys():
+			var sys:Dictionary = systems[system]
+			if sys.togleable:
+				sys.ref.enabled = getConfig(omsToggleCfg % [system,sys.name],true)
 
 func _enter_tree():
-	pointersVP_toggle_systems_at_enceladusprime = ModLoader._savedObjects[0]
-	pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__subscribe_to_setting_change("vp_enceladusprime_ship_toggles_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
-	toggle_systems_at_enceladus = pointersVP_toggle_systems_at_enceladusprime.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	var pointersVP_toggle_systems_at_enceladusprime:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_toggle_systems_at_enceladusprime.__subscribe_to_setting_change("vp_enceladusprime_ship_toggles_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	toggle_systems_at_enceladus = pointersVP_toggle_systems_at_enceladusprime.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus",true)
 
 var vp_toggleequipmentpersisthandler_uinit : bool = false
 func _ready():
@@ -71,6 +65,3 @@ func _ready():
 	vp_toggleequipmentpersisthandler_uinit = true
 	if toggle_systems_at_enceladus:
 		handleSystemToggles()
-
-
-

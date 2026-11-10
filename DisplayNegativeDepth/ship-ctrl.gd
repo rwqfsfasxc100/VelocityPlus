@@ -40,7 +40,7 @@ func _enter_tree():
 
 func vp_show_negative_depth_UV():
 	if pointersVP_show_neg_depth:
-		show_neg_depth = pointersVP_show_neg_depth.ConfigDriver.__get_value("VelocityPlus","VP_RING","display_negative_depth")
+		show_neg_depth = pointersVP_show_neg_depth.ConfigDriver.__get_value("VelocityPlus","VP_RING","display_negative_depth",true)
 
 var show_neg_depth = false
 func sensorGet(sensor):

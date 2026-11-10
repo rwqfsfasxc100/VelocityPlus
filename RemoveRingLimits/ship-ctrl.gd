@@ -32,16 +32,28 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var pointersVP_remove_ring_limits:HevLibPointers
 func _enter_tree():
-	pointersVP_remove_ring_limits = ModLoader._savedObjects[0]
-	pointersVP_remove_ring_limits.ConfigDriver.__establish_connection("vp_remove_ring_limits_UV",self)
-	vp_remove_ring_limits_UV()
+	var pointersVP_remove_ring_limits:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_remove_ring_limits.__subscribe_to_setting_change("vp_update_wv",self,"VelocityPlus","VP_RING","remove_max_speed_limit")
+	pointersVP_remove_ring_limits.__subscribe_to_setting_change("vp_update_exit_left",self,"VelocityPlus","VP_RING","allow_exit_of_ring_to_the_left")
+	pointersVP_remove_ring_limits.__subscribe_to_setting_change("vp_update_exit_right",self,"VelocityPlus","VP_RING","allow_exit_of_ring_to_the_right")
+	var cfg:Dictionary = pointersVP_remove_ring_limits.__get_config("VelocityPlus").get("VP_RING",{})
+	vp_update_wv(cfg.get("remove_max_speed_limit",true))
+	vp_update_exit_left(cfg.get("allow_exit_of_ring_to_the_left",true))
+	vp_update_exit_right(cfg.get("allow_exit_of_ring_to_the_right",true))
 
-var vpconfig_ring_limits_container = {}
-func vp_remove_ring_limits_UV():
-	if pointersVP_remove_ring_limits:
-		vpconfig_ring_limits_container = pointersVP_remove_ring_limits.ConfigDriver.__get_config("VelocityPlus").get("VP_RING")
+var goLeft:bool = true
+var goRight:bool = true
+var goFast:bool = true
+
+func vp_update_wv(how:bool):
+	goFast = !how
+
+func vp_update_exit_left(how:bool):
+	goLeft = !how
+
+func vp_update_exit_right(how:bool):
+	goRight = !how
 
 func isInEscapeCondition():
 	if test:
@@ -55,13 +67,11 @@ func isInEscapeCondition():
 	if not isPlayerControlled():
 		return false
 	
-	
-	if CurrentGame.globalCoords(global_position).x < 0 and not vpconfig_ring_limits_container.get("allow_exit_of_ring_to_the_left",true):
+	if goLeft and CurrentGame.globalCoords(global_position).x < 0.0:
 		return true
-	if CurrentGame.globalCoords(global_position).x > 3.006e+07 and not vpconfig_ring_limits_container.get("allow_exit_of_ring_to_the_right",true):
+	if goRight and CurrentGame.globalCoords(global_position).x > 3.006e+07:
 		return true
-	if linear_velocity.length() > 2000 and not vpconfig_ring_limits_container.get("remove_max_speed_limit",true):
+	if goFast and linear_velocity.length() > 2000.0:
 		return true
-	
 	
 	return false

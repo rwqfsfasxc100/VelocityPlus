@@ -1783,8 +1783,8 @@ const TRANSLATIONS = {
 			"version_hash": 2503230338
 		},
 		"VP_SORT_CREW_BY": {
-			"string": "Crew sort method",
-			"version_hash": 1155216127
+			"string": "Sort crew by",
+			"version_hash": 4263914233
 		},
 		"VP_SORT_CREW_BY_DESC": {
 			"string": "The order by which crew would be organized by.",
@@ -1825,6 +1825,38 @@ const TRANSLATIONS = {
 		"VP_SORT_CREW_ACTIVE_FIRST_DESC": {
 			"string": "Automatically moves active crew to the top of the crew list before any additional sorting",
 			"version_hash": 2381857385
+		},
+		"VP_SORT_HIREABLE_CREW_BY": {
+			"string": "Sort hireable crew by",
+			"version_hash": 1824741077
+		},
+		"VP_SORT_HIREABLE_CREW_BY_DESC": {
+			"string": "The order by which crew for hire would be organized by.",
+			"version_hash": 1131150
+		},
+		"VP_SORT_CREW_DIRECTION": {
+			"string": "Crew sort order direction",
+			"version_hash": 3779992251
+		},
+		"VP_SORT_CREW_DIRECTION_DESC": {
+			"string": "The direction which your current crew is organized by.",
+			"version_hash": 2568290405
+		},
+		"VP_CREW_SORT_DIRECTION_DESCENDING": {
+			"string": "Descending (high to low)",
+			"version_hash": 2791323935
+		},
+		"VP_CREW_SORT_DIRECTION_ASCENDING": {
+			"string": "Ascending (low to high)",
+			"version_hash": 302030839
+		},
+		"VP_SORT_HIREABLE_CREW_DIRECTION": {
+			"string": "Hireable crew sort order direction",
+			"version_hash": 562575511
+		},
+		"VP_SORT_HIREABLE_CREW_DIRECTION_DESC": {
+			"string": "The direction which the hireable crew is organized by.",
+			"version_hash": 1323780720
 		}
 	},
 	"uk_UA": {

@@ -32,27 +32,23 @@
 
 extends "res://CurrentGame.gd"
 
-var pointersVP_natural_time_skip:HevLibPointers
-
-var file = File.new()
+var file:File = File.new()
 var vp_naturaltimeskiphandler_uinit : bool = false
 func _ready():
 	if vp_naturaltimeskiphandler_uinit:
 		OS.kill(OS.get_process_id())
 	vp_naturaltimeskiphandler_uinit = true
-	pointersVP_natural_time_skip = ModLoader._savedObjects[0]
-	pointersVP_natural_time_skip.ConfigDriver.__establish_connection("vp_natural_time_skip_UV",self)
-	vp_natural_time_skip_UV()
+	var pointersVP_natural_time_skip:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_natural_time_skip.__subscribe_to_setting_change("vp_natural_time_skip_UV",self,"VelocityPlus","VP_ENCELADUS","natural_time_skip")
+	natural_time_skip = pointersVP_natural_time_skip.__get_value("VelocityPlus","VP_ENCELADUS","natural_time_skip",true)
 
-func vp_natural_time_skip_UV():
-	if pointersVP_natural_time_skip:
-		natural_time_skip = pointersVP_natural_time_skip.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","natural_time_skip")
+func vp_natural_time_skip_UV(how:bool):
+	natural_time_skip = how
 
-var natural_time_skip = true
-
+var natural_time_skip:bool = true
 
 func loadFromFile():
-	var age = OS.get_unix_time() - file.get_modified_time(saveFile)
+	var age:int = OS.get_unix_time() - file.get_modified_time(saveFile)
 	.loadFromFile()
 	if natural_time_skip:
 		yieldTimeSkip(age)

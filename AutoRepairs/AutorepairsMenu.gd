@@ -32,24 +32,24 @@
 
 extends Popup
 
-export var enable_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/EnableAutorepair/CheckButton")
+export (NodePath) var enable_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/EnableAutorepair/CheckButton")
 onready var enable = get_node_or_null(enable_p)
-export var mode_button_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MethodPrio/OptionButton")
+export (NodePath) var mode_button_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MethodPrio/OptionButton")
 onready var mode_button = get_node_or_null(mode_button_p)
 
-export var minmoney_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/HSlider")
+export (NodePath) var minmoney_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/HSlider")
 onready var minmoney = get_node_or_null(minmoney_p)
 
-export var mininsurance_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/HSlider")
+export (NodePath) var mininsurance_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/HSlider")
 onready var mininsurance = get_node_or_null(mininsurance_p)
 
-export var maxrepair_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/HSlider")
+export (NodePath) var maxrepair_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxRepair/HSlider")
 onready var maxrepair = get_node_or_null(maxrepair_p)
 
-export var maxreplace_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/HSlider")
+export (NodePath) var maxreplace_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/HSlider")
 onready var maxreplace = get_node_or_null(maxreplace_p)
 
-export var target_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/HSlider")
+export (NodePath) var target_p = NodePath("PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/HSlider")
 onready var target = get_node_or_null(target_p)
 
 var pointersVP:HevLibPointers
@@ -63,31 +63,25 @@ func _enter_tree():
 	pointersVP.ConfigDriver.__establish_connection("vp_autorepairsmenu_VP",self)
 	vp_autorepairsmenu_VP()
 
-var config = {}
+var config:Dictionary = {}
 func _ready():
-	
-	
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE",0)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_ONLYREPAIR",1)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_ONLYREPLACE",2)
 	mode_button.add_item("VP_AUTOREPAIR_PRIORITY_MAXPROFIT",3)
-	
+
+enum{
+	VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE,
+	VP_AUTOREPAIR_PRIORITY_ONLYREPAIR,
+	VP_AUTOREPAIR_PRIORITY_ONLYREPLACE,
+	VP_AUTOREPAIR_PRIORITY_MAXPROFIT,
+}
 
 func _visibility_changed():
 	if is_visible_in_tree():
-		
-		
 		enable.pressed = config["VP_AUTOREPAIRS"]["automatic_repairs"]
 		
-		match config["VP_AUTOREPAIRS"]["method_priority"]:
-			"VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE":
-				mode_button.selected = 0
-			"VP_AUTOREPAIR_PRIORITY_ONLYREPAIR":
-				mode_button.selected = 1
-			"VP_AUTOREPAIR_PRIORITY_ONLYREPLACE":
-				mode_button.selected = 2
-			"VP_AUTOREPAIR_PRIORITY_MAXPROFIT":
-				mode_button.selected = 3
+		mode_button.selected = config["VP_AUTOREPAIRS"]["repair_method_priority"]
 		yield(get_tree(),"idle_frame")
 		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_money"],minmoney,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinMoney/Val",true)
 		set_slider_val(config["VP_AUTOREPAIRS"]["minimum_insurance"],mininsurance,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MinInsurance/Val",true)
@@ -95,7 +89,7 @@ func _visibility_changed():
 		set_slider_val(config["VP_AUTOREPAIRS"]["maximum_replace"],maxreplace,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/MaxReplace/Val",true)
 		set_slider_val(config["VP_AUTOREPAIRS"]["target_percent"],target,"PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/Target/Val",true)
 
-var code_changed = []
+var code_changed:Array = []
 
 func set_slider_val(val,s,v,code = false):
 	if code:
@@ -141,15 +135,7 @@ func enabled_toggle(button_pressed):
 
 
 func method_select(index):
-	match index:
-		0:
-			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE")
-		1:
-			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_ONLYREPAIR")
-		2:
-			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_ONLYREPLACE")
-		3:
-			pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","method_priority","VP_AUTOREPAIR_PRIORITY_MAXPROFIT")
+	pointersVP.ConfigDriver.__store_value("VelocityPlus","VP_AUTOREPAIRS","repair_method_priority",index)
 
 
 func minmoney_changed(value):

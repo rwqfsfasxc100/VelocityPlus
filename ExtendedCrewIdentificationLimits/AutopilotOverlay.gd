@@ -32,27 +32,19 @@
 
 extends "res://hud/AutopilotOverlay.gd"
 
-var pointersVP_crew_id_limits:HevLibPointers
-
-var mineral_marker_limit_multiplier = true
-var tactical_marker_limit_multiplier = true
-
-var base_mineral_id_limits = 0
-var base_tactical_id_limits = 0
+var base_mineral_id_limits:int = 0
+var base_tactical_id_limits:int = 0
 func _enter_tree():
 	base_mineral_id_limits = mineralMarkerMax
 	base_tactical_id_limits = tacticalMarkerMax
-	pointersVP_crew_id_limits = ModLoader._savedObjects[0]
-	pointersVP_crew_id_limits.ConfigDriver.__establish_connection("vp_crew_id_overrides_UV",self)
-	vp_crew_id_overrides_UV()
+	var pointersVP_crew_id_limits:HevLibPointers = ModLoader._savedObjects[0]
+	pointersVP_crew_id_limits.ConfigDriver.__subscribe_to_setting_change("vp_astrogator_id_overrides_UV",self,"VelocityPlus","VP_CREW","mineral_marker_limit_multiplier")
+	pointersVP_crew_id_limits.ConfigDriver.__subscribe_to_setting_change("vp_geologist_id_overrides_UV",self,"VelocityPlus","VP_CREW","tactical_marker_limit_multiplier")
+	vp_geologist_id_overrides_UV(pointersVP_crew_id_limits.ConfigDriver.__get_value("VelocityPlus","VP_CREW","mineral_marker_limit_multiplier",true))
+	vp_astrogator_id_overrides_UV(pointersVP_crew_id_limits.ConfigDriver.__get_value("VelocityPlus","VP_CREW","tactical_marker_limit_multiplier",true))
 
-func vp_crew_id_overrides_UV():
-	if pointersVP_crew_id_limits:
-		mineral_marker_limit_multiplier = pointersVP_crew_id_limits.ConfigDriver.__get_value("VelocityPlus","VP_CREW","mineral_marker_limit_multiplier")
-		tactical_marker_limit_multiplier = pointersVP_crew_id_limits.ConfigDriver.__get_value("VelocityPlus","VP_CREW","tactical_marker_limit_multiplier")
-	if mineral_marker_limit_multiplier:
-		mineralMarkerMax = base_mineral_id_limits * 5
-	if tactical_marker_limit_multiplier:
-		tacticalMarkerMax = base_tactical_id_limits * 5
+func vp_astrogator_id_overrides_UV(how:bool):
+	tacticalMarkerMax = base_tactical_id_limits * (5 if how else 1)
 
-
+func vp_geologist_id_overrides_UV(how:bool):
+	mineralMarkerMax = base_mineral_id_limits * (5 if how else 1)

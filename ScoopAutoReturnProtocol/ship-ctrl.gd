@@ -32,15 +32,14 @@
 
 extends "res://ships/ship-ctrl.gd"
 
-var scoop_autoreturn_protocol_config = "VP_RETURN_TO_ENCELADUS"
+var scoop_autoreturn_protocol_config:String = "VP_RETURN_TO_ENCELADUS"
 
-var pointersVP_scoop_autoreturn_protocol:HevLibPointers
 func _enter_tree():
-	pointersVP_scoop_autoreturn_protocol = ModLoader._savedObjects[0]
-	pointersVP_scoop_autoreturn_protocol.ConfigDriver.__subscribe_to_setting_change("vp_scoop_autoreturn_config_VP",self,"VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
-	scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+	var pointersVP_scoop_autoreturn_protocol:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_scoop_autoreturn_protocol.__subscribe_to_setting_change("vp_scoop_autoreturn_config_VP",self,"VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override")
+	scoop_autoreturn_protocol_config = pointersVP_scoop_autoreturn_protocol.__get_value("VelocityPlus","VP_SHIPS","scoop_automatic_return_protocol_override","VP_RETURN_TO_ENCELADUS")
 
-func vp_scoop_autoreturn_config_VP(how:bool):
+func vp_scoop_autoreturn_config_VP(how:String):
 	scoop_autoreturn_protocol_config = how
 
 func aiControl(delta):

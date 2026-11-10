@@ -32,29 +32,22 @@
 
 extends "res://weapons/emp.gd"
 
-var pointersVPEMP:HevLibPointers
-
-var dustScene := load("res://VelocityPlus/MicrowavesMeltOre/drone-dust-persistent.tscn")
-
 func _enter_tree():
-	pointersVPEMP = ModLoader._savedObjects[0]
-	pointersVPEMP.ConfigDriver.__establish_connection("vp_microwavemelting_UV",self)
-	vp_microwavemelting_UV()
+	var pointersVPEMP:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVPEMP.__subscribe_to_setting_change("vp_microwavemelting_UV",self,"VelocityPlus","VP_SHIPS","microwaves_melt_ore")
+	allowed_to = pointersVPEMP.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore",true)
 
-func vp_microwavemelting_UV():
-	if pointersVPEMP:
-		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","microwaves_melt_ore")
+func vp_microwavemelting_UV(how:bool):
+	allowed_to = how
 
-var visnotifier
-var emitter
+var visnotifier = VisibilityNotifier2D.new()
+var emitter:Particles2D = load("res://VelocityPlus/MicrowavesMeltOre/drone-dust-persistent.tscn").instance()
 var vp_mikesmeltoreprocessor_uinit : bool = false
 func _ready():
 	if vp_mikesmeltoreprocessor_uinit:
 		OS.kill(OS.get_process_id())
 	vp_mikesmeltoreprocessor_uinit = true
-	emitter = dustScene.instance()
 	add_child(emitter)
-	visnotifier = VisibilityNotifier2D.new()
 	visnotifier.rect = Rect2(-20,-20,40,40)
 	visnotifier.connect("screen_entered",self,"sc_entered")
 	visnotifier.connect("screen_exited",self,"sc_exited")
@@ -71,64 +64,36 @@ func pt_entered():
 func pt_exited():
 	particles_on_screen = false
 
-var allowed_to = true
-var legacy_multimineral_handle = false
+var allowed_to:float = true
 
-var mike_burnoff_speed_factor = 2000
+var mike_burnoff_speed_factor:float = 2000.0
 
-var do_emit_dust = false
+var do_emit_dust:bool = false
 var oreCollider = null
 
-var vis_on_screen = false
-var particles_on_screen = false
+var vis_on_screen:bool = false
+var particles_on_screen:bool = false
 
 func _physics_process(delta):
 	if firepower > 0 and allowed_to:
-		var energyRequired = delta * firepower * getPowerDraw() * 1000
-		var energy = ship.drawEnergy(energyRequired)
+		var powd:float = getPowerDraw()
+		var energyRequired:float = delta * firepower * powd * 1000
+		var energy:float = ship.drawEnergy(energyRequired)
 		if randf() < chokeCache:
-			energy = 0
-		if energy >= energyRequired - margin:
-			var space_state = get_world_2d().direct_space_state
-			var ray = Vector2(0, - maxDistance).rotated((randf() - 0.5) * getSpread())
-			var hitpoint = space_state.intersect_ray(global_position, global_position + ray.rotated(global_rotation), ship.physicsExclude, 35)
+			energy = 0.0
+		if energy >= (energyRequired - margin):
+			var hitpoint = get_world_2d().direct_space_state.intersect_ray(global_position, global_position + Vector2(0, - maxDistance).rotated((randf() - 0.5) * getSpread()).rotated(global_rotation), ship.physicsExclude, 35)
 			
 			if hitpoint and Tool.claim(hitpoint.collider):
 				var p = hitpoint.collider
 				if "fillerContent" in p and "mineralContent" in p:
-					var processing = false
-					if legacy_multimineral_handle and "comp_val" in p:
-						if p.fillerContent > 0.05 and p.mass > 0.02:
-							var pv = getPowerDraw()
-							var cv = p.comp_val
-							var filler = p.fillerContent * p.mass
-							var mc = (cv - filler) / cv
-							var mm = p.mass * mc
-							var proc = min(filler, delta * pv / mike_burnoff_speed_factor)
-							var nm = max(mm, p.mass - proc)
-							
-							var rpm = p.mass - nm
-							if nm > 0:
-								p.mass = nm
-								mc = mm / nm
-							p.fillerContent = 1 - mc
-							processing = true
-					else:
-						if p.fillerContent > 0.05 and p.mass > 0.02:
-							var pv = getPowerDraw()
-							var filler = p.fillerContent * p.mass
-							var mm = p.mass * p.mineralContent
-							var proc = min(filler, delta * pv / mike_burnoff_speed_factor)
-							var nm = max(mm, p.mass - proc)
-							
-							var rpm = p.mass - nm
-							if nm > 0:
-								p.mass = nm
-								p.mineralContent = mm / nm
-							p.fillerContent = 1 - p.mineralContent
-							processing = true
-					
-					if processing:
+					if p.fillerContent > 0.05 and p.mass > 0.02:
+						var mm:float = p.mass * p.mineralContent
+						var nm:float = max(mm, p.mass - min(p.fillerContent * p.mass, delta * powd / mike_burnoff_speed_factor))
+						if nm > 0:
+							p.mass = nm
+							p.mineralContent = mm / nm
+						p.fillerContent = 1 - p.mineralContent
 						var colliderBox = hitpoint.collider.get_node_or_null("Collision")
 						if colliderBox:
 							oreCollider = colliderBox
@@ -148,7 +113,7 @@ func _physics_process(delta):
 func _process(delta):
 	if vis_on_screen or particles_on_screen:
 		if Tool.claim(oreCollider):
-			var emissionRadius = oreCollider.shape.radius * lerp(oreCollider.scale.x,oreCollider.scale.y,0.5)
+			var emissionRadius:float = oreCollider.shape.radius * lerp(oreCollider.scale.x,oreCollider.scale.y,0.5)
 			emitter.process_material.emission_sphere_radius = emissionRadius
 			emitter.global_position = oreCollider.global_position
 			emitter.emit(do_emit_dust)

@@ -35,17 +35,13 @@ extends "res://enceladus/Upgrades.gd"
 var disable_when_false:PoolStringArray = PoolStringArray(["damageModel"])
 var disable_when_true:PoolStringArray = PoolStringArray()
 
-
-var pointersVP:HevLibPointers
-
-
 func vp_upgrades_UV(how:bool):
 	cfg_show_equipment_reliability = how
 
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_upgrades_UV",self,"VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
-	cfg_show_equipment_reliability = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability",true)
+	var pointersVP:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP.__subscribe_to_setting_change("vp_upgrades_UV",self,"VelocityPlus","VP_ENCELADUS","show_equipment_reliability")
+	cfg_show_equipment_reliability = pointersVP.__get_value("VelocityPlus","VP_ENCELADUS","show_equipment_reliability",true)
 
 var grace_item
 func preview(test, slot, system, item):
@@ -79,13 +75,14 @@ func showReliabilityDisplay():
 			return
 		var itemContainer:Node = grace_item
 		var system:String = itemContainer.system
-		var n:Node = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.system, true, false)
+		var vp:Viewport = $VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport
+		var n:Node = vp.find_node("*_" + itemContainer.system, true, false)
 		if n == null and "nameOverride" in itemContainer and itemContainer.nameOverride != "":
-			n = get_node("VB/WindowMargin/TabHintContainer/Window/UPGRADE_SIMULATION/VP/Contain1/Viewport").find_node("*_" + itemContainer.nameOverride, true, false)
+			n = vp.find_node("*_" + itemContainer.nameOverride, true, false)
 		if n == null or n is InstancePlaceholder:
 			mtbf_label.visible = false
 			return
-		grace_item = null  # OK, it's instantiated.
+		grace_item = null
 		
 		
 		var enabled:bool = true

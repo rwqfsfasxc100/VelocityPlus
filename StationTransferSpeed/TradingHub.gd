@@ -32,18 +32,15 @@
 
 extends "res://story/habitat/TradingHub.gd"
 
-var base_transfer_speed:float = 0
+var base_transfer_speed:float = 0.0
 
 var transfer_speed_multi:float = 1.0
-var pointersVP_base_transfer_speed:HevLibPointers
+
 func _enter_tree():
 	base_transfer_speed = tradePerSecond
-	pointersVP_base_transfer_speed = ModLoader._savedObjects[0]
-	pointersVP_base_transfer_speed.ConfigDriver.__establish_connection("vp_station_trade_transfer_speed_UV",self)
-	vp_station_trade_transfer_speed_UV()
+	var pointersVP_base_transfer_speed:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_base_transfer_speed.__establish_connection("vp_station_trade_transfer_speed_UV",self)
+	vp_station_trade_transfer_speed_UV(pointersVP_base_transfer_speed.__get_value("VelocityPlus","VP_SHIPS","station_trade_transfer_speed",1.0))
 
-func vp_station_trade_transfer_speed_UV():
-	if pointersVP_base_transfer_speed:
-		transfer_speed_multi = pointersVP_base_transfer_speed.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","station_trade_transfer_speed")
-	else: transfer_speed_multi = 1.0
-	tradePerSecond = base_transfer_speed * transfer_speed_multi
+func vp_station_trade_transfer_speed_UV(how:float):
+	tradePerSecond = base_transfer_speed * how

@@ -1,3 +1,15 @@
+[1.8.1]
+
+1=* Added ability to change the sorting order when sorting crew.
+1.1=* Defaults to descending.
+2=* Added options to sort the hireable crew list.
+2.1=* Compared to regular crew sort, is organized by Price -> Stats -> Occupation, and is listed ascending.
+3=* Heavily optimized the loading of most scripts.
+3.1=* Config updates are now all handled via subscriptions.
+3.2=* Removed unnecessary references to the pointer script.
+3.3=* Now only fetches the ConfigDriver class when loading to speed up connections.
+4=* Increased minimum HevLib version to 1.17.8
+
 [1.8.0]
 
 1=* Added crew sorting via two options

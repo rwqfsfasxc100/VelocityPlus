@@ -34,32 +34,27 @@ extends Node
 var ship
 var thrusterObject
 
-var pointers:HevLibPointers
+var pointers:HevLibPointers._ConfigDriver
 
 func _init(p,s,o):
 	ship = s
 	thrusterObject = o
 	pointers = p
-	pointers.ConfigDriver.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
-	pointers.ConfigDriver.__subscribe_to_setting_change("a2",self,"VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
-	vp_thrusterInterrupt_UV()
+	pointers.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
+	pointers.__subscribe_to_setting_change("a2",self,"VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
+	a1(pointers.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature",false))
+	a2(pointers.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal",false))
 
-func a1(how):
+func a1(how:bool):
 	adjust_thrust_to_temperature = how
-func a2(how):
+func a2(how:bool):
 	adjust_thrust_nullify_thermal = how
-
-func vp_thrusterInterrupt_UV():
-	if pointers:
-		adjust_thrust_to_temperature = pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
-		adjust_thrust_nullify_thermal = pointers.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_nullify_thermal")
 
 var adjust_thrust_to_temperature:bool = false
 var adjust_thrust_nullify_thermal:bool = false
 
-
-var deltaTime = 0.0
-func _physics_process(delta):
+var deltaTime:float = 0.0
+func _physics_process(delta:float):
 	if adjust_thrust_to_temperature and adjust_thrust_nullify_thermal:
 		deltaTime = delta
 
@@ -69,10 +64,8 @@ func drawThermal(how,what):
 		return ship.drawThermal(how * (thrusterObject.avgTarget / float(thrusterObject.temp)),what)
 	return ship.drawThermal(how,what)
 
-
 func sensorGet(sensor):
 	return ship.sensorGet(sensor)
-
 
 var ageWithSeed = 0 setget _setAgeWithSeed , _getAgeWithSeed
 var dummy = false setget _setDummy , _getDummy

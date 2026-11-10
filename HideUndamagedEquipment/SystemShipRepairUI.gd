@@ -32,29 +32,22 @@
 
 extends "res://enceladus/SystemShipRepairUI.gd"
 
-var allow_hide = true
-
-var pointersVP:HevLibPointers
+var hide_unrepairable_equipment:bool = true
+var allow_hide:bool = true
 
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_ssru_UV",self)
-	vp_ssru_UV()
+	var pointersVP:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP.__subscribe_to_setting_change("vp_ssru_UV",self,"VelocityPlus","VP_ENCELADUS","hide_unrepairable_equipment")
+	hide_unrepairable_equipment = pointersVP.__get_value("VelocityPlus","VP_ENCELADUS","hide_unrepairable_equipment",true)
 
-func vp_ssru_UV():
-	if pointersVP:
-		hide_unrepairable_equipment = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","hide_unrepairable_equipment")
+func vp_ssru_UV(how:bool):
+	hide_unrepairable_equipment = how
 
-
-var hide_unrepairable_equipment = true
 func updateStatuses():
 	.updateStatuses()
 	if hide_unrepairable_equipment and allow_hide:
-		var was_visible = visible
-		if system.status >= 99.5:
-			visible = false
-		else:
-			visible = true
+		var was_visible:bool = visible
+		visible = system.status < 99.5
 		if was_visible != visible:
 			handleFocuses()
 

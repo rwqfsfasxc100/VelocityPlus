@@ -32,14 +32,14 @@
 
 extends VBoxContainer
 
-var tuningItem:String
+var tuningItem:String = ""
 var tune:bool = true
 
 signal value_changed(to)
 
 func _ready():
 	$HBoxContainer / Name.text = tuningItem
-	var cb = $HBoxContainer / Value
+	var cb:Button = $HBoxContainer / Value
 	cb.pressed = tune
 	changed(tune)
 	cb.connect("focus_entered", self, "_focus")

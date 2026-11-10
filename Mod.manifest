@@ -11,7 +11,7 @@ credits=PoolStringArray( "VP_CREDITS_CONTRIBUTORS_HEADER", "VP_CREDITS_CONTRIBUT
 
 version_major=1
 version_minor=8
-version_bugfix=0
+version_bugfix=1
 
 [tags]
 
@@ -144,6 +144,15 @@ VP_CREW={
 "name": "VP_SORT_CREW_ACTIVE_FIRST",
 "type": "bool"
 },
+"crew_sort_direction": {
+"default": 0,
+"description": "VP_SORT_CREW_DIRECTION_DESC",
+"display_order_position": 14,
+"name": "VP_SORT_CREW_DIRECTION",
+"options": [ "VP_CREW_SORT_DIRECTION_DESCENDING", "VP_CREW_SORT_DIRECTION_ASCENDING" ],
+"store_method": "int",
+"type": "optionbutton"
+},
 "crew_sort_method": {
 "default": 4,
 "description": "VP_SORT_CREW_BY_DESC",
@@ -173,6 +182,24 @@ VP_CREW={
 "display_order_position": 0,
 "name": "VP_HIDE_CREW_EPRIME",
 "type": "bool"
+},
+"hire_crew_sort_direction": {
+"default": 1,
+"description": "VP_SORT_HIREABLE_CREW_DIRECTION_DESC",
+"display_order_position": 16,
+"name": "VP_SORT_HIREABLE_CREW_DIRECTION",
+"options": [ "VP_CREW_SORT_DIRECTION_DESCENDING", "VP_CREW_SORT_DIRECTION_ASCENDING" ],
+"store_method": "int",
+"type": "optionbutton"
+},
+"hire_crew_sort_method": {
+"default": 2,
+"description": "VP_SORT_HIREABLE_CREW_BY_DESC",
+"display_order_position": 15,
+"name": "VP_SORT_HIREABLE_CREW_BY",
+"options": [ "VP_SORT_CREW_NONE", "VP_SORT_CREW_PRICE_OCCUPATION_STATS", "VP_SORT_CREW_PRICE_STATS_OCCUPATION", "VP_SORT_CREW_STATS_PRICE_OCCUPATION", "VP_SORT_CREW_STATS_OCCUPATION_PRICE", "VP_SORT_CREW_OCCUPATION_STATS_PRICE", "VP_SORT_CREW_OCCUPATION_PRICE_STATS" ],
+"store_method": "int",
+"type": "optionbutton"
 },
 "maximum_astrogation_time": {
 "default": 10.0,
@@ -329,6 +356,16 @@ VP_SHIPS={
 "name": "VP_OVERRIDE_TURRET_AUTOFIRE",
 "type": "bool"
 },
+"override_turret_mode": {
+"default": 1,
+"description": "VP_TURRET_OVERRIDE_MODE_DESC",
+"display_order_position": 9,
+"name": "VP_TURRET_OVERRIDE_MODE",
+"options": [ "VP_TURRET_OVERRIDE_NOFIRE", "VP_TURRET_OVERRIDE_FIRE" ],
+"requires_bools": [ "VelocityPlus/VP_SHIPS/override_turret_autofire" ],
+"store_method": "int",
+"type": "optionbutton"
+},
 "remember_toggled_systems": {
 "default": false,
 "description": "VP_REMEMBER_TOGGLED_SYSTEMS_DESC",
@@ -363,16 +400,6 @@ VP_SHIPS={
 "display_order_position": 6,
 "name": "VP_TOGGLE_SYSTEMS_AT_ENCELADUS",
 "type": "bool"
-},
-"turret_override_mode": {
-"default": "VP_TURRET_OVERRIDE_NOFIRE",
-"description": "VP_TURRET_OVERRIDE_MODE_DESC",
-"display_order_position": 9,
-"name": "VP_TURRET_OVERRIDE_MODE",
-"options": [ "VP_TURRET_OVERRIDE_NOFIRE", "VP_TURRET_OVERRIDE_FIRE" ],
-"requires_bools": [ "VelocityPlus/VP_SHIPS/override_turret_autofire" ],
-"store_method": "string",
-"type": "optionbutton"
 }
 }
 VP_RING={
@@ -501,15 +528,6 @@ VP_AUTOREPAIRS={
 "style": "slider",
 "type": "int"
 },
-"method_priority": {
-"default": "VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE",
-"description": "VP_AUTOREPAIR_PRIORITY_DESC",
-"display_order_position": 1,
-"name": "VP_AUTOREPAIR_PRIORITY",
-"options": [ "VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE", "VP_AUTOREPAIR_PRIORITY_ONLYREPAIR", "VP_AUTOREPAIR_PRIORITY_ONLYREPLACE", "VP_AUTOREPAIR_PRIORITY_MAXPROFIT" ],
-"store_method": "string",
-"type": "optionbutton"
-},
 "minimum_insurance": {
 "default": 0.0,
 "description": "VP_AUTOREPAIR_MINIMUM_INSURANCE_DESC",
@@ -531,6 +549,15 @@ VP_AUTOREPAIRS={
 "style": "slider",
 "type": "int"
 },
+"repair_method_priority": {
+"default": 0,
+"description": "VP_AUTOREPAIR_PRIORITY_DESC",
+"display_order_position": 1,
+"name": "VP_AUTOREPAIR_PRIORITY",
+"options": [ "VP_AUTOREPAIR_PRIORITY_COSTEFFECTIVE", "VP_AUTOREPAIR_PRIORITY_ONLYREPAIR", "VP_AUTOREPAIR_PRIORITY_ONLYREPLACE", "VP_AUTOREPAIR_PRIORITY_MAXPROFIT" ],
+"store_method": "int",
+"type": "optionbutton"
+},
 "target_percent": {
 "default": 70.0,
 "description": "VP_AUTOREPAIRS_REPAIR_TARGET_PERCENTAGE_DESC",
@@ -549,7 +576,7 @@ VP_AUTOREPAIRS={
 manifest_version=2.2
 dependancy_mod_ids=[ {
 "blocking": true,
-"minimum_version": [ 1, 15, 49 ],
+"minimum_version": [ 1, 17, 8 ],
 "mod_id": "hev.LIBRARY"
 } ]
 conflicting_mod_ids=[ "hev.NoHudEmp", "res://AcheetaDeez.ModMain.gd", "res://AchieveDeez/ModMain.gd", "res://MIsForMPU/ModMain.gd", "res://ShowReliability/ModMain.gd", "res://ARMFocus/ModMain.gd", "res://rmIdLim/ModMain.gd", "res://MaximumSpeed/ModMain.gd", "hev.HudHider", "hev.RingActivity", "hev.NoMoreCrew", "hev.RemoveLIMITS", "hev.OCPVoyagerFix", "hev.NoSimHex", "res://DiveClock/ModMain.gd" ]

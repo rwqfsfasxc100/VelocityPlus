@@ -34,23 +34,26 @@ extends Button
 # Fixes issue no. 5340
 # https://git.kodera.pl/games/delta-v/-/issues/5340
 
-var pointersVP:HevLibPointers
-
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_replacetooltip_UV",self)
-	vp_replacetooltip_UV()
+	var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_replacetooltip_UV",self,"VelocityPlus","VP_ENCELADUS","extra_tooltips")
+	showVPToolTips = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","extra_tooltips",true)
 
-func vp_replacetooltip_UV():
-	if pointersVP:
-		showVPToolTips = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","extra_tooltips")
+func vp_replacetooltip_UV(how:bool):
+	showVPToolTips = how
 
-var showVPToolTips = true
-func _process(delta):
-	if showVPToolTips:
+var showVPToolTips:bool = true
+
+var showVPToolTipsOld:bool = true
+var oldDisabled:bool = false
+
+func _physics_process(delta: float) -> void:
+	if disabled != oldDisabled and showVPToolTips:
 		if disabled:
 			hint_tooltip = "DKB_CANNOT_REPLACE"
 		else:
 			hint_tooltip = "DKB_REPLACE_EQUIPMENT"
-	else:
+	if showVPToolTips != showVPToolTipsOld and not showVPToolTips:
 		hint_tooltip = ""
+	oldDisabled = disabled
+	showVPToolTipsOld = showVPToolTips

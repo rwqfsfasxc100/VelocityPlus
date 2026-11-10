@@ -32,15 +32,6 @@
 
 extends "res://sfx/thruster.gd"
 
-var VP_pointers:HevLibPointers
-
-
-func vp_thrusterTempModeration_UV():
-	if VP_pointers:
-		var config:Dictionary = VP_pointers.ConfigDriver.__get_config("VelocityPlus").get("VP_SHIPS",{})
-		adjust_thrust_to_temperature = config.get("adjust_thrust_to_temperature",false)
-		adjust_thrust_multi = config.get("adjust_thrust_multi",1.0)
-
 var adjust_thrust_to_temperature:bool = false
 var adjust_thrust_multi:float = 1.0
 
@@ -59,10 +50,11 @@ func _ready():
 		OS.kill(OS.get_process_id())
 	vp_tempbasedthrusthandler_uinit = true
 	if ship.isPlayerControlled() and ship.isRealShip():
-		VP_pointers = ModLoader._savedObjects[0]
-		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
-		VP_pointers.ConfigDriver.__subscribe_to_setting_change("a3",self,"VelocityPlus","VP_SHIPS","adjust_thrust_multi")
-		vp_thrusterTempModeration_UV()
+		var VP_pointers:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+		VP_pointers.__subscribe_to_setting_change("a1",self,"VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature")
+		VP_pointers.__subscribe_to_setting_change("a3",self,"VelocityPlus","VP_SHIPS","adjust_thrust_multi")
+		a1(VP_pointers.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_to_temperature",false))
+		a3(VP_pointers.__get_value("VelocityPlus","VP_SHIPS","adjust_thrust_multi",1.0))
 		yield(CurrentGame.get_tree(),"idle_frame")
 		interruptObject = load("res://VelocityPlus/TemperatureBasedThrust/ThrusterShipInterrupt.gd").new(VP_pointers,ship,self)
 		ship = interruptObject

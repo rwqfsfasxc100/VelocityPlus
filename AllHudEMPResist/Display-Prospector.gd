@@ -32,20 +32,15 @@
 
 extends "res://hud/Display-Prospector.gd"
 
-var alwaysOn_default = false
+export (bool) var alwaysOn = false
 
-export var alwaysOn = false
+var alwaysOn_default:bool = false
 
-var pointersVP_always_emp_huds:HevLibPointers
 func _enter_tree():
 	alwaysOn_default = alwaysOn
-	pointersVP_always_emp_huds = ModLoader._savedObjects[0]
-	pointersVP_always_emp_huds.ConfigDriver.__establish_connection("vp_always_emp_huds_UV",self)
-	vp_always_emp_huds_UV()
+	var pointersVP_always_emp_huds:HevLibPointers = ModLoader._savedObjects[0]
+	pointersVP_always_emp_huds.ConfigDriver.__subscribe_to_setting_change("vp_always_emp_huds_UV",self,"VelocityPlus","VP_SHIPS","always_emp_resistant_HUD")
+	vp_always_emp_huds_UV(pointersVP_always_emp_huds.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","always_emp_resistant_HUD",false))
 
-func vp_always_emp_huds_UV():
-	if pointersVP_always_emp_huds:
-		if pointersVP_always_emp_huds.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","always_emp_resistant_HUD"):
-			alwaysOn = true
-		else:
-			alwaysOn = alwaysOn_default
+func vp_always_emp_huds_UV(how:bool):
+	alwaysOn = true if how else alwaysOn_default

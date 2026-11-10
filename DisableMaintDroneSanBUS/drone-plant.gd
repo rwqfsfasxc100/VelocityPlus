@@ -32,23 +32,16 @@
 
 extends "res://weapons/drone-plant.gd"
 
-var pointersVPEMP:HevLibPointers
+var baseSanbus:bool = true
 
-var baseSanbus = true
-
-var allowed_to = true
+var allowed_to:bool = true
 
 func _enter_tree():
 	if droneFunction == "repair":
-		pointersVPEMP = ModLoader._savedObjects[0]
-		pointersVPEMP.ConfigDriver.__establish_connection("vp_repairnosanbus_UV",self)
-		vp_repairnosanbus_UV()
-
-func vp_repairnosanbus_UV():
-	if pointersVPEMP and droneFunction == "repair":
 		baseSanbus = sanbus
-		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","disable_maint_sanbus")
-		if allowed_to:
-			sanbus = false
-		else:
-			sanbus = baseSanbus
+		var pointersVPEMP:HevLibPointers = ModLoader._savedObjects[0]
+		pointersVPEMP.ConfigDriver.__subscribe_to_setting_change("vp_repairnosanbus_UV",self,"VelocityPlus","VP_SHIPS","disable_maint_sanbus")
+		allowed_to = pointersVPEMP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","disable_maint_sanbus",false)
+
+func vp_repairnosanbus_UV(how:bool):
+	sanbus = false if how else baseSanbus

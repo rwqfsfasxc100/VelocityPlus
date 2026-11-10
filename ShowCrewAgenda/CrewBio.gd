@@ -34,16 +34,16 @@ extends "res://enceladus/CrewBio.gd"
 
 var vp_agendalabel:bool = false
 
-var pointersVP_crew_agenda_labels:HevLibPointers
 func _enter_tree():
-	pointersVP_crew_agenda_labels = ModLoader._savedObjects[0]
-	pointersVP_crew_agenda_labels.ConfigDriver.__subscribe_to_setting_change("vp_agenda_labels_at_enceladus_UV",self,"VelocityPlus","VP_CREW","show_crew_agenda_at_enceladus")
-	vp_agendalabel = pointersVP_crew_agenda_labels.ConfigDriver.__get_value("VelocityPlus","VP_CREW","show_crew_agenda_at_enceladus")
+	var pointersVP_crew_agenda_labels:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_crew_agenda_labels.__subscribe_to_setting_change("vp_agenda_labels_at_enceladus_UV",self,"VelocityPlus","VP_CREW","show_crew_agenda_at_enceladus")
+	vp_agendalabel = pointersVP_crew_agenda_labels.__get_value("VelocityPlus","VP_CREW","show_crew_agenda_at_enceladus",false)
 
 func vp_agenda_labels_at_enceladus_UV(how:bool):
 	vp_agendalabel = how
 
 func fillData():
+	.fillData()
 	var vp_agenda_header:Node = $Margin/HBoxContainer/VBoxContainer/HBoxContainer/GridContainer/AgendaLabel
 	var vp_agenda_label:Node = $Margin/HBoxContainer/VBoxContainer/HBoxContainer/GridContainer/Agenda
 	vp_agenda_header.visible = false

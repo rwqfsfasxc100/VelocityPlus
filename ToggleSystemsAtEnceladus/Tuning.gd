@@ -31,17 +31,13 @@
 # [/license]
 
 extends "res://enceladus/Tuning.gd"
-
-var pointersVP:HevLibPointers
-
-
 func vp_tuning_UV(how:bool):
 	toggle_systems_at_enceladus = how
 
-var toggle_systems_at_enceladus:bool = false
+var toggle_systems_at_enceladus:bool = true
 const omsToggleCfg = "omstoggles.%s.%s"
-onready var systemLabel = load("res://VelocityPlus/ToggleSystemsAtEnceladus/EnabledSystem.tscn")
-onready var systemTitle = load("res://VelocityPlus/ToggleSystemsAtEnceladus/EnabledItems.tscn")
+onready var systemLabel:PackedScene = load("res://VelocityPlus/ToggleSystemsAtEnceladus/EnabledSystem.tscn")
+onready var systemTitle:PackedScene = load("res://VelocityPlus/ToggleSystemsAtEnceladus/EnabledItems.tscn")
 
 func fillTuneableSystems():
 	.fillTuneableSystems()
@@ -50,21 +46,20 @@ func fillTuneableSystems():
 		if Tool.claim(ship):
 			if not ship.setup:
 				yield(ship,"setup")
-			var systems = ship.getSystems()
-			if not "omstoggles" in ship.shipConfig:
-				ship.shipConfig.merge({"omstoggles":{}})
-			var oms = ship.shipConfig["omstoggles"]
+			var systems:Dictionary = ship.getSystems()
+			if not "omstoggles" in ship.shipConfig.keys():
+				ship.shipConfig["omstoggles"] = {}
 			node.add_child(systemTitle.instance())
-			for system in systems:
-				var sys = systems[system]
-				var vname = sys.name
+			for system in systems.keys():
+				var sys:Dictionary = systems[system]
+				var vname:String = sys.name
 				if sys.togleable:
 					var pos = null
 					if "position" in sys.ref:
 						pos = ship.get_path_to(sys.ref)
-					var current = ship.getConfig(omsToggleCfg % [system,vname],true)
+					var current:bool = ship.getConfig(omsToggleCfg % [system,vname],true)
 					ship.setConfig(omsToggleCfg % [system,vname],current)
-					var label = systemLabel.instance()
+					var label:VBoxContainer = systemLabel.instance()
 					label.tuningItem = vname
 					label.tune = current
 					label.connect("value_changed",self,"handleOMSToggle",[system,vname,pos])
@@ -76,7 +71,7 @@ func fillTuneableSystems():
 func handleOMSToggle(how,opt,system,pos):
 	descriptionLabel.text = ""
 	var ps = CurrentGame.getPlayerShip()
-	var current = ps.getConfig(omsToggleCfg % [opt,system],true)
+	var current:bool = ps.getConfig(omsToggleCfg % [opt,system],true)
 	ps.setConfig(omsToggleCfg % [opt,system],how)
 	testProtocol = "hide"
 	ship.forceHud = false
@@ -100,9 +95,9 @@ func handleOMSToggle(how,opt,system,pos):
 onready var tex_rect = $VB/WindowMargin/Window/VP/TextureRect
 
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_tuning_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
-	toggle_systems_at_enceladus = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	var pointersVP:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP.__subscribe_to_setting_change("vp_tuning_UV",self,"VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus")
+	toggle_systems_at_enceladus = pointersVP.__get_value("VelocityPlus","VP_SHIPS","toggle_systems_at_enceladus",true)
 
 var vp_toggleequipmentsysposdisplay_uinit : bool = false
 func _ready():
@@ -116,7 +111,7 @@ func tuningChanged(system, type, to, protocol):
 	set_draw(false,false)
 
 func set_draw(how,object_position,obj = null):
-	if tex_rect.do_draw != how or ((tex_rect.obj_pos == true or object_position == true) and obj != tex_rect.obj):
+	if tex_rect.do_draw != how or ((tex_rect.obj_pos or object_position) and obj != tex_rect.obj):
 		tex_rect.obj_pos = object_position
 		tex_rect.obj = obj
 		tex_rect.ship = getShip()

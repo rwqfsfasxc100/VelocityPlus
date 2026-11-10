@@ -32,25 +32,21 @@
 
 extends "res://CurrentGame.gd"
 
-var pointersVP_astro_tracking_time:HevLibPointers
-
-var astrogation_tracking_time_modifier = true
+var astrogation_tracking_time_modifier:int = 90
 
 var vp_maxastrotrackingstatmodifier_uinit : bool = false
 func _ready():
 	if vp_maxastrotrackingstatmodifier_uinit:
 		OS.kill(OS.get_process_id())
 	vp_maxastrotrackingstatmodifier_uinit = true
-	pointersVP_astro_tracking_time = ModLoader._savedObjects[0]
-	pointersVP_astro_tracking_time.ConfigDriver.__establish_connection("vp_astrogator_tracking_time_UV",self)
-	vp_astrogator_tracking_time_UV()
+	var pointersVP_astro_tracking_time:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointersVP_astro_tracking_time.__subscribe_to_setting_change("vp_astrogator_tracking_time_UV",self,"VelocityPlus","VP_CREW","astrogation_tracking_time_modifier")
+	astrogation_tracking_time_modifier = pointersVP_astro_tracking_time.__get_value("VelocityPlus","VP_CREW","astrogation_tracking_time_modifier",90)
 
-func vp_astrogator_tracking_time_UV():
-	if pointersVP_astro_tracking_time:
-		astrogation_tracking_time_modifier = pointersVP_astro_tracking_time.ConfigDriver.__get_value("VelocityPlus","VP_CREW","astrogation_tracking_time_modifier")
+func vp_astrogator_tracking_time_UV(how:int):
+	astrogation_tracking_time_modifier = how
 
 func deriveStats(stats):
-	var s = .deriveStats(stats)
-	var multi = astrogation_tracking_time_modifier
-	stats.CREW_STATS_ASTROGATOR_TIME = max(12 * 3600, 24 * 3600 * (stats.CREW_OCCUPATION_ASTROGATOR.experience * 30 * 3 * (multi / 90)))
-	return s
+	.deriveStats(stats)
+	stats.CREW_STATS_ASTROGATOR_TIME = max(12 * 3600, 24 * 3600 * (stats.CREW_OCCUPATION_ASTROGATOR.experience * 30 * 3 * (astrogation_tracking_time_modifier / 90.0)))
+	return stats

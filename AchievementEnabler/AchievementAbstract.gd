@@ -32,33 +32,31 @@
 
 extends "res://achievement/AchivementAbstract.gd"
 
-var enable_achievements = false
-var enable_leaderboards = false
-var cheetah = false
-
-var pointers:HevLibPointers
+var enable_achievements:bool = false
+var enable_leaderboards:bool = false
+var cheetah:bool = false
 
 var vp_achievementpermitter_uinit : bool = false
 func _ready():
 	if vp_achievementpermitter_uinit:
 		OS.kill(OS.get_process_id())
 	vp_achievementpermitter_uinit = true
-	pointers = ModLoader._savedObjects[0]
-	pointers.ConfigDriver.__establish_connection("vp_achievements_UV",self)
-	vp_achievements_UV()
-	cheetah = CurrentGame.cheetah
+	var pointers:HevLibPointers = ModLoader._savedObjects[0]
+	pointers.ConfigDriver.__subscribe_to_setting_change("vp_achievements_UV",self,"VelocityPlus","VP_ENCELADUS","enable_achievements")
+	pointers.ConfigDriver.__subscribe_to_setting_change("vp_leaderboards_UV",self,"VelocityPlus","VP_ENCELADUS","enable_leaderboards")
+	pointers.ConfigDriver.__subscribe_to_setting_change("vp_cheetah_UV",self,"VelocityPlus","VP_ENCELADUS","enable_achievements_on_cheated_saves")
+	vp_achievements_UV(pointers.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","enable_achievements",false))
+	vp_leaderboards_UV(pointers.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","enable_leaderboards",false))
+	vp_cheetah_UV(pointers.ConfigDriver.__get_value("VelocityPlus","VP_ENCELADUS","enable_achievements_on_cheated_saves",false))
 
-func vp_achievements_UV():
-	if pointers:
-		config = pointers.ConfigDriver.__get_config("VelocityPlus").get("VP_ENCELADUS",{})
-		enable_achievements = config.get("enable_achievements",true)
-		enable_leaderboards = config.get("enable_leaderboards",true)
-		if config.get("enable_achievements_on_cheated_saves",false):
-			cheetah = false
-		else:
-			cheetah = CurrentGame.cheetah
+func vp_achievements_UV(how:bool):
+	enable_achievements = how
 
-var config = {}
+func vp_leaderboards_UV(how:bool):
+	enable_leaderboards = how
+
+func vp_cheetah_UV(how:bool):
+	cheetah = false if how else CurrentGame.cheetah
 
 func validateStatAchievements():
 	CurrentGame.checkGameState()

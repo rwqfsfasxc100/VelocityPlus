@@ -32,31 +32,24 @@
 
 extends "res://hud/components/RestricedCrewList.gd"
 
-var pointersVP:HevLibPointers
 signal drawn_crew
-var vacPath = NodePath("C/O/Vac")
 
 func _enter_tree():
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_crewrestrictedlist_UV",self)
 	yield(self,"drawn_crew")
-	vp_crewrestrictedlist_UV()
+	var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_hide_crew",self,"VelocityPlus","VP_CREW","hide_in_OMS")
+	pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_hide_vac",self,"VelocityPlus","VP_CREW","hide_crew_suit")
+	vp_hide_crew(pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","hide_in_OMS",false))
+	vp_hide_vac(pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","hide_crew_suit",false))
 
-func vp_crewrestrictedlist_UV():
-	if pointersVP:
-		var hideCrew = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","hide_in_OMS")
-		if hideCrew:
-			visible = false
-		else:
-			var hideVac = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","hide_crew_suit")
-			for i in list.get_children():
-				var vac = i.get_node_or_null(vacPath)
-				if vac:
-					if hideVac:
-						vac.visible = false
-					else:
-						vac.visible = true
-			visible = true
+func vp_hide_crew(how:bool):
+	visible = how
+
+func vp_hide_vac(how:bool):
+	for i in list.get_children():
+		var vac:Node2D = i.get_node_or_null(NodePath("C/O/Vac"))
+		if vac:
+			vac.visible = !how
 
 func drawCrew():
 	.drawCrew()

@@ -32,80 +32,84 @@
 
 extends "res://hud/OMS.gd"
 
-var _diveClock# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/HBoxContainer/_diveClock")
-onready var _diveClockGame = get_tree().root.get_node_or_null("Game")
+var dive_clock:Label = Label.new()
+onready var dive_clock_game_node = get_tree().root.get_node_or_null("Game")
 
-var money_waiting_label# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/MoneyWaiting")
-var money_waiting_label_1# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_1")
+var money_waiting_label:Label = Label.new()
+var money_waiting_label_1:Label = Label.new()
 
-var soldGoods# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/Waiting_0")
-var soldGoods_1# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/SoldGoods")
-var soldGoods_2# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_2")
-var soldGoods_3# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_3")
-var soldGoods_4# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_4")
-var soldGoods_5# = get_node_or_null("MarginContainer/VBoxContainer/Comms/VBoxContainer/VP_BOX/soldGoods_5")
+var soldGoods:Label = Label.new()
+var soldGoods_1:Label = Label.new()
+var soldGoods_2:Label = Label.new()
+var soldGoods_3:Label = Label.new()
+var soldGoods_4:Label = Label.new()
+var soldGoods_5:Label = Label.new()
 
-var astro_vpbox
-var astro_vb_1
-var astro_hb_2
-var astro_vb_spacer
-var astroTimeLabel
-var astroTimeDescLabel
+var astro_vpbox:HBoxContainer = HBoxContainer.new()
+var astro_vb_1:VBoxContainer = VBoxContainer.new()
+var astro_hb_2:HBoxContainer = HBoxContainer.new()
+var astro_vb_spacer:VBoxContainer = VBoxContainer.new()
+var astroTimeLabel:Label = Label.new()
+var astroTimeDescLabel:Label = Label.new()
 
-var ship
+var vpShip
 
-var pointersVP:HevLibPointers
+func vp_update_show_dive_time(how:bool):
+	vp_show_dive_clock = how
+	handle_visibility()
 
+func vp_update_show_shipped_value(how:bool):
+	vp_show_shipped_value = how
+	handle_visibility()
 
-func vp_omslabels_UV():
-	if pointersVP:
-		var config = pointersVP.ConfigDriver.__get_config("VelocityPlus").get("VP_RING",{})
-		show_dive_clock = config.get("show_dive_time_in_OMS",true)
-		show_shipped_value = config.get("show_shipped_cargo_value",true)
-		show_transactions = config.get("show_transactions",true)
-		show_transactions_sold_goods = config.get("show_transactions_sold_goods",true)
-		show_transactions_bought_goods = config.get("show_transactions_bought_goods",true)
-		show_time_spent_astrogating = config.get("show_astrogation_time",true)
-		
-		handle_visibility()
+func vp_update_show_transactions(how:bool):
+	vp_show_transactions = how
+	handle_visibility()
 
-var vp_currently_installed_mpu
-var vp_has_mpu = false
+func vp_update_show_sold_goods(how:bool):
+	vp_show_transactions_sold_goods = how
+	handle_visibility()
+
+func vp_update_show_bought_goods(how:bool):
+	vp_show_transactions_bought_goods = how
+	handle_visibility()
+
+func vp_update_show_astrogation_time(how:bool):
+	vp_show_time_spent_astrogating = how
+	handle_visibility()
+
+var vp_currently_installed_mpu:String = ""
+var vp_has_mpu:bool = false
 var vp_omsextendeddisplayhandler_uinit : bool = false
 func _ready():
 	if vp_omsextendeddisplayhandler_uinit:
 		OS.kill(OS.get_process_id())
 	vp_omsextendeddisplayhandler_uinit = true
-	ship = get_parent().get_parent()
-	vp_currently_installed_mpu = ship.getConfig("cargo.equipment")
+	vpShip = get_parent().get_parent()
+	if vpShip != CurrentGame.getPlayerShip():
+		return
+	vp_currently_installed_mpu = vpShip.getConfig("cargo.equipment")
 	if vp_currently_installed_mpu:
 		vp_has_mpu = true
 	CurrentGame.vp_this_dive_time_spent_astrogating = 0
-	var headBox = $MarginContainer/VBoxContainer/Comms/VBoxContainer
-	var box2 = headBox.get_node("HBoxContainer2")
-	var box1 = headBox.get_node("HBoxContainer")
-	var w2Label = Label.new()
+	var headBox:VBoxContainer = $MarginContainer/VBoxContainer/Comms/VBoxContainer
+	var box2:HBoxContainer = headBox.get_node("HBoxContainer2")
+	var box1:HBoxContainer = headBox.get_node("HBoxContainer")
+	var w2Label:Label = Label.new()
 	w2Label.name = "Waiting_2"
 	w2Label.text = "VP_CURRENT_CASH"
 	box2.get_node("Money").size_flags_horizontal = 1
-	var vp_box = HBoxContainer.new()
+	var vp_box:HBoxContainer = HBoxContainer.new()
 	vp_box.name = "VP_BOX"
 	vp_box.modulate = Color( 0.5, 4, 0.5, 1 )
 	vp_box.size_flags_vertical = 0
-	soldGoods = Label.new()
 	soldGoods.name = "Waiting_0"
-	money_waiting_label_1 = Label.new()
 	money_waiting_label_1.name = "Waiting_1"
 	money_waiting_label_1.size_flags_horizontal = 3
 	money_waiting_label_1.align = 2
 	money_waiting_label_1.text = "VP_CASH_AT_ENCELADUS"
 	soldGoods.text = "VP_SOLD_GOODS"
 	soldGoods.align = 2
-	soldGoods_1 = Label.new()
-	soldGoods_2 = Label.new()
-	soldGoods_3 = Label.new()
-	soldGoods_4 = Label.new()
-	soldGoods_5 = Label.new()
 	soldGoods_1.name = "SoldGoods"
 	soldGoods_2.name = "soldGoods_2"
 	soldGoods_3.name = "soldGoods_3"
@@ -119,19 +123,16 @@ func _ready():
 	money_waiting_label_1.size_flags_horizontal = 3
 	money_waiting_label_1.text = "VP_CASH_AT_ENCELADUS"
 	money_waiting_label_1.align = 2
-	money_waiting_label = Label.new()
 	money_waiting_label.name = "MoneyWaiting"
 	money_waiting_label.text = "0 E$"
-	var label2 = Label.new()
+	var label2:Label = Label.new()
 	label2.name = "Label2"
 	label2.size_flags_horizontal = 3
-	_diveClock = Label.new()
-	_diveClock.name = "_diveClock"
-	_diveClock.modulate = Color( 0.5, 4, 0.5, 1 )
-	_diveClock.text = "In dive: 0h 00m 00s | "
-	_diveClock.align = 2
-	var igt = box1.get_node("InGameTime")
-	igt.size_flags_horizontal = 1
+	dive_clock.name = "DiveClock"
+	dive_clock.modulate = Color( 0.5, 4, 0.5, 1 )
+	dive_clock.text = "In dive: 0h 00m 00s | "
+	dive_clock.align = 2
+	box1.get_node("InGameTime").size_flags_horizontal = 1
 	box2.add_child(w2Label)
 	vp_box.add_child(soldGoods)
 	vp_box.add_child(soldGoods_1)
@@ -142,44 +143,30 @@ func _ready():
 	vp_box.add_child(money_waiting_label_1)
 	vp_box.add_child(money_waiting_label)
 	box1.add_child(label2)
-	box1.add_child(_diveClock)
+	box1.add_child(dive_clock)
 	headBox.add_child(vp_box)
 	headBox.move_child(vp_box,1)
 	box2.move_child(w2Label,2)
 	box1.move_child(label2,1)
-	box1.move_child(_diveClock,2)
+	box1.move_child(dive_clock,2)
 	
-	
-	
-	var astroGC = get_node("MarginContainer/VBoxContainer/TabHintContainer/TabContainer/CREW_OCCUPATION_ASTROGATOR")
-	astro_vpbox = HBoxContainer.new()
 	astro_vpbox.modulate = Color("40ff40")
 	astro_vpbox.alignment = BoxContainer.ALIGN_END
 	astro_vpbox.anchor_bottom = 1
 	astro_vpbox.anchor_right = 1
 	astro_vpbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	astro_vpbox.name = "VP_ASTRO_BOX"
-	astroGC.add_child(astro_vpbox)
-	astro_vb_1 = VBoxContainer.new()
+	$MarginContainer/VBoxContainer/TabHintContainer/TabContainer/CREW_OCCUPATION_ASTROGATOR.add_child(astro_vpbox)
 	astro_vb_1.alignment = BoxContainer.ALIGN_END
 	astro_vb_1.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	astro_vpbox.add_child(astro_vb_1)
-	astro_vb_spacer = VBoxContainer.new()
 	astro_vb_spacer.alignment = BoxContainer.ALIGN_END
 	astro_vb_spacer.rect_min_size.x = 15
 	astro_vb_spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	astro_vpbox.add_child(astro_vb_spacer)
-	astro_hb_2 = HBoxContainer.new()
 	astro_hb_2.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	astro_vb_1.add_child(astro_hb_2)
 	
-#	var separator1 = Label.new()
-#	var separator2 = Label.new()
-#	separator1.size_flags_vertical = Label.SIZE_EXPAND_FILL
-#	separator2.size_flags_vertical = Label.SIZE_EXPAND_FILL
-	
-	astroTimeDescLabel = Label.new()
-	astroTimeLabel = Label.new()
 	astroTimeDescLabel.align = Label.ALIGN_RIGHT
 	astroTimeDescLabel.text = "VP_OMS_ASTRO_TIME_COUNTER_LABEL"
 	astroTimeLabel.text = Tool.readableTimeSpan(0)
@@ -187,98 +174,95 @@ func _ready():
 	astroTimeLabel.rect_size.x = 10
 	astroTimeDescLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	astroTimeLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-#	astroGC.add_child(separator1)
-#	astroGC.add_child(separator2)
 	astro_hb_2.add_child(astroTimeDescLabel)
 	astro_hb_2.add_child(astroTimeLabel)
 	
-	
 	# Must be handled last to ensure all labels are loaded
-	pointersVP = ModLoader._savedObjects[0]
-	pointersVP.ConfigDriver.__establish_connection("vp_omslabels_UV",self)
-	vp_omslabels_UV()
-	if ship == CurrentGame.getPlayerShip():
-		CurrentGame.this_dive_transactions_gain = 0
-		CurrentGame.this_dive_transactions_spent = 0
-	
-	
+	var pointers:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
+	pointers.__subscribe_to_setting_change("vp_update_show_dive_time",self,"VelocityPlus","VP_RING","show_dive_time_in_OMS")
+	pointers.__subscribe_to_setting_change("vp_update_show_shipped_value",self,"VelocityPlus","VP_RING","show_shipped_cargo_value")
+	pointers.__subscribe_to_setting_change("vp_update_show_transactions",self,"VelocityPlus","VP_RING","show_transactions")
+	pointers.__subscribe_to_setting_change("vp_update_show_sold_goods",self,"VelocityPlus","VP_RING","show_transactions_sold_goods")
+	pointers.__subscribe_to_setting_change("vp_update_show_bought_goods",self,"VelocityPlus","VP_RING","show_transactions_bought_goods")
+	pointers.__subscribe_to_setting_change("vp_update_show_astrogation_time",self,"VelocityPlus","VP_RING","show_astrogation_time")
+	vp_show_dive_clock = pointers.__get_value("VelocityPlus","VP_RING","show_dive_time_in_OMS",true)
+	vp_show_shipped_value = pointers.__get_value("VelocityPlus","VP_RING","show_shipped_cargo_value",true)
+	vp_show_transactions = pointers.__get_value("VelocityPlus","VP_RING","show_transactions",true)
+	vp_show_transactions_sold_goods = pointers.__get_value("VelocityPlus","VP_RING","show_transactions_sold_goods",true)
+	vp_show_transactions_bought_goods = pointers.__get_value("VelocityPlus","VP_RING","show_transactions_bought_goods",true)
+	vp_show_time_spent_astrogating = pointers.__get_value("VelocityPlus","VP_RING","show_astrogation_time",true)
+	handle_visibility()
+	CurrentGame.this_dive_transactions_gain = 0
+	CurrentGame.this_dive_transactions_spent = 0
 
-var money_format = "%s E$"
-var shipped_cargo_amt = 0.0
+var money_format:String = "%s E$"
+var shipped_cargo_amt:float = 0.0
 
-func _input(event):
-	if !ship.cutscene and ship.isPlayerControlled():
+func _input(event:InputEvent):
+	if !vpShip.cutscene and vpShip.isPlayerControlled():
 		if event.is_action_pressed("velocityplus_toggle_hud"):
 			get_parent().visible = !get_parent().visible
-		if vp_has_mpu:
-			if event.is_action_pressed("velocityplus_toggle_mpu"):
-				var shipSystems = ship.getSystems()
-				for node in shipSystems:
-					var sys = shipSystems[node]
-					if sys.name == vp_currently_installed_mpu:
-						sys.enabled = !sys.enabled
-						sys.ref.enabled = !sys.ref.enabled
+		if vp_has_mpu and event.is_action_pressed("velocityplus_toggle_mpu"):
+			var shipSystems:Dictionary = vpShip.getSystems()
+			for node in shipSystems.keys():
+				var sys:Dictionary = shipSystems[node]
+				if sys.name == vp_currently_installed_mpu:
+					sys.enabled = !sys.enabled
+					sys.ref.enabled = !sys.ref.enabled
 
-var show_dive_clock = true
-var show_shipped_value = true
-var show_transactions = true
-var show_transactions_sold_goods = true
-var show_transactions_bought_goods = true
-var show_time_spent_astrogating = true
-var vpFrameUpdateTimer = 0
-func _physics_process(delta):
+var vp_show_dive_clock:bool = true
+var vp_show_shipped_value:bool = true
+var vp_show_transactions:bool = true
+var vp_show_transactions_sold_goods:bool = true
+var vp_show_transactions_bought_goods:bool = true
+var vp_show_time_spent_astrogating:bool = true
+var vpFrameUpdateTimer:int = 0
+func _physics_process(delta:float):
 	vpFrameUpdateTimer += 1
 	if vpFrameUpdateTimer % 5 == 0:
-		if show_dive_clock:
-			var text = ""
-			if _diveClockGame != null and _diveClock != null:
-				var timeInDive = int(ceil(_diveClockGame.realtimePlayed))
-				text += TranslationServer.translate("VP_DIVE_CLOCK_DISPLAY") % [
-					timeInDive / 3600,
-					timeInDive / 60 % 60,
-					timeInDive % 60,
-				]
-				_diveClock.text = text + " | "
-				
-		else:
-			if _diveClock != null:
-				_diveClock.visible = false
+		if dive_clock != null:
+			if vp_show_dive_clock and dive_clock_game_node != null:
+					var timeInDive:int = int(ceil(dive_clock_game_node.realtimePlayed))
+					dive_clock.text = TranslationServer.translate("VP_DIVE_CLOCK_DISPLAY") % [
+						int(timeInDive / 3600.0),
+						int(timeInDive / 60.0) % 60,
+						timeInDive % 60,
+					] + " | "
+					
+			else:
+				dive_clock.visible = false
 	if vpFrameUpdateTimer % 10 == 0:
-		if show_shipped_value:
+		if vp_show_shipped_value:
 			shipped_cargo_amt = 0.0
-			ship.configMutex.lock()
-			if "remoteCargo" in ship.shipConfig:
-				for mineral in ship.shipConfig.remoteCargo.keys():
-					shipped_cargo_amt += CurrentGame.getMineralMarketPricePerKg(mineral) * ship.shipConfig.remoteCargo[mineral]
-			ship.configMutex.unlock()
-			var txt = money_format % CurrentGame.formatThousands(shipped_cargo_amt)
-			money_waiting_label.text = str(txt)
-		if show_transactions:
-			var mGain = CurrentGame.this_dive_transactions_gain
-			var mSpent = -CurrentGame.this_dive_transactions_spent
-			var soldVal = mGain + mSpent
-			var soldTex = money_format % CurrentGame.formatThousands(soldVal)
-			soldGoods_1.text = soldTex
-			if show_transactions_sold_goods:
+			vpShip.configMutex.lock()
+			if "remoteCargo" in vpShip.shipConfig:
+				for mineral in vpShip.shipConfig.remoteCargo.keys():
+					shipped_cargo_amt += CurrentGame.getMineralMarketPricePerKg(mineral) * vpShip.shipConfig.remoteCargo[mineral]
+			vpShip.configMutex.unlock()
+			money_waiting_label.text = money_format % CurrentGame.formatThousands(shipped_cargo_amt)
+		if vp_show_transactions:
+			var mGain:float = CurrentGame.this_dive_transactions_gain
+			var mSpent:float = -CurrentGame.this_dive_transactions_spent
+			soldGoods_1.text = money_format % CurrentGame.formatThousands(mGain + mSpent)
+			if vp_show_transactions_sold_goods:
 				soldGoods_3.text = money_format % CurrentGame.formatThousands(mGain)
-			if show_transactions_bought_goods:
+			if vp_show_transactions_bought_goods:
 				soldGoods_5.text = money_format % CurrentGame.formatThousands(abs(mSpent))
-		if show_time_spent_astrogating:
-			var t = CurrentGame.vp_this_dive_time_spent_astrogating
-			astroTimeLabel.text = Tool.readableTimeSpan(t)
+		if vp_show_time_spent_astrogating:
+			astroTimeLabel.text = Tool.readableTimeSpan(CurrentGame.vp_this_dive_time_spent_astrogating)
 	if vpFrameUpdateTimer > 100:
 		vpFrameUpdateTimer = 0
 
 func handle_visibility():
-	if _diveClock != null:
-		_diveClock.visible = show_dive_clock
-	money_waiting_label.visible = show_shipped_value
-	money_waiting_label_1.visible = show_shipped_value
-	soldGoods.visible = show_transactions
-	soldGoods_1.visible = show_transactions
-	soldGoods_2.visible = (show_transactions and show_transactions_sold_goods)
-	soldGoods_3.visible = (show_transactions and show_transactions_sold_goods)
-	soldGoods_4.visible = (show_transactions and show_transactions_bought_goods)
-	soldGoods_5.visible = (show_transactions and show_transactions_bought_goods)
-	astroTimeLabel.visible = show_time_spent_astrogating
-	astroTimeDescLabel.visible = show_time_spent_astrogating
+	if dive_clock != null:
+		dive_clock.visible = vp_show_dive_clock
+	money_waiting_label.visible = vp_show_shipped_value
+	money_waiting_label_1.visible = vp_show_shipped_value
+	soldGoods.visible = vp_show_transactions
+	soldGoods_1.visible = vp_show_transactions
+	soldGoods_2.visible = (vp_show_transactions and vp_show_transactions_sold_goods)
+	soldGoods_3.visible = (vp_show_transactions and vp_show_transactions_sold_goods)
+	soldGoods_4.visible = (vp_show_transactions and vp_show_transactions_bought_goods)
+	soldGoods_5.visible = (vp_show_transactions and vp_show_transactions_bought_goods)
+	astroTimeLabel.visible = vp_show_time_spent_astrogating
+	astroTimeDescLabel.visible = vp_show_time_spent_astrogating
