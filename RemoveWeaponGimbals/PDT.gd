@@ -41,4 +41,4 @@ func _enter_tree():
 	vp_gimbal_remover_UV(pointersVP_gimbal_remover.__get_value("VelocityPlus","VP_SHIPS","disable_gimballed_and_turreted_weapons",false))
 
 func vp_gimbal_remover_UV(how:bool):
-	gimbalLimit = 0 if how else default_gimbal_limit
+	gimbalLimit = 0.0 if how else default_gimbal_limit
