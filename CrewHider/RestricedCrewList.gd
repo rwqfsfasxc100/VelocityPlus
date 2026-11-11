@@ -43,7 +43,7 @@ func _enter_tree():
 	vp_hide_vac(pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_CREW","hide_crew_suit",false))
 
 func vp_hide_crew(how:bool):
-	visible = how
+	visible = !how
 
 func vp_hide_vac(how:bool):
 	for i in list.get_children():
