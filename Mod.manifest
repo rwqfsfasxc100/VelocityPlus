@@ -11,7 +11,7 @@ credits=PoolStringArray( "VP_CREDITS_CONTRIBUTORS_HEADER", "VP_CREDITS_CONTRIBUT
 
 version_major=1
 version_minor=8
-version_bugfix=2
+version_bugfix=3
 
 [tags]
 
@@ -306,6 +306,13 @@ VP_SHIPS={
 "name": "VP_TEMPERATURE_BASED_THRUST",
 "type": "bool"
 },
+"allow_start_with_inaccessible": {
+"default": false,
+"description": "VP_ALLOW_START_WITH_INACCESSIBLE_SHIP_DESC",
+"display_order_position": 17,
+"name": "VP_ALLOW_START_WITH_INACCESSIBLE_SHIP",
+"type": "bool"
+},
 "always_emp_resistant_HUD": {
 "default": false,
 "description": "VP_ALWAYS_EMP_RESISTANT_HUDS_DESC",
@@ -318,6 +325,13 @@ VP_SHIPS={
 "description": "VP_ARM_TARGET_TO_AP_DESC",
 "display_order_position": 2,
 "name": "VP_ARM_TARGET_TO_AP",
+"type": "bool"
+},
+"choose_starter_ship": {
+"default": true,
+"description": "VP_SHOW_STARTING_SHIP_SELECTION_DESC",
+"display_order_position": 16,
+"name": "VP_SHOW_STARTING_SHIP_SELECTION",
 "type": "bool"
 },
 "disable_gimballed_and_turreted_weapons": {
@@ -579,7 +593,7 @@ dependancy_mod_ids=[ {
 "minimum_version": [ 1, 17, 8 ],
 "mod_id": "hev.LIBRARY"
 } ]
-conflicting_mod_ids=[ "hev.NoHudEmp", "res://AcheetaDeez.ModMain.gd", "res://AchieveDeez/ModMain.gd", "res://MIsForMPU/ModMain.gd", "res://ShowReliability/ModMain.gd", "res://ARMFocus/ModMain.gd", "res://rmIdLim/ModMain.gd", "res://MaximumSpeed/ModMain.gd", "hev.HudHider", "hev.RingActivity", "hev.NoMoreCrew", "hev.RemoveLIMITS", "hev.OCPVoyagerFix", "hev.NoSimHex", "res://DiveClock/ModMain.gd" ]
+conflicting_mod_ids=[ "hev.NoHudEmp", "res://AcheetaDeez.ModMain.gd", "res://AchieveDeez/ModMain.gd", "res://MIsForMPU/ModMain.gd", "res://ShowReliability/ModMain.gd", "res://ARMFocus/ModMain.gd", "res://rmIdLim/ModMain.gd", "res://MaximumSpeed/ModMain.gd", "hev.HudHider", "hev.RingActivity", "hev.NoMoreCrew", "hev.RemoveLIMITS", "hev.OCPVoyagerFix", "hev.NoSimHex", "res://DiveClock/ModMain.gd", "hev.KitsuneStart" ]
 manifest_url="https://raw.githubusercontent.com/rwqfsfasxc100/VelocityPlus/main/Mod.manifest"
 changelog_path="changelog.txt"
 modlet_priority=-1

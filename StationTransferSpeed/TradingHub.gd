@@ -39,7 +39,7 @@ var transfer_speed_multi:float = 1.0
 func _enter_tree():
 	base_transfer_speed = tradePerSecond
 	var pointersVP_base_transfer_speed:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
-	pointersVP_base_transfer_speed.__establish_connection("vp_station_trade_transfer_speed_UV",self)
+	pointersVP_base_transfer_speed.__subscribe_to_setting_change("vp_station_trade_transfer_speed_UV",self,"VelocityPlus","VP_SHIPS","station_trade_transfer_speed")
 	vp_station_trade_transfer_speed_UV(pointersVP_base_transfer_speed.__get_value("VelocityPlus","VP_SHIPS","station_trade_transfer_speed",1.0))
 
 func vp_station_trade_transfer_speed_UV(how:float):

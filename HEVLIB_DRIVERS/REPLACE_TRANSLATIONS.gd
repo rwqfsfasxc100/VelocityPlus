@@ -1857,6 +1857,26 @@ const TRANSLATIONS = {
 		"VP_SORT_HIREABLE_CREW_DIRECTION_DESC": {
 			"string": "The direction which the hireable crew is organized by.",
 			"version_hash": 1323780720
+		},
+		"VP_STARTING_SHIP": {
+			"string": "Starting ship",
+			"version_hash": 1637345477
+		},
+		"VP_SHOW_STARTING_SHIP_SELECTION": {
+			"string": "Choose desired starting ship",
+			"version_hash": 2032992326
+		},
+		"VP_SHOW_STARTING_SHIP_SELECTION_DESC": {
+			"string": "Allows you to choose your first ship from a dropdown on new game plus.",
+			"version_hash": 3532602296
+		},
+		"VP_ALLOW_START_WITH_INACCESSIBLE_SHIP": {
+			"string": "Allow start with inaccessible ships",
+			"version_hash": 2708595578
+		},
+		"VP_ALLOW_START_WITH_INACCESSIBLE_SHIP_DESC": {
+			"string": "Exposes ships not usually player-accessible or player-flyable to the start list.\n\nWARNING: These ships are not guaranteed to work at all, and may or may not break at any point.",
+			"version_hash": 768059211
 		}
 	},
 	"uk_UA": {

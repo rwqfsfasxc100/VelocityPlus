@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="SelectShip" type="VBoxContainer"]
+margin_top = 204.0
+margin_right = 720.0
+margin_bottom = 288.0
+
+[node name="Label" type="Label" parent="."]
+margin_right = 720.0
+margin_bottom = 14.0
+text = "VP_STARTING_SHIP"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_top = 18.0
+margin_right = 720.0
+margin_bottom = 38.0

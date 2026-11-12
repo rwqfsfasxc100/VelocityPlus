@@ -1,3 +1,12 @@
+[1.8.3]
+
+1=* Added ability to decide which starting ship is used.
+1.1=* Works with both vanilla and ships added through ShipDriver
+1.2=* Optionally can allow for unobtainable ships to be chosen
+1.2.1=* WARNING: These ships aren't setup for player flight, and as a result they probably will only be a gimmick at best
+2=* Fixed crash caused by the OMS display not providing a default for fetching a ship's MPU
+3=* Fixed issue that prevented the station transfer speed multiplier from being applied
+
 [1.8.2]
 
 1=* Fixed typo that would invert the Hide Crew setting

@@ -60,6 +60,8 @@ const LOAD_RESOURCES = {
 	"ToggleSystemsAtEnceladus/SystemList.gd": {"load_type": "script", "onready": false},
 	"ToggleSystemsAtEnceladus/Tuning.gd": {"load_type": "script", "onready": false},
 	"ToggleSystemsAtEnceladus/ship-ctrl.gd": {"load_type": "script", "onready": false},
+	"ChooseStarterShip/NewGamePlus.gd": {"load_type": "script", "onready": false},
+	"ChooseStarterShip/CurrentGame.gd": {"load_type": "script", "onready": false},
 	"MaxAstrogatorTrackingTime/CurrentGame.gd": {"load_type": "script", "onready": false},
 	"DisableMaintDroneSanBUS/drone-plant.gd": {"load_type": "script", "onready": false},
 	"TemperatureBasedThrust/thruster.gd": {"load_type": "script", "onready": false},
