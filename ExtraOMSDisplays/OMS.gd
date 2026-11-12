@@ -88,7 +88,7 @@ func _ready():
 	vpShip = get_parent().get_parent()
 	if vpShip != CurrentGame.getPlayerShip():
 		return
-	vp_currently_installed_mpu = vpShip.getConfig("cargo.equipment")
+	vp_currently_installed_mpu = vpShip.getConfig("cargo.equipment","")
 	if vp_currently_installed_mpu:
 		vp_has_mpu = true
 	CurrentGame.vp_this_dive_time_spent_astrogating = 0
@@ -199,16 +199,21 @@ var money_format:String = "%s E$"
 var shipped_cargo_amt:float = 0.0
 
 func _input(event:InputEvent):
-	if !vpShip.cutscene and vpShip.isPlayerControlled():
-		if event.is_action_pressed("velocityplus_toggle_hud"):
-			get_parent().visible = !get_parent().visible
-		if vp_has_mpu and event.is_action_pressed("velocityplus_toggle_mpu"):
-			var shipSystems:Dictionary = vpShip.getSystems()
-			for node in shipSystems.keys():
-				var sys:Dictionary = shipSystems[node]
-				if sys.name == vp_currently_installed_mpu:
-					sys.enabled = !sys.enabled
-					sys.ref.enabled = !sys.ref.enabled
+	if event.is_action_pressed("velocityplus_toggle_hud"):
+		if Tool.claim(vpShip):
+			if !vpShip.cutscene and vpShip.isPlayerControlled():
+				get_parent().visible = !get_parent().visible
+			Tool.release(vpShip)
+	if vp_has_mpu and event.is_action_pressed("velocityplus_toggle_mpu"):
+		if Tool.claim(vpShip):
+			if !vpShip.cutscene and vpShip.isPlayerControlled():
+				var shipSystems:Dictionary = vpShip.getSystems()
+				for node in shipSystems.keys():
+					var sys:Dictionary = shipSystems[node]
+					if sys.name == vp_currently_installed_mpu:
+						sys.enabled = !sys.enabled
+						sys.ref.enabled = !sys.ref.enabled
+			Tool.release(vpShip)
 
 var vp_show_dive_clock:bool = true
 var vp_show_shipped_value:bool = true
