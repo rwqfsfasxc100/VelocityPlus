@@ -38,7 +38,7 @@ var vp_crewsort_dir:int = 0
 var vp_omsdisplayexpansionlogcheck_uinit : bool = false
 func _ready():
 	if vp_omsdisplayexpansionlogcheck_uinit:
-		OS.kill(OS.get_process_id())
+		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
 	vp_omsdisplayexpansionlogcheck_uinit = true
 	var pointersVP_crew_sort:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
 	pointersVP_crew_sort.__subscribe_to_setting_change("vp_crewsort_UV",self,"VelocityPlus","VP_CREW","hire_crew_sort_method")

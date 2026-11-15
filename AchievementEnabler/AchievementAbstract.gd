@@ -39,7 +39,7 @@ var cheetah:bool = false
 var vp_achievementpermitter_uinit : bool = false
 func _ready():
 	if vp_achievementpermitter_uinit:
-		OS.kill(OS.get_process_id())
+		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
 	vp_achievementpermitter_uinit = true
 	var pointers:HevLibPointers = ModLoader._savedObjects[0]
 	pointers.ConfigDriver.__subscribe_to_setting_change("vp_achievements_UV",self,"VelocityPlus","VP_ENCELADUS","enable_achievements")

@@ -46,7 +46,7 @@ func _enter_tree():
 var vp_pilotsreduceadrenalinehandler_uinit : bool = false
 func _ready():
 	if vp_pilotsreduceadrenalinehandler_uinit:
-		OS.kill(OS.get_process_id())
+		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
 	vp_pilotsreduceadrenalinehandler_uinit = true
 	vp_modify_crew_skill()
 	CurrentGame.connect("xpChanged",self,"vp_modify_crew_skill")

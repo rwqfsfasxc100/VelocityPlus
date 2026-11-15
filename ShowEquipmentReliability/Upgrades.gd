@@ -61,7 +61,7 @@ var MTBF_container:PackedScene = load("res://VelocityPlus/ShowEquipmentReliabili
 var vp_showequipmentreliabilityhandler_uinit : bool = false
 func _ready():
 	if vp_showequipmentreliabilityhandler_uinit:
-		OS.kill(OS.get_process_id())
+		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
 	vp_showequipmentreliabilityhandler_uinit = true
 	var mtbf:Node = MTBF_container.instance()
 	get_node(manual_container_path).add_child(mtbf)

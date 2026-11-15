@@ -39,10 +39,10 @@ func vp_conversation_UV(how:bool):
 var broadcast_variations:bool = true
 var vp_varbroadcastshandler_uinit : bool = false
 func _ready():
-	if vp_varbroadcastshandler_uinit:
-		OS.kill(OS.get_process_id())
-	vp_varbroadcastshandler_uinit = true
 	var pointersVP:HevLibPointers = ModLoader._savedObjects[0]
+	if vp_varbroadcastshandler_uinit:
+		pointersVP.main_modmain.log_double_load_error(get_script().resource_path)
+	vp_varbroadcastshandler_uinit = true
 	if name.begins_with("DIALOG_SALVAGE_"):
 		pointersVP.ConfigDriver.__subscribe_to_setting_change("vp_conversation_UV",self,"VelocityPlus","VP_RING","broadcast_variations")
 		broadcast_variations = pointersVP.ConfigDriver.__get_value("VelocityPlus","VP_RING","broadcast_variations",true)

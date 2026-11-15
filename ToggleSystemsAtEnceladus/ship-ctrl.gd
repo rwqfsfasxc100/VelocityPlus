@@ -61,7 +61,7 @@ func _enter_tree():
 var vp_toggleequipmentpersisthandler_uinit : bool = false
 func _ready():
 	if vp_toggleequipmentpersisthandler_uinit:
-		OS.kill(OS.get_process_id())
+		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
 	vp_toggleequipmentpersisthandler_uinit = true
 	if toggle_systems_at_enceladus:
 		handleSystemToggles()
