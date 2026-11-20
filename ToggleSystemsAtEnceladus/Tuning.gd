@@ -101,7 +101,7 @@ func _enter_tree():
 var vp_toggleequipmentsysposdisplay_uinit : bool = false
 func _ready():
 	if vp_toggleequipmentsysposdisplay_uinit:
-		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
+		ModLoader._savedObjects[0].log_double_load_error(get_script().resource_path)
 	vp_toggleequipmentsysposdisplay_uinit = true
 	tex_rect.set_script(load("res://VelocityPlus/ToggleSystemsAtEnceladus/tex_rect_draw.gd"))
 

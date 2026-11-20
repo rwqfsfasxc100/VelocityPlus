@@ -44,7 +44,7 @@ var emitter:Particles2D = load("res://VelocityPlus/MicrowavesMeltOre/drone-dust-
 var vp_mikesmeltoreprocessor_uinit : bool = false
 func _ready():
 	if vp_mikesmeltoreprocessor_uinit:
-		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
+		ModLoader._savedObjects[0].log_double_load_error(get_script().resource_path)
 	vp_mikesmeltoreprocessor_uinit = true
 	add_child(emitter)
 	visnotifier.rect = Rect2(-20,-20,40,40)

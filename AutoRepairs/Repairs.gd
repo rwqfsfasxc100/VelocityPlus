@@ -58,7 +58,7 @@ func _enter_tree():
 var vp_repairsautorepairmenu_uinit : bool = false
 func _ready():
 	if vp_repairsautorepairmenu_uinit:
-		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
+		ModLoader._savedObjects[0].log_double_load_error(get_script().resource_path)
 	vp_repairsautorepairmenu_uinit = true
 	add_child(load("res://VelocityPlus/AutoRepairs/AutoRepairPanel.tscn").instance())
 	set_physics_process(false)

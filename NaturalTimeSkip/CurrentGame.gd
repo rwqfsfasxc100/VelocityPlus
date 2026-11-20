@@ -35,7 +35,7 @@ var file:File = File.new()
 var vp_naturaltimeskiphandler_uinit : bool = false
 func _ready():
 	if vp_naturaltimeskiphandler_uinit:
-		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
+		ModLoader._savedObjects[0].log_double_load_error(get_script().resource_path)
 	vp_naturaltimeskiphandler_uinit = true
 	var pointersVP_natural_time_skip:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
 	pointersVP_natural_time_skip.__subscribe_to_setting_change("vp_natural_time_skip_UV",self,"VelocityPlus","VP_ENCELADUS","natural_time_skip")

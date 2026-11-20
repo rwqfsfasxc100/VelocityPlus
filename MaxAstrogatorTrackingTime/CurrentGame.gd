@@ -36,7 +36,7 @@ var astrogation_tracking_time_modifier:int = 90
 var vp_maxastrotrackingstatmodifier_uinit : bool = false
 func _ready():
 	if vp_maxastrotrackingstatmodifier_uinit:
-		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
+		ModLoader._savedObjects[0].log_double_load_error(get_script().resource_path)
 	vp_maxastrotrackingstatmodifier_uinit = true
 	var pointersVP_astro_tracking_time:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
 	pointersVP_astro_tracking_time.__subscribe_to_setting_change("vp_astrogator_tracking_time_UV",self,"VelocityPlus","VP_CREW","astrogation_tracking_time_modifier")

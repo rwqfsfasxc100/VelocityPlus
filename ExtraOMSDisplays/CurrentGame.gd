@@ -34,7 +34,7 @@ extends "res://CurrentGame.gd"
 var vp_omsdisplayexpansionlogcheck_uinit : bool = false
 func _ready():
 	if vp_omsdisplayexpansionlogcheck_uinit:
-		ModLoader._savedObjects[0].main_modmain.log_double_load_error(get_script().resource_path)
+		ModLoader._savedObjects[0].log_double_load_error(get_script().resource_path)
 	vp_omsdisplayexpansionlogcheck_uinit = true
 	var pointersVP_shipped_goods_display:HevLibPointers._ConfigDriver = ModLoader._savedObjects[0].ConfigDriver
 	pointersVP_shipped_goods_display.__subscribe_to_setting_change("vp_shippedgoods_UV",self,"VelocityPlus","VP_RING","show_shipped_cargo_value")
