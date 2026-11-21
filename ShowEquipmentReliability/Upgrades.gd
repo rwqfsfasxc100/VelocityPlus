@@ -89,13 +89,13 @@ func showReliabilityDisplay():
 		var txt:String = ""
 		
 		if "weaponPath" in n:
-			var path:String = n.get("weaponPath")
-			var objname:String = n.name
-			var sysname:String = n.systemName
-			var split:PoolStringArray = path.split(sysname)
-			if split.size() > 1:
-				path = split[1].trim_prefix("/")
-			n = n.get_node(path)
+			var path:String = str(n.weaponPath)
+			if path:
+				var sysname:String = n.systemName
+				var split:PoolStringArray = path.split(sysname)
+				if split.size() > 1:
+					path = split[1].trim_prefix("/")
+				n = n.get_node(path)
 		
 		for p in n.get_property_list():
 			var propertyName:String = p.name

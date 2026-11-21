@@ -1,3 +1,8 @@
+[1.8.4]
+
+1=* Fixed critical issue with the ShowReliabilty module that could cause a crash on certain configurations on release builds
+1.1=* This was directly caused by a NodePath not being properly cast as a string when being split
+
 [1.8.3]
 
 1=* Added ability to decide which starting ship is used.
