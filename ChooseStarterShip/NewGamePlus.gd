@@ -63,19 +63,22 @@ func _ready() -> void:
 func vp_choosestarter_UV(how:bool):
 	starter_selector.visible = how
 
+var added_unob:bool = false
 func vp_allowunob_UV(how:bool):
 	var ass:int = available_ships.size()
 	var uss:int = unusable_ships.size()
-	if how:
+	if how and not added_unob:
 		available_ships.resize(ass + uss)
 		for i in uss:
 			var ur:Array = unusable_ships[i]
 			available_ships[ass + i] = ur
 			starter_selector_opts.add_item(ur[0])
-	else:
+		added_unob = true
+	elif added_unob:
 		available_ships.resize(ass - uss)
 		for i in uss:
-			starter_selector_opts.remove_item(ass)
+			starter_selector_opts.remove_item(starter_selector_opts.get_item_count() - 1)
+		added_unob = false
 
 func _about_to_show():
 	._about_to_show()
